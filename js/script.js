@@ -561,3 +561,57 @@ function toggleProcessReveal(revealId, cardId) {
         text.classList.remove('text-gray-400');
     }
 }
+
+/* ============================================================
+   MASSIVE TYPOGRAPHY STICKY SERVICES
+============================================================ */
+document.addEventListener("DOMContentLoaded", function () {
+    const servicesSection = document.getElementById('services');
+    if (!servicesSection) return;
+
+    const bgImages = servicesSection.querySelectorAll('.service-bg');
+    const texts = servicesSection.querySelectorAll('.service-text');
+    const numberTextLeft = document.getElementById('current-number-left');
+    const totalSteps = texts.length;
+
+    window.addEventListener('scroll', () => {
+        const rect = servicesSection.getBoundingClientRect();
+        
+        if (rect.top <= 0 && rect.bottom >= window.innerHeight) {
+            
+            const scrollArea = rect.height - window.innerHeight; 
+            const progress = Math.abs(rect.top) / scrollArea;
+            
+            let currentIndex = Math.floor(progress * totalSteps);
+            if (currentIndex >= totalSteps) currentIndex = totalSteps - 1;
+            if (currentIndex < 0) currentIndex = 0;
+
+            // Background Images Update
+            bgImages.forEach((img, index) => {
+                if (index === currentIndex) {
+                    img.classList.remove('opacity-0', 'scale-105');
+                    img.classList.add('opacity-100', 'scale-100');
+                } else {
+                    img.classList.remove('opacity-100', 'scale-100');
+                    img.classList.add('opacity-0', 'scale-105');
+                }
+            });
+
+            // Text Update
+            texts.forEach((text, index) => {
+                if (index === currentIndex) {
+                    text.classList.remove('hidden');
+                    text.classList.add('block');
+                } else {
+                    text.classList.add('hidden');
+                    text.classList.remove('block');
+                }
+            });
+
+            // Left Number Update (01, 02...)
+            if (numberTextLeft) {
+                numberTextLeft.innerText = "0" + (currentIndex + 1);
+            }
+        }
+    });
+});
