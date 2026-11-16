@@ -25,6 +25,25 @@ if (hamburger && sidebar && sidebarOverlay && sidebarClose) {
     sidebarOverlay.addEventListener('click', closeSidebar);
 }
 
+/* ================= ACCORDION UNIVERSAL LOGIC ================= */
+/* Yeh function HTML ke onclick se trigger hota hai. Ab About aur Services dono alag alag kaam karenge */
+function toggleAccordion(listId, chevronId) {
+    const list = document.getElementById(listId);
+    const chevron = document.getElementById(chevronId);
+    
+    if (list && chevron) {
+        if (list.classList.contains('hidden')) {
+            list.classList.remove('hidden');
+            list.classList.add('flex');
+            chevron.classList.add('rotate-180');
+        } else {
+            list.classList.add('hidden');
+            list.classList.remove('flex');
+            chevron.classList.remove('rotate-180');
+        }
+    }
+}
+
 /* ================= BACKGROUND PARTICLES ================= */
 const canvas = document.getElementById('particle-canvas');
 if (canvas) {
@@ -168,7 +187,6 @@ if (dynamicImage) {
     dynamicImage.src = data[0].image;
 }
 
-// Background Image Change Function (With Fade Effect)
 function updateImage(imageUrl) {
     if (!dynamicImage) return;
     dynamicImage.style.opacity = '0';
@@ -229,7 +247,6 @@ function typeInnerPagesEffect() {
     const currentUrl = window.location.href.toLowerCase();
     const pageTitle = document.title.toLowerCase();
 
-    // === YAHAN ABOUT PAGE KE LIYE FIX ADD KIYA GAYA HAI ===
     if (currentUrl.includes("about") || pageTitle.includes("about")) {
         phrase = "Brand Packaging";
     }
@@ -292,29 +309,13 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // 2. Mobile Accordion
-    const toggle = document.getElementById('mobileServicesToggle');
-    const list = document.getElementById('mobileServicesList');
-    const chevron = document.getElementById('mobileServicesChevron');
-    if (toggle && list && chevron) {
-        toggle.addEventListener('click', function () {
-            list.classList.toggle('hidden');
-            list.classList.toggle('flex');
-            chevron.classList.toggle('rotate-180');
-        });
-    }
-
-    // 3. Start Typing Effects
-    // Agar Home page hai (dynamicImage mojood hai) toh Home wala chalao
+    // 2. Start Typing Effects
     if (dynamicImage) {
         typeHomeEffect();
-    }
-    // Agar Inner page hai (offsetTypedText mojood hai) toh Inner page wala chalao
-    else if (offsetTypedText) {
+    } else if (offsetTypedText) {
         typeInnerPagesEffect();
     }
 });
-
 
 /* ============================================================
    PERFORMANCE SECTION ANIMATIONS
@@ -377,7 +378,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 /* ============================================================
-   CLEAN BRANDS MARQUEE INJECTION
+   CLEAN BRANDS MARQUEE INJECTION (3 ROWS)
 ============================================================ */
 const partnerLogos = [
     "images/brand1.png", "images/brand2.png", "images/brand3.png", "images/brand4.png",
@@ -390,17 +391,14 @@ const partnerLogos = [
     "images/brand29.png", "images/brand30.png", "images/brand31.png", "images/brand32.png",
     "images/brand33.png", "images/brand34.png", "images/brand35.png", "images/brand36.png",
     "images/brand37.png", "images/brand38.png", "images/brand39.png", "images/brand40.png", "images/brand41.png", "images/brand42.png", "images/brand43.png", "images/brand44.png", "images/brand45.png", "images/brand46.png", "images/brand47.png", "images/brand48.png", "images/brand49.png", "images/brand50.png", "images/brand51.png", "images/brand52.png", "images/brand53.png", "images/brand54.png", "images/brand55.png", "images/brand56.png", "images/brand57.png", "images/brand58.png", "images/brand59.png", "images/brand60.png",
-    "images/brand61.png", "images/brand62.png", "images/brand63.png", "images/brand64.png", "images/brand65.png", "images/brand66.png", "images/brand67.png", "images/brand68.png", "images/brand69.png", "images/brand70.png", "images/brand71.png", "images/brand72.png", "images/brand73.png", "images/brand74.png", "images/brand75.png", "images/brand76.png", "images/brand77.png", "images/brand78.png", "images/brand79.png", "images/brand80.png",
-    "images/brand81.png", "images/brand82.png", "images/brand83.png", "images/brand84.png", "images/brand85.png"
+    "images/brand61.png", "images/brand62.png", "images/brand63.png", "images/brand64.png", "images/brand65.png", "images/brand66.png", "images/brand67.png", "images/brand68.png", "images/brand69.png", "images/brand70.png", "images/brand71.png", "images/brand72.png", "images/brand76.png", "images/brand77.png", "images/brand78.png", "images/brand79.png", "images/brand80.png", "images/brand81.png", "images/brand82.png", "images/brand83.png", "images/brand84.png", "images/brand85.png"
 ];
 
-// 3 Rows ke containers ko target kiya
 const marquee1 = document.getElementById('brand-marquee-1');
 const marquee2 = document.getElementById('brand-marquee-2');
 const marquee3 = document.getElementById('brand-marquee-3');
 
 if (marquee1 && marquee2 && marquee3 && partnerLogos.length > 0) {
-    // Array ko 3 barabar hisson mein baantne ka logic
     const totalLogos = partnerLogos.length;
     const chunkSize = Math.ceil(totalLogos / 3);
 
@@ -408,7 +406,6 @@ if (marquee1 && marquee2 && marquee3 && partnerLogos.length > 0) {
     const row2Logos = partnerLogos.slice(chunkSize, chunkSize * 2);
     const row3Logos = partnerLogos.slice(chunkSize * 2);
 
-    // HTML generate karne ka function (Infinite scroll ke liye images 2 dafa lagayi gayi hain)
     const createImagesHTML = (logosArray) => {
         const images = logosArray.map(src => `
             <img src="${src}" alt="Partner Logo" class="marquee-logo" loading="lazy">
@@ -416,7 +413,6 @@ if (marquee1 && marquee2 && marquee3 && partnerLogos.length > 0) {
         return images + images;
     };
 
-    // Har row mein alag-alag logos inject kar diye
     marquee1.innerHTML = createImagesHTML(row1Logos);
     marquee2.innerHTML = createImagesHTML(row2Logos);
     marquee3.innerHTML = createImagesHTML(row3Logos);

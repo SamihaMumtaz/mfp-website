@@ -1,10 +1,10 @@
 <!-- ═══════════════ NAVBAR (DESKTOP & MOBILE) ═══════════════ -->
 <nav
-    class="sticky top-0 z-[60] flex justify-between items-center py-3 px-4 md:px-8 bg-white/95 backdrop-blur-md border-b border-black/5 navbar">
+    class="sticky top-0 z-[60] flex justify-between items-center py-2 px-4 md:px-8 bg-white/95 backdrop-blur-md border-b border-black/5 navbar">
 
     <!-- Logo -->
-    <a href="index.html" class="flex items-center shrink-0">
-        <img src="images/logo.png" alt="Maqsood Faisal Logo" class="h-8 md:h-10 lg:h-12 w-auto object-contain">
+    <a href="index.html" class="flex items-center shrink-0 py-1">
+        <img src="images/logo.png" alt="Maqsood Faisal Logo" class="h-10 md:h-12 lg:h-14 w-auto object-contain">
     </a>
 
     <!-- DESKTOP MENU -->
@@ -19,16 +19,16 @@
             </a>
         </li>
 
-        <!-- ABOUT US DROPDOWN (UPDATED) -->
+        <!-- ABOUT US DROPDOWN -->
         <li class="relative group/dropdown">
-            <button
-                class="flex items-center gap-2 text-[#0A0C12] text-xs lg:text-sm font-semibold py-2 transition-colors hover:text-[#46B77B] focus:outline-none">
+            <div
+                class="flex items-center gap-2 text-[#0A0C12] text-xs lg:text-sm font-semibold py-2 transition-colors cursor-pointer hover:text-[#46B77B]">
                 <i
                     class="fa-solid fa-circle-info text-gray-500 group-hover/dropdown:text-[#46B77B] transition-colors w-4 text-center"></i>
                 About Us
                 <i
                     class="fa-solid fa-chevron-down text-[0.6rem] ml-0.5 transition-transform duration-300 group-hover/dropdown:rotate-180"></i>
-            </button>
+            </div>
             <!-- Dropdown Menu -->
             <div
                 class="absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 invisible translate-y-2 group-hover/dropdown:opacity-100 group-hover/dropdown:visible group-hover/dropdown:translate-y-0 transition-all duration-300 z-[70]">
@@ -42,21 +42,22 @@
                             <i class="fa-solid fa-users w-4 text-center text-[#46B77B]"></i> Our Management</a></li>
                     <li><a href="company-profile.html"
                             class="flex items-center gap-3 px-4 py-2.5 text-xs font-semibold text-[#0A0C12] hover:bg-[#46B77B]/10 hover:text-[#46B77B] transition-colors">
-                            <i class="fa-solid fa-building w-4 text-center text-[#46B77B]"></i> Company's Profile</a></li>
+                            <i class="fa-solid fa-building w-4 text-center text-[#46B77B]"></i> Company's Profile</a>
+                    </li>
                 </ul>
             </div>
         </li>
 
         <!-- SERVICES DROPDOWN -->
         <li class="relative group/dropdown">
-            <button
-                class="flex items-center gap-2 text-[#0A0C12] text-xs lg:text-sm font-semibold py-2 transition-colors hover:text-[#46B77B] focus:outline-none">
+            <div
+                class="flex items-center gap-2 text-[#0A0C12] text-xs lg:text-sm font-semibold py-2 transition-colors cursor-pointer hover:text-[#46B77B]">
                 <i
                     class="fa-solid fa-gears text-gray-500 group-hover/dropdown:text-[#46B77B] transition-colors w-4 text-center"></i>
                 Services
                 <i
                     class="fa-solid fa-chevron-down text-[0.6rem] ml-0.5 transition-transform duration-300 group-hover/dropdown:rotate-180"></i>
-            </button>
+            </div>
             <!-- Dropdown Menu -->
             <div
                 class="absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 invisible translate-y-2 group-hover/dropdown:opacity-100 group-hover/dropdown:visible group-hover/dropdown:translate-y-0 transition-all duration-300 z-[70]">
@@ -70,8 +71,7 @@
                             <i class="fa-solid fa-tags w-4 text-center text-[#46B77B]"></i> Roll to Roll Labels</a></li>
                     <li><a href="flexible-packaging.html"
                             class="flex items-center gap-3 px-4 py-2.5 text-xs font-semibold text-[#0A0C12] hover:bg-[#46B77B]/10 hover:text-[#46B77B] transition-colors">
-                            <i class="fa-solid fa-layer-group w-4 text-center text-[#46B77B]"></i> Flexible
-                            Packaging</a></li>
+                            <i class="fa-solid fa-layer-group w-4 text-center text-[#46B77B]"></i> Flexible Packaging</a></li>
                     <li><a href="tissue-conversion.html"
                             class="flex items-center gap-3 px-4 py-2.5 text-xs font-semibold text-[#0A0C12] hover:bg-[#46B77B]/10 hover:text-[#46B77B] transition-colors">
                             <i class="fa-solid fa-box-tissue w-4 text-center text-[#46B77B]"></i> Tissue Conversion</a>
@@ -81,8 +81,7 @@
                             <i class="fa-solid fa-box w-4 text-center text-[#46B77B]"></i> Plastic Packaging</a></li>
                     <li><a href="laminated-tubes.html"
                             class="flex items-center gap-3 px-4 py-2.5 text-xs font-semibold text-[#0A0C12] hover:bg-[#46B77B]/10 hover:text-[#46B77B] transition-colors">
-                            <i class="fa-solid fa-prescription-bottle w-4 text-center text-[#46B77B]"></i> Laminated
-                            Tubes</a></li>
+                            <i class="fa-solid fa-prescription-bottle w-4 text-center text-[#46B77B]"></i> Laminated Tubes</a></li>
                 </ul>
             </div>
         </li>
@@ -96,7 +95,7 @@
                 Quality
             </a>
         </li>
-        
+
         <!-- Contact -->
         <li>
             <a href="contact.html"
@@ -110,7 +109,7 @@
 
     <!-- Desktop CTA Button -->
     <a href="contact.html"
-        class="hidden lg:flex items-center gap-2 py-2 px-4 rounded-lg text-xs lg:text-sm font-bold text-white bg-[#46B77B] hover:bg-[#3ca56b] transition-all shadow-md whitespace-nowrap">
+        class="hidden lg:flex items-center gap-2 py-2.5 px-5 rounded-lg text-xs lg:text-sm font-bold text-white bg-[#46B77B] hover:bg-[#3ca56b] transition-all shadow-md whitespace-nowrap">
         Get a Quote <i class="fa-solid fa-arrow-right"></i>
     </a>
 
@@ -130,7 +129,7 @@
 
     <!-- Sidebar Header (Top) -->
     <div class="flex justify-between items-center p-6 border-b border-gray-100 shrink-0">
-        <img src="images/logo.png" alt="Logo" class="h-8">
+        <img src="images/logo.png" alt="Logo" class="h-10 w-auto object-contain">
         <i class="fa-solid fa-xmark text-xl cursor-pointer text-gray-500 hover:text-[#46B77B] hover:rotate-90 transition-all bg-gray-100 w-8 h-8 flex items-center justify-center rounded-full"
             id="sidebarClose"></i>
     </div>
@@ -147,9 +146,9 @@
                 </a>
             </li>
 
-            <!-- About Us Accordion (UPDATED) -->
+            <!-- About Us Accordion (Mobile) -->
             <li>
-                <button id="mobileAboutToggle"
+                <button onclick="toggleAccordion('mobileAboutList', 'mobileAboutChevron')"
                     class="w-full flex items-center justify-between text-[#0A0C12] text-[0.95rem] font-semibold hover:text-[#46B77B] hover:bg-[#46B77B]/5 py-3 px-4 rounded-xl transition-all">
                     <span class="flex items-center gap-4">
                         <i class="fa-solid fa-circle-info text-gray-400 text-lg w-5 text-center"></i> About Us
@@ -160,17 +159,20 @@
 
                 <ul id="mobileAboutList" class="hidden flex-col gap-1 mt-1 pl-12 pr-2 list-none">
                     <li><a href="our-story.html"
-                            class="sidebar-link flex items-center gap-3 text-sm font-medium text-gray-500 hover:text-[#46B77B] py-2.5 transition-all"><i class="fa-solid fa-book-open text-[#46B77B] text-xs"></i> Our Story</a></li>
+                            class="sidebar-link flex items-center gap-3 text-sm font-medium text-gray-500 hover:text-[#46B77B] py-2.5 transition-all"><i
+                                class="fa-solid fa-book-open text-[#46B77B] text-xs"></i> Our Story</a></li>
                     <li><a href="our-management.html"
-                            class="sidebar-link flex items-center gap-3 text-sm font-medium text-gray-500 hover:text-[#46B77B] py-2.5 transition-all"><i class="fa-solid fa-users text-[#46B77B] text-xs"></i> Our Management</a></li>
+                            class="sidebar-link flex items-center gap-3 text-sm font-medium text-gray-500 hover:text-[#46B77B] py-2.5 transition-all"><i
+                                class="fa-solid fa-users text-[#46B77B] text-xs"></i> Our Management</a></li>
                     <li><a href="company-profile.html"
-                            class="sidebar-link flex items-center gap-3 text-sm font-medium text-gray-500 hover:text-[#46B77B] py-2.5 transition-all"><i class="fa-solid fa-building text-[#46B77B] text-xs"></i> Company's Profile</a></li>
+                            class="sidebar-link flex items-center gap-3 text-sm font-medium text-gray-500 hover:text-[#46B77B] py-2.5 transition-all"><i
+                                class="fa-solid fa-building text-[#46B77B] text-xs"></i> Company's Profile</a></li>
                 </ul>
             </li>
 
-            <!-- Services Accordion -->
+            <!-- Services Accordion (Mobile) -->
             <li>
-                <button id="mobileServicesToggle"
+                <button onclick="toggleAccordion('mobileServicesList', 'mobileServicesChevron')"
                     class="w-full flex items-center justify-between text-[#0A0C12] text-[0.95rem] font-semibold hover:text-[#46B77B] hover:bg-[#46B77B]/5 py-3 px-4 rounded-xl transition-all">
                     <span class="flex items-center gap-4">
                         <i class="fa-solid fa-gears text-gray-400 text-lg w-5 text-center"></i> Services
@@ -228,23 +230,3 @@
         </a>
     </div>
 </div>
-
-<!-- Custom Scrollbar CSS for Sidebar -->
-<style>
-    .custom-scrollbar::-webkit-scrollbar {
-        width: 4px;
-    }
-
-    .custom-scrollbar::-webkit-scrollbar-track {
-        background: transparent;
-    }
-
-    .custom-scrollbar::-webkit-scrollbar-thumb {
-        background-color: #e5e7eb;
-        border-radius: 10px;
-    }
-
-    .custom-scrollbar:hover::-webkit-scrollbar-thumb {
-        background-color: #46B77B;
-    }
-</style>
