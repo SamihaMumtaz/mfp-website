@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Profile — Maqsood Faisal Printing Press</title>
+
+    <!-- Font Awesome & Tailwind CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS File -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <script>
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.scrollTo(0, 0);
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Scroll Reveal Animations */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .is-revealed {
+            opacity: 1;
+            transform: translate(0) scale(1);
+        }
+
+        .delay-100 {
+            transition-delay: 100ms;
+        }
+
+        .delay-200 {
+            transition-delay: 200ms;
+        }
+
+        .delay-300 {
+            transition-delay: 300ms;
+        }
+
+        /* Custom Timeline Style */
+        .timeline-item {
+            position: relative;
+            padding-left: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 8px;
+            bottom: -1.5rem;
+            width: 2px;
+            background: linear-gradient(to bottom, #46B77B 0%, rgba(70, 183, 123, 0.2) 100%);
+        }
+
+        .timeline-item:last-child::before {
+            display: none;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 6px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: white;
+            border: 4px solid #46B77B;
+            box-shadow: 0 0 0 4px rgba(70, 183, 123, 0.1);
+        }
+    </style>
+</head>
+
+<body class="bg-[#FAFBF9] text-[#0A0C12] overflow-x-hidden min-h-screen font-sans relative flex flex-col">
+
+    <!-- BACKGROUNDS -->
+    <div class="bg-morph fixed inset-0 -z-50"></div>
+    <div class="glow fixed rounded-full -z-40 pointer-events-none glow-1"></div>
+    <div class="glow fixed rounded-full -z-40 pointer-events-none glow-2"></div>
+
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" class="contents"></div>
+
+    <!-- ═══════════════ HERO SECTION ═══════════════ -->
+    <section
+        class="relative w-full h-auto md:h-[65vh] overflow-hidden flex items-center border-b border-gray-200/50 py-20 md:py-0">
+        <div class="absolute inset-0 -z-10">
+            <img src="images/company-profile-hero.jpg" alt="Company Profile"
+                class="w-full h-full object-cover object-center">
+            <div class="absolute inset-0 bg-gradient-to-r from-[#0A0C12]/95 via-[#0A0C12]/80 to-transparent"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 relative z-10 w-full">
+            <div class="reveal-left max-w-2xl">
+                <!-- Theme Heading Style -->
+                <div class="flex items-center gap-3 mb-4 md:mb-6">
+                    <span class="h-px w-10 bg-[#46B77B]"></span>
+                    <span class="text-[0.65rem] font-bold tracking-[0.3em] uppercase text-[#46B77B]">Corporate
+                        Profile</span>
+                </div>
+
+                <!-- Responsive Heading Sizes -->
+                <h1
+                    class="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black text-white mb-4 drop-shadow-lg leading-[1.15]">
+                    Profile of the <br>
+                    <span class="relative inline-block text-[#46B77B] mt-1">
+                        Company
+                        <svg class="absolute -bottom-2 left-0 w-full" height="7" viewBox="0 0 200 10"
+                            preserveAspectRatio="none" fill="none">
+                            <path d="M2 7C50 3 100 2 198 6" stroke="#46B77B" stroke-width="3" stroke-linecap="round" />
+                        </svg>
+                    </span>
+                </h1>
+
+                <p class="text-gray-300 text-sm md:text-lg font-medium tracking-wide mb-8 mt-6">Creating A Better
+                    Tomorrow</p>
+
+                <a href="#overview"
+                    class="inline-flex items-center gap-2 px-5 py-2.5 md:px-6 md:py-3 bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs md:text-sm font-bold rounded-lg hover:bg-white hover:text-[#0A0C12] transition-all duration-300 group">
+                    Explore Details <i class="fas fa-arrow-down transition-transform group-hover:translate-y-1"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ OVERVIEW SECTION ═══════════════ -->
+    <section id="overview" class="relative z-10 w-full py-16 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+
+                <!-- Text Content -->
+                <div class="lg:col-span-7 reveal-up">
+                    <div class="flex items-center gap-3 mb-5 md:mb-6">
+                        <span class="h-px w-10 bg-[#46B77B]"></span>
+                        <span class="text-[0.65rem] font-bold tracking-[0.3em] uppercase text-[#46B77B]">Who We
+                            Are</span>
+                    </div>
+
+                    <!-- Theme Heading Style -->
+                    <h2 class="text-3xl md:text-5xl font-black text-[#0A0C12] leading-[1.15] mb-8">
+                        Packages <span class="relative inline-block text-[#46B77B]">
+                            Limited
+                            <svg class="absolute -bottom-2 left-0 w-full" height="7" viewBox="0 0 200 10"
+                                preserveAspectRatio="none" fill="none">
+                                <path d="M2 7C50 3 100 2 198 6" stroke="#46B77B" stroke-width="3"
+                                    stroke-linecap="round" />
+                            </svg>
+                        </span>
+                    </h2>
+
+                    <div class="space-y-6 text-gray-600 text-sm md:text-base leading-[1.85]">
+                        <p
+                            class="relative pl-6 before:content-[''] before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:bg-[#46B77B] before:rounded-full">
+                            Packages Limited was established in 1956 as a joint venture between Ali Group of Pakistan
+                            and Akerlund & Rausing of Sweden and is renowned for providing premium packaging solutions.
+                            Over the years, it has continued to enhance its capacities and capabilities to meet the
+                            growing demand of packaging products in Pakistan.
+                        </p>
+                        <p
+                            class="relative pl-6 before:content-[''] before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:bg-[#46B77B] before:rounded-full">
+                            The Company is listed at the Pakistan Stock Exchange Limited since 1965. Packages Limited is
+                            an investment holding company having invested in numerous subsidiaries, joint ventures, and
+                            other companies engaged in various businesses.
+                        </p>
+                        <p
+                            class="relative pl-6 before:content-[''] before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:bg-[#46B77B] before:rounded-full">
+                            We are amongst Pakistan’s top packaging solution providers with a priority to deliver
+                            high-quality products in the most efficient, profitable and sustainable way. Our customer
+                            base includes some of the world’s best-known brands of consumer products and industries. We
+                            are also a leading manufacturer of many other versatile products catering to the needs of
+                            multiple industries including Construction, Writing and Printing, Packaging, Food, Personal
+                            & Home Care, Pharmaceuticals, Agriculture and Forestry, Water and Energy and many others.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Visual Element (Stats Card) -->
+                <div class="lg:col-span-5 relative reveal-right delay-200">
+                    <div class="bg-[#0A0C12] rounded-[2rem] p-8 md:p-10 shadow-2xl relative overflow-hidden group">
+                        <div
+                            class="absolute -top-10 -right-10 w-40 h-40 bg-[#46B77B]/20 rounded-full blur-2xl group-hover:bg-[#46B77B]/30 transition-colors">
+                        </div>
+                        <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-[#46B77B]/10 rounded-full blur-2xl"></div>
+
+                        <div class="relative z-10 flex flex-col gap-8">
+                            <div class="text-center border-b border-white/10 pb-6">
+                                <p
+                                    class="text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#46B77B] to-[#61CE70]">
+                                    1956</p>
+                                <p class="text-sm font-bold text-gray-400 uppercase tracking-widest mt-2">Established
+                                </p>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="text-center bg-white/5 rounded-xl p-4 border border-white/10">
+                                    <i class="fas fa-globe text-2xl text-[#46B77B] mb-2"></i>
+                                    <p class="text-xs text-gray-400 uppercase tracking-wider">Global</p>
+                                    <p class="text-sm font-bold text-white mt-1">Standards</p>
+                                </div>
+                                <div class="text-center bg-white/5 rounded-xl p-4 border border-white/10">
+                                    <i class="fas fa-industry text-2xl text-[#46B77B] mb-2"></i>
+                                    <p class="text-xs text-gray-400 uppercase tracking-wider">Multi</p>
+                                    <p class="text-sm font-bold text-white mt-1">Industries</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ MISSION & VISION SECTION ═══════════════ -->
+    <section class="relative z-10 w-full py-16 md:py-24 bg-[#FAFBF9] border-t border-gray-200/50">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
+
+            <div class="text-center mb-16 reveal-up">
+                <div class="flex items-center justify-center gap-3 mb-5 md:mb-6">
+                    <span class="h-px w-10 bg-[#46B77B]"></span>
+                    <span class="text-[0.65rem] font-bold tracking-[0.3em] uppercase text-[#46B77B]">Our Core
+                        Philosophy</span>
+                    <span class="h-px w-10 bg-[#46B77B]"></span>
+                </div>
+
+                <!-- Theme Heading Style -->
+                <h2 class="text-3xl md:text-5xl font-black text-[#0A0C12] mb-4">
+                    Our <span class="relative inline-block text-[#46B77B]">Mission & Vision
+                        <svg class="absolute -bottom-2 left-0 w-full" height="7" viewBox="0 0 200 10"
+                            preserveAspectRatio="none" fill="none">
+                            <path d="M2 7C50 3 100 2 198 6" stroke="#46B77B" stroke-width="3" stroke-linecap="round" />
+                        </svg>
+                    </span>
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+
+                <!-- Mission Timeline -->
+                <div
+                    class="reveal-left bg-white rounded-[2rem] p-8 md:p-10 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.05)] border border-gray-100 hover:border-[#46B77B]/30 transition-colors">
+                    <div class="flex items-center gap-4 mb-8 pb-4 border-b border-gray-100">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-[#46B77B] flex items-center justify-center shadow-lg shadow-[#46B77B]/30">
+                            <i class="fas fa-bullseye text-2xl text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-black text-[#0A0C12]">Our Mission</h3>
+                            <p class="text-xs text-gray-400 uppercase tracking-widest mt-1">What drives us</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-0">
+                        <div class="timeline-item">
+                            <p class="text-sm text-gray-600 leading-relaxed"><strong class="text-[#0A0C12]">1.</strong>
+                                To be a leader in the markets we serve by providing quality products and superior
+                                service to our customers while learning from their feedback to set even higher standards
+                                for our products.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <p class="text-sm text-gray-600 leading-relaxed"><strong class="text-[#0A0C12]">2.</strong>
+                                To be a company that continuously enhances its superior technological competence to
+                                provide innovative solutions to customer needs.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <p class="text-sm text-gray-600 leading-relaxed"><strong class="text-[#0A0C12]">3.</strong>
+                                To be a company that attracts and retains outstanding people by creating a culture that
+                                fosters openness and innovation promotes individual growth, and rewards initiative and
+                                performance.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <p class="text-sm text-gray-600 leading-relaxed"><strong class="text-[#0A0C12]">4.</strong>
+                                To be a company that combines its people, technology, management systems, and market
+                                opportunities to achieve profitable growth while providing fair returns to its
+                                investors.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <p class="text-sm text-gray-600 leading-relaxed"><strong class="text-[#0A0C12]">5.</strong>
+                                To be a company that endeavors to set the highest standards in corporate ethics in
+                                serving the society.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vision Timeline -->
+                <div
+                    class="reveal-right delay-200 bg-white rounded-[2rem] p-8 md:p-10 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.05)] border border-gray-100 hover:border-[#46B77B]/30 transition-colors">
+                    <div class="flex items-center gap-4 mb-8 pb-4 border-b border-gray-100">
+                        <div class="w-14 h-14 rounded-2xl bg-[#0A0C12] flex items-center justify-center shadow-lg">
+                            <i class="fas fa-eye text-2xl text-[#46B77B]"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-black text-[#0A0C12]">Our Vision</h3>
+                            <p class="text-xs text-gray-400 uppercase tracking-widest mt-1">Where we aim to be</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-0">
+                        <div class="timeline-item">
+                            <p class="text-sm text-gray-600 leading-relaxed"><strong class="text-[#0A0C12]">1.</strong>
+                                Position ourselves to be a regional player of quality packaging and consumer products.
+                            </p>
+                        </div>
+                        <div class="timeline-item">
+                            <p class="text-sm text-gray-600 leading-relaxed"><strong class="text-[#0A0C12]">2.</strong>
+                                Improve on contemporary measures including cost, quality, service, speed of delivery and
+                                mobilization.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <p class="text-sm text-gray-600 leading-relaxed"><strong class="text-[#0A0C12]">3.</strong>
+                                Keep investing in technology, systems and human resource to effectively meet the
+                                challenges every new dawn brings.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <p class="text-sm text-gray-600 leading-relaxed"><strong class="text-[#0A0C12]">4.</strong>
+                                Develop relationships with all our stakeholders based on sustainable cooperation,
+                                upholding ethical values, which the shareholders, management and employees represent and
+                                continuously strive for.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ CORPORATE INFO SECTION ═══════════════ -->
+    <section class="relative z-10 w-full py-16 md:py-24 bg-white border-t border-gray-200/50">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
+
+            <div class="mb-12 reveal-up">
+                <div class="flex items-center gap-3 mb-5 md:mb-6">
+                    <span class="h-px w-10 bg-[#46B77B]"></span>
+                    <span class="text-[0.65rem] font-bold tracking-[0.3em] uppercase text-[#46B77B]">Principle
+                        Business</span>
+                </div>
+
+                <!-- Theme Heading Style -->
+                <h2 class="text-3xl md:text-5xl font-black text-[#0A0C12] leading-[1.15]">
+                    Business & <span class="relative inline-block text-[#46B77B]">
+                        Other Activities
+                        <svg class="absolute -bottom-2 left-0 w-full" height="7" viewBox="0 0 200 10"
+                            preserveAspectRatio="none" fill="none">
+                            <path d="M2 7C50 3 100 2 198 6" stroke="#46B77B" stroke-width="3" stroke-linecap="round" />
+                        </svg>
+                    </span>
+                </h2>
+            </div>
+
+            <!-- Overview Paragraph Box (Responsive Fix) -->
+            <div
+                class="bg-[#0A0C12] rounded-[1.5rem] md:rounded-[2rem] p-5 md:p-10 border border-gray-800 mb-12 reveal-up delay-100 relative overflow-hidden shadow-2xl">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-[#46B77B]/10 blur-[80px] rounded-full"></div>
+
+                <!-- Text size and line-height adjusted for mobile -->
+                <p
+                    class="text-gray-300 text-xs sm:text-sm md:text-base leading-[1.7] md:leading-[1.9] relative z-10 text-justify tracking-wide">
+                    Packages Limited was established in 1956 as a joint venture between Ali Group of Pakistan and
+                    Akerlund & Rausing of Sweden and is renowned for providing premium packaging solutions. Over the
+                    years, it has continued to enhance its capacities and capabilities to meet the growing demand of
+                    packaging products in Pakistan. The Company is listed at the Pakistan Stock Exchange Limited since
+                    1965. Packages Limited is an investment holding company having invested in numerous subsidiaries,
+                    joint ventures, and other companies engaged in various businesses. We are amongst Pakistan’s top
+                    packaging solution providers with a priority to deliver high-quality products in the most efficient,
+                    profitable and sustainable way. Our customer base includes some of the world’s best-known brands of
+                    consumer products and industries. We are also a leading manufacturer of many other versatile
+                    products catering to the needs of multiple industries including Construction, Writing and Printing,
+                    Packaging, Food, Personal & Home Care, Pharmaceuticals, Agriculture and Forestry, Water and Energy
+                    and many others.
+                </p>
+            </div>
+
+            <!-- Corporate Details Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 reveal-up delay-200">
+
+                <!-- Card 1 -->
+                <div
+                    class="bg-[#FAFBF9] rounded-2xl p-6 border border-gray-200 hover:border-[#46B77B] hover:shadow-lg transition-all group relative overflow-hidden">
+                    <div
+                        class="absolute top-0 right-0 w-16 h-16 bg-[#46B77B]/5 rounded-bl-full group-hover:bg-[#46B77B]/10 transition-colors">
+                    </div>
+                    <div
+                        class="w-10 h-10 rounded-full bg-[#46B77B]/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-chart-line text-[#46B77B]"></i>
+                    </div>
+                    <p class="text-[0.65rem] text-gray-500 font-bold uppercase tracking-wider mb-1">Symbol</p>
+                    <p class="text-2xl font-black text-[#0A0C12]">PKGS</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div
+                    class="bg-[#FAFBF9] rounded-2xl p-6 border border-gray-200 hover:border-[#46B77B] hover:shadow-lg transition-all group relative overflow-hidden">
+                    <div
+                        class="absolute top-0 right-0 w-16 h-16 bg-[#46B77B]/5 rounded-bl-full group-hover:bg-[#46B77B]/10 transition-colors">
+                    </div>
+                    <div
+                        class="w-10 h-10 rounded-full bg-[#46B77B]/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-file-invoice text-[#46B77B]"></i>
+                    </div>
+                    <p class="text-[0.65rem] text-gray-500 font-bold uppercase tracking-wider mb-1">Registration No.</p>
+                    <p class="text-lg font-black text-[#0A0C12]">0000792</p>
+                    <p class="text-xs text-gray-400 mt-1">CUIN</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div
+                    class="bg-[#FAFBF9] rounded-2xl p-6 border border-gray-200 hover:border-[#46B77B] hover:shadow-lg transition-all group relative overflow-hidden">
+                    <div
+                        class="absolute top-0 right-0 w-16 h-16 bg-[#46B77B]/5 rounded-bl-full group-hover:bg-[#46B77B]/10 transition-colors">
+                    </div>
+                    <div
+                        class="w-10 h-10 rounded-full bg-[#46B77B]/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-calendar-alt text-[#46B77B]"></i>
+                    </div>
+                    <p class="text-[0.65rem] text-gray-500 font-bold uppercase tracking-wider mb-1">Date</p>
+                    <p class="text-lg font-black text-[#0A0C12]">4th Feb 1956</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div
+                    class="bg-[#FAFBF9] rounded-2xl p-6 border border-gray-200 hover:border-[#46B77B] hover:shadow-lg transition-all group relative overflow-hidden">
+                    <div
+                        class="absolute top-0 right-0 w-16 h-16 bg-[#46B77B]/5 rounded-bl-full group-hover:bg-[#46B77B]/10 transition-colors">
+                    </div>
+                    <div
+                        class="w-10 h-10 rounded-full bg-[#46B77B]/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-stamp text-[#46B77B]"></i>
+                    </div>
+                    <p class="text-[0.65rem] text-gray-500 font-bold uppercase tracking-wider mb-1">Tax No.</p>
+                    <p class="text-lg font-black text-[#0A0C12]">0711438-9</p>
+                    <p class="text-xs text-gray-400 mt-1">NTN</p>
+                </div>
+
+            </div>
+
+            <!-- Rating, Status & Additional Details -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 reveal-up delay-300">
+
+                <!-- Rating Box -->
+                <div
+                    class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm flex flex-col md:flex-row items-start gap-5 hover:shadow-md transition-shadow">
+                    <div class="w-14 h-14 rounded-2xl bg-[#46B77B]/10 flex items-center justify-center shrink-0">
+                        <i class="fas fa-shield-alt text-2xl text-[#46B77B]"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-[#0A0C12] text-lg mb-1">The Pakistan Credit Rating Agency Limited</h4>
+                        <p class="text-xs text-gray-500 mb-3">Rating as on: June-2025</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-[#46B77B] text-white text-xs font-bold px-3 py-1.5 rounded-lg">Long-Term:
+                                AA+</span>
+                            <span class="bg-[#46B77B] text-white text-xs font-bold px-3 py-1.5 rounded-lg">Short-Term:
+                                A1+</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Status Box -->
+                <div
+                    class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm flex flex-col md:flex-row items-start gap-5 hover:shadow-md transition-shadow">
+                    <div class="w-14 h-14 rounded-2xl bg-[#46B77B]/10 flex items-center justify-center shrink-0">
+                        <i class="fas fa-building text-2xl text-[#46B77B]"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-[#0A0C12] text-lg mb-1">Status of the Company</h4>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            Packages Limited is a Public Interest Company (PIC) and holds investments in companies
+                            engaged in various businesses.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Additional Details Box -->
+            <div class="mt-6 bg-[#FAFBF9] rounded-2xl p-6 md:p-8 border border-gray-200 reveal-up delay-300">
+                <h4 class="text-lg font-bold text-[#0A0C12] mb-4 flex items-center gap-2">
+                    <i class="fas fa-info-circle text-[#46B77B]"></i> Additional Details
+                </h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-600">
+                    <p class="flex items-start gap-2"><strong class="text-[#0A0C12] shrink-0">Traded on:</strong>
+                        Pakistan Stock Exchange (<a href="https://www.psx.com.pk/" target="_blank"
+                            class="text-[#46B77B] hover:underline break-all">https://www.psx.com.pk/</a>)</p>
+                    <p class="flex items-start gap-2"><strong class="text-[#0A0C12] shrink-0">Details of
+                            Subsidiaries:</strong> Associated Companies</p>
+                    <p class="flex items-start gap-2"><strong class="text-[#0A0C12] shrink-0">Registered
+                            Office:</strong> Head Office</p>
+                    <p class="flex items-start gap-2"><strong class="text-[#0A0C12] shrink-0">Branch Sales
+                            Offices:</strong> Available</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER PLACEHOLDER -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="js/components-loader.js"></script>
+    <script src="js/script.js"></script>
+
+    <!-- Animation Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const revealElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
+
+            const revealOptions = {
+                threshold: 0.15,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const revealObserver = new IntersectionObserver(function (entries, observer) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-revealed');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, revealOptions);
+
+            revealElements.forEach(el => {
+                revealObserver.observe(el);
+            });
+        });
+    </script>
+</body>
+
+</html>

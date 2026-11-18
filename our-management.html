@@ -25,7 +25,10 @@
     </script>
 
     <style>
-        body { font-family: 'Inter', sans-serif; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            overflow-x: hidden !important;
+        }
 
         /* Signature Font */
         .signature-font {
@@ -73,7 +76,7 @@
     </style>
 </head>
 
-<body class="bg-[#FAFBF9] text-[#0A0C12] overflow-x-hidden min-h-screen font-sans relative flex flex-col">
+<body class="bg-[#FAFBF9] text-[#0A0C12] overflow-x-hidden w-full max-w-[100vw] min-h-screen font-sans relative flex flex-col">
 
     <!-- BACKGROUNDS -->
     <div class="bg-morph fixed inset-0 -z-50"></div>
@@ -84,17 +87,28 @@
     <div id="header-placeholder" class="contents"></div>
 
     <!-- ═══════════════ HERO SECTION ═══════════════ -->
-    <section class="relative w-full h-[40vh] md:h-[50vh] overflow-hidden flex items-center">
+    <section class="relative w-full h-auto md:h-[50vh] overflow-hidden flex items-center py-20 md:py-0">
         <div class="absolute inset-0 -z-10">
             <img src="images/management-hero.jpg" alt="Management Office" class="w-full h-full object-cover object-center">
-            <div class="absolute inset-0 bg-gradient-to-r from-[#0A0C12]/95 via-[#0A0C12]/70 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-[#0A0C12]/95 via-[#0A0C12]/80 to-transparent"></div>
         </div>
 
         <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 relative z-10 w-full">
             <div class="reveal-left">
-                <h1 class="text-4xl md:text-6xl font-black text-white mb-3 drop-shadow-md">Our Management</h1>
-                <p class="text-[#46B77B] text-sm md:text-lg font-semibold tracking-wide mb-6">Leadership • Experience • Continuity</p>
-                <div class="w-16 h-1.5 bg-[#46B77B] rounded-full"></div>
+                <div class="flex items-center gap-3 mb-4 md:mb-6">
+                    <span class="h-px w-10 bg-[#46B77B]"></span>
+                    <span class="text-[0.65rem] font-bold tracking-[0.3em] uppercase text-[#46B77B]">Leadership</span>
+                </div>
+                <h1 class="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black text-white mb-4 drop-shadow-lg leading-[1.1]">
+                    Our <br>
+                    <span class="relative inline-block text-[#46B77B] mt-1">
+                        Management
+                        <svg class="absolute -bottom-2 left-0 w-full" height="7" viewBox="0 0 200 10" preserveAspectRatio="none" fill="none">
+                            <path d="M2 7C50 3 100 2 198 6" stroke="#46B77B" stroke-width="3" stroke-linecap="round" />
+                        </svg>
+                    </span>
+                </h1>
+                <p class="text-gray-300 text-sm md:text-lg font-medium tracking-wide mb-8 mt-6">Leadership • Experience • Continuity</p>
             </div>
         </div>
     </section>
@@ -102,13 +116,11 @@
     <!-- ═══════════════ CHAIRMAN SECTION ═══════════════ -->
     <section class="relative z-10 w-full py-16 md:py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 reveal-up">
-            
-            <!-- Heading matching Home Page Style -->
             <div class="flex items-center gap-3 mb-5 md:mb-6">
                 <span class="h-px w-10 bg-[#46B77B]"></span>
                 <span class="text-[0.65rem] font-bold tracking-[0.3em] uppercase text-[#46B77B]">Our Chairman (Late)</span>
             </div>
-
+            
             <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-[#0A0C12] leading-[1.2] tracking-[-0.02em] mb-6">
                 Mr. Maqsood Ahmed
             </h2>
@@ -139,8 +151,6 @@
 
             <!-- Text -->
             <div class="w-full md:w-1/2 reveal-right delay-200">
-                
-                <!-- Heading matching Home Page Style -->
                 <div class="flex items-center gap-3 mb-5 md:mb-6">
                     <span class="h-px w-10 bg-[#46B77B]"></span>
                     <span class="text-[0.65rem] font-bold tracking-[0.3em] uppercase text-[#46B77B]">Message</span>
@@ -172,11 +182,11 @@
     <section class="relative z-10 w-full py-16 md:py-24 bg-white pb-24">
         <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
             
-            <!-- Section Heading matching Home Page Style -->
+            <!-- Section Heading -->
             <div class="mb-12 reveal-up">
                 <div class="flex items-center gap-3 mb-5 md:mb-6">
                     <span class="h-px w-10 bg-[#46B77B]"></span>
-                    <span class="text-[0.65rem] font-bold tracking-[0.3em] uppercase text-[#46B77B]">Leadership</span>
+                    <span class="text-[0.65rem] font-bold tracking-[0.3em] uppercase text-[#46B77B]">Leadership Team</span>
                 </div>
                 
                 <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-[#0A0C12] leading-[1.2] tracking-[-0.02em] mb-4">
