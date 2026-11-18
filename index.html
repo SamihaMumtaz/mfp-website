@@ -12,6 +12,12 @@
 
     <!-- Custom CSS File -->
     <link rel="stylesheet" href="css/style.css">
+    <script>
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.scrollTo(0, 0);
+    </script>
 </head>
 
 <body class="bg-white text-[#0A0C12] overflow-x-hidden min-h-screen font-sans relative flex flex-col">
@@ -111,10 +117,10 @@
         </div>
     </section>
 
-   <!-- ═══════════════ PERFORMANCE SECTION (LIGHT THEME) ═══════════════ -->
+    <!-- ═══════════════ PERFORMANCE SECTION (LIGHT THEME) ═══════════════ -->
     <section
         class="fade-in-section relative z-10 pt-16 md:pt-20 pb-20 md:pb-28 px-4 md:px-8 w-full overflow-hidden bg-white scroll-mt-24">
-        
+
         <!-- Background Glows (Light Theme adjusted) -->
         <div class="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
             <div
@@ -124,7 +130,7 @@
                 class="absolute -bottom-[20%] right-[10%] w-[500px] h-[500px] bg-[#61CE70]/5 blur-[120px] rounded-full animate-[float_12s_ease-in-out_infinite_reverse]">
             </div>
         </div>
-        
+
         <div class="max-w-6xl mx-auto relative z-10">
             <div
                 class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 md:gap-8 mb-10 md:mb-16 px-2 md:px-0">
@@ -156,7 +162,7 @@
                         meticulously measured across every project we deliver.</p>
                 </div>
             </div>
-            
+
             <!-- Main Performance Grid Card (Light Theme) -->
             <div id="performance-grid"
                 class="spotlight-panel relative bg-[#FAFBF9] backdrop-blur-2xl rounded-[1.5rem] md:rounded-[2rem] border border-gray-200 shadow-[0_20px_50px_-15px_rgba(0,0,0,0.05)] overflow-hidden">
@@ -187,8 +193,7 @@
                                 </defs>
                                 <circle cx="60" cy="60" r="52" fill="url(#innerGlow1)"
                                     class="animate-[pulse_3s_ease-in-out_infinite]" />
-                                <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(0,0,0,0.05)"
-                                    stroke-width="6" />
+                                <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(0,0,0,0.05)" stroke-width="6" />
                                 <circle class="perf-circle" cx="60" cy="60" r="52" fill="none" stroke="url(#ringGrad1)"
                                     stroke-width="6" stroke-linecap="round" stroke-dasharray="326.7"
                                     stroke-dashoffset="326.7" data-target="95"
@@ -232,8 +237,7 @@
                                 </defs>
                                 <circle cx="60" cy="60" r="52" fill="url(#innerGlow2)"
                                     class="animate-[pulse_3s_ease-in-out_infinite_0.5s]" />
-                                <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(0,0,0,0.05)"
-                                    stroke-width="6" />
+                                <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(0,0,0,0.05)" stroke-width="6" />
                                 <circle class="perf-circle" cx="60" cy="60" r="52" fill="none" stroke="url(#ringGrad2)"
                                     stroke-width="6" stroke-linecap="round" stroke-dasharray="326.7"
                                     stroke-dashoffset="326.7" data-target="93"
@@ -277,8 +281,7 @@
                                 </defs>
                                 <circle cx="60" cy="60" r="52" fill="url(#innerGlow3)"
                                     class="animate-[pulse_3s_ease-in-out_infinite_1s]" />
-                                <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(0,0,0,0.05)"
-                                    stroke-width="6" />
+                                <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(0,0,0,0.05)" stroke-width="6" />
                                 <circle class="perf-circle" cx="60" cy="60" r="52" fill="none" stroke="url(#ringGrad3)"
                                     stroke-width="6" stroke-linecap="round" stroke-dasharray="326.7"
                                     stroke-dashoffset="326.7" data-target="90"
@@ -503,34 +506,50 @@
         </div>
     </section>
 
-        <!-- ═══════════════ SERVICES SECTION (PROFESSIONAL FULL-SCREEN) ═══════════════ -->
+    <!-- ═══════════════ SERVICES SECTION (PROFESSIONAL FULL-SCREEN) ═══════════════ -->
     <section id="services" class="relative w-full bg-[#050806] font-sans">
-        
+
         <!-- Sticky Wrapper -->
         <div class="sticky top-0 h-screen w-full overflow-hidden">
-            
+
             <!-- Background Images -->
             <div class="absolute inset-0 w-full h-full">
-                <img src="images/plastic-packing.png" class="service-bg absolute inset-0 w-full h-full object-cover transition-all duration-1000 opacity-100 scale-100" data-index="0" alt="Service 1">
-                <img src="images/tissue-conversion.png" class="service-bg absolute inset-0 w-full h-full object-cover transition-all duration-1000 opacity-0 scale-105" data-index="1" alt="Service 2">
-                <img src="images/offset-printing.jpg" class="service-bg absolute inset-0 w-full h-full object-cover transition-all duration-1000 opacity-0 scale-105" data-index="2" alt="Service 3">
-                <img src="images/roll-to-roll.png" class="service-bg absolute inset-0 w-full h-full object-cover transition-all duration-1000 opacity-0 scale-105" data-index="3" alt="Service 4">
-                <img src="images/laminated-tubes.png" class="service-bg absolute inset-0 w-full h-full object-cover transition-all duration-1000 opacity-0 scale-105" data-index="4" alt="Service 5">
-                <img src="images/flexible-printing.png" class="service-bg absolute inset-0 w-full h-full object-cover transition-all duration-1000 opacity-0 scale-105" data-index="5" alt="Service 6">
+                <img src="images/plastic-packing.png"
+                    class="service-bg absolute inset-0 w-full h-full object-cover transition-all duration-1000 opacity-100 scale-100"
+                    data-index="0" alt="Service 1">
+                <img src="images/tissue-conversion.png"
+                    class="service-bg absolute inset-0 w-full h-full object-cover transition-all duration-1000 opacity-0 scale-105"
+                    data-index="1" alt="Service 2">
+                <img src="images/offset-printing.jpg"
+                    class="service-bg absolute inset-0 w-full h-full object-cover transition-all duration-1000 opacity-0 scale-105"
+                    data-index="2" alt="Service 3">
+                <img src="images/roll-to-roll.png"
+                    class="service-bg absolute inset-0 w-full h-full object-cover transition-all duration-1000 opacity-0 scale-105"
+                    data-index="3" alt="Service 4">
+                <img src="images/laminated-tubes.png"
+                    class="service-bg absolute inset-0 w-full h-full object-cover transition-all duration-1000 opacity-0 scale-105"
+                    data-index="4" alt="Service 5">
+                <img src="images/flexible-printing.png"
+                    class="service-bg absolute inset-0 w-full h-full object-cover transition-all duration-1000 opacity-0 scale-105"
+                    data-index="5" alt="Service 6">
             </div>
 
             <!-- Dark Overlay (Text ko prominent karne ke liye) -->
             <div class="absolute inset-0 bg-black/50 z-10 pointer-events-none"></div>
-            <div class="absolute inset-0 bg-gradient-to-t from-[#050806] via-[#050806]/40 to-transparent z-10 pointer-events-none"></div>
+            <div
+                class="absolute inset-0 bg-gradient-to-t from-[#050806] via-[#050806]/40 to-transparent z-10 pointer-events-none">
+            </div>
 
             <!-- Main Content Container -->
-            <div class="relative z-20 h-full w-full px-6 md:px-16 lg:px-24 flex flex-col justify-between py-10 md:py-16">
-                
+            <div
+                class="relative z-20 h-full w-full px-6 md:px-16 lg:px-24 flex flex-col justify-between py-10 md:py-16">
+
                 <!-- Top Bar: Numbers -->
                 <div class="flex justify-between items-start w-full mt-10 md:mt-0">
                     <!-- Left Number & Line -->
                     <div class="flex items-center gap-4">
-                        <span id="current-number-left" class="text-[#46B77B] font-black text-2xl md:text-4xl tracking-wider transition-all duration-500">01</span>
+                        <span id="current-number-left"
+                            class="text-[#46B77B] font-black text-2xl md:text-4xl tracking-wider transition-all duration-500">01</span>
                         <div class="w-16 h-[2px] bg-white/30"></div>
                     </div>
                     <!-- Right Number & Line -->
@@ -542,93 +561,118 @@
 
                 <!-- Center Content (Dynamic Text) -->
                 <div id="service-text-wrapper" class="relative w-full flex-grow flex flex-col justify-center my-8">
-                    
+
                     <!-- Text 1 -->
                     <div class="service-text block w-full" data-index="0">
-                        <h2 class="text-[14vw] sm:text-[12vw] md:text-[10vw] leading-[0.85] font-black text-white tracking-tighter uppercase mb-8 w-full">
+                        <h2
+                            class="text-[14vw] sm:text-[12vw] md:text-[10vw] leading-[0.85] font-black text-white tracking-tighter uppercase mb-8 w-full">
                             PLASTIC<br>PACKAGING
                         </h2>
-                        <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 w-full border-t border-white/20 pt-6 max-w-5xl">
+                        <div
+                            class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 w-full border-t border-white/20 pt-6 max-w-5xl">
                             <p class="text-white/90 text-base md:text-xl lg:text-2xl font-medium max-w-xl leading-snug">
-                                Cost-effective, robust, and sustainable plastic packaging solutions for everyday products.
+                                Cost-effective, robust, and sustainable plastic packaging solutions for everyday
+                                products.
                             </p>
-                            <a href="plastic-packaging.html" class="inline-flex items-center gap-3 text-white text-sm font-bold tracking-widest uppercase hover:text-[#46B77B] transition-colors group border-b-2 border-[#46B77B] pb-1 whitespace-nowrap">
-                                Explore Service <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-2"></i>
+                            <a href="plastic-packaging.html"
+                                class="inline-flex items-center gap-3 text-white text-sm font-bold tracking-widest uppercase hover:text-[#46B77B] transition-colors group border-b-2 border-[#46B77B] pb-1 whitespace-nowrap">
+                                Explore Service <i
+                                    class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-2"></i>
                             </a>
                         </div>
                     </div>
 
                     <!-- Text 2 -->
                     <div class="service-text hidden w-full" data-index="1">
-                        <h2 class="text-[14vw] sm:text-[12vw] md:text-[10vw] leading-[0.85] font-black text-white tracking-tighter uppercase mb-8 w-full">
+                        <h2
+                            class="text-[14vw] sm:text-[12vw] md:text-[10vw] leading-[0.85] font-black text-white tracking-tighter uppercase mb-8 w-full">
                             TISSUE<br>CONVERSION
                         </h2>
-                        <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 w-full border-t border-white/20 pt-6 max-w-5xl">
+                        <div
+                            class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 w-full border-t border-white/20 pt-6 max-w-5xl">
                             <p class="text-white/90 text-base md:text-xl lg:text-2xl font-medium max-w-xl leading-snug">
                                 Eco-sensitive tissue products balancing softness and strength for premium use.
                             </p>
-                            <a href="tissue-conversion.html" class="inline-flex items-center gap-3 text-white text-sm font-bold tracking-widest uppercase hover:text-[#46B77B] transition-colors group border-b-2 border-[#46B77B] pb-1 whitespace-nowrap">
-                                Explore Service <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-2"></i>
+                            <a href="tissue-conversion.html"
+                                class="inline-flex items-center gap-3 text-white text-sm font-bold tracking-widest uppercase hover:text-[#46B77B] transition-colors group border-b-2 border-[#46B77B] pb-1 whitespace-nowrap">
+                                Explore Service <i
+                                    class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-2"></i>
                             </a>
                         </div>
                     </div>
 
                     <!-- Text 3 -->
                     <div class="service-text hidden w-full" data-index="2">
-                        <h2 class="text-[14vw] sm:text-[12vw] md:text-[10vw] leading-[0.85] font-black text-white tracking-tighter uppercase mb-8 w-full">
+                        <h2
+                            class="text-[14vw] sm:text-[12vw] md:text-[10vw] leading-[0.85] font-black text-white tracking-tighter uppercase mb-8 w-full">
                             OFFSET<br>PRINTING
                         </h2>
-                        <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 w-full border-t border-white/20 pt-6 max-w-5xl">
+                        <div
+                            class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 w-full border-t border-white/20 pt-6 max-w-5xl">
                             <p class="text-white/90 text-base md:text-xl lg:text-2xl font-medium max-w-xl leading-snug">
                                 High-volume, vibrant, and eco-friendly printing solutions for large-scale production.
                             </p>
-                            <a href="offset-printing.html" class="inline-flex items-center gap-3 text-white text-sm font-bold tracking-widest uppercase hover:text-[#46B77B] transition-colors group border-b-2 border-[#46B77B] pb-1 whitespace-nowrap">
-                                Explore Service <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-2"></i>
+                            <a href="offset-printing.html"
+                                class="inline-flex items-center gap-3 text-white text-sm font-bold tracking-widest uppercase hover:text-[#46B77B] transition-colors group border-b-2 border-[#46B77B] pb-1 whitespace-nowrap">
+                                Explore Service <i
+                                    class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-2"></i>
                             </a>
                         </div>
                     </div>
 
                     <!-- Text 4 -->
                     <div class="service-text hidden w-full" data-index="3">
-                        <h2 class="text-[14vw] sm:text-[12vw] md:text-[10vw] leading-[0.85] font-black text-white tracking-tighter uppercase mb-8 w-full">
+                        <h2
+                            class="text-[14vw] sm:text-[12vw] md:text-[10vw] leading-[0.85] font-black text-white tracking-tighter uppercase mb-8 w-full">
                             ROLL TO<br>ROLL LABELS
                         </h2>
-                        <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 w-full border-t border-white/20 pt-6 max-w-5xl">
+                        <div
+                            class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 w-full border-t border-white/20 pt-6 max-w-5xl">
                             <p class="text-white/90 text-base md:text-xl lg:text-2xl font-medium max-w-xl leading-snug">
                                 Speedy, accurate, and customizable eco-conscious labels for your brand.
                             </p>
-                            <a href="roll-to-roll.html" class="inline-flex items-center gap-3 text-white text-sm font-bold tracking-widest uppercase hover:text-[#46B77B] transition-colors group border-b-2 border-[#46B77B] pb-1 whitespace-nowrap">
-                                Explore Service <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-2"></i>
+                            <a href="roll-to-roll.html"
+                                class="inline-flex items-center gap-3 text-white text-sm font-bold tracking-widest uppercase hover:text-[#46B77B] transition-colors group border-b-2 border-[#46B77B] pb-1 whitespace-nowrap">
+                                Explore Service <i
+                                    class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-2"></i>
                             </a>
                         </div>
                     </div>
 
                     <!-- Text 5 -->
                     <div class="service-text hidden w-full" data-index="4">
-                        <h2 class="text-[14vw] sm:text-[12vw] md:text-[10vw] leading-[0.85] font-black text-white tracking-tighter uppercase mb-8 w-full">
+                        <h2
+                            class="text-[14vw] sm:text-[12vw] md:text-[10vw] leading-[0.85] font-black text-white tracking-tighter uppercase mb-8 w-full">
                             LAMINATED<br>TUBES
                         </h2>
-                        <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 w-full border-t border-white/20 pt-6 max-w-5xl">
+                        <div
+                            class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 w-full border-t border-white/20 pt-6 max-w-5xl">
                             <p class="text-white/90 text-base md:text-xl lg:text-2xl font-medium max-w-xl leading-snug">
                                 Aesthetic and functional tubes for various industries, with a focus on sustainability.
                             </p>
-                            <a href="laminated-tubes.html" class="inline-flex items-center gap-3 text-white text-sm font-bold tracking-widest uppercase hover:text-[#46B77B] transition-colors group border-b-2 border-[#46B77B] pb-1 whitespace-nowrap">
-                                Explore Service <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-2"></i>
+                            <a href="laminated-tubes.html"
+                                class="inline-flex items-center gap-3 text-white text-sm font-bold tracking-widest uppercase hover:text-[#46B77B] transition-colors group border-b-2 border-[#46B77B] pb-1 whitespace-nowrap">
+                                Explore Service <i
+                                    class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-2"></i>
                             </a>
                         </div>
                     </div>
 
                     <!-- Text 6 -->
                     <div class="service-text hidden w-full" data-index="5">
-                        <h2 class="text-[14vw] sm:text-[12vw] md:text-[10vw] leading-[0.85] font-black text-white tracking-tighter uppercase mb-8 w-full">
+                        <h2
+                            class="text-[14vw] sm:text-[12vw] md:text-[10vw] leading-[0.85] font-black text-white tracking-tighter uppercase mb-8 w-full">
                             FLEXIBLE<br>PACKAGING
                         </h2>
-                        <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 w-full border-t border-white/20 pt-6 max-w-5xl">
+                        <div
+                            class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 w-full border-t border-white/20 pt-6 max-w-5xl">
                             <p class="text-white/90 text-base md:text-xl lg:text-2xl font-medium max-w-xl leading-snug">
                                 Durable, lightweight, and environmentally-friendly packaging options for versatile use.
                             </p>
-                            <a href="flexible-packaging.html" class="inline-flex items-center gap-3 text-white text-sm font-bold tracking-widest uppercase hover:text-[#46B77B] transition-colors group border-b-2 border-[#46B77B] pb-1 whitespace-nowrap">
-                                Explore Service <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-2"></i>
+                            <a href="flexible-packaging.html"
+                                class="inline-flex items-center gap-3 text-white text-sm font-bold tracking-widest uppercase hover:text-[#46B77B] transition-colors group border-b-2 border-[#46B77B] pb-1 whitespace-nowrap">
+                                Explore Service <i
+                                    class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-2"></i>
                             </a>
                         </div>
                     </div>
@@ -639,40 +683,49 @@
         </div>
 
         <!-- Scroll Spacer -->
-        <div class="h-[600vh] w-full pointer-events-none -mt-[100vh]"></div>
+        <div class="h-[500vh] w-full pointer-events-none"></div>
     </section>
 
-        <!-- ═══════════════ VIDEO SECTION ═══════════════ -->
-    <section id="video-section" class="fade-in-section relative z-10 w-full py-16 md:py-24 bg-[#FAFBF9] overflow-hidden font-sans border-t border-gray-200/50 scroll-mt-24">
-        
+    <!-- ═══════════════ VIDEO SECTION ═══════════════ -->
+    <section id="video-section"
+        class="fade-in-section relative z-10 w-full py-16 md:py-24 bg-[#FAFBF9] overflow-hidden font-sans border-t border-gray-200/50 scroll-mt-24">
+
         <!-- Background Glows -->
         <div class="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
-            <div class="absolute top-1/2 left-0 w-[500px] h-[500px] bg-[#46B77B]/5 blur-[120px] rounded-full -translate-y-1/2"></div>
+            <div
+                class="absolute top-1/2 left-0 w-[500px] h-[500px] bg-[#46B77B]/5 blur-[120px] rounded-full -translate-y-1/2">
+            </div>
             <div class="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#61CE70]/5 blur-[100px] rounded-full"></div>
         </div>
 
         <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 relative z-10">
             <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
-                
+
                 <!-- Text Column (Left) -->
                 <div class="w-full lg:w-5/12 flex flex-col items-start slide-in-left">
                     <div class="flex items-center gap-3 mb-5 md:mb-6">
                         <span class="h-px w-10 bg-[#46B77B]"></span>
-                        <span class="text-[0.65rem] font-bold tracking-[0.3em] uppercase text-[#46B77B]">See Us In Action</span>
+                        <span class="text-[0.65rem] font-bold tracking-[0.3em] uppercase text-[#46B77B]">See Us In
+                            Action</span>
                     </div>
 
-                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-[#0A0C12] leading-[1.15] tracking-[-0.02em] mb-6">
+                    <h2
+                        class="text-3xl sm:text-4xl md:text-5xl font-black text-[#0A0C12] leading-[1.15] tracking-[-0.02em] mb-6">
                         Inside Our <br class="hidden sm:block">
                         <span class="relative inline-block text-[#46B77B]">
                             Production Floor.
-                            <svg class="absolute -bottom-2 left-0 w-full" height="7" viewBox="0 0 200 10" preserveAspectRatio="none" fill="none">
-                                <path d="M2 7C50 3 100 2 198 6" stroke="#46B77B" stroke-width="3" stroke-linecap="round" />
+                            <svg class="absolute -bottom-2 left-0 w-full" height="7" viewBox="0 0 200 10"
+                                preserveAspectRatio="none" fill="none">
+                                <path d="M2 7C50 3 100 2 198 6" stroke="#46B77B" stroke-width="3"
+                                    stroke-linecap="round" />
                             </svg>
                         </span>
                     </h2>
 
                     <p class="text-gray-500 text-sm md:text-base leading-relaxed mb-8 max-w-md">
-                        Take a virtual tour of our state-of-the-art printing and packaging facility. From high-speed offset printing to precise tissue conversion, see how we bring your brand to life with unmatched quality.
+                        Take a virtual tour of our state-of-the-art printing and packaging facility. From high-speed
+                        offset printing to precise tissue conversion, see how we bring your brand to life with unmatched
+                        quality.
                     </p>
 
                     <!-- Key Points -->
@@ -697,42 +750,48 @@
                         </div>
                     </div>
 
-                    <a href="contact.html" class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#0A0C12] text-white text-sm font-bold rounded-lg hover:bg-[#46B77B] transition-all shadow-md group">
-                        Visit Our Factory <i class="fas fa-arrow-right transition-transform group-hover:translate-x-1"></i>
+                    <a href="contact.html"
+                        class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#0A0C12] text-white text-sm font-bold rounded-lg hover:bg-[#46B77B] transition-all shadow-md group">
+                        Visit Our Factory <i
+                            class="fas fa-arrow-right transition-transform group-hover:translate-x-1"></i>
                     </a>
                 </div>
 
                 <!-- Video Column (Right) -->
                 <div class="w-full lg:w-7/12 relative slide-in-right">
                     <!-- Decorative background elements -->
-                    <div class="absolute -inset-4 bg-gradient-to-tr from-[#46B77B]/20 to-transparent rounded-[2.5rem] blur-lg z-0"></div>
-                    
+                    <div
+                        class="absolute -inset-4 bg-gradient-to-tr from-[#46B77B]/20 to-transparent rounded-[2.5rem] blur-lg z-0">
+                    </div>
+
                     <!-- Video Container -->
-                    <div class="relative z-10 rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-[0_20px_50px_-15px_rgba(0,0,0,0.2)] border-4 md:border-8 border-white bg-[#0A0C12] group aspect-video">
-                        
+                    <div
+                        class="relative z-10 rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-[0_20px_50px_-15px_rgba(0,0,0,0.2)] border-4 md:border-8 border-white bg-[#0A0C12] group aspect-video">
+
                         <!-- Yahan aap apni video ka link dalein -->
                         <!-- Note: Agar aapke paas local video hai to <video> tag use karein, ya YouTube/Vimeo ka iframe lagayein -->
-                        <iframe 
-                            class="w-full h-full object-cover" 
-                            src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&mute=1&controls=1&showinfo=0&rel=0" 
-                            title="Maqsood Faisal Printing Press Video" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>
+                        <iframe width="560" height="315"
+                            src="https://www.youtube.com/embed/zKbqt3acP9I?si=ZivFQXuYqbwy4dOt"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
                         <!-- Optional Overlay Gradient for aesthetic -->
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        </div>
                     </div>
 
                     <!-- Floating Badge (Video ke upar) -->
-                    <div class="absolute -bottom-6 -left-6 z-20 bg-white rounded-2xl p-4 shadow-xl border border-gray-100 flex items-center gap-4 animate-bounce-slow">
+                    <div
+                        class="absolute -bottom-6 -left-6 z-20 bg-white rounded-2xl p-4 shadow-xl border border-gray-100 flex items-center gap-4 animate-bounce-slow">
                         <div class="w-12 h-12 rounded-full bg-[#46B77B] flex items-center justify-center">
                             <i class="fas fa-play text-white text-lg ml-1"></i>
                         </div>
                         <div>
                             <p class="text-lg font-black text-[#0A0C12] leading-none">Factory Tour</p>
-                            <p class="text-[0.65rem] font-bold text-gray-400 uppercase tracking-widest mt-1">Watch Video</p>
+                            <p class="text-[0.65rem] font-bold text-gray-400 uppercase tracking-widest mt-1">Watch Video
+                            </p>
                         </div>
                     </div>
                 </div>

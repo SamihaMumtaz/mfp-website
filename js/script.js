@@ -1,3 +1,14 @@
+// Page hamesha top se khule
+if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+}
+window.scrollTo(0, 0);
+window.addEventListener('load', function() {
+    window.scrollTo(0, 0);
+    setTimeout(function() { window.scrollTo(0, 0); }, 100);
+    setTimeout(function() { window.scrollTo(0, 0); }, 300);
+});
+
 /* ================= MOBILE SIDEBAR LOGIC ================= */
 const hamburger = document.getElementById('hamburger');
 const sidebar = document.getElementById('sidebar');
@@ -26,7 +37,7 @@ if (hamburger && sidebar && sidebarOverlay && sidebarClose) {
 }
 
 /* ================= ACCORDION UNIVERSAL LOGIC ================= */
-/* Yeh function HTML ke onclick se trigger hota hai. Ab About aur Services dono alag alag kaam karenge */
+// Yeh function HTML ke onclick se trigger hota hai. About aur Services dono alag alag kaam karenge
 function toggleAccordion(listId, chevronId) {
     const list = document.getElementById(listId);
     const chevron = document.getElementById(chevronId);
@@ -390,8 +401,18 @@ const partnerLogos = [
     "images/brand25.png", "images/brand26.png", "images/brand27.png", "images/brand28.png",
     "images/brand29.png", "images/brand30.png", "images/brand31.png", "images/brand32.png",
     "images/brand33.png", "images/brand34.png", "images/brand35.png", "images/brand36.png",
-    "images/brand37.png", "images/brand38.png", "images/brand39.png", "images/brand40.png", "images/brand41.png", "images/brand42.png", "images/brand43.png", "images/brand44.png", "images/brand45.png", "images/brand46.png", "images/brand47.png", "images/brand48.png", "images/brand49.png", "images/brand50.png", "images/brand51.png", "images/brand52.png", "images/brand53.png", "images/brand54.png", "images/brand55.png", "images/brand56.png", "images/brand57.png", "images/brand58.png", "images/brand59.png", "images/brand60.png",
-    "images/brand61.png", "images/brand62.png", "images/brand63.png", "images/brand64.png", "images/brand65.png", "images/brand66.png", "images/brand67.png", "images/brand68.png", "images/brand69.png", "images/brand70.png", "images/brand71.png", "images/brand72.png", "images/brand76.png", "images/brand77.png", "images/brand78.png", "images/brand79.png", "images/brand80.png", "images/brand81.png", "images/brand82.png", "images/brand83.png", "images/brand84.png", "images/brand85.png"
+    "images/brand37.png", "images/brand38.png", "images/brand39.png", "images/brand40.png", 
+    "images/brand41.png", "images/brand42.png", "images/brand43.png", "images/brand44.png", 
+    "images/brand45.png", "images/brand46.png", "images/brand47.png", "images/brand48.png", 
+    "images/brand49.png", "images/brand50.png", "images/brand51.png", "images/brand52.png", 
+    "images/brand53.png", "images/brand54.png", "images/brand55.png", "images/brand56.png", 
+    "images/brand57.png", "images/brand58.png", "images/brand59.png", "images/brand60.png",
+    "images/brand61.png", "images/brand62.png", "images/brand63.png", "images/brand64.png", 
+    "images/brand65.png", "images/brand66.png", "images/brand67.png", "images/brand68.png", 
+    "images/brand69.png", "images/brand70.png", "images/brand71.png", "images/brand72.png", 
+    "images/brand76.png", "images/brand77.png", "images/brand78.png", "images/brand79.png", 
+    "images/brand80.png", "images/brand81.png", "images/brand82.png", "images/brand83.png", 
+    "images/brand84.png", "images/brand85.png"
 ];
 
 const marquee1 = document.getElementById('brand-marquee-1');
