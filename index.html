@@ -686,7 +686,7 @@
         <div class="h-[500vh] w-full pointer-events-none"></div>
     </section>
 
-    <!-- ═══════════════ VIDEO SECTION ═══════════════ -->
+        <!-- ═══════════════ VIDEO SECTION (AUTOPLAY & CLEAN) ═══════════════ -->
     <section id="video-section"
         class="fade-in-section relative z-10 w-full py-16 md:py-24 bg-[#FAFBF9] overflow-hidden font-sans border-t border-gray-200/50 scroll-mt-24">
 
@@ -705,27 +705,21 @@
                 <div class="w-full lg:w-5/12 flex flex-col items-start slide-in-left">
                     <div class="flex items-center gap-3 mb-5 md:mb-6">
                         <span class="h-px w-10 bg-[#46B77B]"></span>
-                        <span class="text-[0.65rem] font-bold tracking-[0.3em] uppercase text-[#46B77B]">See Us In
-                            Action</span>
+                        <span class="text-[0.65rem] font-bold tracking-[0.3em] uppercase text-[#46B77B]">See Us In Action</span>
                     </div>
 
-                    <h2
-                        class="text-3xl sm:text-4xl md:text-5xl font-black text-[#0A0C12] leading-[1.15] tracking-[-0.02em] mb-6">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-[#0A0C12] leading-[1.15] tracking-[-0.02em] mb-6">
                         Inside Our <br class="hidden sm:block">
                         <span class="relative inline-block text-[#46B77B]">
                             Production Floor.
-                            <svg class="absolute -bottom-2 left-0 w-full" height="7" viewBox="0 0 200 10"
-                                preserveAspectRatio="none" fill="none">
-                                <path d="M2 7C50 3 100 2 198 6" stroke="#46B77B" stroke-width="3"
-                                    stroke-linecap="round" />
+                            <svg class="absolute -bottom-2 left-0 w-full" height="7" viewBox="0 0 200 10" preserveAspectRatio="none" fill="none">
+                                <path d="M2 7C50 3 100 2 198 6" stroke="#46B77B" stroke-width="3" stroke-linecap="round" />
                             </svg>
                         </span>
                     </h2>
 
                     <p class="text-gray-500 text-sm md:text-base leading-relaxed mb-8 max-w-md">
-                        Take a virtual tour of our state-of-the-art printing and packaging facility. From high-speed
-                        offset printing to precise tissue conversion, see how we bring your brand to life with unmatched
-                        quality.
+                        Take a virtual tour of our state-of-the-art printing and packaging facility. From high-speed offset printing to precise tissue conversion, see how we bring your brand to life with unmatched quality.
                     </p>
 
                     <!-- Key Points -->
@@ -752,46 +746,47 @@
 
                     <a href="contact.html"
                         class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#0A0C12] text-white text-sm font-bold rounded-lg hover:bg-[#46B77B] transition-all shadow-md group">
-                        Visit Our Factory <i
-                            class="fas fa-arrow-right transition-transform group-hover:translate-x-1"></i>
+                        Visit Our Factory <i class="fas fa-arrow-right transition-transform group-hover:translate-x-1"></i>
                     </a>
                 </div>
 
                 <!-- Video Column (Right) -->
                 <div class="w-full lg:w-7/12 relative slide-in-right">
                     <!-- Decorative background elements -->
-                    <div
-                        class="absolute -inset-4 bg-gradient-to-tr from-[#46B77B]/20 to-transparent rounded-[2.5rem] blur-lg z-0">
-                    </div>
+                    <div class="absolute -inset-4 bg-gradient-to-tr from-[#46B77B]/20 to-transparent rounded-[2.5rem] blur-lg z-0"></div>
 
                     <!-- Video Container -->
-                    <div
-                        class="relative z-10 rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-[0_20px_50px_-15px_rgba(0,0,0,0.2)] border-4 md:border-8 border-white bg-[#0A0C12] group aspect-video">
+                    <div class="relative z-10 rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-[0_20px_50px_-15px_rgba(0,0,0,0.2)] border-4 md:border-8 border-white bg-[#0A0C12] group aspect-video relative">
+                        
+                        <!-- 
+                          Yahan Auto-play, Loop aur Control Hide karne ki settings hain.
+                          Note: YouTube ki policy ke mutabiq video mute honi chahiye tab hi autoplay hogi.
+                        -->
+                        <iframe 
+                            class="w-full h-full object-cover scale-[1.01]" 
+                            src="https://www.youtube.com/embed/zKbqt3acP9I?autoplay=1&mute=1&loop=1&playlist=zKbqt3acP9I&controls=0&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3&disablekb=1" 
+                            title="Factory Tour Video" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
 
-                        <!-- Yahan aap apni video ka link dalein -->
-                        <!-- Note: Agar aapke paas local video hai to <video> tag use karein, ya YouTube/Vimeo ka iframe lagayein -->
-                        <iframe width="560" height="315"
-                            src="https://www.youtube.com/embed/zKbqt3acP9I?si=ZivFQXuYqbwy4dOt"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <!-- Transparent Layer to prevent clicking on YouTube link -->
+                        <div class="absolute inset-0 z-20 pointer-events-none"></div>
 
                         <!-- Optional Overlay Gradient for aesthetic -->
-                        <div
-                            class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-30">
                         </div>
                     </div>
 
                     <!-- Floating Badge (Video ke upar) -->
-                    <div
-                        class="absolute -bottom-6 -left-6 z-20 bg-white rounded-2xl p-4 shadow-xl border border-gray-100 flex items-center gap-4 animate-bounce-slow">
-                        <div class="w-12 h-12 rounded-full bg-[#46B77B] flex items-center justify-center">
+                    <div class="absolute -bottom-6 -left-6 z-40 bg-white rounded-2xl p-4 shadow-xl border border-gray-100 flex items-center gap-4 animate-bounce-slow">
+                        <div class="w-12 h-12 rounded-full bg-[#46B77B] flex items-center justify-center shadow-lg">
                             <i class="fas fa-play text-white text-lg ml-1"></i>
                         </div>
                         <div>
                             <p class="text-lg font-black text-[#0A0C12] leading-none">Factory Tour</p>
-                            <p class="text-[0.65rem] font-bold text-gray-400 uppercase tracking-widest mt-1">Watch Video
-                            </p>
+                            <p class="text-[0.65rem] font-bold text-gray-400 uppercase tracking-widest mt-1">Watch Video</p>
                         </div>
                     </div>
                 </div>
