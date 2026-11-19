@@ -2,79 +2,78 @@
 <footer class="relative w-full bg-white overflow-hidden font-sans border-t border-gray-200 text-[#0A0C12]">
 
     <!-- ================= TOP BANNER IMAGE ================= -->
-    <div class="w-full h-64 md:h-[350px] relative overflow-hidden">
+    <!-- Yahan height kam kar di hai (h-32 md:h-48) -->
+    <div class="w-full h-32 md:h-48 relative overflow-hidden">
         <img src="images/footer-banner.jpg" alt="Maqsood Faisal Printing Press Office" class="w-full h-full object-cover object-center">
     </div>
 
     <!-- MAIN CONTENT -->
-    <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-8 md:py-10">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-10">
         
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
             
             <!-- ================= COLUMN 1: Logo + Contact + Map ================= -->
-            <div class="lg:col-span-4 flex flex-col lg:border-r lg:border-gray-200 lg:pr-6">
-                <!-- LOGO (Size Increased) -->
-                <a href="index.html" class="inline-block mb-5">
-                    <img src="images/logo.png" alt="Maqsood Faisal Printing Press" class="h-16 md:h-20 w-auto object-contain">
+            <div class="lg:col-span-4 flex flex-col lg:border-r lg:border-gray-200 lg:pr-8">
+                <a href="index.html" class="inline-block mb-4">
+                    <img src="images/logo.png" alt="Maqsood Faisal Printing Press" class="h-14 md:h-16 w-auto object-contain">
                 </a>
 
-                <!-- Contact Info (Icons are now Green) -->
-                <ul class="flex flex-col gap-3 mb-6">
+                <ul class="flex flex-col gap-4 mb-5">
                     <li class="flex items-start gap-3">
-                        <div class="w-6 h-6 flex items-center justify-center shrink-0 mt-0.5">
+                        <div class="w-5 h-5 flex items-center justify-center shrink-0 mt-0.5">
                             <i class="fas fa-map-marker-alt text-[#46B77B] text-base"></i>
                         </div>
                         <span class="text-sm text-gray-600 leading-relaxed">18-Km Ferozepur Road,<br>Lahore, Pakistan</span>
                     </li>
                     <li class="flex items-center gap-3">
-                        <div class="w-6 h-6 flex items-center justify-center shrink-0">
+                        <div class="w-5 h-5 flex items-center justify-center shrink-0">
                             <i class="fas fa-phone-alt text-[#46B77B] text-base"></i>
                         </div>
                         <a href="tel:+92111333301" class="text-sm text-gray-600 hover:text-[#46B77B] transition-colors">+92 111 333 301</a>
                     </li>
                     <li class="flex items-center gap-3">
-                        <div class="w-6 h-6 flex items-center justify-center shrink-0">
+                        <div class="w-5 h-5 flex items-center justify-center shrink-0">
                             <i class="fas fa-envelope text-[#46B77B] text-base"></i>
                         </div>
                         <a href="mailto:info@mfp.com.pk" class="text-sm text-gray-600 hover:text-[#46B77B] transition-colors break-all">info@mfp.com.pk</a>
                     </li>
                 </ul>
 
-                <!-- LIVE GOOGLE MAP -->
-                <div class="relative w-full rounded-md overflow-hidden border border-gray-300 shadow-sm group h-40">
+                <!-- LIVE GOOGLE MAP (Height adjusted) -->
+                <div class="relative w-full rounded-md overflow-hidden border border-gray-300 shadow-sm h-32 mt-auto">
                     <iframe
                         src="https://www.google.com/maps?q=Maqsood+Faisal+Printing+Press,+18+Km+Ferozepur+Road,+Lahore,+Pakistan&output=embed"
                         width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade" class="absolute inset-0 w-full h-full grayscale-[20%]">
                     </iframe>
-                    <!-- Pin overlay label -->
-                    <div class="absolute top-2 left-2 bg-white px-2.5 py-1 rounded-md shadow-md flex items-center gap-1.5 pointer-events-none border border-gray-100">
-                        <i class="fas fa-map-marker-alt text-[#46B77B] text-xs"></i>
-                        <span class="text-[0.6rem] font-bold text-[#0A0C12] leading-tight">Maqsood Faisal<br>Printing Press</span>
+                    <div class="absolute top-2 left-2 bg-white px-2 py-1 rounded-md shadow-md flex items-center gap-1.5 pointer-events-none border border-gray-100">
+                        <i class="fas fa-map-marker-alt text-[#46B77B] text-[0.6rem]"></i>
+                        <span class="text-[0.55rem] font-bold text-[#0A0C12] leading-tight">Maqsood Faisal<br>Printing Press</span>
                     </div>
                 </div>
                 <a href="https://www.google.com/maps/dir/?api=1&destination=Maqsood+Faisal+Printing+Press,+18+Km+Ferozepur+Road,+Lahore,+Pakistan"
                     target="_blank" rel="noopener"
-                    class="mt-3 inline-flex items-center justify-center gap-2 px-4 py-2 border-2 border-[#46B77B] text-[#46B77B] text-xs font-bold rounded-md hover:bg-[#46B77B] hover:text-white transition-all duration-300 w-max">
-                    Get Directions <i class="fas fa-arrow-right text-[0.65rem]"></i>
+                    class="mt-3 inline-flex items-center justify-center gap-2 px-3 py-1.5 border-2 border-[#46B77B] text-[#46B77B] text-[0.7rem] font-bold rounded hover:bg-[#46B77B] hover:text-white transition-all w-max">
+                    Get Directions <i class="fas fa-arrow-right text-[0.6rem]"></i>
                 </a>
             </div>
 
             <!-- ================= COLUMN 2: Get in Touch Form ================= -->
-            <div class="lg:col-span-4 flex flex-col lg:border-r lg:border-gray-200 lg:pr-6">
+            <div class="lg:col-span-4 flex flex-col lg:border-r lg:border-gray-200 lg:pr-8 h-full">
                 <h3 class="text-xl md:text-2xl font-extrabold text-[#46B77B] mb-2">Get in Touch</h3>
-                <p class="text-xs md:text-sm text-gray-600 leading-relaxed mb-4">For general questions, quotations or other inquiries, please fill out the form below. Our team will get back to you within one working day.</p>
+                <p class="text-xs md:text-sm text-gray-600 leading-relaxed mb-5">For general questions, quotations or other inquiries, please fill out the form below. Our team will get back to you within one working day.</p>
 
-                <form class="flex flex-col gap-2">
-                    <div class="grid grid-cols-2 gap-2">
-                        <input type="text" placeholder="Name *" required class="w-full bg-[#FAFBF9] border border-gray-200 rounded-md px-3 py-2 text-xs md:text-sm text-[#0A0C12] placeholder-gray-400 focus:outline-none focus:border-[#46B77B] focus:ring-1 focus:ring-[#46B77B] transition-all">
-                        <input type="text" placeholder="Company" class="w-full bg-[#FAFBF9] border border-gray-200 rounded-md px-3 py-2 text-xs md:text-sm text-[#0A0C12] placeholder-gray-400 focus:outline-none focus:border-[#46B77B] focus:ring-1 focus:ring-[#46B77B] transition-all">
+                <form class="flex flex-col gap-3 h-full">
+                    <div class="grid grid-cols-2 gap-3">
+                        <input type="text" placeholder="Name *" required class="w-full bg-[#FAFBF9] border border-gray-200 rounded-md px-3 py-2.5 text-xs md:text-sm text-[#0A0C12] placeholder-gray-400 focus:outline-none focus:border-[#46B77B] focus:ring-1 focus:ring-[#46B77B] transition-all">
+                        <input type="text" placeholder="Company" class="w-full bg-[#FAFBF9] border border-gray-200 rounded-md px-3 py-2.5 text-xs md:text-sm text-[#0A0C12] placeholder-gray-400 focus:outline-none focus:border-[#46B77B] focus:ring-1 focus:ring-[#46B77B] transition-all">
                     </div>
-                    <div class="grid grid-cols-2 gap-2">
-                        <input type="email" placeholder="Email *" required class="w-full bg-[#FAFBF9] border border-gray-200 rounded-md px-3 py-2 text-xs md:text-sm text-[#0A0C12] placeholder-gray-400 focus:outline-none focus:border-[#46B77B] focus:ring-1 focus:ring-[#46B77B] transition-all">
-                        <input type="tel" placeholder="Phone / WhatsApp" class="w-full bg-[#FAFBF9] border border-gray-200 rounded-md px-3 py-2 text-xs md:text-sm text-[#0A0C12] placeholder-gray-400 focus:outline-none focus:border-[#46B77B] focus:ring-1 focus:ring-[#46B77B] transition-all">
+                    <div class="grid grid-cols-2 gap-3">
+                        <input type="email" placeholder="Email *" required class="w-full bg-[#FAFBF9] border border-gray-200 rounded-md px-3 py-2.5 text-xs md:text-sm text-[#0A0C12] placeholder-gray-400 focus:outline-none focus:border-[#46B77B] focus:ring-1 focus:ring-[#46B77B] transition-all">
+                        <input type="tel" placeholder="Phone / WhatsApp" class="w-full bg-[#FAFBF9] border border-gray-200 rounded-md px-3 py-2.5 text-xs md:text-sm text-[#0A0C12] placeholder-gray-400 focus:outline-none focus:border-[#46B77B] focus:ring-1 focus:ring-[#46B77B] transition-all">
                     </div>
-                    <textarea placeholder="Write a message *" required rows="3" class="w-full bg-[#FAFBF9] border border-gray-200 rounded-md px-3 py-2 text-xs md:text-sm text-[#0A0C12] placeholder-gray-400 focus:outline-none focus:border-[#46B77B] focus:ring-1 focus:ring-[#46B77B] transition-all resize-none"></textarea>
+                    <!-- Textarea ki height barha di (rows=5) taake space na bache -->
+                    <textarea placeholder="Write a message *" required rows="5" class="w-full bg-[#FAFBF9] border border-gray-200 rounded-md px-3 py-2.5 text-xs md:text-sm text-[#0A0C12] placeholder-gray-400 focus:outline-none focus:border-[#46B77B] focus:ring-1 focus:ring-[#46B77B] transition-all resize-none flex-grow"></textarea>
                     <button type="submit" class="mt-1 self-start inline-flex items-center gap-2 px-5 py-2 bg-[#46B77B] text-white text-xs md:text-sm font-bold rounded-md hover:bg-[#3ca56b] transition-colors shadow-sm">
                         Send Message <i class="fas fa-arrow-right text-[0.65rem]"></i>
                     </button>
@@ -82,58 +81,58 @@
             </div>
 
             <!-- ================= COLUMN 3: Certifications + Newsletter ================= -->
-            <div class="lg:col-span-4 flex flex-col lg:pl-2">
+            <div class="lg:col-span-4 flex flex-col lg:pl-2 h-full">
                 <h3 class="text-xl md:text-2xl font-extrabold text-[#46B77B] mb-4">Our Certifications &amp; Commitments</h3>
 
-                <!-- Certifications Grid -->
                 <div class="grid grid-cols-4 gap-2 mb-6">
                     <!-- ISO -->
                     <div class="flex flex-col items-center text-center">
-                        <div class="w-12 h-12 flex items-center justify-center mb-1 relative">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#46B77B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-10 h-10 opacity-30">
+                        <div class="w-10 h-10 flex items-center justify-center mb-2 relative">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#46B77B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 opacity-30">
                                 <circle cx="12" cy="12" r="10"></circle>
                                 <path d="M2 12h20"></path>
                                 <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
                             </svg>
-                            <span class="absolute inset-0 flex items-center justify-center font-black text-[#46B77B] text-[0.65rem] tracking-tighter pt-0.5">ISO</span>
+                            <span class="absolute inset-0 flex items-center justify-center font-black text-[#46B77B] text-[0.55rem] tracking-tighter pt-0.5">ISO</span>
                         </div>
-                        <span class="text-[0.65rem] font-bold text-[#0A0C12] leading-tight">ISO<br>Certified</span>
-                        <span class="text-[0.55rem] text-gray-500 leading-tight mt-0.5">(Quality &amp; Management)</span>
+                        <span class="text-[0.6rem] font-bold text-[#0A0C12] leading-tight">ISO<br>Certified</span>
+                        <span class="text-[0.5rem] text-gray-500 leading-tight mt-0.5">(Quality &amp; Management)</span>
                     </div>
                     <!-- FSC -->
                     <div class="flex flex-col items-center text-center">
-                        <div class="w-12 h-12 flex items-center justify-center mb-1 text-[#46B77B]">
-                            <i class="fas fa-tree text-2xl"></i>
+                        <div class="w-10 h-10 flex items-center justify-center mb-2 text-[#46B77B]">
+                            <i class="fas fa-tree text-xl"></i>
                         </div>
-                        <span class="text-[0.65rem] font-bold text-[#0A0C12] leading-tight">FSC®<br>Certified</span>
-                        <span class="text-[0.55rem] text-gray-500 leading-tight mt-0.5">(Responsible Sourcing)</span>
+                        <span class="text-[0.6rem] font-bold text-[#0A0C12] leading-tight">FSC®<br>Certified</span>
+                        <span class="text-[0.5rem] text-gray-500 leading-tight mt-0.5">(Responsible Sourcing)</span>
                     </div>
                     <!-- Sustainable Packaging -->
                     <div class="flex flex-col items-center text-center">
-                        <div class="w-12 h-12 flex items-center justify-center mb-1 text-[#46B77B]">
-                            <i class="fas fa-recycle text-2xl"></i>
+                        <div class="w-10 h-10 flex items-center justify-center mb-2 text-[#46B77B]">
+                            <i class="fas fa-recycle text-xl"></i>
                         </div>
-                        <span class="text-[0.65rem] font-bold text-[#0A0C12] leading-tight">Sustainable<br>Packaging</span>
-                        <span class="text-[0.55rem] text-gray-500 leading-tight mt-0.5">(Smarter &amp; Greener)</span>
+                        <span class="text-[0.6rem] font-bold text-[#0A0C12] leading-tight">Sustainable<br>Packaging</span>
+                        <span class="text-[0.5rem] text-gray-500 leading-tight mt-0.5">(Smarter &amp; Greener)</span>
                     </div>
                     <!-- Environmentally Responsible -->
                     <div class="flex flex-col items-center text-center">
-                        <div class="w-12 h-12 flex items-center justify-center mb-1 text-[#46B77B]">
-                            <i class="fas fa-leaf text-2xl"></i>
+                        <div class="w-10 h-10 flex items-center justify-center mb-2 text-[#46B77B]">
+                            <i class="fas fa-leaf text-xl"></i>
                         </div>
-                        <span class="text-[0.65rem] font-bold text-[#0A0C12] leading-tight">Environmentally<br>Responsible</span>
-                        <span class="text-[0.55rem] text-gray-500 leading-tight mt-0.5">(Reducing Our Footprint)</span>
+                        <span class="text-[0.6rem] font-bold text-[#0A0C12] leading-tight">Environmentally<br>Responsible</span>
+                        <span class="text-[0.5rem] text-gray-500 leading-tight mt-0.5">(Reducing Our Footprint)</span>
                     </div>
                 </div>
 
-                <!-- Divider -->
-                <div class="w-full h-px bg-gray-200 mb-4"></div>
+                <!-- Divider ko thora upar shift kiya hai -->
+                <div class="w-full h-px bg-gray-200 mb-5 mt-auto"></div>
 
                 <!-- Stay Updated / Newsletter -->
-                <h3 class="text-lg md:text-xl font-extrabold text-[#46B77B] mb-1">Stay Updated</h3>
+                <h3 class="text-lg md:text-xl font-extrabold text-[#46B77B] mb-2">Stay Updated</h3>
                 <p class="text-xs md:text-sm text-gray-600 leading-relaxed mb-3">Subscribe to our newsletter for the latest updates, innovations and company news.</p>
-                <form class="relative w-full flex items-center">
-                    <input type="email" placeholder="Enter your email address" required class="w-full bg-[#FAFBF9] border border-gray-200 rounded-md pl-3 pr-12 py-2 text-xs md:text-sm text-[#0A0C12] placeholder-gray-400 focus:outline-none focus:border-[#46B77B] focus:ring-1 focus:ring-[#46B77B] transition-all">
+                
+                <form class="relative w-full flex items-center mt-auto">
+                    <input type="email" placeholder="Enter your email address" required class="w-full bg-[#FAFBF9] border border-gray-200 rounded-md pl-3 pr-12 py-2.5 text-xs md:text-sm text-[#0A0C12] placeholder-gray-400 focus:outline-none focus:border-[#46B77B] focus:ring-1 focus:ring-[#46B77B] transition-all">
                     <button type="submit" class="absolute right-1 top-1 bottom-1 w-9 flex items-center justify-center bg-[#46B77B] hover:bg-[#3ca56b] text-white rounded-md transition-colors" aria-label="Subscribe">
                         <i class="fas fa-arrow-right text-xs"></i>
                     </button>
