@@ -2,9 +2,11 @@
 <footer class="relative w-full bg-white overflow-hidden font-sans border-t border-gray-200 text-[#0A0C12]">
 
     <!-- ================= TOP BANNER IMAGE ================= -->
-    <!-- Yahan height kam kar di hai (h-32 md:h-48) -->
-    <div class="w-full h-32 md:h-48 relative overflow-hidden">
+    <!-- Yahan overlay (opacity) add kar diya hai -->
+    <div class="w-full h-32 md:h-48 relative overflow-hidden group">
         <img src="images/footer-banner.jpg" alt="Maqsood Faisal Printing Press Office" class="w-full h-full object-cover object-center">
+        <!-- Opacity Overlay (bg-black/40) -->
+        <div class="absolute inset-0 bg-black/40"></div>
     </div>
 
     <!-- MAIN CONTENT -->
@@ -39,7 +41,7 @@
                     </li>
                 </ul>
 
-                <!-- LIVE GOOGLE MAP (Height adjusted) -->
+                <!-- LIVE GOOGLE MAP -->
                 <div class="relative w-full rounded-md overflow-hidden border border-gray-300 shadow-sm h-32 mt-auto">
                     <iframe
                         src="https://www.google.com/maps?q=Maqsood+Faisal+Printing+Press,+18+Km+Ferozepur+Road,+Lahore,+Pakistan&output=embed"
@@ -72,7 +74,6 @@
                         <input type="email" placeholder="Email *" required class="w-full bg-[#FAFBF9] border border-gray-200 rounded-md px-3 py-2.5 text-xs md:text-sm text-[#0A0C12] placeholder-gray-400 focus:outline-none focus:border-[#46B77B] focus:ring-1 focus:ring-[#46B77B] transition-all">
                         <input type="tel" placeholder="Phone / WhatsApp" class="w-full bg-[#FAFBF9] border border-gray-200 rounded-md px-3 py-2.5 text-xs md:text-sm text-[#0A0C12] placeholder-gray-400 focus:outline-none focus:border-[#46B77B] focus:ring-1 focus:ring-[#46B77B] transition-all">
                     </div>
-                    <!-- Textarea ki height barha di (rows=5) taake space na bache -->
                     <textarea placeholder="Write a message *" required rows="5" class="w-full bg-[#FAFBF9] border border-gray-200 rounded-md px-3 py-2.5 text-xs md:text-sm text-[#0A0C12] placeholder-gray-400 focus:outline-none focus:border-[#46B77B] focus:ring-1 focus:ring-[#46B77B] transition-all resize-none flex-grow"></textarea>
                     <button type="submit" class="mt-1 self-start inline-flex items-center gap-2 px-5 py-2 bg-[#46B77B] text-white text-xs md:text-sm font-bold rounded-md hover:bg-[#3ca56b] transition-colors shadow-sm">
                         Send Message <i class="fas fa-arrow-right text-[0.65rem]"></i>
@@ -124,10 +125,8 @@
                     </div>
                 </div>
 
-                <!-- Divider ko thora upar shift kiya hai -->
                 <div class="w-full h-px bg-gray-200 mb-5 mt-auto"></div>
 
-                <!-- Stay Updated / Newsletter -->
                 <h3 class="text-lg md:text-xl font-extrabold text-[#46B77B] mb-2">Stay Updated</h3>
                 <p class="text-xs md:text-sm text-gray-600 leading-relaxed mb-3">Subscribe to our newsletter for the latest updates, innovations and company news.</p>
                 
