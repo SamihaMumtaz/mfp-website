@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service — Maqsood Faisal Printing Press</title>
+
+    <!-- Font Awesome & Tailwind CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS File -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <script>
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.scrollTo(0, 0);
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Scroll Reveal */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .is-revealed {
+            opacity: 1;
+            transform: translate(0) scale(1);
+        }
+
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+
+        /* Policy Content Typography */
+        .policy-content h2 {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #0A0C12;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid rgba(70, 183, 123, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .policy-content h2 i {
+            color: #46B77B;
+            font-size: 1.1rem;
+        }
+
+        .policy-content h3 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #0A0C12;
+            margin-top: 1.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .policy-content p {
+            font-size: 0.9rem;
+            color: #4B5563;
+            line-height: 1.85;
+            margin-bottom: 1rem;
+        }
+
+        .policy-content ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 1.25rem;
+        }
+
+        .policy-content ul li {
+            position: relative;
+            padding-left: 1.5rem;
+            font-size: 0.9rem;
+            color: #4B5563;
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .policy-content ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.65rem;
+            width: 6px;
+            height: 6px;
+            background: #46B77B;
+            border-radius: 50%;
+        }
+
+        .policy-content strong {
+            color: #0A0C12;
+            font-weight: 700;
+        }
+
+        .policy-content a {
+            color: #46B77B;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .policy-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Sidebar TOC */
+        .toc-link {
+            display: block;
+            padding: 0.6rem 1rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #6B7280;
+            border-left: 3px solid transparent;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .toc-link:hover,
+        .toc-link.active {
+            color: #46B77B;
+            border-left-color: #46B77B;
+            background: rgba(70, 183, 123, 0.05);
+        }
+    </style>
+</head>
+
+<body class="bg-[#FAFBF9] text-[#0A0C12] overflow-x-hidden min-h-screen font-sans relative flex flex-col">
+
+    <!-- BACKGROUNDS -->
+    <div class="bg-morph fixed inset-0 -z-50"></div>
+    <div class="glow fixed rounded-full -z-40 pointer-events-none glow-1"></div>
+    <div class="glow fixed rounded-full -z-40 pointer-events-none glow-2"></div>
+
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" class="contents"></div>
+
+    <!-- ═══════════════ HERO SECTION ═══════════════ -->
+    <section class="relative w-full h-auto md:h-[45vh] overflow-hidden flex items-center border-b border-gray-200/50 py-16 md:py-0">
+        <div class="absolute inset-0 -z-10 bg-[#050806]">
+            <div class="absolute inset-0 bg-gradient-to-r from-[#050806] via-[#050806]/95 to-[#050806]/70"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#46B77B]/10 blur-[150px] rounded-full mix-blend-screen pointer-events-none"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 relative z-10 w-full">
+            <div class="reveal-up max-w-3xl">
+                <div class="flex items-center gap-3 mb-4 md:mb-6">
+                    <span class="h-px w-10 bg-[#46B77B]"></span>
+                    <span class="text-[0.65rem] font-bold tracking-[0.3em] uppercase text-[#46B77B]">Legal</span>
+                </div>
+
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 drop-shadow-lg leading-[1.15]">
+                    Terms of
+                    <span class="relative inline-block text-[#46B77B]">
+                        Service
+                        <svg class="absolute -bottom-2 left-0 w-full" height="7" viewBox="0 0 200 10"
+                            preserveAspectRatio="none" fill="none">
+                            <path d="M2 7C50 3 100 2 198 6" stroke="#46B77B" stroke-width="3" stroke-linecap="round" />
+                        </svg>
+                    </span>
+                </h1>
+
+                <p class="text-gray-400 text-sm md:text-base font-medium tracking-wide mt-6">
+                    <i class="fas fa-calendar-alt text-[#46B77B] mr-2"></i>Last Updated: January 1, 2026
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ POLICY CONTENT ═══════════════ -->
+    <section class="relative z-10 w-full py-12 md:py-20 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+
+                <!-- Sidebar TOC (Desktop) -->
+                <aside class="lg:col-span-3 hidden lg:block">
+                    <div class="sticky top-24 bg-[#FAFBF9] rounded-2xl p-5 border border-gray-200">
+                        <h3 class="text-xs font-black uppercase tracking-widest text-[#0A0C12] mb-4 flex items-center gap-2">
+                            <i class="fas fa-list text-[#46B77B]"></i> Contents
+                        </h3>
+                        <nav class="flex flex-col gap-0.5">
+                            <a href="#acceptance" class="toc-link">1. Acceptance of Terms</a>
+                            <a href="#services" class="toc-link">2. Our Services</a>
+                            <a href="#quotes-orders" class="toc-link">3. Quotes &amp; Orders</a>
+                            <a href="#payment" class="toc-link">4. Pricing &amp; Payment</a>
+                            <a href="#production" class="toc-link">5. Production &amp; Delivery</a>
+                            <a href="#intellectual" class="toc-link">6. Intellectual Property</a>
+                            <a href="#client-obligations" class="toc-link">7. Client Obligations</a>
+                            <a href="#warranty" class="toc-link">8. Warranty &amp; Defects</a>
+                            <a href="#liability" class="toc-link">9. Limitation of Liability</a>
+                            <a href="#termination" class="toc-link">10. Cancellation &amp; Termination</a>
+                            <a href="#governing" class="toc-link">11. Governing Law</a>
+                            <a href="#changes-tos" class="toc-link">12. Changes to Terms</a>
+                            <a href="#contact-tos" class="toc-link">13. Contact Us</a>
+                        </nav>
+
+                        <div class="mt-6 pt-5 border-t border-gray-200">
+                            <a href="contact.html"
+                                class="flex items-center justify-center gap-2 px-4 py-2.5 bg-[#46B77B] text-white text-xs font-bold rounded-lg hover:bg-[#3ca56b] transition-colors w-full">
+                                <i class="fas fa-envelope text-xs"></i> Contact Us
+                            </a>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Main Content -->
+                <div class="lg:col-span-9">
+                    <div class="policy-content reveal-up">
+
+                        <!-- Acceptance -->
+                        <div id="acceptance" class="scroll-mt-24">
+                            <h2><i class="fas fa-handshake"></i>1. Acceptance of Terms</h2>
+                            <p>
+                                These Terms of Service ("Terms") govern your use of the website and services provided by <strong>Maqsood Faisal Printing Press (SMC-Pvt.) Ltd.</strong> ("we," "our," or "us"). By accessing our website, requesting a quote, or placing an order with us, you agree to be bound by these Terms.
+                            </p>
+                            <p>
+                                If you do not agree with any part of these Terms, please do not use our website or services. We reserve the right to update or modify these Terms at any time — continued use of our services after changes constitutes acceptance of the revised Terms.
+                            </p>
+                        </div>
+
+                        <!-- Services -->
+                        <div id="services" class="scroll-mt-24">
+                            <h2><i class="fas fa-print"></i>2. Our Services</h2>
+                            <p>
+                                Maqsood Faisal Printing Press provides printing and packaging solutions across six core divisions:
+                            </p>
+                            <ul>
+                                <li><strong>Offset Printing</strong> — folding cartons, commercial printing, and packaging.</li>
+                                <li><strong>Roll-to-Roll Labels</strong> — self-adhesive labels, shrink sleeves, and wrap-around labels.</li>
+                                <li><strong>Flexible Packaging</strong> — pouches, roll films, and laminates.</li>
+                                <li><strong>Tissue Conversion</strong> — napkins, facial tissues, and paper towels.</li>
+                                <li><strong>Plastic Packaging</strong> — blown film and extrusion products.</li>
+                                <li><strong>Laminated Tubes</strong> — packaging for cosmetics, pharmaceuticals, and food.</li>
+                            </ul>
+                            <p>
+                                All services are subject to availability, production capacity, and mutual agreement on specifications, quantities, and timelines.
+                            </p>
+                        </div>
+
+                        <!-- Quotes & Orders -->
+                        <div id="quotes-orders" class="scroll-mt-24">
+                            <h2><i class="fas fa-file-invoice"></i>3. Quotes &amp; Orders</h2>
+                            <ul>
+                                <li><strong>Quotations:</strong> All quotes provided by us are valid for <strong>30 days</strong> from the date of issue unless otherwise stated in writing.</li>
+                                <li><strong>Order Confirmation:</strong> An order is only confirmed once we receive a written purchase order (PO) or signed approval, along with any required advance payment.</li>
+                                <li><strong>Specifications:</strong> Clients are responsible for providing accurate specifications, artwork files, and approval samples. Any changes after order confirmation may result in additional charges and revised timelines.</li>
+                                <li><strong>Artwork Approval:</strong> We require written approval of final artwork and/or proof before production begins. We are not responsible for errors in artwork approved by the client.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Payment -->
+                        <div id="payment" class="scroll-mt-24">
+                            <h2><i class="fas fa-credit-card"></i>4. Pricing &amp; Payment</h2>
+                            <ul>
+                                <li><strong>Pricing:</strong> Prices are quoted in Pakistani Rupees (PKR) unless otherwise specified. Prices may vary based on raw material costs, order quantity, and specifications.</li>
+                                <li><strong>Advance Payment:</strong> Unless otherwise agreed in writing, a minimum advance payment may be required before production begins.</li>
+                                <li><strong>Payment Terms:</strong> Balance payment is due upon delivery or as per the agreed credit terms. Late payments may be subject to additional charges.</li>
+                                <li><strong>Taxes:</strong> All applicable taxes (including sales tax) are the responsibility of the client and will be added to invoices where required by law.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Production -->
+                        <div id="production" class="scroll-mt-24">
+                            <h2><i class="fas fa-truck-fast"></i>5. Production &amp; Delivery</h2>
+                            <ul>
+                                <li><strong>Lead Times:</strong> Estimated lead times are provided in good faith but are not guaranteed. Delays due to raw material shortages, force majeure events, or client-side delays are beyond our control.</li>
+                                <li><strong>Delivery:</strong> Delivery dates are confirmed upon order acceptance. Risk of loss or damage passes to the client upon delivery.</li>
+                                <li><strong>Inspection:</strong> Clients must inspect goods upon delivery and report any visible defects within <strong>7 days</strong> of receipt. Claims after this period may not be accepted.</li>
+                                <li><strong>Quantities:</strong> Due to the nature of printing and packaging production, slight over- or under-delivery (typically within ±5%) may occur and will be billed or credited accordingly.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Intellectual Property -->
+                        <div id="intellectual" class="scroll-mt-24">
+                            <h2><i class="fas fa-copyright"></i>6. Intellectual Property</h2>
+                            <ul>
+                                <li><strong>Client Materials:</strong> You retain ownership of all artwork, logos, designs, and content you provide to us. By submitting such materials, you grant us a limited license to use them solely for fulfilling your order.</li>
+                                <li><strong>Our Website:</strong> All content on this website — including text, images, logos, and design — is the property of Maqsood Faisal Printing Press and is protected by copyright laws. You may not reproduce or use any content without our written permission.</li>
+                                <li><strong>Confidentiality:</strong> We treat all client designs and specifications as confidential and will not disclose them to third parties without your consent, except as required for production purposes.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Client Obligations -->
+                        <div id="client-obligations" class="scroll-mt-24">
+                            <h2><i class="fas fa-user-check"></i>7. Client Obligations</h2>
+                            <p>By using our services, you agree to:</p>
+                            <ul>
+                                <li>Provide accurate, complete, and legally compliant artwork and specifications.</li>
+                                <li>Ensure you have the legal right to use any logos, images, or content submitted to us.</li>
+                                <li>Respond promptly to requests for approvals, samples, or information.</li>
+                                <li>Make payments on time as per the agreed terms.</li>
+                                <li>Comply with all applicable laws and regulations related to your products and packaging.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Warranty -->
+                        <div id="warranty" class="scroll-mt-24">
+                            <h2><i class="fas fa-shield-alt"></i>8. Warranty &amp; Defects</h2>
+                            <p>
+                                We stand behind the quality of our work. Our warranty policy is as follows:
+                            </p>
+                            <ul>
+                                <li>Products are warranted to conform to the approved specifications and samples.</li>
+                                <li>If a defect is found due to our production error, we will, at our discretion, reprint, replace, or issue a credit for the affected portion of the order.</li>
+                                <li>Claims must be reported within <strong>7 days</strong> of delivery, with photographic evidence where applicable.</li>
+                                <li>Our liability is limited to the value of the defective goods and does not cover any consequential damages, including lost profits or business interruption.</li>
+                                <li>Variations in color within industry-accepted tolerances are not considered defects.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Liability -->
+                        <div id="liability" class="scroll-mt-24">
+                            <h2><i class="fas fa-balance-scale"></i>9. Limitation of Liability</h2>
+                            <p>
+                                To the maximum extent permitted by law, Maqsood Faisal Printing Press shall not be liable for any indirect, incidental, special, or consequential damages arising out of or in connection with our services, including but not limited to loss of profits, loss of business, or loss of data.
+                            </p>
+                            <p>
+                                Our total liability for any claim arising from our services shall not exceed the total amount paid by the client for the specific order giving rise to the claim.
+                            </p>
+                        </div>
+
+                        <!-- Termination -->
+                        <div id="termination" class="scroll-mt-24">
+                            <h2><i class="fas fa-ban"></i>10. Cancellation &amp; Termination</h2>
+                            <ul>
+                                <li><strong>Client Cancellation:</strong> Orders cancelled after production has begun may be subject to charges for materials, labor, and setup costs incurred up to the point of cancellation.</li>
+                                <li><strong>Our Right to Refuse:</strong> We reserve the right to refuse or cancel any order at our discretion, including in cases of suspected fraud, illegal content, or violation of these Terms.</li>
+                                <li><strong>Termination of Access:</strong> We may suspend or terminate your access to our website if you violate these Terms or engage in prohibited activities.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Governing Law -->
+                        <div id="governing" class="scroll-mt-24">
+                            <h2><i class="fas fa-gavel"></i>11. Governing Law</h2>
+                            <p>
+                                These Terms shall be governed by and construed in accordance with the laws of the <strong>Islamic Republic of Pakistan</strong>. Any disputes arising out of or in connection with these Terms shall be subject to the exclusive jurisdiction of the courts of <strong>Lahore, Pakistan</strong>.
+                            </p>
+                        </div>
+
+                        <!-- Changes -->
+                        <div id="changes-tos" class="scroll-mt-24">
+                            <h2><i class="fas fa-sync-alt"></i>12. Changes to These Terms</h2>
+                            <p>
+                                We may update these Terms of Service from time to time to reflect changes in our services, legal requirements, or business practices. When we do, we will revise the "Last Updated" date at the top of this page. Your continued use of our website or services after any changes constitutes acceptance of the revised Terms.
+                            </p>
+                        </div>
+
+                        <!-- Contact -->
+                        <div id="contact-tos" class="scroll-mt-24">
+                            <h2><i class="fas fa-envelope"></i>13. Contact Us</h2>
+                            <p>
+                                If you have any questions or concerns about these Terms of Service, please contact us:
+                            </p>
+                            <div class="bg-[#FAFBF9] rounded-xl p-5 border border-gray-200 mt-4">
+                                <p class="mb-2"><strong>Maqsood Faisal Printing Press (SMC-Pvt.) Ltd.</strong></p>
+                                <p class="mb-2 flex items-start gap-2">
+                                    <i class="fas fa-map-marker-alt text-[#46B77B] mt-1"></i>
+                                    <span>18-Km Ferozepur Road, Lahore, Pakistan</span>
+                                </p>
+                                <p class="mb-2 flex items-center gap-2">
+                                    <i class="fas fa-phone-alt text-[#46B77B]"></i>
+                                    <a href="tel:+92111333301">+92 111 333 301</a>
+                                </p>
+                                <p class="flex items-center gap-2">
+                                    <i class="fas fa-envelope text-[#46B77B]"></i>
+                                    <a href="mailto:info@mfp.com.pk">info@mfp.com.pk</a>
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER PLACEHOLDER -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="js/components-loader.js"></script>
+    <script src="js/script.js"></script>
+
+    <!-- Animation + TOC Active Link Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Reveal animation
+            const revealElements = document.querySelectorAll('.reveal-up');
+            const revealObserver = new IntersectionObserver(function (entries, observer) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-revealed');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            revealElements.forEach(el => revealObserver.observe(el));
+
+            // TOC active link on scroll
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const sections = document.querySelectorAll('.policy-content div[id]');
+
+            function updateActiveTOC() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 120;
+                    if (window.scrollY >= sectionTop) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                tocLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', updateActiveTOC);
+            updateActiveTOC();
+
+            // Smooth scroll for TOC links
+            tocLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const target = document.getElementById(targetId);
+                    if (target) {
+                        const offset = 100;
+                        const targetPos = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                        window.scrollTo({ top: targetPos, behavior: 'smooth' });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

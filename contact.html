@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us — Maqsood Faisal Printing Press</title>
+
+    <!-- UPDATED: Font Awesome 6.5.1 for all latest icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS File -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <script>
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.scrollTo(0, 0);
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Scroll Reveal Animations - Fixed */
+        .reveal-up { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); will-change: transform, opacity; }
+        .reveal-left { opacity: 0; transform: translateX(-30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); will-change: transform, opacity; }
+        .reveal-right { opacity: 0; transform: translateX(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); will-change: transform, opacity; }
+        .is-revealed { opacity: 1 !important; transform: translate(0, 0) !important; }
+
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #FAFBF9; }
+        ::-webkit-scrollbar-thumb { background: #46B77B; border-radius: 4px; }
+    </style>
+</head>
+
+<body class="bg-[#FAFBF9] text-[#0A0C12] overflow-x-hidden min-h-screen font-sans relative flex flex-col">
+
+    <!-- BACKGROUNDS -->
+    <div class="bg-morph fixed inset-0 -z-50"></div>
+    <div class="glow fixed rounded-full -z-40 pointer-events-none glow-1"></div>
+    <div class="glow fixed rounded-full -z-40 pointer-events-none glow-2"></div>
+
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" class="contents"></div>
+
+    <!-- ═══════════════ HERO SECTION ═══════════════ -->
+    <section class="relative w-full py-24 md:py-32 lg:py-0 lg:h-[60vh] min-h-[450px] overflow-hidden flex items-center border-b border-gray-200/50">
+        
+        <div class="absolute inset-0 -z-10 bg-[#050806]">
+            <img src="images/about-maqsood-faisal.jpg" alt="Contact Maqsood Faisal Printing Press"
+                class="w-full h-full object-cover object-center opacity-40">
+            <div class="absolute inset-0 bg-gradient-to-r from-[#050806]/95 via-[#050806]/85 to-[#050806]/30 lg:to-transparent"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] md:w-[800px] h-[400px] md:h-[800px] bg-[#46B77B]/10 blur-[120px] md:blur-[150px] rounded-full mix-blend-screen pointer-events-none"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-5 sm:px-6 md:px-8 lg:px-12 relative z-10 w-full">
+            <div class="reveal-left max-w-3xl">
+                <div class="flex items-center gap-3 mb-4 md:mb-6">
+                    <span class="h-px w-8 md:w-10 bg-[#46B77B]"></span>
+                    <span class="text-[0.65rem] md:text-xs font-bold tracking-[0.2em] md:tracking-[0.3em] uppercase text-[#46B77B]">Get in Touch</span>
+                </div>
+
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-black text-white mb-4 md:mb-5 leading-[1.15] drop-shadow-lg">
+                    Let's Start a
+                    <span class="relative inline-block text-[#46B77B]">
+                        Conversation
+                        <svg class="absolute -bottom-2 md:-bottom-3 left-0 w-full" height="7" viewBox="0 0 200 10"
+                            preserveAspectRatio="none" fill="none">
+                            <path d="M2 7C50 3 100 2 198 6" stroke="#46B77B" stroke-width="3" stroke-linecap="round" />
+                        </svg>
+                    </span>
+                </h1>
+
+                <p class="text-gray-300 text-sm sm:text-base md:text-lg font-medium tracking-wide mb-8 mt-4 md:mt-6 max-w-xl">
+                    We're here to answer your questions, discuss your project, and provide a quote.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ CONTACT INFO CARDS ═══════════════ -->
+    <section class="relative z-10 w-full py-14 md:py-20 bg-white border-b border-gray-200/50">
+        <div class="max-w-7xl mx-auto px-5 sm:px-6 md:px-8 lg:px-12">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 reveal-up">
+
+                <!-- Address Card -->
+                <div class="bg-[#FAFBF9] rounded-2xl p-6 border border-gray-200 hover:border-[#46B77B] hover:shadow-lg transition-all group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-[#46B77B]/5 rounded-bl-full group-hover:bg-[#46B77B]/10 transition-colors"></div>
+                    <div class="w-12 h-12 rounded-2xl bg-[#46B77B] flex items-center justify-center mb-4 shadow-lg shadow-[#46B77B]/30 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-map-marker-alt text-xl text-white"></i>
+                    </div>
+                    <h3 class="font-black text-lg text-[#0A0C12] mb-2">Visit Us</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed mb-3">18-Km Ferozepur Road,<br>Lahore, Pakistan</p>
+                    <a href="https://www.google.com/maps/dir/?api=1&destination=Maqsood+Faisal+Printing+Press,+18+Km+Ferozepur+Road,+Lahore,+Pakistan"
+                        target="_blank" rel="noopener"
+                        class="inline-flex items-center gap-2 text-[#46B77B] text-xs font-bold hover:underline">
+                        Get Directions <i class="fas fa-arrow-right text-[0.6rem]"></i>
+                    </a>
+                </div>
+
+                <!-- Phone Card -->
+                <div class="bg-[#FAFBF9] rounded-2xl p-6 border border-gray-200 hover:border-[#46B77B] hover:shadow-lg transition-all group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-[#46B77B]/5 rounded-bl-full group-hover:bg-[#46B77B]/10 transition-colors"></div>
+                    <div class="w-12 h-12 rounded-2xl bg-[#46B77B] flex items-center justify-center mb-4 shadow-lg shadow-[#46B77B]/30 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-phone-alt text-xl text-white"></i>
+                    </div>
+                    <h3 class="font-black text-lg text-[#0A0C12] mb-2">Call Us</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed mb-3">Mon – Sat: 9:00 AM – 6:00 PM</p>
+                    <a href="tel:+92111333301" class="inline-flex items-center gap-2 text-[#46B77B] text-sm font-bold hover:underline">
+                        +92 111 333 301 <i class="fas fa-arrow-right text-[0.6rem]"></i>
+                    </a>
+                </div>
+
+                <!-- Email Card -->
+                <div class="bg-[#FAFBF9] rounded-2xl p-6 border border-gray-200 hover:border-[#46B77B] hover:shadow-lg transition-all group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-[#46B77B]/5 rounded-bl-full group-hover:bg-[#46B77B]/10 transition-colors"></div>
+                    <div class="w-12 h-12 rounded-2xl bg-[#46B77B] flex items-center justify-center mb-4 shadow-lg shadow-[#46B77B]/30 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-envelope text-xl text-white"></i>
+                    </div>
+                    <h3 class="font-black text-lg text-[#0A0C12] mb-2">Email Us</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed mb-3">For inquiries &amp; quotations</p>
+                    <a href="mailto:info@mfp.com.pk" class="inline-flex items-center gap-2 text-[#46B77B] text-sm font-bold hover:underline break-all">
+                        info@mfp.com.pk <i class="fas fa-arrow-right text-[0.6rem]"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ CONTACT FORM + MAP SECTION ═══════════════ -->
+    <section class="relative z-10 w-full py-14 md:py-20 bg-[#FAFBF9] overflow-hidden">
+        <div class="max-w-7xl mx-auto px-5 sm:px-6 md:px-8 lg:px-12">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+
+                <!-- Form Column -->
+                <div class="lg:col-span-7 reveal-left">
+                    <div class="flex items-center gap-3 mb-4 md:mb-5">
+                        <span class="h-px w-10 bg-[#46B77B]"></span>
+                        <span class="text-[0.65rem] md:text-xs font-bold tracking-[0.3em] uppercase text-[#46B77B]">Send a Message</span>
+                    </div>
+
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-black text-[#0A0C12] leading-[1.15] mb-4">
+                        Request a
+                        <span class="relative inline-block text-[#46B77B]">
+                            Quote
+                            <svg class="absolute -bottom-2 left-0 w-full" height="7" viewBox="0 0 200 10"
+                                preserveAspectRatio="none" fill="none">
+                                <path d="M2 7C50 3 100 2 198 6" stroke="#46B77B" stroke-width="3" stroke-linecap="round" />
+                            </svg>
+                        </span>
+                    </h2>
+                    <p class="text-gray-500 text-sm md:text-base leading-relaxed mb-8">
+                        Fill out the form below and our team will get back to you within one working day. For urgent inquiries, please call us directly.
+                    </p>
+
+                    <form class="bg-white rounded-[2rem] p-6 md:p-8 border border-gray-200 shadow-sm flex flex-col gap-5">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-xs font-bold text-[#0A0C12] mb-1.5">Full Name <span class="text-[#46B77B]">*</span></label>
+                                <input type="text" placeholder="Your name" required
+                                    class="w-full bg-[#FAFBF9] border border-gray-200 rounded-md px-3 py-3 text-sm text-[#0A0C12] placeholder-gray-400 focus:outline-none focus:border-[#46B77B] focus:ring-1 focus:ring-[#46B77B] transition-all">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-[#0A0C12] mb-1.5">Company</label>
+                                <input type="text" placeholder="Company name"
+                                    class="w-full bg-[#FAFBF9] border border-gray-200 rounded-md px-3 py-3 text-sm text-[#0A0C12] placeholder-gray-400 focus:outline-none focus:border-[#46B77B] focus:ring-1 focus:ring-[#46B77B] transition-all">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-xs font-bold text-[#0A0C12] mb-1.5">Email <span class="text-[#46B77B]">*</span></label>
+                                <input type="email" placeholder="you@company.com" required
+                                    class="w-full bg-[#FAFBF9] border border-gray-200 rounded-md px-3 py-3 text-sm text-[#0A0C12] placeholder-gray-400 focus:outline-none focus:border-[#46B77B] focus:ring-1 focus:ring-[#46B77B] transition-all">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-[#0A0C12] mb-1.5">Phone / WhatsApp</label>
+                                <input type="tel" placeholder="+92 300 1234567"
+                                    class="w-full bg-[#FAFBF9] border border-gray-200 rounded-md px-3 py-3 text-sm text-[#0A0C12] placeholder-gray-400 focus:outline-none focus:border-[#46B77B] focus:ring-1 focus:ring-[#46B77B] transition-all">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-[#0A0C12] mb-1.5">Service of Interest</label>
+                            <select class="w-full bg-[#FAFBF9] border border-gray-200 rounded-md px-3 py-3 text-sm text-[#0A0C12] focus:outline-none focus:border-[#46B77B] focus:ring-1 focus:ring-[#46B77B] transition-all">
+                                <option value="">Select a service</option>
+                                <option>Offset Printing</option>
+                                <option>Roll to Roll Labels</option>
+                                <option>Flexible Packaging</option>
+                                <option>Tissue Conversion</option>
+                                <option>Plastic Packaging</option>
+                                <option>Laminated Tubes</option>
+                                <option>Other / General Inquiry</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-[#0A0C12] mb-1.5">Message <span class="text-[#46B77B]">*</span></label>
+                            <textarea placeholder="Tell us about your project, quantities, and timeline..." required rows="4"
+                                class="w-full bg-[#FAFBF9] border border-gray-200 rounded-md px-3 py-3 text-sm text-[#0A0C12] placeholder-gray-400 focus:outline-none focus:border-[#46B77B] focus:ring-1 focus:ring-[#46B77B] transition-all resize-none"></textarea>
+                        </div>
+
+                        <button type="submit"
+                            class="self-start inline-flex items-center gap-2 px-6 py-3 bg-[#46B77B] text-white text-sm font-bold rounded-md hover:bg-[#3ca56b] transition-colors shadow-lg shadow-[#46B77B]/30 group">
+                            Send Message <i class="fas fa-arrow-right transition-transform group-hover:translate-x-1"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Map + Info Column -->
+                <div class="lg:col-span-5 reveal-right delay-200">
+                    <div class="lg:sticky lg:top-24 flex flex-col gap-5">
+                        <!-- Map -->
+                        <div class="relative w-full rounded-[2rem] overflow-hidden border border-gray-200 shadow-lg h-72 lg:h-80">
+                            <iframe
+                                src="https://www.google.com/maps?q=Maqsood+Faisal+Printing+Press,+18+Km+Ferozepur+Road,+Lahore,+Pakistan&output=embed"
+                                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade" class="absolute inset-0 w-full h-full grayscale-[20%]">
+                            </iframe>
+                            <div class="absolute top-3 left-3 bg-white px-3 py-2 rounded-lg shadow-md flex items-center gap-2 pointer-events-none border border-gray-100">
+                                <i class="fas fa-map-marker-alt text-[#46B77B] text-sm"></i>
+                                <span class="text-xs font-bold text-[#0A0C12] leading-tight">Maqsood Faisal<br>Printing Press</span>
+                            </div>
+                        </div>
+
+                        <!-- Working Hours -->
+                        <div class="bg-[#0A0C12] rounded-[2rem] p-6 md:p-8 relative overflow-hidden">
+                            <div class="absolute -top-10 -right-10 w-40 h-40 bg-[#46B77B]/20 rounded-full blur-2xl"></div>
+                            <div class="relative z-10">
+                                <div class="flex items-center gap-3 mb-5">
+                                    <div class="w-10 h-10 rounded-xl bg-[#46B77B]/20 flex items-center justify-center">
+                                        <i class="fas fa-clock text-[#46B77B]"></i>
+                                    </div>
+                                    <h3 class="font-black text-white text-lg">Working Hours</h3>
+                                </div>
+                                <ul class="space-y-3 text-sm">
+                                    <li class="flex items-center justify-between border-b border-white/10 pb-3">
+                                        <span class="text-gray-400">Monday – Friday</span>
+                                        <span class="text-white font-bold">9:00 AM – 6:00 PM</span>
+                                    </li>
+                                    <li class="flex items-center justify-between border-b border-white/10 pb-3">
+                                        <span class="text-gray-400">Saturday</span>
+                                        <span class="text-white font-bold">9:00 AM – 4:00 PM</span>
+                                    </li>
+                                    <li class="flex items-center justify-between">
+                                        <span class="text-gray-400">Sunday</span>
+                                        <span class="text-[#46B77B] font-bold">Closed</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Social Links -->
+                        <div class="bg-white rounded-[2rem] p-6 border border-gray-200">
+                            <h3 class="font-black text-[#0A0C12] text-lg mb-4">Follow Us</h3>
+                            <div class="flex items-center gap-3">
+                                <a href="#" aria-label="Facebook"
+                                    class="w-10 h-10 rounded-full bg-[#FAFBF9] border border-gray-200 flex items-center justify-center text-gray-500 hover:bg-[#46B77B] hover:text-white hover:border-[#46B77B] transition-all">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" aria-label="Instagram"
+                                    class="w-10 h-10 rounded-full bg-[#FAFBF9] border border-gray-200 flex items-center justify-center text-gray-500 hover:bg-[#46B77B] hover:text-white hover:border-[#46B77B] transition-all">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" aria-label="LinkedIn"
+                                    class="w-10 h-10 rounded-full bg-[#FAFBF9] border border-gray-200 flex items-center justify-center text-gray-500 hover:bg-[#46B77B] hover:text-white hover:border-[#46B77B] transition-all">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="https://wa.me/92111333301" aria-label="WhatsApp"
+                                    class="w-10 h-10 rounded-full bg-[#FAFBF9] border border-gray-200 flex items-center justify-center text-gray-500 hover:bg-[#46B77B] hover:text-white hover:border-[#46B77B] transition-all">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ CTA SECTION ═══════════════ -->
+    <section class="relative z-10 w-full py-14 md:py-20 bg-[#050806] overflow-hidden border-t border-white/10">
+        <div class="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
+            <div class="absolute top-0 right-0 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-[#46B77B]/10 blur-[120px] md:blur-[150px] rounded-full mix-blend-screen"></div>
+            <div class="absolute bottom-0 left-0 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-[#61CE70]/5 blur-[100px] md:blur-[120px] rounded-full mix-blend-screen"></div>
+        </div>
+
+        <div class="max-w-4xl mx-auto px-5 sm:px-6 md:px-8 lg:px-12 relative z-10 text-center reveal-up">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-[1.15] mb-6">
+                Prefer to Talk
+                <span class="relative inline-block text-[#46B77B]">
+                    Directly?
+                    <svg class="absolute -bottom-2 left-0 w-full" height="7" viewBox="0 0 200 10"
+                        preserveAspectRatio="none" fill="none">
+                        <path d="M2 7C50 3 100 2 198 6" stroke="#46B77B" stroke-width="3" stroke-linecap="round" />
+                    </svg>
+                </span>
+            </h2>
+
+            <p class="text-gray-400 text-sm md:text-base leading-relaxed max-w-2xl mx-auto mb-8">
+                Our team is available during business hours to discuss your packaging requirements and answer any questions.
+            </p>
+
+            <!-- FIXED: Flex-wrap enabled, whitespace-nowrap added -->
+            <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+                <a href="tel:+92111333301"
+                    class="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 bg-[#46B77B] text-white text-xs sm:text-sm font-bold rounded-lg hover:bg-[#3ca56b] transition-all shadow-lg shadow-[#46B77B]/30 group w-auto whitespace-nowrap">
+                    <i class="fas fa-phone-alt"></i> Call Now <i class="fas fa-arrow-right transition-transform group-hover:translate-x-1 text-[0.65rem] sm:text-xs"></i>
+                </a>
+                <a href="mailto:info@mfp.com.pk"
+                    class="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs sm:text-sm font-bold rounded-lg hover:bg-white hover:text-[#0A0C12] transition-all group w-auto whitespace-nowrap">
+                    <i class="fas fa-envelope"></i> Email Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER PLACEHOLDER -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="js/components-loader.js"></script>
+    <script src="js/script.js"></script>
+
+    <!-- Animation Logic (Fixed) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const revealElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
+
+            if ('IntersectionObserver' in window) {
+                const revealObserver = new IntersectionObserver(function (entries, observer) {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-revealed');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
+                revealElements.forEach(el => {
+                    revealObserver.observe(el);
+                });
+            } else {
+                revealElements.forEach(el => {
+                    el.classList.add('is-revealed');
+                });
+            }
+
+            // Safety fallback
+            setTimeout(() => {
+                revealElements.forEach(el => {
+                    el.classList.add('is-revealed');
+                });
+            }, 1500);
+        });
+    </script>
+</body>
+
+</html>
