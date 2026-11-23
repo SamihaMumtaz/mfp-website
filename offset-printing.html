@@ -49,224 +49,182 @@
             transform: translateY(0);
         }
 
-        /* ══════════════════ PORTFOLIO GALLERY ══════════════════ */
-        .gallery-card,
-        .mf-marquee-card {
-            position: relative;
+        /* ---------- PORTFOLIO MARQUEE ---------- */
+        .mf-m-card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 170px;
+            flex: 0 0 auto;
+        }
+
+        .mf-m-card img {
             display: block;
-            overflow: hidden;
-            border-radius: 1rem;
-            background-color: #fff;
-            box-shadow: 0 1px 2px rgba(10, 12, 18, 0.04), 0 14px 30px -20px rgba(10, 12, 18, 0.3);
-            transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.5s ease;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .mf-marquee-card {
-            border-radius: 1.25rem;
-        }
-
-        .gallery-card {
-            break-inside: avoid;
-            margin-bottom: 1rem;
-            cursor: zoom-in;
-        }
-
-        .gallery-card img,
-        .mf-marquee-card img {
-            display: block;
-            width: 100%;
-            height: auto;
-            transition: transform 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
-        }
-
-        .mf-marquee-card img {
             height: 100%;
-            object-fit: cover;
+            width: auto;
+            max-width: 420px;
+            object-fit: contain;
+            transition: transform 0.6s ease;
         }
 
-        .gallery-card:hover,
-        .mf-marquee-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 28px 48px -26px rgba(10, 12, 18, 0.45);
-        }
-
-        .gallery-card:hover img,
-        .mf-marquee-card:hover img {
+        .mf-m-card:hover img {
             transform: scale(1.05);
         }
 
-        .gallery-zoom {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(180deg, rgba(5, 8, 6, 0) 35%, rgba(5, 8, 6, 0.55) 100%);
-            opacity: 0;
-            transition: opacity 0.35s ease;
-            pointer-events: none;
-        }
-
-        .gallery-zoom i {
-            width: 3rem;
-            height: 3rem;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 999px;
-            font-size: 0.95rem;
-            color: #fff;
-            background: rgba(255, 255, 255, 0.18);
-            -webkit-backdrop-filter: blur(10px);
-            backdrop-filter: blur(10px);
-            transform: scale(0.75);
-            transition: transform 0.35s ease, background-color 0.35s ease;
-        }
-
-        .gallery-card:hover .gallery-zoom {
-            opacity: 1;
-        }
-
-        .gallery-card:hover .gallery-zoom i {
-            transform: scale(1);
-            background-color: #46B77B;
-        }
-
-        @media (min-width: 640px) {
-            .gallery-card {
-                margin-bottom: 1.25rem;
+        @media (min-width: 768px) {
+            .mf-m-card {
+                height: 210px;
             }
         }
 
-        @media (min-width: 1024px) {
-            .gallery-card {
-                margin-bottom: 1.5rem;
+        @media (min-width: 1280px) {
+            .mf-m-card {
+                height: 240px;
             }
         }
 
-        /* ══════════════════ GALLERY LIGHTBOX ══════════════════ */
-        #galleryLightbox {
+        /* ---------- PORTFOLIO MASONRY ---------- */
+        .mf-g-grid {
+            columns: 2;
+            column-gap: 8px;
+        }
+
+        .mf-g-item {
+            break-inside: avoid;
+            display: block;
+            margin: 0 0 8px;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: zoom-in;
+        }
+
+        .mf-g-item img {
+            display: block;
+            width: 100%;
+            height: auto;
+            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .mf-g-item:hover img {
+            transform: scale(1.04);
+        }
+
+        @media (min-width: 768px) {
+            .mf-g-grid {
+                columns: 3;
+                column-gap: 10px;
+            }
+
+            .mf-g-item {
+                margin-bottom: 10px;
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .mf-g-grid {
+                columns: 4;
+                column-gap: 12px;
+            }
+
+            .mf-g-item {
+                margin-bottom: 12px;
+            }
+        }
+
+        /* ---------- PORTFOLIO LIGHTBOX ---------- */
+        .mf-lightbox {
             position: fixed;
             inset: 0;
-            z-index: 100;
+            z-index: 120;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 1.25rem 3.75rem;
+            padding: 24px;
+            background: rgba(5, 8, 6, 0.94);
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.3s ease, visibility 0.3s ease;
         }
 
-        #galleryLightbox.is-open {
+        .mf-lightbox.open {
             opacity: 1;
             visibility: visible;
         }
 
-        .lightbox-backdrop {
-            position: absolute;
-            inset: 0;
-            background: rgba(4, 7, 5, 0.92);
-            -webkit-backdrop-filter: blur(10px);
-            backdrop-filter: blur(10px);
+        .mf-lightbox img {
+            max-width: 92vw;
+            max-height: 82vh;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+            background: #fff;
+            padding: 8px;
         }
 
-        .lightbox-figure {
-            position: relative;
-            z-index: 1;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-            max-width: 100%;
-        }
-
-        .lightbox-figure img {
-            display: block;
-            max-width: 100%;
-            max-height: 74vh;
-            width: auto;
-            border-radius: 1rem;
-            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55);
-            transform: scale(0.96);
-            transition: transform 0.35s ease;
-        }
-
-        #galleryLightbox.is-open .lightbox-figure img {
-            transform: scale(1);
-        }
-
-        .lightbox-count {
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .lightbox-btn {
+        .mf-lb-btn {
             position: absolute;
             z-index: 2;
-            display: inline-flex;
+            display: flex;
             align-items: center;
             justify-content: center;
-            width: 3rem;
-            height: 3rem;
-            border-radius: 999px;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
             color: #fff;
-            background: rgba(255, 255, 255, 0.08);
-            transition: background-color 0.25s ease, transform 0.25s ease;
+            background: rgba(255, 255, 255, 0.1);
+            font-size: 15px;
+            transition: background 0.25s ease;
         }
 
-        .lightbox-btn:hover {
-            background-color: #46B77B;
-            transform: scale(1.06);
+        .mf-lb-btn:hover {
+            background: #46B77B;
         }
 
-        .lightbox-close {
-            top: 0.75rem;
-            right: 0.75rem;
+        .mf-lb-close {
+            top: 18px;
+            right: 18px;
         }
 
-        .lightbox-prev {
-            left: 0.75rem;
+        .mf-lb-prev {
+            left: 16px;
             top: 50%;
             transform: translateY(-50%);
         }
 
-        .lightbox-next {
-            right: 0.75rem;
+        .mf-lb-next {
+            right: 16px;
             top: 50%;
             transform: translateY(-50%);
         }
 
-        .lightbox-prev:hover,
-        .lightbox-next:hover {
-            transform: translateY(-50%) scale(1.06);
+        .mf-lb-count {
+            position: absolute;
+            bottom: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.65);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.3em;
         }
 
         @media (max-width: 640px) {
-            #galleryLightbox {
-                padding: 1rem 2.75rem;
+            .mf-lightbox {
+                padding: 16px;
             }
 
-            .lightbox-btn {
-                width: 2.5rem;
-                height: 2.5rem;
+            .mf-lb-btn {
+                width: 38px;
+                height: 38px;
+                font-size: 13px;
             }
 
-            .lightbox-figure img {
-                max-height: 66vh;
+            .mf-lb-prev {
+                left: 8px;
             }
 
-            .lightbox-prev {
-                left: 0.35rem;
-            }
-
-            .lightbox-next {
-                right: 0.35rem;
+            .mf-lb-next {
+                right: 8px;
             }
         }
     </style>
@@ -532,10 +490,9 @@
         </div>
     </section>
 
-    <!-- ═══════════════ COMBINED SHOWCASE: MARQUEE + MASONRY GALLERY ═══════════════ -->
+    <!-- ============ SHOWCASE: MARQUEE + PORTFOLIO GRID ============ -->
     <section id="showcase"
         class="fade-in-section relative z-10 py-16 md:py-24 bg-[#FAFBF9] overflow-hidden border-t border-gray-200/50">
-
         <div class="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
             <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-[#46B77B]/5 blur-[120px] rounded-full"></div>
         </div>
@@ -557,13 +514,12 @@
                 </span>
             </h2>
             <p class="text-gray-500 text-sm md:text-base max-w-2xl mx-auto mt-4">
-                Take a look at some of our recent offset printing and folding carton projects that helped brands stand
-                out.
+                A closer look at the packaging and print work we have produced for brands across Pakistan.
             </p>
         </div>
 
-        <!-- 1. MARQUEE SLIDER (Images 1 to 10) -->
-        <div class="relative w-full overflow-hidden group/slider mb-12 md:mb-20">
+        <!-- 1. MARQUEE (Images 1 to 16) -->
+        <div class="relative w-full overflow-hidden mb-12 md:mb-16">
             <div
                 class="absolute top-0 left-0 w-16 md:w-32 h-full bg-gradient-to-r from-[#FAFBF9] to-transparent z-20 pointer-events-none">
             </div>
@@ -571,291 +527,140 @@
                 class="absolute top-0 right-0 w-16 md:w-32 h-full bg-gradient-to-l from-[#FAFBF9] to-transparent z-20 pointer-events-none">
             </div>
 
-            <div id="marquee-track" class="marquee-container flex gap-4 md:gap-6 px-4 md:px-8 py-4">
-                <!-- Images Set -->
-                <div class="marquee-set flex gap-4 md:gap-6 shrink-0">
-                    <!-- Image 1 -->
-                    <div
-                        class="shrink-0 w-[260px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white border border-gray-200 shadow-sm transition-all duration-500 hover:shadow-xl">
-                        <img src="images/offset-1.png" alt="Gallery"
-                            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
+            <div id="marquee-track" class="marquee-container flex gap-3 md:gap-5 px-4 md:px-8 py-3">
+                <div class="marquee-set flex gap-3 md:gap-5 shrink-0">
+                    <div class="mf-m-card">
+                        <img src="images/offset-1.png" alt="Offset printing project 1" loading="lazy">
                     </div>
-                    <!-- Image 2 -->
-                    <div
-                        class="shrink-0 w-[260px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white border border-gray-200 shadow-sm transition-all duration-500 hover:shadow-xl">
-                        <img src="images/offset-2.png" alt="Gallery"
-                            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
+                    <div class="mf-m-card">
+                        <img src="images/offset-2.png" alt="Offset printing project 2" loading="lazy">
                     </div>
-                    <!-- Image 3 -->
-                    <div
-                        class="shrink-0 w-[260px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white border border-gray-200 shadow-sm transition-all duration-500 hover:shadow-xl">
-                        <img src="images/offset-3.png" alt="Gallery"
-                            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
+                    <div class="mf-m-card">
+                        <img src="images/offset-3.png" alt="Offset printing project 3" loading="lazy">
                     </div>
-                    <!-- Image 4 -->
-                    <div
-                        class="shrink-0 w-[260px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white border border-gray-200 shadow-sm transition-all duration-500 hover:shadow-xl">
-                        <img src="images/offset-4.png" alt="Gallery"
-                            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
+                    <div class="mf-m-card">
+                        <img src="images/offset-4.png" alt="Offset printing project 4" loading="lazy">
                     </div>
-                    <!-- Image 5 -->
-                    <div
-                        class="shrink-0 w-[260px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white border border-gray-200 shadow-sm transition-all duration-500 hover:shadow-xl">
-                        <img src="images/offset-5.png" alt="Gallery"
-                            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
+                    <div class="mf-m-card">
+                        <img src="images/offset-5.png" alt="Offset printing project 5" loading="lazy">
                     </div>
-                    <!-- Image 6 -->
-                    <div
-                        class="shrink-0 w-[260px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white border border-gray-200 shadow-sm transition-all duration-500 hover:shadow-xl">
-                        <img src="images/offset-6.png" alt="Gallery"
-                            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
+                    <div class="mf-m-card">
+                        <img src="images/offset-6.png" alt="Offset printing project 6" loading="lazy">
                     </div>
-                    <!-- Image 7 -->
-                    <div
-                        class="shrink-0 w-[260px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white border border-gray-200 shadow-sm transition-all duration-500 hover:shadow-xl">
-                        <img src="images/offset-7.png" alt="Gallery"
-                            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
+                    <div class="mf-m-card">
+                        <img src="images/offset-7.png" alt="Offset printing project 7" loading="lazy">
                     </div>
-                    <!-- Image 8 -->
-                    <div
-                        class="shrink-0 w-[260px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white border border-gray-200 shadow-sm transition-all duration-500 hover:shadow-xl">
-                        <img src="images/offset-8.png" alt="Gallery"
-                            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
+                    <div class="mf-m-card">
+                        <img src="images/offset-8.png" alt="Offset printing project 8" loading="lazy">
+                    </div>
+                    <div class="mf-m-card">
+                        <img src="images/offset-9.png" alt="Offset printing project 9" loading="lazy">
+                    </div>
+                    <div class="mf-m-card">
+                        <img src="images/offset-10.png" alt="Offset printing project 10" loading="lazy">
+                    </div>
+                    <div class="mf-m-card">
+                        <img src="images/offset-11.png" alt="Offset printing project 11" loading="lazy">
+                    </div>
+                    <div class="mf-m-card">
+                        <img src="images/offset-12.png" alt="Offset printing project 12" loading="lazy">
+                    </div>
+                    <div class="mf-m-card">
+                        <img src="images/offset-13.png" alt="Offset printing project 13" loading="lazy">
+                    </div>
+                    <div class="mf-m-card">
+                        <img src="images/offset-14.png" alt="Offset printing project 14" loading="lazy">
+                    </div>
+                    <div class="mf-m-card">
+                        <img src="images/offset-15.png" alt="Offset printing project 15" loading="lazy">
+                    </div>
+                    <div class="mf-m-card">
+                        <img src="images/offset-16.png" alt="Offset printing project 16" loading="lazy">
+                    </div>
+                    <div class="mf-m-card">
+                        <img src="images/offset-21.png" alt="Offset printing project 21" loading="lazy">
+                    </div>
+                    <div class="mf-m-card">
+                        <img src="images/offset-37.png" alt="Offset printing project 37" loading="lazy">
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- 2. MASONRY GRID GALLERY (Images 9 to 37) -->
-<div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 relative z-10">
-    <div id="galleryGrid" class="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 sm:gap-5 lg:gap-6">
-
-        <!-- Image 9 -->
-        <a href="images/offset-9.png" target="_blank" rel="noopener"
-            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
-            <img src="images/offset-9.png" alt="Offset printing project 9" loading="lazy"
-                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
-        </a>
-
-        <!-- Image 10 -->
-        <a href="images/offset-10.png" target="_blank" rel="noopener"
-            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
-            <img src="images/offset-10.png" alt="Offset printing project 10" loading="lazy"
-                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
-        </a>
-
-        <!-- Image 11 -->
-        <a href="images/offset-11.png" target="_blank" rel="noopener"
-            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
-            <img src="images/offset-11.png" alt="Offset printing project 11" loading="lazy"
-                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
-        </a>
-
-        <!-- Image 12 -->
-        <a href="images/offset-12.png" target="_blank" rel="noopener"
-            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
-            <img src="images/offset-12.png" alt="Offset printing project 12" loading="lazy"
-                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
-        </a>
-
-        <!-- Image 13 -->
-        <a href="images/offset-13.png" target="_blank" rel="noopener"
-            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
-            <img src="images/offset-13.png" alt="Offset printing project 13" loading="lazy"
-                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
-        </a>
-
-        <!-- Image 14 -->
-        <a href="images/offset-14.png" target="_blank" rel="noopener"
-            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
-            <img src="images/offset-14.png" alt="Offset printing project 14" loading="lazy"
-                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
-        </a>
-
-        <!-- Image 15 -->
-        <a href="images/offset-15.png" target="_blank" rel="noopener"
-            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
-            <img src="images/offset-15.png" alt="Offset printing project 15" loading="lazy"
-                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
-        </a>
-
-        <!-- Image 16 -->
-        <a href="images/offset-16.png" target="_blank" rel="noopener"
-            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
-            <img src="images/offset-16.png" alt="Offset printing project 16" loading="lazy"
-                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
-        </a>
-
-        <!-- Image 17 -->
-        <a href="images/offset-17.png" target="_blank" rel="noopener"
-            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
-            <img src="images/offset-17.png" alt="Offset printing project 17" loading="lazy"
-                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
-        </a>
-
-        <!-- Image 18 -->
-        <a href="images/offset-18.png" target="_blank" rel="noopener"
-            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
-            <img src="images/offset-18.png" alt="Offset printing project 18" loading="lazy"
-                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
-        </a>
-
-        <!-- Image 19 -->
-        <a href="images/offset-19.png" target="_blank" rel="noopener"
-            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
-            <img src="images/offset-19.png" alt="Offset printing project 19" loading="lazy"
-                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
-        </a>
-
-        <!-- Image 20 -->
-        <a href="images/offset-20.png" target="_blank" rel="noopener"
-            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
-            <img src="images/offset-20.png" alt="Offset printing project 20" loading="lazy"
-                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
-        </a>
-
-        <!-- Image 21 -->
-        <a href="images/offset-21.png" target="_blank" rel="noopener"
-            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
-            <img src="images/offset-21.png" alt="Offset printing project 21" loading="lazy"
-                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
-        </a>
-
-        <!-- Image 22 -->
-        <a href="images/offset-22.png" target="_blank" rel="noopener"
-            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
-            <img src="images/offset-22.png" alt="Offset printing project 22" loading="lazy"
-                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
-        </a>
-
-        <!-- Image 23 -->
-        <a href="images/offset-23.png" target="_blank" rel="noopener"
-            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
-            <img src="images/offset-23.png" alt="Offset printing project 23" loading="lazy"
-                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
-        </a>
-
-        <!-- Image 24 -->
-        <a href="images/offset-24.png" target="_blank" rel="noopener"
-            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
-            <img src="images/offset-24.png" alt="Offset printing project 24" loading="lazy"
-                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
-        </a>
-
-        <!-- Image 25 -->
-        <a href="images/offset-25.png" target="_blank" rel="noopener"
-            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
-            <img src="images/offset-25.png" alt="Offset printing project 25" loading="lazy"
-                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
-        </a>
-
-        <!-- Image 26 -->
-        <a href="images/offset-26.png" target="_blank" rel="noopener"
-            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
-            <img src="images/offset-26.png" alt="Offset printing project 26" loading="lazy"
-                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
-        </a>
-
-        <!-- Image 27 -->
-        <a href="images/offset-27.png" target="_blank" rel="noopener"
-            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
-            <img src="images/offset-27.png" alt="Offset printing project 27" loading="lazy"
-                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
-        </a>
-
-        <!-- Image 28 -->
-        <a href="images/offset-28.png" target="_blank" rel="noopener"
-            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
-            <img src="images/offset-28.png" alt="Offset printing project 28" loading="lazy"
-                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
-        </a>
-
-        <!-- Image 36 -->
-        <a href="images/offset-36.png" target="_blank" rel="noopener"
-            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
-            <img src="images/offset-36.png" alt="Offset printing project 36" loading="lazy"
-                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
-        </a>
-
-        <!-- Image 29 -->
-        <a href="images/offset-29.png" target="_blank" rel="noopener"
-            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
-            <img src="images/offset-29.png" alt="Offset printing project 29" loading="lazy"
-                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
-        </a>
-
-        <!-- Image 30 -->
-        <a href="images/offset-30.png" target="_blank" rel="noopener"
-            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
-            <img src="images/offset-30.png" alt="Offset printing project 30" loading="lazy"
-                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
-        </a>
-
-        <!-- Image 31 -->
-        <a href="images/offset-31.png" target="_blank" rel="noopener"
-            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
-            <img src="images/offset-31.png" alt="Offset printing project 31" loading="lazy"
-                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
-        </a>
-
-        <!-- Image 32 -->
-        <a href="images/offset-32.png" target="_blank" rel="noopener"
-            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
-            <img src="images/offset-32.png" alt="Offset printing project 32" loading="lazy"
-                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
-        </a>
-
-        <!-- Image 33 -->
-        <a href="images/offset-33.png" target="_blank" rel="noopener"
-            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
-            <img src="images/offset-33.png" alt="Offset printing project 33" loading="lazy"
-                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
-        </a>
-
-        <!-- Image 34 -->
-        <a href="images/offset-34.png" target="_blank" rel="noopener"
-            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
-            <img src="images/offset-34.png" alt="Offset printing project 34" loading="lazy"
-                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
-        </a>
-
-        <!-- Image 35 -->
-        <a href="images/offset-35.png" target="_blank" rel="noopener"
-            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
-            <img src="images/offset-35.png" alt="Offset printing project 35" loading="lazy"
-                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
-        </a>
-
-        <!-- Image 37 -->
-        <a href="images/offset-37.png" target="_blank" rel="noopener"
-            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
-            <img src="images/offset-37.png" alt="Offset printing project 37" loading="lazy"
-                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
-        </a>
-
-                </div> <!-- galleryGrid end -->
-
-            <!-- PAGINATION -->
-            <div class="mt-8 md:mt-10 flex items-center justify-center gap-3">
-                <button id="galleryPrev" type="button" aria-label="Previous page"
-                    class="w-11 h-11 rounded-full border border-gray-300 text-gray-500 flex items-center justify-center hover:bg-[#46B77B] hover:border-[#46B77B] hover:text-white transition-all duration-300 disabled:opacity-30 disabled:pointer-events-none">
-                    <i class="fas fa-arrow-left text-sm"></i>
-                </button>
-
-                <p id="galleryCount"
-                    class="text-[0.65rem] font-bold tracking-[0.25em] uppercase text-gray-400 min-w-[110px] text-center">
-                </p>
-
-                <button id="galleryNext" type="button" aria-label="Next page"
-                    class="w-11 h-11 rounded-full border border-gray-300 text-gray-500 flex items-center justify-center hover:bg-[#46B77B] hover:border-[#46B77B] hover:text-white transition-all duration-300 disabled:opacity-30 disabled:pointer-events-none">
-                    <i class="fas fa-arrow-right text-sm"></i>
-                </button>
+        <!-- 2. PORTFOLIO GRID (Images 17 to 37) -->
+        <div class="max-w-[1400px] mx-auto px-4 md:px-6 relative z-10">
+            <div class="mf-g-grid">
+                <figure class="mf-g-item">
+                    <img src="images/offset-17.png" alt="Offset printing project 17" loading="lazy">
+                </figure>
+                <figure class="mf-g-item">
+                    <img src="images/offset-18.png" alt="Offset printing project 18" loading="lazy">
+                </figure>
+                <figure class="mf-g-item">
+                    <img src="images/offset-19.png" alt="Offset printing project 19" loading="lazy">
+                </figure>
+                <figure class="mf-g-item">
+                    <img src="images/offset-20.png" alt="Offset printing project 20" loading="lazy">
+                </figure>
+                <figure class="mf-g-item">
+                    <img src="images/offset-22.png" alt="Offset printing project 22" loading="lazy">
+                </figure>
+                <figure class="mf-g-item">
+                    <img src="images/offset-23.png" alt="Offset printing project 23" loading="lazy">
+                </figure>
+                <figure class="mf-g-item">
+                    <img src="images/offset-24.png" alt="Offset printing project 24" loading="lazy">
+                </figure>
+                <figure class="mf-g-item">
+                    <img src="images/offset-25.png" alt="Offset printing project 25" loading="lazy">
+                </figure>
+                <figure class="mf-g-item">
+                    <img src="images/offset-26.png" alt="Offset printing project 26" loading="lazy">
+                </figure>
+                <figure class="mf-g-item">
+                    <img src="images/offset-27.png" alt="Offset printing project 27" loading="lazy">
+                </figure>
+                <figure class="mf-g-item">
+                    <img src="images/offset-28.png" alt="Offset printing project 28" loading="lazy">
+                </figure>
+                <figure class="mf-g-item">
+                    <img src="images/offset-36.png" alt="Offset printing project 36" loading="lazy">
+                </figure>
+                <figure class="mf-g-item">
+                    <img src="images/offset-29.png" alt="Offset printing project 29" loading="lazy">
+                </figure>
+                <figure class="mf-g-item">
+                    <img src="images/offset-30.png" alt="Offset printing project 30" loading="lazy">
+                </figure>
+                <figure class="mf-g-item">
+                    <img src="images/offset-31.png" alt="Offset printing project 31" loading="lazy">
+                </figure>
+                <figure class="mf-g-item">
+                    <img src="images/offset-32.png" alt="Offset printing project 32" loading="lazy">
+                </figure>
+                <figure class="mf-g-item">
+                    <img src="images/offset-33.png" alt="Offset printing project 33" loading="lazy">
+                </figure>
+                <figure class="mf-g-item">
+                    <img src="images/offset-34.png" alt="Offset printing project 34" loading="lazy">
+                </figure>
+                <figure class="mf-g-item">
+                    <img src="images/offset-35.png" alt="Offset printing project 35" loading="lazy">
+                </figure>
             </div>
-
-        </div> <!-- max-w-7xl end -->
+        </div>
     </section>
-</div>
-    </section>
+    <!-- ============ PORTFOLIO LIGHTBOX ============ -->
+    <div class="mf-lightbox" id="mfLightbox" aria-hidden="true">
+        <button type="button" class="mf-lb-btn mf-lb-close" aria-label="Close preview"><i
+                class="fas fa-times"></i></button>
+        <button type="button" class="mf-lb-btn mf-lb-prev" aria-label="Previous image"><i
+                class="fas fa-chevron-left"></i></button>
+        <img id="mfLbImage" alt="">
+        <button type="button" class="mf-lb-btn mf-lb-next" aria-label="Next image"><i
+                class="fas fa-chevron-right"></i></button>
+        <div class="mf-lb-count" id="mfLbCount"></div>
+    </div>
 
     <!-- ═══════════════ NEED FOR SOME HELP (PREMIUM SPLIT DARK) ═══════════════ -->
     <section id="help"
@@ -1144,7 +949,7 @@
     <script src="js/script.js"></script>
 
     <!-- Page Specific Script -->
-        <script>
+    <script>
         document.addEventListener('DOMContentLoaded', function () {
             const grid = document.getElementById('galleryGrid');
             const prev = document.getElementById('galleryPrev');
@@ -1178,6 +983,56 @@
 
             render();
         });
+    </script>
+
+    <!-- Portfolio gallery lightbox -->
+    <script>
+        (function () {
+            var items = Array.prototype.slice.call(document.querySelectorAll('.mf-g-item'));
+            var box = document.getElementById('mfLightbox');
+            if (!items.length || !box) return;
+
+            var image = document.getElementById('mfLbImage');
+            var counter = document.getElementById('mfLbCount');
+            var index = 0;
+
+            function show(i) {
+                index = (i + items.length) % items.length;
+                var source = items[index].querySelector('img');
+                image.src = source.getAttribute('src');
+                image.alt = source.getAttribute('alt') || '';
+                counter.textContent = (index + 1) + ' / ' + items.length;
+            }
+
+            function open(i) {
+                show(i);
+                box.classList.add('open');
+                box.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function close() {
+                box.classList.remove('open');
+                box.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+            }
+
+            items.forEach(function (item, i) {
+                item.addEventListener('click', function () { open(i); });
+            });
+
+            box.querySelector('.mf-lb-close').addEventListener('click', close);
+            box.querySelector('.mf-lb-prev').addEventListener('click', function () { show(index - 1); });
+            box.querySelector('.mf-lb-next').addEventListener('click', function () { show(index + 1); });
+            box.addEventListener('click', function (event) { if (event.target === box) close(); });
+
+            document.addEventListener('keydown', function (event) {
+                if (!box.classList.contains('open')) return;
+                if (event.key === 'Escape') close();
+                if (event.key === 'ArrowLeft') show(index - 1);
+                if (event.key === 'ArrowRight') show(index + 1);
+            });
+        })();
     </script>
 </body>
 
