@@ -628,7 +628,7 @@
 
         <!-- 2. MASONRY GRID GALLERY (Images 9 to 37) -->
 <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 relative z-10">
-    <div class="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 sm:gap-5 lg:gap-6">
+    <div id="galleryGrid" class="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 sm:gap-5 lg:gap-6">
 
         <!-- Image 9 -->
         <a href="images/offset-9.png" target="_blank" rel="noopener"
@@ -833,7 +833,27 @@
                 class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
         </a>
 
-    </div>
+                </div> <!-- galleryGrid end -->
+
+            <!-- PAGINATION -->
+            <div class="mt-8 md:mt-10 flex items-center justify-center gap-3">
+                <button id="galleryPrev" type="button" aria-label="Previous page"
+                    class="w-11 h-11 rounded-full border border-gray-300 text-gray-500 flex items-center justify-center hover:bg-[#46B77B] hover:border-[#46B77B] hover:text-white transition-all duration-300 disabled:opacity-30 disabled:pointer-events-none">
+                    <i class="fas fa-arrow-left text-sm"></i>
+                </button>
+
+                <p id="galleryCount"
+                    class="text-[0.65rem] font-bold tracking-[0.25em] uppercase text-gray-400 min-w-[110px] text-center">
+                </p>
+
+                <button id="galleryNext" type="button" aria-label="Next page"
+                    class="w-11 h-11 rounded-full border border-gray-300 text-gray-500 flex items-center justify-center hover:bg-[#46B77B] hover:border-[#46B77B] hover:text-white transition-all duration-300 disabled:opacity-30 disabled:pointer-events-none">
+                    <i class="fas fa-arrow-right text-sm"></i>
+                </button>
+            </div>
+
+        </div> <!-- max-w-7xl end -->
+    </section>
 </div>
     </section>
 
@@ -1124,90 +1144,39 @@
     <script src="js/script.js"></script>
 
     <!-- Page Specific Script -->
-    <script>
+        <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Sidebar Logic
-            const sidebarLinks = document.querySelectorAll('.sidebar-link');
-            const closeSidebarBtn = document.getElementById('sidebarClose');
-            if (closeSidebarBtn) {
-                sidebarLinks.forEach(link => {
-                    link.addEventListener('click', () => {
-                        document.getElementById('sidebar').classList.remove('active');
-                        document.getElementById('sidebarOverlay').classList.remove('active');
-                        document.body.style.overflow = '';
-                    });
+            const grid = document.getElementById('galleryGrid');
+            const prev = document.getElementById('galleryPrev');
+            const next = document.getElementById('galleryNext');
+            const counter = document.getElementById('galleryCount');
+            if (!grid) return;
+
+            const items = Array.from(grid.querySelectorAll(':scope > a'));
+            const PER_PAGE = 12;   // aik page par kitni images (8, 12, 16 jo chaho)
+            const totalPages = Math.max(1, Math.ceil(items.length / PER_PAGE));
+            let page = 0;
+
+            function render() {
+                const start = page * PER_PAGE;
+                items.forEach(function (item, index) {
+                    item.classList.toggle('hidden', index < start || index >= start + PER_PAGE);
                 });
+
+                if (counter) counter.textContent = 'Page ' + (page + 1) + ' of ' + totalPages;
+                if (prev) prev.disabled = page === 0;
+                if (next) next.disabled = page === totalPages - 1;
             }
 
-            // Scroll Animations
-            const observerOptions = { threshold: 0.05, rootMargin: "0px 0px -10px 0px" };
-            const scrollObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) { entry.target.classList.add('is-visible'); }
-                });
-            }, observerOptions);
-            document.querySelectorAll('.fade-in-section').forEach((section) => {
-                scrollObserver.observe(section);
+            if (prev) prev.addEventListener('click', function () {
+                if (page > 0) { page--; render(); }
             });
 
-            // Mobile Accordion
-            const toggle = document.getElementById('mobileServicesToggle');
-            const list = document.getElementById('mobileServicesList');
-            const chevron = document.getElementById('mobileServicesChevron');
-            if (toggle && list && chevron) {
-                toggle.addEventListener('click', function () {
-                    list.classList.toggle('hidden');
-                    list.classList.toggle('flex');
-                    chevron.classList.toggle('rotate-180');
-                });
-            }
+            if (next) next.addEventListener('click', function () {
+                if (page < totalPages - 1) { page++; render(); }
+            });
 
-            /* ============================================================
-               OFFSET PRINTING TYPING EFFECT (Loop wala)
-            ============================================================ */
-            const offsetTypedText = document.getElementById('offsetTypedText');
-
-            if (offsetTypedText) {
-                const phrase = "& Folding Cartons";
-                let charIndex = 0;
-                let isDeleting = false;
-
-                function typeOffsetEffect() {
-                    if (isDeleting) {
-                        offsetTypedText.textContent = phrase.substring(0, charIndex - 1);
-                        charIndex--;
-                    } else {
-                        offsetTypedText.textContent = phrase.substring(0, charIndex + 1);
-                        charIndex++;
-                    }
-
-                    let speed = isDeleting ? 40 : 100;
-
-                    if (!isDeleting && charIndex === phrase.length) {
-                        speed = 2500;
-                        isDeleting = true;
-                    } else if (isDeleting && charIndex === 0) {
-                        isDeleting = false;
-                        speed = 500;
-                    }
-
-                    setTimeout(typeOffsetEffect, speed);
-                }
-
-                setTimeout(typeOffsetEffect, 500);
-            }
-
-            /* ============================================================
-               MARQUEE FIX: Images ko duplicate karna taake loop smooth rahe
-            ============================================================ */
-            const track = document.getElementById('marquee-track');
-            if (track) {
-                const firstSet = track.querySelector('.marquee-set');
-                if (firstSet) {
-                    const clonedSet = firstSet.cloneNode(true);
-                    track.appendChild(clonedSet);
-                }
-            }
+            render();
         });
     </script>
 </body>
