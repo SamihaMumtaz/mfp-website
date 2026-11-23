@@ -13,13 +13,13 @@
     <!-- Custom CSS File -->
     <link rel="stylesheet" href="css/style.css">
 
+    <!-- MARQUEE KI CSS YAHAN HAI -->
     <style>
         /* Marquee Container */
         .marquee-container {
             display: flex;
             width: max-content;
-            /* Speed yahan control hoti hai. 60s matlab 60 second mein ek loop. */
-            animation: scrollMarquee 150s linear infinite; 
+            animation: scrollMarquee 150s linear infinite;
         }
 
         .marquee-container:hover {
@@ -27,21 +27,247 @@
         }
 
         @keyframes scrollMarquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); } 
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
         }
 
-        /* Baqi page styles */
+        /* Page Animations */
         .fade-in-section {
             opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
             will-change: opacity, transform;
         }
 
         .fade-in-section.is-visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        /* ══════════════════ PORTFOLIO GALLERY ══════════════════ */
+        .gallery-card,
+        .mf-marquee-card {
+            position: relative;
+            display: block;
+            overflow: hidden;
+            border-radius: 1rem;
+            background-color: #fff;
+            box-shadow: 0 1px 2px rgba(10, 12, 18, 0.04), 0 14px 30px -20px rgba(10, 12, 18, 0.3);
+            transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.5s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .mf-marquee-card {
+            border-radius: 1.25rem;
+        }
+
+        .gallery-card {
+            break-inside: avoid;
+            margin-bottom: 1rem;
+            cursor: zoom-in;
+        }
+
+        .gallery-card img,
+        .mf-marquee-card img {
+            display: block;
+            width: 100%;
+            height: auto;
+            transition: transform 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+
+        .mf-marquee-card img {
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-card:hover,
+        .mf-marquee-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 28px 48px -26px rgba(10, 12, 18, 0.45);
+        }
+
+        .gallery-card:hover img,
+        .mf-marquee-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-zoom {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(180deg, rgba(5, 8, 6, 0) 35%, rgba(5, 8, 6, 0.55) 100%);
+            opacity: 0;
+            transition: opacity 0.35s ease;
+            pointer-events: none;
+        }
+
+        .gallery-zoom i {
+            width: 3rem;
+            height: 3rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 999px;
+            font-size: 0.95rem;
+            color: #fff;
+            background: rgba(255, 255, 255, 0.18);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            transform: scale(0.75);
+            transition: transform 0.35s ease, background-color 0.35s ease;
+        }
+
+        .gallery-card:hover .gallery-zoom {
+            opacity: 1;
+        }
+
+        .gallery-card:hover .gallery-zoom i {
+            transform: scale(1);
+            background-color: #46B77B;
+        }
+
+        @media (min-width: 640px) {
+            .gallery-card {
+                margin-bottom: 1.25rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .gallery-card {
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        /* ══════════════════ GALLERY LIGHTBOX ══════════════════ */
+        #galleryLightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.25rem 3.75rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        #galleryLightbox.is-open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .lightbox-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(4, 7, 5, 0.92);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+        }
+
+        .lightbox-figure {
+            position: relative;
+            z-index: 1;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            max-width: 100%;
+        }
+
+        .lightbox-figure img {
+            display: block;
+            max-width: 100%;
+            max-height: 74vh;
+            width: auto;
+            border-radius: 1rem;
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55);
+            transform: scale(0.96);
+            transition: transform 0.35s ease;
+        }
+
+        #galleryLightbox.is-open .lightbox-figure img {
+            transform: scale(1);
+        }
+
+        .lightbox-count {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .lightbox-btn {
+            position: absolute;
+            z-index: 2;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 999px;
+            color: #fff;
+            background: rgba(255, 255, 255, 0.08);
+            transition: background-color 0.25s ease, transform 0.25s ease;
+        }
+
+        .lightbox-btn:hover {
+            background-color: #46B77B;
+            transform: scale(1.06);
+        }
+
+        .lightbox-close {
+            top: 0.75rem;
+            right: 0.75rem;
+        }
+
+        .lightbox-prev {
+            left: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .lightbox-next {
+            right: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .lightbox-prev:hover,
+        .lightbox-next:hover {
+            transform: translateY(-50%) scale(1.06);
+        }
+
+        @media (max-width: 640px) {
+            #galleryLightbox {
+                padding: 1rem 2.75rem;
+            }
+
+            .lightbox-btn {
+                width: 2.5rem;
+                height: 2.5rem;
+            }
+
+            .lightbox-figure img {
+                max-height: 66vh;
+            }
+
+            .lightbox-prev {
+                left: 0.35rem;
+            }
+
+            .lightbox-next {
+                right: 0.35rem;
+            }
         }
     </style>
 </head>
@@ -58,40 +284,56 @@
     <div id="header-placeholder" class="contents"></div>
 
     <!-- ═══════════════ HERO SECTION (OFFSET PRINTING) ═══════════════ -->
-    <section id="hero-offset" class="fade-in-section relative z-10 w-full overflow-hidden flex items-center py-20 md:py-28 lg:py-32 min-h-[70vh]">
+    <section id="hero-offset"
+        class="fade-in-section relative z-10 w-full overflow-hidden flex items-center py-20 md:py-28 lg:py-32 min-h-[70vh]">
         <div class="absolute inset-0 -z-10 bg-[#050806]">
-            <img src="images/offset-printing.jpg" class="w-full h-full object-cover opacity-60 scale-105" alt="Offset Printing Background">
+            <img src="images/offset-printing.jpg" class="w-full h-full object-cover opacity-60 scale-105"
+                alt="Offset Printing Background">
             <div class="absolute inset-0 bg-gradient-to-b from-[#050806]/50 via-[#050806]/10 to-[#050806]/60"></div>
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#46B77B]/10 blur-[150px] rounded-full mix-blend-screen pointer-events-none"></div>
+            <div
+                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#46B77B]/10 blur-[150px] rounded-full mix-blend-screen pointer-events-none">
+            </div>
         </div>
 
         <div class="max-w-7xl mx-auto w-full px-4 md:px-8 lg:px-12 relative z-10">
             <div class="max-w-4xl mx-auto flex flex-col items-center text-center">
-                <div class="inline-flex items-center gap-2 py-1.5 px-5 rounded-full text-[0.65rem] md:text-xs font-bold tracking-widest uppercase text-[#46B77B] bg-[#46B77B]/10 border border-[#46B77B]/30 mb-6 md:mb-8 backdrop-blur-md">
+                <div
+                    class="inline-flex items-center gap-2 py-1.5 px-5 rounded-full text-[0.65rem] md:text-xs font-bold tracking-widest uppercase text-[#46B77B] bg-[#46B77B]/10 border border-[#46B77B]/30 mb-6 md:mb-8 backdrop-blur-md">
                     <i class="fas fa-print"></i> Premium Offset Printing
                 </div>
 
-                <h1 class="font-black leading-[1.15] tracking-tight text-white mb-6 md:mb-8 w-full drop-shadow-md text-[1.8rem] sm:text-[2.5rem] md:text-[3.2rem] lg:text-[3.8rem]">
+                <h1
+                    class="font-black leading-[1.15] tracking-tight text-white mb-6 md:mb-8 w-full drop-shadow-md text-[1.8rem] sm:text-[2.5rem] md:text-[3.2rem] lg:text-[3.8rem]">
                     <span class="block">Precision Printing</span>
-                    <span class="block text-transparent bg-clip-text bg-gradient-to-r from-[#46B77B] to-[#61CE70] mt-1 pb-1 min-h-[1.2em]">
+                    <span
+                        class="block text-transparent bg-clip-text bg-gradient-to-r from-[#46B77B] to-[#61CE70] mt-1 pb-1 min-h-[1.2em]">
                         <span id="offsetTypedText"></span>
                         <span class="inline-block w-1 h-[0.8em] bg-[#61CE70] ml-1 animate-pulse"></span>
                     </span>
                     <span id="typedText" style="visibility: hidden; position: absolute; pointer-events: none;"></span>
                 </h1>
 
-                <p class="text-sm sm:text-base md:text-[1.05rem] leading-relaxed md:leading-loose text-gray-200 mb-10 md:mb-12 max-w-4xl transition-opacity duration-300 drop-shadow-md">
-                    Welcome to Maqsood Faisal Printing Press, where the art of Offset Printing meets the versatility of Folding Cartons. Our Offset Printing and Folding Cartons services are crafted to elevate your brand’s visual identity, ensuring that your products make a lasting impression on your audience. Whether it’s brochures, magazines, or intricate folding cartons, we bring your vision to life with precision and vibrancy.
+                <p
+                    class="text-sm sm:text-base md:text-[1.05rem] leading-relaxed md:leading-loose text-gray-200 mb-10 md:mb-12 max-w-4xl transition-opacity duration-300 drop-shadow-md">
+                    Welcome to Maqsood Faisal Printing Press, where the art of Offset Printing meets the versatility of
+                    Folding Cartons. Our Offset Printing and Folding Cartons services are crafted to elevate your
+                    brand’s visual identity, ensuring that your products make a lasting impression on your audience.
+                    Whether it’s brochures, magazines, or intricate folding cartons, we bring your vision to life with
+                    precision and vibrancy.
                 </p>
 
                 <div class="flex flex-row justify-center items-center gap-3 w-full max-w-[450px] mx-auto">
-                    <a href="#contact" class="flex-1 flex items-center justify-center gap-2 py-3.5 px-4 md:px-6 rounded-xl font-bold text-xs md:text-sm text-white bg-[#46B77B] hover:bg-[#3ca56b] hover:-translate-y-1 hover:shadow-[0_10px_20px_-10px_rgba(70,183,123,0.5)] transition-all group whitespace-nowrap">
+                    <a href="#contact"
+                        class="flex-1 flex items-center justify-center gap-2 py-3.5 px-4 md:px-6 rounded-xl font-bold text-xs md:text-sm text-white bg-[#46B77B] hover:bg-[#3ca56b] hover:-translate-y-1 hover:shadow-[0_10px_20px_-10px_rgba(70,183,123,0.5)] transition-all group whitespace-nowrap">
                         Get a Quote
-                        <i class="fas fa-arrow-right text-[0.9em] shrink-0 transition-transform group-hover:translate-x-1"></i>
+                        <i
+                            class="fas fa-arrow-right text-[0.9em] shrink-0 transition-transform group-hover:translate-x-1"></i>
                     </a>
-                    <button type="button" class="flex-1 flex items-center justify-center gap-2 py-3.5 px-4 md:px-6 rounded-xl font-bold text-xs md:text-sm text-white bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 hover:border-white/40 hover:-translate-y-1 transition-all group whitespace-nowrap cursor-default">
+                    <button type="button"
+                        class="flex-1 flex items-center justify-center gap-2 py-3.5 px-4 md:px-6 rounded-xl font-bold text-xs md:text-sm text-white bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 hover:border-white/40 hover:-translate-y-1 transition-all group whitespace-nowrap cursor-default">
                         Explore Details
-                        <i class="fas fa-chevron-right text-[0.9em] shrink-0 transition-transform group-hover:translate-y-1"></i>
+                        <i
+                            class="fas fa-chevron-right text-[0.9em] shrink-0 transition-transform group-hover:translate-y-1"></i>
                     </button>
                 </div>
             </div>
@@ -99,73 +341,116 @@
     </section>
 
     <!-- ═══════════════ WHY CHOOSE US (INTERACTIVE TABS) ═══════════════ -->
-    <section id="why-choose-us" class="fade-in-section relative z-10 py-16 md:py-24 bg-[#FAFBF9] border-t border-gray-200/50 overflow-hidden font-sans">
+    <section id="why-choose-us"
+        class="fade-in-section relative z-10 py-16 md:py-24 bg-[#FAFBF9] border-t border-gray-200/50 overflow-hidden font-sans">
         <div class="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
             <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-[#46B77B]/5 blur-[120px] rounded-full"></div>
         </div>
 
         <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 relative z-10">
             <div class="text-center max-w-3xl mx-auto mb-10 md:mb-16">
-                <div class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-[#46B77B]/10 border border-[#46B77B]/20 mb-5 backdrop-blur-md">
-                    <span class="text-[0.65rem] font-bold tracking-[0.2em] uppercase text-[#46B77B]">Why Choose Us</span>
+                <div
+                    class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-[#46B77B]/10 border border-[#46B77B]/20 mb-5 backdrop-blur-md">
+                    <span class="text-[0.65rem] font-bold tracking-[0.2em] uppercase text-[#46B77B]">Why Choose
+                        Us</span>
                 </div>
                 <h2 class="text-2xl sm:text-3xl md:text-5xl font-black text-[#0A0C12] leading-[1.1] tracking-tight">
                     Why Choose Our <br class="hidden sm:block">
                     <span class="relative inline-block text-[#46B77B] mt-1.5 sm:mt-2">
                         Offset Printing?
-                        <svg class="absolute -bottom-2.5 md:-bottom-3.5 left-0 w-full" height="7" viewBox="0 0 200 10" preserveAspectRatio="none" fill="none">
+                        <svg class="absolute -bottom-2.5 md:-bottom-3.5 left-0 w-full" height="7" viewBox="0 0 200 10"
+                            preserveAspectRatio="none" fill="none">
                             <path d="M2 7C50 3 100 2 198 6" stroke="#46B77B" stroke-width="3" stroke-linecap="round" />
                         </svg>
                     </span>
                 </h2>
             </div>
 
-            <div class="bg-white border border-gray-100 rounded-2xl md:rounded-[2rem] shadow-[0_10px_40px_-15px_rgba(0,0,0,0.05)] overflow-hidden flex flex-row items-stretch min-h-[auto] md:min-h-[400px]">
+            <div
+                class="bg-white border border-gray-100 rounded-2xl md:rounded-[2rem] shadow-[0_10px_40px_-15px_rgba(0,0,0,0.05)] overflow-hidden flex flex-row items-stretch min-h-[auto] md:min-h-[400px]">
                 <div class="w-[35%] md:w-[40%] border-r border-gray-100 flex flex-col bg-white">
-                    <button onclick="openTab('tab1')" id="btn-tab1" class="tab-btn w-full text-left px-2 py-3 md:px-8 md:py-6 border-b border-gray-100 flex flex-col md:flex-row items-start md:items-center gap-1.5 md:gap-4 transition-all duration-300 hover:bg-[#46B77B]/5">
-                        <div class="w-7 h-7 md:w-10 md:h-10 rounded-lg md:rounded-xl flex items-center justify-center shrink-0 bg-gray-100 text-gray-400 tab-icon transition-colors">
+                    <button onclick="openTab('tab1')" id="btn-tab1"
+                        class="tab-btn w-full text-left px-2 py-3 md:px-8 md:py-6 border-b border-gray-100 flex flex-col md:flex-row items-start md:items-center gap-1.5 md:gap-4 transition-all duration-300 hover:bg-[#46B77B]/5">
+                        <div
+                            class="w-7 h-7 md:w-10 md:h-10 rounded-lg md:rounded-xl flex items-center justify-center shrink-0 bg-gray-100 text-gray-400 tab-icon transition-colors">
                             <i class="fas fa-palette text-[0.65rem] md:text-base"></i>
                         </div>
-                        <span class="font-bold text-gray-800 tab-text text-[0.65rem] md:text-base leading-snug">Unmatched Print Quality</span>
+                        <span
+                            class="font-bold text-gray-800 tab-text text-[0.65rem] md:text-base leading-snug">Unmatched
+                            Print Quality</span>
                     </button>
-                    <button onclick="openTab('tab2')" id="btn-tab2" class="tab-btn w-full text-left px-2 py-3 md:px-8 md:py-6 border-b border-gray-100 flex flex-col md:flex-row items-start md:items-center gap-1.5 md:gap-4 transition-all duration-300 hover:bg-[#46B77B]/5">
-                        <div class="w-7 h-7 md:w-10 md:h-10 rounded-lg md:rounded-xl flex items-center justify-center shrink-0 bg-gray-100 text-gray-400 tab-icon transition-colors">
+                    <button onclick="openTab('tab2')" id="btn-tab2"
+                        class="tab-btn w-full text-left px-2 py-3 md:px-8 md:py-6 border-b border-gray-100 flex flex-col md:flex-row items-start md:items-center gap-1.5 md:gap-4 transition-all duration-300 hover:bg-[#46B77B]/5">
+                        <div
+                            class="w-7 h-7 md:w-10 md:h-10 rounded-lg md:rounded-xl flex items-center justify-center shrink-0 bg-gray-100 text-gray-400 tab-icon transition-colors">
                             <i class="fas fa-box-open text-[0.65rem] md:text-base"></i>
                         </div>
-                        <span class="font-bold text-gray-800 tab-text text-[0.65rem] md:text-base leading-snug">Versatile Folding Cartons</span>
+                        <span
+                            class="font-bold text-gray-800 tab-text text-[0.65rem] md:text-base leading-snug">Versatile
+                            Folding Cartons</span>
                     </button>
-                    <button onclick="openTab('tab3')" id="btn-tab3" class="tab-btn w-full text-left px-2 py-3 md:px-8 md:py-6 border-b border-gray-100 flex flex-col md:flex-row items-start md:items-center gap-1.5 md:gap-4 transition-all duration-300 hover:bg-[#46B77B]/5">
-                        <div class="w-7 h-7 md:w-10 md:h-10 rounded-lg md:rounded-xl flex items-center justify-center shrink-0 bg-gray-100 text-gray-400 tab-icon transition-colors">
+                    <button onclick="openTab('tab3')" id="btn-tab3"
+                        class="tab-btn w-full text-left px-2 py-3 md:px-8 md:py-6 border-b border-gray-100 flex flex-col md:flex-row items-start md:items-center gap-1.5 md:gap-4 transition-all duration-300 hover:bg-[#46B77B]/5">
+                        <div
+                            class="w-7 h-7 md:w-10 md:h-10 rounded-lg md:rounded-xl flex items-center justify-center shrink-0 bg-gray-100 text-gray-400 tab-icon transition-colors">
                             <i class="fas fa-magic text-[0.65rem] md:text-base"></i>
                         </div>
-                        <span class="font-bold text-gray-800 tab-text text-[0.65rem] md:text-base leading-snug">Customization Beyond Limits</span>
+                        <span
+                            class="font-bold text-gray-800 tab-text text-[0.65rem] md:text-base leading-snug">Customization
+                            Beyond Limits</span>
                     </button>
-                    <button onclick="openTab('tab4')" id="btn-tab4" class="tab-btn w-full text-left px-2 py-3 md:px-8 md:py-6 flex flex-col md:flex-row items-start md:items-center gap-1.5 md:gap-4 transition-all duration-300 hover:bg-[#46B77B]/5 border-b-0">
-                        <div class="w-7 h-7 md:w-10 md:h-10 rounded-lg md:rounded-xl flex items-center justify-center shrink-0 bg-gray-100 text-gray-400 tab-icon transition-colors">
+                    <button onclick="openTab('tab4')" id="btn-tab4"
+                        class="tab-btn w-full text-left px-2 py-3 md:px-8 md:py-6 flex flex-col md:flex-row items-start md:items-center gap-1.5 md:gap-4 transition-all duration-300 hover:bg-[#46B77B]/5 border-b-0">
+                        <div
+                            class="w-7 h-7 md:w-10 md:h-10 rounded-lg md:rounded-xl flex items-center justify-center shrink-0 bg-gray-100 text-gray-400 tab-icon transition-colors">
                             <i class="fas fa-hand-holding-usd text-[0.65rem] md:text-base"></i>
                         </div>
-                        <span class="font-bold text-gray-800 tab-text text-[0.65rem] md:text-base leading-snug">Cost-Effective Solutions</span>
+                        <span
+                            class="font-bold text-gray-800 tab-text text-[0.65rem] md:text-base leading-snug">Cost-Effective
+                            Solutions</span>
                     </button>
                 </div>
 
                 <div class="w-[65%] md:w-[60%] bg-[#FAFBF9] relative flex flex-col justify-center">
-                    <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(#46B77B 1px, transparent 1px); background-size: 20px 20px;"></div>
-                    <div class="relative z-10 m-3 md:m-8 bg-white backdrop-blur-md p-4 md:p-8 rounded-xl md:rounded-2xl border border-gray-100 shadow-sm h-auto self-center w-full">
+                    <div class="absolute inset-0 opacity-[0.03]"
+                        style="background-image: radial-gradient(#46B77B 1px, transparent 1px); background-size: 20px 20px;">
+                    </div>
+                    <div
+                        class="relative z-10 m-3 md:m-8 bg-white backdrop-blur-md p-4 md:p-8 rounded-xl md:rounded-2xl border border-gray-100 shadow-sm h-auto self-center w-full">
                         <div id="tab1" class="tab-content block">
-                            <h3 class="text-sm md:text-3xl font-black text-[#0A0C12] mb-2 md:mb-4">Unmatched Print Quality</h3>
-                            <p class="text-gray-600 text-[0.65rem] md:text-base leading-relaxed md:leading-loose">Offset printing is renowned for its exceptional print quality, producing sharp and vibrant images. Our state-of-the-art offset printing technology ensures that your marketing materials, packaging, and promotional items stand out with unmatched clarity and color accuracy.</p>
+                            <h3 class="text-sm md:text-3xl font-black text-[#0A0C12] mb-2 md:mb-4">Unmatched Print
+                                Quality</h3>
+                            <p class="text-gray-600 text-[0.65rem] md:text-base leading-relaxed md:leading-loose">Offset
+                                printing is renowned for its exceptional print quality, producing sharp and vibrant
+                                images. Our state-of-the-art offset printing technology ensures that your marketing
+                                materials, packaging, and promotional items stand out with unmatched clarity and color
+                                accuracy.</p>
                         </div>
                         <div id="tab2" class="tab-content hidden">
-                            <h3 class="text-sm md:text-3xl font-black text-[#0A0C12] mb-2 md:mb-4">Versatile Folding Cartons</h3>
-                            <p class="text-gray-600 text-[0.65rem] md:text-base leading-relaxed md:leading-loose">Elevate your product presentation with our Folding Cartons. Customizable in design and structure, these cartons offer a unique blend of aesthetics and functionality. Whether it's for retail packaging or product displays, our folding cartons provide an ideal solution for diverse industries.</p>
+                            <h3 class="text-sm md:text-3xl font-black text-[#0A0C12] mb-2 md:mb-4">Versatile Folding
+                                Cartons</h3>
+                            <p class="text-gray-600 text-[0.65rem] md:text-base leading-relaxed md:leading-loose">
+                                Elevate your product presentation with our Folding Cartons. Customizable in design and
+                                structure, these cartons offer a unique blend of aesthetics and functionality. Whether
+                                it's for retail packaging or product displays, our folding cartons provide an ideal
+                                solution for diverse industries.</p>
                         </div>
                         <div id="tab3" class="tab-content hidden">
-                            <h3 class="text-sm md:text-3xl font-black text-[#0A0C12] mb-2 md:mb-4">Customization Beyond Limits</h3>
-                            <p class="text-gray-600 text-[0.65rem] md:text-base leading-relaxed md:leading-loose">Offset printing allows for extensive customization. From paper types and finishes to special inks and coatings, we offer a wide range of options to tailor your prints exactly to your brand’s specifications. Folding cartons can be uniquely designed to fit your product dimensions and branding requirements.</p>
+                            <h3 class="text-sm md:text-3xl font-black text-[#0A0C12] mb-2 md:mb-4">Customization Beyond
+                                Limits</h3>
+                            <p class="text-gray-600 text-[0.65rem] md:text-base leading-relaxed md:leading-loose">Offset
+                                printing allows for extensive customization. From paper types and finishes to special
+                                inks and coatings, we offer a wide range of options to tailor your prints exactly to
+                                your brand’s specifications. Folding cartons can be uniquely designed to fit your
+                                product dimensions and branding requirements.</p>
                         </div>
                         <div id="tab4" class="tab-content hidden">
-                            <h3 class="text-sm md:text-3xl font-black text-[#0A0C12] mb-2 md:mb-4">Cost-Effective Solutions</h3>
-                            <p class="text-gray-600 text-[0.65rem] md:text-base leading-relaxed md:leading-loose">Benefit from the cost-effectiveness of offset printing for high-volume projects. With efficient production processes and minimal waste, offset printing offers a budget-friendly option without compromising on quality.</p>
+                            <h3 class="text-sm md:text-3xl font-black text-[#0A0C12] mb-2 md:mb-4">Cost-Effective
+                                Solutions</h3>
+                            <p class="text-gray-600 text-[0.65rem] md:text-base leading-relaxed md:leading-loose">
+                                Benefit from the cost-effectiveness of offset printing for high-volume projects. With
+                                efficient production processes and minimal waste, offset printing offers a
+                                budget-friendly option without compromising on quality.</p>
                         </div>
                     </div>
                 </div>
@@ -174,270 +459,497 @@
     </section>
 
     <!-- ═══════════════ INDUSTRIES WE SERVE (ALL SCREENS 1-ROW) ═══════════════ -->
-    <section id="industries" class="fade-in-section relative z-10 py-12 md:py-16 min-[991px]:py-24 bg-[#050806] overflow-hidden border-b border-white/5 font-sans">
+    <section id="industries"
+        class="fade-in-section relative z-10 py-12 md:py-16 min-[991px]:py-24 bg-[#050806] overflow-hidden border-b border-white/5 font-sans">
         <div class="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#46B77B]/10 blur-[150px] rounded-full mix-blend-screen"></div>
+            <div
+                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#46B77B]/10 blur-[150px] rounded-full mix-blend-screen">
+            </div>
         </div>
 
-        <div class="max-w-7xl mx-auto px-1 sm:px-4 md:px-6 min-[991px]:px-8 lg:px-12 relative z-10 flex flex-col items-center">
-            <div class="inline-flex items-center gap-1.5 md:gap-2 py-1 md:py-2 px-2 md:px-6 rounded-full bg-[#46B77B]/10 border border-[#46B77B]/30 mb-6 md:mb-16 backdrop-blur-md">
-                <span class="text-[0.55rem] md:text-xs font-bold tracking-[0.1em] md:tracking-[0.25em] uppercase text-[#61CE70]">Industries We Serve</span>
+        <div
+            class="max-w-7xl mx-auto px-1 sm:px-4 md:px-6 min-[991px]:px-8 lg:px-12 relative z-10 flex flex-col items-center">
+            <div
+                class="inline-flex items-center gap-1.5 md:gap-2 py-1 md:py-2 px-2 md:px-6 rounded-full bg-[#46B77B]/10 border border-[#46B77B]/30 mb-6 md:mb-16 backdrop-blur-md">
+                <span
+                    class="text-[0.55rem] md:text-xs font-bold tracking-[0.1em] md:tracking-[0.25em] uppercase text-[#61CE70]">Industries
+                    We Serve</span>
             </div>
 
-            <div class="flex flex-row flex-nowrap items-start justify-between w-full gap-1 sm:gap-2 md:gap-4 min-[991px]:gap-8 lg:gap-12">
+            <div
+                class="flex flex-row flex-nowrap items-start justify-between w-full gap-1 sm:gap-2 md:gap-4 min-[991px]:gap-8 lg:gap-12">
                 <div class="group flex flex-col items-center text-center cursor-default flex-1">
-                    <div class="w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 min-[991px]:w-20 min-[991px]:h-20 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-1.5 md:mb-4 min-[991px]:mb-6 group-hover:border-[#46B77B]/50 group-hover:bg-[#46B77B]/10 group-hover:scale-110 transition-all duration-500 relative">
-                        <div class="absolute inset-0 bg-[#46B77B]/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                        <i class="fas fa-store text-[0.6rem] sm:text-base md:text-xl min-[991px]:text-3xl text-gray-400 group-hover:text-[#61CE70] transition-colors relative z-10"></i>
+                    <div
+                        class="w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 min-[991px]:w-20 min-[991px]:h-20 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-1.5 md:mb-4 min-[991px]:mb-6 group-hover:border-[#46B77B]/50 group-hover:bg-[#46B77B]/10 group-hover:scale-110 transition-all duration-500 relative">
+                        <i
+                            class="fas fa-store text-[0.6rem] sm:text-base md:text-xl min-[991px]:text-3xl text-gray-400 group-hover:text-[#61CE70] transition-colors relative z-10"></i>
                     </div>
-                    <h3 class="text-[0.5rem] sm:text-[0.65rem] md:text-sm min-[991px]:text-lg font-bold text-gray-400 group-hover:text-white transition-colors leading-tight">Retail</h3>
+                    <h3
+                        class="text-[0.5rem] sm:text-[0.65rem] md:text-sm min-[991px]:text-lg font-bold text-gray-400 group-hover:text-white transition-colors leading-tight">
+                        Retail</h3>
                 </div>
                 <div class="group flex flex-col items-center text-center cursor-default flex-1">
-                    <div class="w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 min-[991px]:w-20 min-[991px]:h-20 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-1.5 md:mb-4 min-[991px]:mb-6 group-hover:border-amber-400/50 group-hover:bg-amber-400/10 group-hover:scale-110 transition-all duration-500 relative">
-                        <div class="absolute inset-0 bg-amber-400/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                        <i class="fas fa-utensils text-[0.6rem] sm:text-base md:text-xl min-[991px]:text-3xl text-gray-400 group-hover:text-amber-400 transition-colors relative z-10"></i>
+                    <div
+                        class="w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 min-[991px]:w-20 min-[991px]:h-20 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-1.5 md:mb-4 min-[991px]:mb-6 group-hover:border-amber-400/50 group-hover:bg-amber-400/10 group-hover:scale-110 transition-all duration-500 relative">
+                        <i
+                            class="fas fa-utensils text-[0.6rem] sm:text-base md:text-xl min-[991px]:text-3xl text-gray-400 group-hover:text-amber-400 transition-colors relative z-10"></i>
                     </div>
-                    <h3 class="text-[0.5rem] sm:text-[0.65rem] md:text-sm min-[991px]:text-lg font-bold text-gray-400 group-hover:text-white transition-colors leading-tight">Food & Beverage</h3>
+                    <h3
+                        class="text-[0.5rem] sm:text-[0.65rem] md:text-sm min-[991px]:text-lg font-bold text-gray-400 group-hover:text-white transition-colors leading-tight">
+                        Food & Beverage</h3>
                 </div>
                 <div class="group flex flex-col items-center text-center cursor-default flex-1">
-                    <div class="w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 min-[991px]:w-20 min-[991px]:h-20 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-1.5 md:mb-4 min-[991px]:mb-6 group-hover:border-blue-400/50 group-hover:bg-blue-400/10 group-hover:scale-110 transition-all duration-500 relative">
-                        <div class="absolute inset-0 bg-blue-400/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                        <i class="fas fa-pills text-[0.6rem] sm:text-base md:text-xl min-[991px]:text-3xl text-gray-400 group-hover:text-blue-400 transition-colors relative z-10"></i>
+                    <div
+                        class="w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 min-[991px]:w-20 min-[991px]:h-20 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-1.5 md:mb-4 min-[991px]:mb-6 group-hover:border-blue-400/50 group-hover:bg-blue-400/10 group-hover:scale-110 transition-all duration-500 relative">
+                        <i
+                            class="fas fa-pills text-[0.6rem] sm:text-base md:text-xl min-[991px]:text-3xl text-gray-400 group-hover:text-blue-400 transition-colors relative z-10"></i>
                     </div>
-                    <h3 class="text-[0.5rem] sm:text-[0.65rem] md:text-sm min-[991px]:text-lg font-bold text-gray-400 group-hover:text-white transition-colors leading-tight">Pharmaceuticals</h3>
+                    <h3
+                        class="text-[0.5rem] sm:text-[0.65rem] md:text-sm min-[991px]:text-lg font-bold text-gray-400 group-hover:text-white transition-colors leading-tight">
+                        Pharmaceuticals</h3>
                 </div>
                 <div class="group flex flex-col items-center text-center cursor-default flex-1">
-                    <div class="w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 min-[991px]:w-20 min-[991px]:h-20 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-1.5 md:mb-4 min-[991px]:mb-6 group-hover:border-purple-400/50 group-hover:bg-purple-400/10 group-hover:scale-110 transition-all duration-500 relative">
-                        <div class="absolute inset-0 bg-purple-400/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                        <i class="fas fa-spa text-[0.6rem] sm:text-base md:text-xl min-[991px]:text-3xl text-gray-400 group-hover:text-purple-400 transition-colors relative z-10"></i>
+                    <div
+                        class="w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 min-[991px]:w-20 min-[991px]:h-20 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-1.5 md:mb-4 min-[991px]:mb-6 group-hover:border-purple-400/50 group-hover:bg-purple-400/10 group-hover:scale-110 transition-all duration-500 relative">
+                        <i
+                            class="fas fa-spa text-[0.6rem] sm:text-base md:text-xl min-[991px]:text-3xl text-gray-400 group-hover:text-purple-400 transition-colors relative z-10"></i>
                     </div>
-                    <h3 class="text-[0.5rem] sm:text-[0.65rem] md:text-sm min-[991px]:text-lg font-bold text-gray-400 group-hover:text-white transition-colors leading-tight">Cosmetic & Beauty</h3>
+                    <h3
+                        class="text-[0.5rem] sm:text-[0.65rem] md:text-sm min-[991px]:text-lg font-bold text-gray-400 group-hover:text-white transition-colors leading-tight">
+                        Cosmetic & Beauty</h3>
                 </div>
                 <div class="group flex flex-col items-center text-center cursor-default flex-1">
-                    <div class="w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 min-[991px]:w-20 min-[991px]:h-20 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-1.5 md:mb-4 min-[991px]:mb-6 group-hover:border-[#46B77B]/50 group-hover:bg-[#46B77B]/10 group-hover:scale-110 transition-all duration-500 relative">
-                        <div class="absolute inset-0 bg-[#46B77B]/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                        <i class="fas fa-ellipsis-h text-[0.6rem] sm:text-base md:text-xl min-[991px]:text-3xl text-gray-400 group-hover:text-[#61CE70] transition-colors relative z-10"></i>
+                    <div
+                        class="w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 min-[991px]:w-20 min-[991px]:h-20 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-1.5 md:mb-4 min-[991px]:mb-6 group-hover:border-[#46B77B]/50 group-hover:bg-[#46B77B]/10 group-hover:scale-110 transition-all duration-500 relative">
+                        <i
+                            class="fas fa-ellipsis-h text-[0.6rem] sm:text-base md:text-xl min-[991px]:text-3xl text-gray-400 group-hover:text-[#61CE70] transition-colors relative z-10"></i>
                     </div>
-                    <h3 class="text-[0.5rem] sm:text-[0.65rem] md:text-sm min-[991px]:text-lg font-bold text-gray-400 group-hover:text-white transition-colors leading-tight">And more...</h3>
+                    <h3
+                        class="text-[0.5rem] sm:text-[0.65rem] md:text-sm min-[991px]:text-lg font-bold text-gray-400 group-hover:text-white transition-colors leading-tight">
+                        And more...</h3>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ═══════════════ ADVANCED IMAGE SHOWCASE SECTION (FIXED SPEED) ═══════════════ -->
-    <section id="showcase" class="fade-in-section relative z-10 py-16 md:py-24 bg-transparent overflow-hidden border-t border-black/5">
+    <!-- ═══════════════ COMBINED SHOWCASE: MARQUEE + MASONRY GALLERY ═══════════════ -->
+    <section id="showcase"
+        class="fade-in-section relative z-10 py-16 md:py-24 bg-[#FAFBF9] overflow-hidden border-t border-gray-200/50">
+
+        <div class="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
+            <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-[#46B77B]/5 blur-[120px] rounded-full"></div>
+        </div>
+
         <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 relative z-10 text-center mb-10 md:mb-14">
-            <div class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-[#46B77B]/10 border border-[#46B77B]/20 mb-4 backdrop-blur-md">
+            <div
+                class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-[#46B77B]/10 border border-[#46B77B]/20 mb-4 backdrop-blur-md">
                 <i class="fas fa-sparkles text-[#46B77B] text-xs"></i>
                 <span class="text-[0.65rem] font-bold tracking-[0.2em] uppercase text-[#46B77B]">Our Portfolio</span>
             </div>
             <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-[#0A0C12] leading-[1.1] tracking-tight mb-4">
-                Excellence in Every 
+                Excellence in Every
                 <span class="relative inline-block text-[#46B77B] mt-1.5 sm:mt-2">
                     Print.
-                    <svg class="absolute -bottom-2.5 md:-bottom-3.5 left-0 w-full" height="7" viewBox="0 0 200 10" preserveAspectRatio="none" fill="none">
+                    <svg class="absolute -bottom-2.5 md:-bottom-3.5 left-0 w-full" height="7" viewBox="0 0 200 10"
+                        preserveAspectRatio="none" fill="none">
                         <path d="M2 7C50 3 100 2 198 6" stroke="#46B77B" stroke-width="3" stroke-linecap="round" />
                     </svg>
                 </span>
             </h2>
-            <p class="text-gray-500 text-sm md:text-base max-w-2xl mx-auto">Take a look at some of our recent offset printing and folding carton projects that helped brands stand out.</p>
+            <p class="text-gray-500 text-sm md:text-base max-w-2xl mx-auto mt-4">
+                Take a look at some of our recent offset printing and folding carton projects that helped brands stand
+                out.
+            </p>
         </div>
 
-        <!-- Marquee Slider (FIXED SPEED) -->
-        <div class="relative w-full overflow-hidden group/slider">
-            <div id="marquee-track" class="marquee-container flex gap-5 md:gap-8 px-4 md:px-8 py-6">
-                
-                <!-- Images Set 1 -->
-                <div class="marquee-set flex gap-5 md:gap-8 shrink-0">
-                    <div class="shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white/40 backdrop-blur-md border border-white/60 transition-all duration-500">
-                        <img src="images/offset-1.png" alt="Offset Printing" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
+        <!-- 1. MARQUEE SLIDER (Images 1 to 10) -->
+        <div class="relative w-full overflow-hidden group/slider mb-12 md:mb-20">
+            <div
+                class="absolute top-0 left-0 w-16 md:w-32 h-full bg-gradient-to-r from-[#FAFBF9] to-transparent z-20 pointer-events-none">
+            </div>
+            <div
+                class="absolute top-0 right-0 w-16 md:w-32 h-full bg-gradient-to-l from-[#FAFBF9] to-transparent z-20 pointer-events-none">
+            </div>
+
+            <div id="marquee-track" class="marquee-container flex gap-4 md:gap-6 px-4 md:px-8 py-4">
+                <!-- Images Set -->
+                <div class="marquee-set flex gap-4 md:gap-6 shrink-0">
+                    <!-- Image 1 -->
+                    <div
+                        class="shrink-0 w-[260px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white border border-gray-200 shadow-sm transition-all duration-500 hover:shadow-xl">
+                        <img src="images/offset-1.png" alt="Gallery"
+                            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
                     </div>
-                    <div class="shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white/40 backdrop-blur-md border border-white/60 transition-all duration-500">
-                        <img src="images/offset-2.png" alt="Folding Cartons" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
+                    <!-- Image 2 -->
+                    <div
+                        class="shrink-0 w-[260px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white border border-gray-200 shadow-sm transition-all duration-500 hover:shadow-xl">
+                        <img src="images/offset-2.png" alt="Gallery"
+                            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
                     </div>
-                    <div class="shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white/40 backdrop-blur-md border border-white/60 transition-all duration-500">
-                        <img src="images/offset-3.png" alt="Marketing Materials" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
+                    <!-- Image 3 -->
+                    <div
+                        class="shrink-0 w-[260px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white border border-gray-200 shadow-sm transition-all duration-500 hover:shadow-xl">
+                        <img src="images/offset-3.png" alt="Gallery"
+                            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
                     </div>
-                    <div class="shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white/40 backdrop-blur-md border border-white/60 transition-all duration-500">
-                        <img src="images/offset-4.png" alt="Packaging Solutions" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
+                    <!-- Image 4 -->
+                    <div
+                        class="shrink-0 w-[260px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white border border-gray-200 shadow-sm transition-all duration-500 hover:shadow-xl">
+                        <img src="images/offset-4.png" alt="Gallery"
+                            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
                     </div>
-                    <div class="shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white/40 backdrop-blur-md border border-white/60 transition-all duration-500">
-                        <img src="images/offset-5.png" alt="Brochure Printing" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
+                    <!-- Image 5 -->
+                    <div
+                        class="shrink-0 w-[260px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white border border-gray-200 shadow-sm transition-all duration-500 hover:shadow-xl">
+                        <img src="images/offset-5.png" alt="Gallery"
+                            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
                     </div>
-                    <div class="shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white/40 backdrop-blur-md border border-white/60 transition-all duration-500">
-                        <img src="images/offset-6.png" alt="Product Labels" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
+                    <!-- Image 6 -->
+                    <div
+                        class="shrink-0 w-[260px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white border border-gray-200 shadow-sm transition-all duration-500 hover:shadow-xl">
+                        <img src="images/offset-6.png" alt="Gallery"
+                            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
                     </div>
-                    <div class="shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white/40 backdrop-blur-md border border-white/60 transition-all duration-500">
-                        <img src="images/offset-7.png" alt="Corporate Printing" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
+                    <!-- Image 7 -->
+                    <div
+                        class="shrink-0 w-[260px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white border border-gray-200 shadow-sm transition-all duration-500 hover:shadow-xl">
+                        <img src="images/offset-7.png" alt="Gallery"
+                            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
                     </div>
-                    <div class="shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white/40 backdrop-blur-md border border-white/60 transition-all duration-500">
-                        <img src="images/offset-8.png" alt="Custom Designs" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
-                    </div>
-                    <div class="shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white/40 backdrop-blur-md border border-white/60 transition-all duration-500">
-                        <img src="images/offset-9.jpeg" alt="Custom Designs" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
-                    </div>
-                    <div class="shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white/40 backdrop-blur-md border border-white/60 transition-all duration-500">
-                        <img src="images/offset-10.jpeg" alt="Custom Designs" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
-                    </div>
-                    <div class="shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white/40 backdrop-blur-md border border-white/60 transition-all duration-500">
-                        <img src="images/offset-11.jpeg" alt="Custom Designs" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
-                    </div>
-                    <div class="shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white/40 backdrop-blur-md border border-white/60 transition-all duration-500">
-                        <img src="images/offset-12.jpeg" alt="Custom Designs" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
-                    </div>
-                    <div class="shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white/40 backdrop-blur-md border border-white/60 transition-all duration-500">
-                        <img src="images/offset-13.jpeg" alt="Custom Designs" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
-                    </div>
-                    <div class="shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white/40 backdrop-blur-md border border-white/60 transition-all duration-500">
-                        <img src="images/offset-14.jpeg" alt="Custom Designs" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
-                    </div>
-                    <div class="shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white/40 backdrop-blur-md border border-white/60 transition-all duration-500">
-                        <img src="images/offset-15.jpeg" alt="Custom Designs" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
-                    </div>
-                    <div class="shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white/40 backdrop-blur-md border border-white/60 transition-all duration-500">
-                        <img src="images/offset-16.jpeg" alt="Custom Designs" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
-                    </div>
-                    <div class="shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white/40 backdrop-blur-md border border-white/60 transition-all duration-500">
-                        <img src="images/offset-17.jpeg" alt="Custom Designs" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
-                    </div>
-                    <div class="shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white/40 backdrop-blur-md border border-white/60 transition-all duration-500">
-                        <img src="images/offset-18.jpeg" alt="Custom Designs" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
-                    </div>
-                    <div class="shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white/40 backdrop-blur-md border border-white/60 transition-all duration-500">
-                        <img src="images/offset-19.jpeg" alt="Custom Designs" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
-                    </div>
-                    <div class="shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white/40 backdrop-blur-md border border-white/60 transition-all duration-500">
-                        <img src="images/offset-20.jpeg" alt="Custom Designs" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
-                    </div>
-                    <div class="shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white/40 backdrop-blur-md border border-white/60 transition-all duration-500">
-                        <img src="images/offset-21.jpeg" alt="Custom Designs" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
-                    </div>
-                    <div class="shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white/40 backdrop-blur-md border border-white/60 transition-all duration-500">
-                        <img src="images/offset-22.jpeg" alt="Custom Designs" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
-                    </div>
-                    <div class="shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white/40 backdrop-blur-md border border-white/60 transition-all duration-500">
-                        <img src="images/offset-23.jpeg" alt="Custom Designs" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
-                    </div>
-                    <div class="shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white/40 backdrop-blur-md border border-white/60 transition-all duration-500">
-                        <img src="images/offset-24.jpeg" alt="Custom Designs" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
-                    </div>
-                    <div class="shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white/40 backdrop-blur-md border border-white/60 transition-all duration-500">
-                        <img src="images/offset-25.jpeg" alt="Custom Designs" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
-                    </div>
-                    <div class="shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white/40 backdrop-blur-md border border-white/60 transition-all duration-500">
-                        <img src="images/offset-26.jpeg" alt="Custom Designs" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
-                    </div>
-                    <div class="shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white/40 backdrop-blur-md border border-white/60 transition-all duration-500">
-                        <img src="images/offset-27.jpeg" alt="Custom Designs" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
-                    </div>
-                    <div class="shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white/40 backdrop-blur-md border border-white/60 transition-all duration-500">
-                        <img src="images/offset-28.jpeg" alt="Custom Designs" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
-                    </div>
-                    <div class="shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white/40 backdrop-blur-md border border-white/60 transition-all duration-500">
-                        <img src="images/offset-29.jpeg" alt="Custom Designs" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
-                    </div>
-                    <div class="shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white/40 backdrop-blur-md border border-white/60 transition-all duration-500">
-                        <img src="images/offset-30.jpeg" alt="Custom Designs" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
-                    </div>
-                    <div class="shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white/40 backdrop-blur-md border border-white/60 transition-all duration-500">
-                        <img src="images/offset-31.jpeg" alt="Custom Designs" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
-                    </div>
-                    <div class="shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white/40 backdrop-blur-md border border-white/60 transition-all duration-500">
-                        <img src="images/offset-32.jpeg" alt="Custom Designs" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
-                    </div>
-                    <div class="shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white/40 backdrop-blur-md border border-white/60 transition-all duration-500">
-                        <img src="images/offset-33.jpeg" alt="Custom Designs" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
-                    </div>
-                    <div class="shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white/40 backdrop-blur-md border border-white/60 transition-all duration-500">
-                        <img src="images/offset-34.jpeg" alt="Custom Designs" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
-                    </div>
-                    <div class="shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white/40 backdrop-blur-md border border-white/60 transition-all duration-500">
-                        <img src="images/offset-35.jpeg" alt="Custom Designs" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
-                    </div>
-                    <div class="shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white/40 backdrop-blur-md border border-white/60 transition-all duration-500">
-                        <img src="images/offset-36.jpeg" alt="Custom Designs" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
-                    </div>
-                    <div class="shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white/40 backdrop-blur-md border border-white/60 transition-all duration-500">
-                        <img src="images/offset-37.jpeg" alt="Custom Designs" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
+                    <!-- Image 8 -->
+                    <div
+                        class="shrink-0 w-[260px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white border border-gray-200 shadow-sm transition-all duration-500 hover:shadow-xl">
+                        <img src="images/offset-8.png" alt="Gallery"
+                            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- 2. MASONRY GRID GALLERY (Images 9 to 37) -->
+<div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 relative z-10">
+    <div class="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 sm:gap-5 lg:gap-6">
+
+        <!-- Image 9 -->
+        <a href="images/offset-9.png" target="_blank" rel="noopener"
+            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
+            <img src="images/offset-9.png" alt="Offset printing project 9" loading="lazy"
+                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
+        </a>
+
+        <!-- Image 10 -->
+        <a href="images/offset-10.png" target="_blank" rel="noopener"
+            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
+            <img src="images/offset-10.png" alt="Offset printing project 10" loading="lazy"
+                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
+        </a>
+
+        <!-- Image 11 -->
+        <a href="images/offset-11.png" target="_blank" rel="noopener"
+            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
+            <img src="images/offset-11.png" alt="Offset printing project 11" loading="lazy"
+                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
+        </a>
+
+        <!-- Image 12 -->
+        <a href="images/offset-12.png" target="_blank" rel="noopener"
+            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
+            <img src="images/offset-12.png" alt="Offset printing project 12" loading="lazy"
+                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
+        </a>
+
+        <!-- Image 13 -->
+        <a href="images/offset-13.png" target="_blank" rel="noopener"
+            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
+            <img src="images/offset-13.png" alt="Offset printing project 13" loading="lazy"
+                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
+        </a>
+
+        <!-- Image 14 -->
+        <a href="images/offset-14.png" target="_blank" rel="noopener"
+            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
+            <img src="images/offset-14.png" alt="Offset printing project 14" loading="lazy"
+                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
+        </a>
+
+        <!-- Image 15 -->
+        <a href="images/offset-15.png" target="_blank" rel="noopener"
+            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
+            <img src="images/offset-15.png" alt="Offset printing project 15" loading="lazy"
+                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
+        </a>
+
+        <!-- Image 16 -->
+        <a href="images/offset-16.png" target="_blank" rel="noopener"
+            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
+            <img src="images/offset-16.png" alt="Offset printing project 16" loading="lazy"
+                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
+        </a>
+
+        <!-- Image 17 -->
+        <a href="images/offset-17.png" target="_blank" rel="noopener"
+            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
+            <img src="images/offset-17.png" alt="Offset printing project 17" loading="lazy"
+                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
+        </a>
+
+        <!-- Image 18 -->
+        <a href="images/offset-18.png" target="_blank" rel="noopener"
+            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
+            <img src="images/offset-18.png" alt="Offset printing project 18" loading="lazy"
+                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
+        </a>
+
+        <!-- Image 19 -->
+        <a href="images/offset-19.png" target="_blank" rel="noopener"
+            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
+            <img src="images/offset-19.png" alt="Offset printing project 19" loading="lazy"
+                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
+        </a>
+
+        <!-- Image 20 -->
+        <a href="images/offset-20.png" target="_blank" rel="noopener"
+            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
+            <img src="images/offset-20.png" alt="Offset printing project 20" loading="lazy"
+                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
+        </a>
+
+        <!-- Image 21 -->
+        <a href="images/offset-21.png" target="_blank" rel="noopener"
+            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
+            <img src="images/offset-21.png" alt="Offset printing project 21" loading="lazy"
+                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
+        </a>
+
+        <!-- Image 22 -->
+        <a href="images/offset-22.png" target="_blank" rel="noopener"
+            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
+            <img src="images/offset-22.png" alt="Offset printing project 22" loading="lazy"
+                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
+        </a>
+
+        <!-- Image 23 -->
+        <a href="images/offset-23.png" target="_blank" rel="noopener"
+            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
+            <img src="images/offset-23.png" alt="Offset printing project 23" loading="lazy"
+                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
+        </a>
+
+        <!-- Image 24 -->
+        <a href="images/offset-24.png" target="_blank" rel="noopener"
+            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
+            <img src="images/offset-24.png" alt="Offset printing project 24" loading="lazy"
+                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
+        </a>
+
+        <!-- Image 25 -->
+        <a href="images/offset-25.png" target="_blank" rel="noopener"
+            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
+            <img src="images/offset-25.png" alt="Offset printing project 25" loading="lazy"
+                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
+        </a>
+
+        <!-- Image 26 -->
+        <a href="images/offset-26.png" target="_blank" rel="noopener"
+            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
+            <img src="images/offset-26.png" alt="Offset printing project 26" loading="lazy"
+                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
+        </a>
+
+        <!-- Image 27 -->
+        <a href="images/offset-27.png" target="_blank" rel="noopener"
+            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
+            <img src="images/offset-27.png" alt="Offset printing project 27" loading="lazy"
+                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
+        </a>
+
+        <!-- Image 28 -->
+        <a href="images/offset-28.png" target="_blank" rel="noopener"
+            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
+            <img src="images/offset-28.png" alt="Offset printing project 28" loading="lazy"
+                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
+        </a>
+
+        <!-- Image 36 -->
+        <a href="images/offset-36.png" target="_blank" rel="noopener"
+            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
+            <img src="images/offset-36.png" alt="Offset printing project 36" loading="lazy"
+                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
+        </a>
+
+        <!-- Image 29 -->
+        <a href="images/offset-29.png" target="_blank" rel="noopener"
+            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
+            <img src="images/offset-29.png" alt="Offset printing project 29" loading="lazy"
+                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
+        </a>
+
+        <!-- Image 30 -->
+        <a href="images/offset-30.png" target="_blank" rel="noopener"
+            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
+            <img src="images/offset-30.png" alt="Offset printing project 30" loading="lazy"
+                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
+        </a>
+
+        <!-- Image 31 -->
+        <a href="images/offset-31.png" target="_blank" rel="noopener"
+            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
+            <img src="images/offset-31.png" alt="Offset printing project 31" loading="lazy"
+                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
+        </a>
+
+        <!-- Image 32 -->
+        <a href="images/offset-32.png" target="_blank" rel="noopener"
+            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
+            <img src="images/offset-32.png" alt="Offset printing project 32" loading="lazy"
+                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
+        </a>
+
+        <!-- Image 33 -->
+        <a href="images/offset-33.png" target="_blank" rel="noopener"
+            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
+            <img src="images/offset-33.png" alt="Offset printing project 33" loading="lazy"
+                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
+        </a>
+
+        <!-- Image 34 -->
+        <a href="images/offset-34.png" target="_blank" rel="noopener"
+            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
+            <img src="images/offset-34.png" alt="Offset printing project 34" loading="lazy"
+                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
+        </a>
+
+        <!-- Image 35 -->
+        <a href="images/offset-35.png" target="_blank" rel="noopener"
+            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
+            <img src="images/offset-35.png" alt="Offset printing project 35" loading="lazy"
+                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
+        </a>
+
+        <!-- Image 37 -->
+        <a href="images/offset-37.png" target="_blank" rel="noopener"
+            class="group mb-4 block break-inside-avoid transition-transform duration-500 hover:-translate-y-1 sm:mb-5 lg:mb-6">
+            <img src="images/offset-37.png" alt="Offset printing project 37" loading="lazy"
+                class="block h-auto w-full drop-shadow-[0_12px_22px_rgba(10,12,18,0.14)] transition-transform duration-700 group-hover:scale-[1.03]">
+        </a>
+
+    </div>
+</div>
     </section>
 
     <!-- ═══════════════ NEED FOR SOME HELP (PREMIUM SPLIT DARK) ═══════════════ -->
-    <section id="help" class="fade-in-section relative z-10 py-20 md:py-32 bg-[#050806] overflow-hidden border-b border-white/5 font-sans">
+    <section id="help"
+        class="fade-in-section relative z-10 py-20 md:py-32 bg-[#050806] overflow-hidden border-b border-white/5 font-sans">
         <div class="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
-            <div class="absolute top-0 left-0 w-[500px] h-[500px] bg-[#46B77B]/10 blur-[150px] rounded-full mix-blend-screen"></div>
-            <div class="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#61CE70]/5 blur-[120px] rounded-full mix-blend-screen"></div>
+            <div
+                class="absolute top-0 left-0 w-[500px] h-[500px] bg-[#46B77B]/10 blur-[150px] rounded-full mix-blend-screen">
+            </div>
+            <div
+                class="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#61CE70]/5 blur-[120px] rounded-full mix-blend-screen">
+            </div>
         </div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
                 <div class="w-full lg:w-1/2 relative slide-in-left order-2 lg:order-1">
                     <div class="relative w-full max-w-lg mx-auto">
-                        <div class="absolute -top-4 -left-4 w-24 h-24 border-t-2 border-l-2 border-[#46B77B]/40 rounded-tl-3xl z-0"></div>
-                        <div class="absolute -bottom-4 -right-4 w-24 h-24 border-b-2 border-r-2 border-[#46B77B]/40 rounded-br-3xl z-0"></div>
-
-                        <div class="relative z-10 rounded-3xl overflow-hidden aspect-[4/5] shadow-2xl bg-white/5 border border-white/10 group">
-                            <img src="images/help-section.jpg" alt="Need Help" class="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-110">
-                            <div class="absolute inset-0 bg-gradient-to-t from-[#050806] via-[#050806]/20 to-transparent opacity-80 pointer-events-none"></div>
+                        <div
+                            class="absolute -top-4 -left-4 w-24 h-24 border-t-2 border-l-2 border-[#46B77B]/40 rounded-tl-3xl z-0">
+                        </div>
+                        <div
+                            class="absolute -bottom-4 -right-4 w-24 h-24 border-b-2 border-r-2 border-[#46B77B]/40 rounded-br-3xl z-0">
                         </div>
 
-                        <div class="absolute -bottom-6 -right-2 md:-right-6 z-20 bg-[#0A0F0D] border border-[#46B77B]/30 p-4 rounded-2xl shadow-xl flex items-center gap-4">
+                        <div
+                            class="relative z-10 rounded-3xl overflow-hidden aspect-[4/5] shadow-2xl bg-white/5 border border-white/10 group">
+                            <img src="images/help-section.jpg" alt="Need Help"
+                                class="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-110">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-[#050806] via-[#050806]/20 to-transparent opacity-80 pointer-events-none">
+                            </div>
+                        </div>
+
+                        <div
+                            class="absolute -bottom-6 -right-2 md:-right-6 z-20 bg-[#0A0F0D] border border-[#46B77B]/30 p-4 rounded-2xl shadow-xl flex items-center gap-4">
                             <div class="w-12 h-12 rounded-xl bg-[#46B77B]/20 flex items-center justify-center">
                                 <i class="fas fa-headset text-xl text-[#61CE70]"></i>
                             </div>
                             <div>
                                 <p class="text-2xl font-black text-white leading-none">24/7</p>
-                                <p class="text-[0.6rem] font-bold text-gray-400 uppercase tracking-widest mt-1">Support Available</p>
+                                <p class="text-[0.6rem] font-bold text-gray-400 uppercase tracking-widest mt-1">Support
+                                    Available</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="w-full lg:w-1/2 order-1 lg:order-2 slide-in-right">
-                    <div class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-[#46B77B]/10 border border-[#46B77B]/30 mb-6 backdrop-blur-md">
+                    <div
+                        class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-[#46B77B]/10 border border-[#46B77B]/30 mb-6 backdrop-blur-md">
                         <i class="fas fa-headset text-[#61CE70]"></i>
-                        <span class="text-[0.65rem] font-bold tracking-[0.2em] uppercase text-[#61CE70]">Get In Touch</span>
+                        <span class="text-[0.65rem] font-bold tracking-[0.2em] uppercase text-[#61CE70]">Get In
+                            Touch</span>
                     </div>
 
-                    <h2 class="text-4xl sm:text-5xl md:text-6xl font-black text-white leading-[1.1] tracking-tight mb-4">
+                    <h2
+                        class="text-4xl sm:text-5xl md:text-6xl font-black text-white leading-[1.1] tracking-tight mb-4">
                         Let's Talk <br>
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#46B77B] to-[#61CE70]">Business.</span>
+                        <span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-[#46B77B] to-[#61CE70]">Business.</span>
                     </h2>
                     <p class="text-gray-400 text-sm md:text-base leading-relaxed mb-10 max-w-md">
-                        Book your order now or get a free consultation with our printing experts to bring your vision to life.
+                        Book your order now or get a free consultation with our printing experts to bring your vision to
+                        life.
                     </p>
 
                     <div class="flex flex-col gap-6 relative w-full">
                         <div class="group relative flex flex-row items-center gap-5 cursor-default">
-                            <div class="w-14 h-14 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center shrink-0 group-hover:border-[#46B77B] group-hover:bg-[#46B77B] transition-all duration-300 z-10">
-                                <i class="fas fa-phone-alt text-lg text-gray-400 group-hover:text-white transition-colors"></i>
+                            <div
+                                class="w-14 h-14 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center shrink-0 group-hover:border-[#46B77B] group-hover:bg-[#46B77B] transition-all duration-300 z-10">
+                                <i
+                                    class="fas fa-phone-alt text-lg text-gray-400 group-hover:text-white transition-colors"></i>
                             </div>
-                            <div class="flex-1 pb-4 border-b border-white/5 group-hover:border-[#46B77B]/30 transition-colors">
-                                <h4 class="text-gray-400 text-xs font-bold uppercase tracking-wider mb-1 group-hover:text-[#61CE70] transition-colors">Phone (UAN)</h4>
-                                <a href="tel:+92111333301" class="text-white text-lg font-black hover:text-[#61CE70] transition-colors">+92 111 333 301</a>
-                            </div>
-                        </div>
-
-                        <div class="group relative flex flex-row items-center gap-5 cursor-default">
-                            <div class="w-14 h-14 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center shrink-0 group-hover:border-[#46B77B] group-hover:bg-[#46B77B] transition-all duration-300 z-10">
-                                <i class="fas fa-phone text-lg text-gray-400 group-hover:text-white transition-colors"></i>
-                            </div>
-                            <div class="flex-1 pb-4 border-b border-white/5 group-hover:border-[#46B77B]/30 transition-colors">
-                                <h4 class="text-gray-400 text-xs font-bold uppercase tracking-wider mb-1 group-hover:text-[#61CE70] transition-colors">Landline</h4>
-                                <a href="tel:+924235402021" class="text-white text-lg font-black hover:text-[#61CE70] transition-colors">+92 42 3540 2021-22</a>
+                            <div
+                                class="flex-1 pb-4 border-b border-white/5 group-hover:border-[#46B77B]/30 transition-colors">
+                                <h4
+                                    class="text-gray-400 text-xs font-bold uppercase tracking-wider mb-1 group-hover:text-[#61CE70] transition-colors">
+                                    Phone (UAN)</h4>
+                                <a href="tel:+92111333301"
+                                    class="text-white text-lg font-black hover:text-[#61CE70] transition-colors">+92 111
+                                    333 301</a>
                             </div>
                         </div>
 
                         <div class="group relative flex flex-row items-center gap-5 cursor-default">
-                            <div class="w-14 h-14 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center shrink-0 group-hover:border-[#46B77B] group-hover:bg-[#46B77B] transition-all duration-300 z-10">
-                                <i class="fas fa-envelope text-lg text-gray-400 group-hover:text-white transition-colors"></i>
+                            <div
+                                class="w-14 h-14 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center shrink-0 group-hover:border-[#46B77B] group-hover:bg-[#46B77B] transition-all duration-300 z-10">
+                                <i
+                                    class="fas fa-phone text-lg text-gray-400 group-hover:text-white transition-colors"></i>
                             </div>
-                            <div class="flex-1 pb-4 border-b border-white/5 group-hover:border-[#46B77B]/30 transition-colors">
-                                <h4 class="text-gray-400 text-xs font-bold uppercase tracking-wider mb-1 group-hover:text-[#61CE70] transition-colors">Email Address</h4>
-                                <a href="mailto:info@maqsoodfaisal.com" class="text-white text-lg font-black hover:text-[#61CE70] transition-colors break-all">info@maqsoodfaisal.com</a>
+                            <div
+                                class="flex-1 pb-4 border-b border-white/5 group-hover:border-[#46B77B]/30 transition-colors">
+                                <h4
+                                    class="text-gray-400 text-xs font-bold uppercase tracking-wider mb-1 group-hover:text-[#61CE70] transition-colors">
+                                    Landline</h4>
+                                <a href="tel:+924235402021"
+                                    class="text-white text-lg font-black hover:text-[#61CE70] transition-colors">+92 42
+                                    3540 2021-22</a>
+                            </div>
+                        </div>
+
+                        <div class="group relative flex flex-row items-center gap-5 cursor-default">
+                            <div
+                                class="w-14 h-14 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center shrink-0 group-hover:border-[#46B77B] group-hover:bg-[#46B77B] transition-all duration-300 z-10">
+                                <i
+                                    class="fas fa-envelope text-lg text-gray-400 group-hover:text-white transition-colors"></i>
+                            </div>
+                            <div
+                                class="flex-1 pb-4 border-b border-white/5 group-hover:border-[#46B77B]/30 transition-colors">
+                                <h4
+                                    class="text-gray-400 text-xs font-bold uppercase tracking-wider mb-1 group-hover:text-[#61CE70] transition-colors">
+                                    Email Address</h4>
+                                <a href="mailto:info@maqsoodfaisal.com"
+                                    class="text-white text-lg font-black hover:text-[#61CE70] transition-colors break-all">info@maqsoodfaisal.com</a>
                             </div>
                         </div>
                     </div>
@@ -455,14 +967,16 @@
 
         <div class="max-w-4xl mx-auto px-4 md:px-8 lg:px-12 relative z-10">
             <div class="text-center max-w-3xl mx-auto mb-12 md:mb-20">
-                <div class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-[#46B77B]/10 border border-[#46B77B]/20 mb-5 backdrop-blur-md">
+                <div
+                    class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-[#46B77B]/10 border border-[#46B77B]/20 mb-5 backdrop-blur-md">
                     <span class="text-[0.65rem] font-bold tracking-[0.2em] uppercase text-[#46B77B]">How We Work</span>
                 </div>
                 <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-[#0A0C12] leading-[1.1] tracking-tight">
-                    Our Process & 
+                    Our Process &
                     <span class="relative inline-block text-[#46B77B] mt-1.5 sm:mt-2">
                         Partnership.
-                        <svg class="absolute -bottom-2.5 md:-bottom-3.5 left-0 w-full" height="7" viewBox="0 0 200 10" preserveAspectRatio="none" fill="none">
+                        <svg class="absolute -bottom-2.5 md:-bottom-3.5 left-0 w-full" height="7" viewBox="0 0 200 10"
+                            preserveAspectRatio="none" fill="none">
                             <path d="M2 7C50 3 100 2 198 6" stroke="#46B77B" stroke-width="3" stroke-linecap="round" />
                         </svg>
                     </span>
@@ -470,32 +984,47 @@
             </div>
 
             <div class="flex flex-col w-full gap-4 md:gap-6">
-                <div id="process-card-1" class="reveal-card group cursor-pointer transition-all duration-500 rounded-2xl md:rounded-3xl border border-gray-200/80 bg-white/60 backdrop-blur-md overflow-hidden">
-                    <div class="flex flex-row items-center justify-between gap-4 p-6 md:p-8" onclick="toggleProcessReveal('reveal-1', 'process-card-1')">
-                        <h3 class="text-xl md:text-3xl font-black text-[#0A0C12] transition-colors duration-500 card-title">Our Process</h3>
-                        <div class="w-10 h-10 md:w-12 md:h-12 rounded-full border border-gray-300 flex items-center justify-center shrink-0 transition-all duration-500 card-icon">
+                <div id="process-card-1"
+                    class="reveal-card group cursor-pointer transition-all duration-500 rounded-2xl md:rounded-3xl border border-gray-200/80 bg-white/60 backdrop-blur-md overflow-hidden">
+                    <div class="flex flex-row items-center justify-between gap-4 p-6 md:p-8"
+                        onclick="toggleProcessReveal('reveal-1', 'process-card-1')">
+                        <h3
+                            class="text-xl md:text-3xl font-black text-[#0A0C12] transition-colors duration-500 card-title">
+                            Our Process</h3>
+                        <div
+                            class="w-10 h-10 md:w-12 md:h-12 rounded-full border border-gray-300 flex items-center justify-center shrink-0 transition-all duration-500 card-icon">
                             <i class="fas fa-plus text-gray-500 transition-colors duration-500"></i>
                         </div>
                     </div>
-
                     <div id="reveal-1" class="hidden px-6 md:px-8 pb-6 md:pb-8">
-                        <p class="text-gray-500 text-sm md:text-base leading-relaxed md:leading-loose transition-colors duration-500 card-text">
-                            Beginning with a thorough understanding of your brand and objectives, our offset printing and folding cartons process involves collaboration and customization. We leverage cutting-edge technology to ensure that each print and carton meets the highest standards of quality, precision, and visual appeal.
+                        <p
+                            class="text-gray-500 text-sm md:text-base leading-relaxed md:leading-loose transition-colors duration-500 card-text">
+                            Beginning with a thorough understanding of your brand and objectives, our offset printing
+                            and folding cartons process involves collaboration and customization. We leverage
+                            cutting-edge technology to ensure that each print and carton meets the highest standards of
+                            quality, precision, and visual appeal.
                         </p>
                     </div>
                 </div>
 
-                <div id="process-card-2" class="reveal-card group cursor-pointer transition-all duration-500 rounded-2xl md:rounded-3xl border border-gray-200/80 bg-white/60 backdrop-blur-md overflow-hidden">
-                    <div class="flex flex-row items-center justify-between gap-4 p-6 md:p-8" onclick="toggleProcessReveal('reveal-2', 'process-card-2')">
-                        <h3 class="text-xl md:text-3xl font-black text-[#0A0C12] transition-colors duration-500 card-title">Partner with Us</h3>
-                        <div class="w-10 h-10 md:w-12 md:h-12 rounded-full border border-gray-300 flex items-center justify-center shrink-0 transition-all duration-500 card-icon">
+                <div id="process-card-2"
+                    class="reveal-card group cursor-pointer transition-all duration-500 rounded-2xl md:rounded-3xl border border-gray-200/80 bg-white/60 backdrop-blur-md overflow-hidden">
+                    <div class="flex flex-row items-center justify-between gap-4 p-6 md:p-8"
+                        onclick="toggleProcessReveal('reveal-2', 'process-card-2')">
+                        <h3
+                            class="text-xl md:text-3xl font-black text-[#0A0C12] transition-colors duration-500 card-title">
+                            Partner with Us</h3>
+                        <div
+                            class="w-10 h-10 md:w-12 md:h-12 rounded-full border border-gray-300 flex items-center justify-center shrink-0 transition-all duration-500 card-icon">
                             <i class="fas fa-plus text-gray-500 transition-colors duration-500"></i>
                         </div>
                     </div>
-
                     <div id="reveal-2" class="hidden px-6 md:px-8 pb-6 md:pb-8">
-                        <p class="text-gray-500 text-sm md:text-base leading-relaxed md:leading-loose transition-colors duration-500 card-text">
-                            Whether you’re launching a new product, designing promotional materials, or seeking packaging solutions, Maqsood Faisal Printing Press is your trusted partner. Experience the blend of precision and customization with our offset printing and folding cartons services.
+                        <p
+                            class="text-gray-500 text-sm md:text-base leading-relaxed md:leading-loose transition-colors duration-500 card-text">
+                            Whether you’re launching a new product, designing promotional materials, or seeking
+                            packaging solutions, Maqsood Faisal Printing Press is your trusted partner. Experience the
+                            blend of precision and customization with our offset printing and folding cartons services.
                         </p>
                     </div>
                 </div>
@@ -506,28 +1035,38 @@
     <!-- ═══════════════ FREE CONSULTATION — FULL BACKGROUND IMAGE DESIGN ═══════════════ -->
     <section id="free-consultation" class="fade-in-section relative z-10 overflow-hidden font-sans">
         <div class="absolute inset-0 -z-10">
-            <img src="images/consultation.jpg" alt="Free Consultation Background" class="w-full h-full object-cover object-center">
+            <img src="images/consultation.jpg" alt="Free Consultation Background"
+                class="w-full h-full object-cover object-center">
             <div class="absolute inset-0 bg-[#050806]/75"></div>
             <div class="absolute inset-0 bg-gradient-to-br from-[#46B77B]/15 via-transparent to-[#0A0F0D]/80"></div>
-            <div class="absolute inset-0 opacity-[0.06]" style="background-image: radial-gradient(#61CE70 1px, transparent 1px); background-size: 24px 24px;"></div>
+            <div class="absolute inset-0 opacity-[0.06]"
+                style="background-image: radial-gradient(#61CE70 1px, transparent 1px); background-size: 24px 24px;">
+            </div>
             <div class="absolute -top-24 -left-24 w-[400px] h-[400px] bg-[#46B77B]/20 blur-[130px] rounded-full"></div>
-            <div class="absolute -bottom-24 -right-24 w-[350px] h-[350px] bg-[#61CE70]/15 blur-[120px] rounded-full"></div>
+            <div class="absolute -bottom-24 -right-24 w-[350px] h-[350px] bg-[#61CE70]/15 blur-[120px] rounded-full">
+            </div>
         </div>
 
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-28 relative z-10 text-center">
-            <div class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-white/10 border border-white/20 mb-6 backdrop-blur-md">
+            <div
+                class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-white/10 border border-white/20 mb-6 backdrop-blur-md">
                 <span class="relative flex h-2 w-2">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#61CE70] opacity-75"></span>
+                    <span
+                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#61CE70] opacity-75"></span>
                     <span class="relative inline-flex rounded-full h-2 w-2 bg-[#61CE70]"></span>
                 </span>
-                <span class="text-[0.6rem] sm:text-[0.65rem] font-bold tracking-[0.2em] uppercase text-[#61CE70]">Free Consultation</span>
+                <span class="text-[0.6rem] sm:text-[0.65rem] font-bold tracking-[0.2em] uppercase text-[#61CE70]">Free
+                    Consultation</span>
             </div>
 
-            <h2 class="text-[2rem] sm:text-4xl md:text-5xl lg:text-[3.6rem] font-black text-white leading-[1.08] tracking-tight mb-5 sm:mb-6">
+            <h2
+                class="text-[2rem] sm:text-4xl md:text-5xl lg:text-[3.6rem] font-black text-white leading-[1.08] tracking-tight mb-5 sm:mb-6">
                 Get A Free<br>
-                <span class="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#46B77B] via-[#61CE70] to-[#46B77B] mt-1.5 sm:mt-2">
+                <span
+                    class="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#46B77B] via-[#61CE70] to-[#46B77B] mt-1.5 sm:mt-2">
                     Consultation
-                    <svg class="absolute -bottom-2.5 md:-bottom-3.5 left-0 w-full" height="7" viewBox="0 0 200 10" preserveAspectRatio="none" fill="none">
+                    <svg class="absolute -bottom-2.5 md:-bottom-3.5 left-0 w-full" height="7" viewBox="0 0 200 10"
+                        preserveAspectRatio="none" fill="none">
                         <path d="M2 7C50 3 100 2 198 6" stroke="#46B77B" stroke-width="3" stroke-linecap="round" />
                     </svg>
                 </span>
@@ -535,23 +1074,31 @@
             </h2>
 
             <p class="text-gray-300 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto mb-8 sm:mb-10">
-                Ready to bring your brand to life through precision printing and captivating folding cartons? Contact us today to discuss how we can tailor our services to meet your unique printing and packaging needs.
+                Ready to bring your brand to life through precision printing and captivating folding cartons?
+                Contact us today to discuss how we can tailor our services to meet your unique printing and packaging
+                needs.
             </p>
 
-            <div class="flex flex-row items-center justify-center gap-3 sm:gap-4 mb-6 sm:mb-8 w-full max-w-[500px] mx-auto">
-                <a href="#contact" class="group h-[48px] sm:h-[56px] px-4 sm:px-7 flex items-center justify-center gap-1.5 sm:gap-2.5 rounded-xl font-bold text-[0.75rem] sm:text-sm text-[#0A0F0D] bg-[#61CE70] hover:bg-[#46B77B] shadow-[0_10px_30px_-10px_rgba(97,206,112,0.6)] transition-all duration-300 hover:-translate-y-1 whitespace-nowrap">
+            <div
+                class="flex flex-row items-center justify-center gap-3 sm:gap-4 mb-6 sm:mb-8 w-full max-w-[500px] mx-auto">
+                <a href="#contact"
+                    class="group h-[48px] sm:h-[56px] px-4 sm:px-7 flex items-center justify-center gap-1.5 sm:gap-2.5 rounded-xl font-bold text-[0.75rem] sm:text-sm text-[#0A0F0D] bg-[#61CE70] hover:bg-[#46B77B] shadow-[0_10px_30px_-10px_rgba(97,206,112,0.6)] transition-all duration-300 hover:-translate-y-1 whitespace-nowrap">
                     <i class="fas fa-paper-plane text-[0.8em] sm:text-sm"></i>
                     <span>Contact Us Now</span>
-                    <i class="fas fa-arrow-right text-[0.7em] sm:text-xs transition-transform group-hover:translate-x-1 hidden xs:inline-block"></i>
+                    <i
+                        class="fas fa-arrow-right text-[0.7em] sm:text-xs transition-transform group-hover:translate-x-1 hidden xs:inline-block"></i>
                 </a>
 
-                <a href="tel:+92111333301" class="group h-[48px] sm:h-[56px] px-3 sm:px-5 flex items-center justify-center gap-2 rounded-xl font-bold text-white bg-white/[0.08] border border-white/20 hover:border-[#46B77B]/60 hover:bg-white/[0.12] backdrop-blur-md transition-all duration-300 hover:-translate-y-1 whitespace-nowrap">
-                    <i class="fas fa-phone-alt text-[#61CE70] text-[0.85em] sm:text-sm group-hover:rotate-12 transition-transform"></i>
+                <a href="tel:+92111333301"
+                    class="group h-[48px] sm:h-[56px] px-3 sm:px-5 flex items-center justify-center gap-2 rounded-xl font-bold text-white bg-white/[0.08] border border-white/20 hover:border-[#46B77B]/60 hover:bg-white/[0.12] backdrop-blur-md transition-all duration-300 hover:-translate-y-1 whitespace-nowrap">
+                    <i
+                        class="fas fa-phone-alt text-[#61CE70] text-[0.85em] sm:text-sm group-hover:rotate-12 transition-transform"></i>
                     <span class="text-white font-black text-[0.75rem] sm:text-sm tracking-wide">+92 111 333 301</span>
                 </a>
             </div>
 
-            <div class="flex flex-row items-center justify-center gap-3 sm:gap-6 text-[0.55rem] sm:text-xs text-gray-400">
+            <div
+                class="flex flex-row items-center justify-center gap-3 sm:gap-6 text-[0.55rem] sm:text-xs text-gray-400">
                 <span class="flex items-center gap-1 sm:gap-1.5 whitespace-nowrap">
                     <i class="fas fa-check text-[#61CE70] text-[0.6em] sm:text-[0.6rem]"></i> Free consultation
                 </span>
@@ -593,11 +1140,10 @@
             }
 
             // Scroll Animations
-            const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+            const observerOptions = { threshold: 0.05, rootMargin: "0px 0px -10px 0px" };
             const scrollObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) { entry.target.classList.add('is-visible'); }
-                    else { entry.target.classList.remove('is-visible'); }
                 });
             }, observerOptions);
             document.querySelectorAll('.fade-in-section').forEach((section) => {
@@ -652,7 +1198,7 @@
             }
 
             /* ============================================================
-               MARQUEE FIX: Images ko duplicate karna taake speed constant rahe
+               MARQUEE FIX: Images ko duplicate karna taake loop smooth rahe
             ============================================================ */
             const track = document.getElementById('marquee-track');
             if (track) {
