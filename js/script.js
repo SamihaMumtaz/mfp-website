@@ -3,10 +3,10 @@ if ('scrollRestoration' in history) {
     history.scrollRestoration = 'manual';
 }
 window.scrollTo(0, 0);
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
     window.scrollTo(0, 0);
-    setTimeout(function() { window.scrollTo(0, 0); }, 100);
-    setTimeout(function() { window.scrollTo(0, 0); }, 300);
+    setTimeout(function () { window.scrollTo(0, 0); }, 100);
+    setTimeout(function () { window.scrollTo(0, 0); }, 300);
 });
 
 /* ================= MOBILE SIDEBAR LOGIC ================= */
@@ -41,7 +41,7 @@ if (hamburger && sidebar && sidebarOverlay && sidebarClose) {
 function toggleAccordion(listId, chevronId) {
     const list = document.getElementById(listId);
     const chevron = document.getElementById(chevronId);
-    
+
     if (list && chevron) {
         if (list.classList.contains('hidden')) {
             list.classList.remove('hidden');
@@ -401,17 +401,17 @@ const partnerLogos = [
     "images/brand25.png", "images/brand26.png", "images/brand27.png", "images/brand28.png",
     "images/brand29.png", "images/brand30.png", "images/brand31.png", "images/brand32.png",
     "images/brand33.png", "images/brand34.png", "images/brand35.png", "images/brand36.png",
-    "images/brand37.png", "images/brand38.png", "images/brand39.png", "images/brand40.png", 
-    "images/brand41.png", "images/brand42.png", "images/brand43.png", "images/brand44.png", 
-    "images/brand45.png", "images/brand46.png", "images/brand47.png", "images/brand48.png", 
-    "images/brand49.png", "images/brand50.png", "images/brand51.png", "images/brand52.png", 
-    "images/brand53.png", "images/brand54.png", "images/brand55.png", "images/brand56.png", 
+    "images/brand37.png", "images/brand38.png", "images/brand39.png", "images/brand40.png",
+    "images/brand41.png", "images/brand42.png", "images/brand43.png", "images/brand44.png",
+    "images/brand45.png", "images/brand46.png", "images/brand47.png", "images/brand48.png",
+    "images/brand49.png", "images/brand50.png", "images/brand51.png", "images/brand52.png",
+    "images/brand53.png", "images/brand54.png", "images/brand55.png", "images/brand56.png",
     "images/brand57.png", "images/brand58.png", "images/brand59.png", "images/brand60.png",
-    "images/brand61.png", "images/brand62.png", "images/brand63.png", "images/brand64.png", 
-    "images/brand65.png", "images/brand66.png", "images/brand67.png", "images/brand68.png", 
-    "images/brand69.png", "images/brand70.png", "images/brand71.png", "images/brand72.png", 
-    "images/brand76.png", "images/brand77.png", "images/brand78.png", "images/brand79.png", 
-    "images/brand80.png", "images/brand81.png", "images/brand82.png", "images/brand83.png", 
+    "images/brand61.png", "images/brand62.png", "images/brand63.png", "images/brand64.png",
+    "images/brand65.png", "images/brand66.png", "images/brand67.png", "images/brand68.png",
+    "images/brand69.png", "images/brand70.png", "images/brand71.png", "images/brand72.png",
+    "images/brand76.png", "images/brand77.png", "images/brand78.png", "images/brand79.png",
+    "images/brand80.png", "images/brand81.png", "images/brand82.png", "images/brand83.png",
     "images/brand84.png", "images/brand85.png"
 ];
 
@@ -597,12 +597,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     window.addEventListener('scroll', () => {
         const rect = servicesSection.getBoundingClientRect();
-        
+
         if (rect.top <= 0 && rect.bottom >= window.innerHeight) {
-            
-            const scrollArea = rect.height - window.innerHeight; 
+
+            const scrollArea = rect.height - window.innerHeight;
             const progress = Math.abs(rect.top) / scrollArea;
-            
+
             let currentIndex = Math.floor(progress * totalSteps);
             if (currentIndex >= totalSteps) currentIndex = totalSteps - 1;
             if (currentIndex < 0) currentIndex = 0;
@@ -635,4 +635,256 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
     });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    const modal = document.getElementById('galleryModal');
+    const panel = document.getElementById('galleryPanel');
+    const openBtn = document.getElementById('galleryOpen');
+    const closeBtn = document.getElementById('galleryClose');
+
+    const grid = document.getElementById('galleryGrid');
+    const prev = document.getElementById('galleryPrev');
+    const next = document.getElementById('galleryNext');
+    const counter = document.getElementById('galleryCount');
+
+    if (!modal || !grid) return;
+
+    const images = [
+        { src: "images/offset-9.png", label: "Ironone 150mg Capsules" },
+        { src: "images/offset-10.png", label: "RB Real Beauty Rice Beauty Cream" },
+        { src: "images/offset-11.png", label: "Parley Gold Gleam Beauty Cream" },
+        { src: "images/offset-12.png", label: "Parley No Marks Cream" },
+        { src: "images/offset-13.png", label: "Poster PrintingHappy Mums Diaper Care Cream 150ml" },
+        { src: "images/offset-14.png", label: "Vince His Only Beard Color Dark Brown" },
+        { src: "images/offset-15.png", label: "Nisa Hair Removal Cream Lemon" },
+        { src: "images/offset-16.png", label: "Nisa Hair Removal Cream Lemon" },
+        { src: "images/offset-17.png", label: "Nisa Hair Removal Cream Cucumber" },
+        { src: "images/offset-18.png", label: "Belini Hair Color 10 Golden Blonde" },
+        { src: "images/offset-19.png", label: "Belini Hair Color 02 Dark Brown" },
+        { src: "images/offset-20.png", label: "Seven Herbal Ubtan" },
+        { src: "images/offset-21.png", label: "Parley Goldie Beauty Cream" },
+        { src: "images/offset-22.png", label: "Marhaba Almond Oil 50ml" },
+        { src: "images/offset-23.png", label: "Fervial Injection 200mg/10ml" },
+        { src: "images/offset-24.png", label: "SunnyD STAT 200000 IU Softgel" },
+        { src: "images/offset-25.png", label: "Parley Goldie Advanced Beauty Cream" },
+        { src: "images/offset-26.png", label: "Petra 40mg Capsules 14s" },
+        { src: "images/offset-27.png", label: "Tinostol D-1200 Sachets 10s" },
+        { src: "images/offset-28.png", label: "Askorbin-C 1000mg Sachets 10s" },
+        { src: "images/offset-29.png", label: "BGN Magnesium Bisglycinate Tablets 30s" },
+        { src: "images/offset-30.png", label: "Golden Pearl 3D Vitamin-C & Hyaluronic Acid Skin Serum" },
+        { src: "images/offset-31.png", label: "Popeo Drops 30ml" },
+        { src: "images/offset-32.png", label: "Bioplus-C Tablets 30s" },
+        { src: "images/offset-33.png", label: "Golden Pearl 24K Gold Skin Serum 30ml" },
+        { src: "images/offset-34.png", label: "Qarshi Surfi Tablets 250s" },
+        { src: "images/offset-35.png", label: "Qarshi Johar Joshanda Sachets 30s" },
+        { src: "images/offset-36.png", label: "Qarshi Johar Joshanda Natural Herbal Tea Bags 30s" },
+        { src: "images/offset-37.png", label: "Skintelligent Nova Glow Bright Radiance Cream 30ml" }
+    ];
+
+    const PER_PAGE = 12;
+    let currentPage = 0;
+
+    const totalPages = Math.ceil(images.length / PER_PAGE);
+
+    document.getElementById('galleryTotal').textContent =
+        `${images.length} Projects`;
+
+    // Render gallery images
+    function renderGallery() {
+
+        grid.innerHTML = '';
+
+        const start = currentPage * PER_PAGE;
+        const currentImages = images.slice(start, start + PER_PAGE);
+
+        currentImages.forEach((image, index) => {
+
+            const imageNumber = start + index + 1;
+
+            const card = document.createElement('div');
+
+            card.className =
+                'gallery-image-card group relative aspect-[4/3] overflow-hidden rounded-xl md:rounded-2xl bg-white border border-gray-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-zoom-in';
+
+            card.dataset.index = start + index;
+
+            const img = document.createElement('img');
+
+            img.src = image.src;
+            img.alt = `Offset Printing Project ${imageNumber}`;
+            img.loading = 'lazy';
+
+            img.className =
+                'w-full h-full object-cover transition-transform duration-700 group-hover:scale-110';
+
+            const label = document.createElement('div');
+
+            label.className =
+                'absolute bottom-0 left-0 right-0 px-3 py-2 bg-gradient-to-t from-black/70 to-transparent';
+
+            const customLabel = image.label;
+
+            label.innerHTML = `
+    <span class="text-white text-[10px] sm:text-xs font-bold tracking-wide">
+        ${customLabel}
+    </span>
+`;
+
+            card.appendChild(img);
+            card.appendChild(label);
+
+            grid.appendChild(card);
+        });
+
+        counter.textContent =
+            `Page ${currentPage + 1} of ${totalPages}`;
+
+        prev.disabled = currentPage === 0;
+        next.disabled = currentPage === totalPages - 1;
+    }
+
+    // FULL IMAGE LIGHTBOX
+    const lightbox = document.getElementById('imageLightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxTitle = document.getElementById('lightboxTitle');
+    const lightboxNumber = document.getElementById('lightboxNumber');
+
+    const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxPrev = document.getElementById('lightboxPrev');
+    const lightboxNext = document.getElementById('lightboxNext');
+
+    let currentImageIndex = 0;
+
+    function showFullImage(index) {
+
+        currentImageIndex = index;
+
+        const imageNumber = index + 1;
+        const selectedImage = images[index];
+
+        lightboxImage.src = selectedImage.src;
+
+        lightboxTitle.textContent = selectedImage.label;
+
+        lightboxNumber.textContent =
+            `Image ${imageNumber} of ${images.length}`;
+
+        lightbox.classList.remove('hidden');
+        lightbox.classList.add('flex');
+    }
+
+    function closeFullImage() {
+        lightbox.classList.add('hidden');
+        lightbox.classList.remove('flex');
+    }
+
+    function previousImage() {
+        const index =
+            (currentImageIndex - 1 + images.length) % images.length;
+
+        showFullImage(index);
+    }
+
+    function nextImage() {
+        const index =
+            (currentImageIndex + 1) % images.length;
+
+        showFullImage(index);
+    }
+
+    // Click on gallery card to open full image
+    grid.addEventListener('click', function (event) {
+
+        const card = event.target.closest('.gallery-image-card');
+
+        if (!card) return;
+
+        const index = Number(card.dataset.index);
+
+        showFullImage(index);
+    });
+
+    lightboxClose.addEventListener('click', closeFullImage);
+    lightboxPrev.addEventListener('click', previousImage);
+    lightboxNext.addEventListener('click', nextImage);
+
+    // Click outside image to close
+    lightbox.addEventListener('click', function (event) {
+        if (event.target === lightbox) {
+            closeFullImage();
+        }
+    });
+
+    // Keyboard controls
+    document.addEventListener('keydown', function (event) {
+
+        if (lightbox.classList.contains('hidden')) return;
+
+        if (event.key === 'Escape') closeFullImage();
+        if (event.key === 'ArrowLeft') previousImage();
+        if (event.key === 'ArrowRight') nextImage();
+
+    });
+
+    // Open popup
+    function openGallery() {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+
+        document.body.style.overflow = 'hidden';
+
+        renderGallery();
+    }
+
+    // Close popup
+    function closeGallery() {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+
+        document.body.style.overflow = '';
+    }
+
+    // Button events
+    openBtn.addEventListener('click', openGallery);
+    closeBtn.addEventListener('click', closeGallery);
+
+    // Close when clicking outside gallery panel
+    modal.addEventListener('click', function (event) {
+        if (event.target === modal) {
+            closeGallery();
+        }
+    });
+
+    // Prevent clicks inside panel from closing popup
+    panel.addEventListener('click', function (event) {
+        event.stopPropagation();
+    });
+
+    // Escape key closes popup
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && !modal.classList.contains('hidden')) {
+            closeGallery();
+        }
+    });
+
+    // Pagination
+    prev.addEventListener('click', function () {
+        if (currentPage > 0) {
+            currentPage--;
+            renderGallery();
+        }
+    });
+
+    next.addEventListener('click', function () {
+        if (currentPage < totalPages - 1) {
+            currentPage++;
+            renderGallery();
+        }
+    });
+
+    // Initial gallery setup
+    renderGallery();
+
 });
