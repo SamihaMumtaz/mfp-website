@@ -13,221 +13,6 @@
     <!-- Custom CSS File -->
     <link rel="stylesheet" href="css/style.css">
 
-    <!-- MARQUEE KI CSS YAHAN HAI -->
-    <style>
-        /* Marquee Container */
-        .marquee-container {
-            display: flex;
-            width: max-content;
-            animation: scrollMarquee 150s linear infinite;
-        }
-
-        .marquee-container:hover {
-            animation-play-state: paused;
-        }
-
-        @keyframes scrollMarquee {
-            0% {
-                transform: translateX(0);
-            }
-
-            100% {
-                transform: translateX(-50%);
-            }
-        }
-
-        /* Page Animations */
-        .fade-in-section {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-            will-change: opacity, transform;
-        }
-
-        .fade-in-section.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ---------- PORTFOLIO MARQUEE ---------- */
-        .mf-m-card {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 170px;
-            flex: 0 0 auto;
-        }
-
-        .mf-m-card img {
-            display: block;
-            height: 100%;
-            width: auto;
-            max-width: 420px;
-            object-fit: contain;
-            transition: transform 0.6s ease;
-        }
-
-        .mf-m-card:hover img {
-            transform: scale(1.05);
-        }
-
-        @media (min-width: 768px) {
-            .mf-m-card {
-                height: 210px;
-            }
-        }
-
-        @media (min-width: 1280px) {
-            .mf-m-card {
-                height: 240px;
-            }
-        }
-
-        /* ---------- PORTFOLIO MASONRY ---------- */
-        .mf-g-grid {
-            columns: 2;
-            column-gap: 8px;
-        }
-
-        .mf-g-item {
-            break-inside: avoid;
-            display: block;
-            margin: 0 0 8px;
-            overflow: hidden;
-            border-radius: 8px;
-            cursor: zoom-in;
-        }
-
-        .mf-g-item img {
-            display: block;
-            width: 100%;
-            height: auto;
-            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .mf-g-item:hover img {
-            transform: scale(1.04);
-        }
-
-        @media (min-width: 768px) {
-            .mf-g-grid {
-                columns: 3;
-                column-gap: 10px;
-            }
-
-            .mf-g-item {
-                margin-bottom: 10px;
-            }
-        }
-
-        @media (min-width: 1280px) {
-            .mf-g-grid {
-                columns: 4;
-                column-gap: 12px;
-            }
-
-            .mf-g-item {
-                margin-bottom: 12px;
-            }
-        }
-
-        /* ---------- PORTFOLIO LIGHTBOX ---------- */
-        .mf-lightbox {
-            position: fixed;
-            inset: 0;
-            z-index: 120;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 24px;
-            background: rgba(5, 8, 6, 0.94);
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-
-        .mf-lightbox.open {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .mf-lightbox img {
-            max-width: 92vw;
-            max-height: 82vh;
-            object-fit: contain;
-            border-radius: 10px;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
-            background: #fff;
-            padding: 8px;
-        }
-
-        .mf-lb-btn {
-            position: absolute;
-            z-index: 2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 46px;
-            height: 46px;
-            border-radius: 50%;
-            color: #fff;
-            background: rgba(255, 255, 255, 0.1);
-            font-size: 15px;
-            transition: background 0.25s ease;
-        }
-
-        .mf-lb-btn:hover {
-            background: #46B77B;
-        }
-
-        .mf-lb-close {
-            top: 18px;
-            right: 18px;
-        }
-
-        .mf-lb-prev {
-            left: 16px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        .mf-lb-next {
-            right: 16px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        .mf-lb-count {
-            position: absolute;
-            bottom: 18px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: rgba(255, 255, 255, 0.65);
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0.3em;
-        }
-
-        @media (max-width: 640px) {
-            .mf-lightbox {
-                padding: 16px;
-            }
-
-            .mf-lb-btn {
-                width: 38px;
-                height: 38px;
-                font-size: 13px;
-            }
-
-            .mf-lb-prev {
-                left: 8px;
-            }
-
-            .mf-lb-next {
-                right: 8px;
-            }
-        }
-    </style>
 </head>
 
 <body class="bg-white text-[#0A0C12] overflow-x-hidden min-h-screen font-sans relative flex flex-col">
@@ -490,177 +275,99 @@
         </div>
     </section>
 
-    <!-- ============ SHOWCASE: MARQUEE + PORTFOLIO GRID ============ -->
+    <!-- ═══════════════ ADVANCED IMAGE SHOWCASE SECTION (8 IMAGES) ═══════════════ -->
     <section id="showcase"
-        class="fade-in-section relative z-10 py-16 md:py-24 bg-[#FAFBF9] overflow-hidden border-t border-gray-200/50">
-        <div class="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
-            <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-[#46B77B]/5 blur-[120px] rounded-full"></div>
-        </div>
+        class="fade-in-section relative z-10 py-16 md:py-24 bg-transparent overflow-hidden border-t border-black/5">
 
+        <!-- Text Area -->
         <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 relative z-10 text-center mb-10 md:mb-14">
             <div
                 class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-[#46B77B]/10 border border-[#46B77B]/20 mb-4 backdrop-blur-md">
                 <i class="fas fa-sparkles text-[#46B77B] text-xs"></i>
                 <span class="text-[0.65rem] font-bold tracking-[0.2em] uppercase text-[#46B77B]">Our Portfolio</span>
             </div>
+
+            <!-- Heading with Matching Underline (Updated) -->
             <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-[#0A0C12] leading-[1.1] tracking-tight mb-4">
                 Excellence in Every
                 <span class="relative inline-block text-[#46B77B] mt-1.5 sm:mt-2">
-                    Print.
+                    Tube.
                     <svg class="absolute -bottom-2.5 md:-bottom-3.5 left-0 w-full" height="7" viewBox="0 0 200 10"
                         preserveAspectRatio="none" fill="none">
                         <path d="M2 7C50 3 100 2 198 6" stroke="#46B77B" stroke-width="3" stroke-linecap="round" />
                     </svg>
                 </span>
             </h2>
-            <p class="text-gray-500 text-sm md:text-base max-w-2xl mx-auto mt-4">
-                A closer look at the packaging and print work we have produced for brands across Pakistan.
-            </p>
+            <p class="text-gray-500 text-sm md:text-base max-w-2xl mx-auto">Take a look at some of our recent tube
+                packaging projects that helped brands stand out.</p>
         </div>
 
-        <!-- 1. MARQUEE (Images 1 to 16) -->
-        <div class="relative w-full overflow-hidden mb-12 md:mb-16">
-            <div
-                class="absolute top-0 left-0 w-16 md:w-32 h-full bg-gradient-to-r from-[#FAFBF9] to-transparent z-20 pointer-events-none">
-            </div>
-            <div
-                class="absolute top-0 right-0 w-16 md:w-32 h-full bg-gradient-to-l from-[#FAFBF9] to-transparent z-20 pointer-events-none">
-            </div>
+        <!-- Marquee Slider -->
+        <div class="relative w-full overflow-hidden group/slider">
 
-            <div id="marquee-track" class="marquee-container flex gap-3 md:gap-5 px-4 md:px-8 py-3">
-                <div class="marquee-set flex gap-3 md:gap-5 shrink-0">
-                    <div class="mf-m-card">
-                        <img src="images/offset-1.png" alt="Offset printing project 1" loading="lazy">
-                    </div>
-                    <div class="mf-m-card">
-                        <img src="images/offset-2.png" alt="Offset printing project 2" loading="lazy">
-                    </div>
-                    <div class="mf-m-card">
-                        <img src="images/offset-3.png" alt="Offset printing project 3" loading="lazy">
-                    </div>
-                    <div class="mf-m-card">
-                        <img src="images/offset-4.png" alt="Offset printing project 4" loading="lazy">
-                    </div>
-                    <div class="mf-m-card">
-                        <img src="images/offset-5.png" alt="Offset printing project 5" loading="lazy">
-                    </div>
-                    <div class="mf-m-card">
-                        <img src="images/offset-6.png" alt="Offset printing project 6" loading="lazy">
-                    </div>
-                    <div class="mf-m-card">
-                        <img src="images/offset-7.png" alt="Offset printing project 7" loading="lazy">
-                    </div>
-                    <div class="mf-m-card">
-                        <img src="images/offset-8.png" alt="Offset printing project 8" loading="lazy">
-                    </div>
-                    <div class="mf-m-card">
-                        <img src="images/offset-9.png" alt="Offset printing project 9" loading="lazy">
-                    </div>
-                    <div class="mf-m-card">
-                        <img src="images/offset-10.png" alt="Offset printing project 10" loading="lazy">
-                    </div>
-                    <div class="mf-m-card">
-                        <img src="images/offset-11.png" alt="Offset printing project 11" loading="lazy">
-                    </div>
-                    <div class="mf-m-card">
-                        <img src="images/offset-12.png" alt="Offset printing project 12" loading="lazy">
-                    </div>
-                    <div class="mf-m-card">
-                        <img src="images/offset-13.png" alt="Offset printing project 13" loading="lazy">
-                    </div>
-                    <div class="mf-m-card">
-                        <img src="images/offset-14.png" alt="Offset printing project 14" loading="lazy">
-                    </div>
-                    <div class="mf-m-card">
-                        <img src="images/offset-15.png" alt="Offset printing project 15" loading="lazy">
-                    </div>
-                    <div class="mf-m-card">
-                        <img src="images/offset-16.png" alt="Offset printing project 16" loading="lazy">
-                    </div>
-                    <div class="mf-m-card">
-                        <img src="images/offset-21.png" alt="Offset printing project 21" loading="lazy">
-                    </div>
-                    <div class="mf-m-card">
-                        <img src="images/offset-37.png" alt="Offset printing project 37" loading="lazy">
-                    </div>
+            <!-- Track -->
+            <div
+                class="flex w-max animate-marquee-infinite group-hover/slider:[animation-play-state:paused] gap-5 md:gap-8 px-4 md:px-8 py-6">
+
+                <!-- Image 1 -->
+                <div
+                    class="shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white/40 backdrop-blur-md border border-white/60 transition-all duration-500">
+                    <img src="images/offset-1.png" alt="Tube Showcase"
+                        class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
                 </div>
-            </div>
-        </div>
 
-        <!-- 2. PORTFOLIO GRID (Images 17 to 37) -->
-        <div class="max-w-[1400px] mx-auto px-4 md:px-6 relative z-10">
-            <div class="mf-g-grid">
-                <figure class="mf-g-item">
-                    <img src="images/offset-17.png" alt="Offset printing project 17" loading="lazy">
-                </figure>
-                <figure class="mf-g-item">
-                    <img src="images/offset-18.png" alt="Offset printing project 18" loading="lazy">
-                </figure>
-                <figure class="mf-g-item">
-                    <img src="images/offset-19.png" alt="Offset printing project 19" loading="lazy">
-                </figure>
-                <figure class="mf-g-item">
-                    <img src="images/offset-20.png" alt="Offset printing project 20" loading="lazy">
-                </figure>
-                <figure class="mf-g-item">
-                    <img src="images/offset-22.png" alt="Offset printing project 22" loading="lazy">
-                </figure>
-                <figure class="mf-g-item">
-                    <img src="images/offset-23.png" alt="Offset printing project 23" loading="lazy">
-                </figure>
-                <figure class="mf-g-item">
-                    <img src="images/offset-24.png" alt="Offset printing project 24" loading="lazy">
-                </figure>
-                <figure class="mf-g-item">
-                    <img src="images/offset-25.png" alt="Offset printing project 25" loading="lazy">
-                </figure>
-                <figure class="mf-g-item">
-                    <img src="images/offset-26.png" alt="Offset printing project 26" loading="lazy">
-                </figure>
-                <figure class="mf-g-item">
-                    <img src="images/offset-27.png" alt="Offset printing project 27" loading="lazy">
-                </figure>
-                <figure class="mf-g-item">
-                    <img src="images/offset-28.png" alt="Offset printing project 28" loading="lazy">
-                </figure>
-                <figure class="mf-g-item">
-                    <img src="images/offset-36.png" alt="Offset printing project 36" loading="lazy">
-                </figure>
-                <figure class="mf-g-item">
-                    <img src="images/offset-29.png" alt="Offset printing project 29" loading="lazy">
-                </figure>
-                <figure class="mf-g-item">
-                    <img src="images/offset-30.png" alt="Offset printing project 30" loading="lazy">
-                </figure>
-                <figure class="mf-g-item">
-                    <img src="images/offset-31.png" alt="Offset printing project 31" loading="lazy">
-                </figure>
-                <figure class="mf-g-item">
-                    <img src="images/offset-32.png" alt="Offset printing project 32" loading="lazy">
-                </figure>
-                <figure class="mf-g-item">
-                    <img src="images/offset-33.png" alt="Offset printing project 33" loading="lazy">
-                </figure>
-                <figure class="mf-g-item">
-                    <img src="images/offset-34.png" alt="Offset printing project 34" loading="lazy">
-                </figure>
-                <figure class="mf-g-item">
-                    <img src="images/offset-35.png" alt="Offset printing project 35" loading="lazy">
-                </figure>
+                <!-- Image 2 -->
+                <div
+                    class="shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white/40 backdrop-blur-md border border-white/60 transition-all duration-500">
+                    <img src="images/offset-2.png" alt="Cosmetic Tubes"
+                        class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
+                </div>
+
+                <!-- Image 3 -->
+                <div
+                    class="shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white/40 backdrop-blur-md border border-white/60 transition-all duration-500">
+                    <img src="images/offset-3.png" alt="Pharma Tubes"
+                        class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
+                </div>
+
+                <!-- Image 4 -->
+                <div
+                    class="shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white/40 backdrop-blur-md border border-white/60 transition-all duration-500">
+                    <img src="images/offset-4.png" alt="Custom Tubes"
+                        class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
+                </div>
+
+                <!-- Image 5 -->
+                <div
+                    class="shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white/40 backdrop-blur-md border border-white/60 transition-all duration-500">
+                    <img src="images/offset-5.png" alt="ABL Tubes"
+                        class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
+                </div>
+
+                <!-- Image 6 -->
+                <div
+                    class="shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white/40 backdrop-blur-md border border-white/60 transition-all duration-500">
+                    <img src="images/offset-6.png" alt="PBL Tubes"
+                        class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
+                </div>
+
+                <!-- Image 7 -->
+                <div
+                    class="shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white/40 backdrop-blur-md border border-white/60 transition-all duration-500">
+                    <img src="images/offset-7.png" alt="Laminated Tubes"
+                        class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
+                </div>
+
+                <!-- Image 8 -->
+                <div
+                    class="shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden group relative cursor-pointer bg-white/40 backdrop-blur-md border border-white/60 transition-all duration-500">
+                    <img src="images/offset-8.png" alt="Tube Packaging"
+                        class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
+                </div>
+
             </div>
         </div>
     </section>
-    <!-- ============ PORTFOLIO LIGHTBOX ============ -->
-    <div class="mf-lightbox" id="mfLightbox" aria-hidden="true">
-        <button type="button" class="mf-lb-btn mf-lb-close" aria-label="Close preview"><i
-                class="fas fa-times"></i></button>
-        <button type="button" class="mf-lb-btn mf-lb-prev" aria-label="Previous image"><i
-                class="fas fa-chevron-left"></i></button>
-        <img id="mfLbImage" alt="">
-        <button type="button" class="mf-lb-btn mf-lb-next" aria-label="Next image"><i
-                class="fas fa-chevron-right"></i></button>
-        <div class="mf-lb-count" id="mfLbCount"></div>
-    </div>
 
     <!-- ═══════════════ NEED FOR SOME HELP (PREMIUM SPLIT DARK) ═══════════════ -->
     <section id="help"
@@ -985,55 +692,6 @@
         });
     </script>
 
-    <!-- Portfolio gallery lightbox -->
-    <script>
-        (function () {
-            var items = Array.prototype.slice.call(document.querySelectorAll('.mf-g-item'));
-            var box = document.getElementById('mfLightbox');
-            if (!items.length || !box) return;
-
-            var image = document.getElementById('mfLbImage');
-            var counter = document.getElementById('mfLbCount');
-            var index = 0;
-
-            function show(i) {
-                index = (i + items.length) % items.length;
-                var source = items[index].querySelector('img');
-                image.src = source.getAttribute('src');
-                image.alt = source.getAttribute('alt') || '';
-                counter.textContent = (index + 1) + ' / ' + items.length;
-            }
-
-            function open(i) {
-                show(i);
-                box.classList.add('open');
-                box.setAttribute('aria-hidden', 'false');
-                document.body.style.overflow = 'hidden';
-            }
-
-            function close() {
-                box.classList.remove('open');
-                box.setAttribute('aria-hidden', 'true');
-                document.body.style.overflow = '';
-            }
-
-            items.forEach(function (item, i) {
-                item.addEventListener('click', function () { open(i); });
-            });
-
-            box.querySelector('.mf-lb-close').addEventListener('click', close);
-            box.querySelector('.mf-lb-prev').addEventListener('click', function () { show(index - 1); });
-            box.querySelector('.mf-lb-next').addEventListener('click', function () { show(index + 1); });
-            box.addEventListener('click', function (event) { if (event.target === box) close(); });
-
-            document.addEventListener('keydown', function (event) {
-                if (!box.classList.contains('open')) return;
-                if (event.key === 'Escape') close();
-                if (event.key === 'ArrowLeft') show(index - 1);
-                if (event.key === 'ArrowRight') show(index + 1);
-            });
-        })();
-    </script>
 </body>
 
 </html>
