@@ -36,6 +36,28 @@ if (hamburger && sidebar && sidebarOverlay && sidebarClose) {
     sidebarOverlay.addEventListener('click', closeSidebar);
 }
 
+
+/* ================= HEADER SCROLL ANIMATION ================= */
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    const navbar = document.querySelector('.navbar');
+
+    if (!navbar) return;
+
+    window.addEventListener('scroll', function () {
+
+        if (window.scrollY > 30) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+
+    });
+
+});
+
+
 /* ================= ACCORDION UNIVERSAL LOGIC ================= */
 // Yeh function HTML ke onclick se trigger hota hai. About aur Services dono alag alag kaam karenge
 function toggleAccordion(listId, chevronId) {
@@ -406,17 +428,36 @@ document.addEventListener("DOMContentLoaded", function () {
         rootMargin: "0px 0px -50px 0px"
     };
 
+
     const scrollObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-            } else {
-                entry.target.classList.remove('is-visible');
+
+            // Hero Section: baar baar animation
+            if (entry.target.classList.contains('hero-section')) {
+
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('replay-hero');
+                } else {
+                    entry.target.classList.remove('replay-hero');
+                }
+
             }
+
+            // Baaki tamam sections: baar baar animation
+            else {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                } else {
+                    entry.target.classList.remove('is-visible');
+                }
+            }
+
         });
     }, observerOptions);
 
-    document.querySelectorAll('.fade-in-section').forEach((section) => {
+
+    // All animated sections observe karo
+    document.querySelectorAll('.fade-in-section, .hero-section').forEach(section => {
         scrollObserver.observe(section);
     });
 });
