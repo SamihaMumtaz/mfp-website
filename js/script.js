@@ -329,66 +329,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 /* ============================================================
-   PERFORMANCE SECTION ANIMATIONS
-============================================================ */
-document.addEventListener("DOMContentLoaded", function () {
-    const performanceSection = document.getElementById('performance-grid');
-    const counters = document.querySelectorAll('.counter');
-    const perfCircles = document.querySelectorAll('.perf-circle');
-    const CIRCUMFERENCE = 2 * Math.PI * 52;
-    let perfAnimated = false;
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && !perfAnimated) {
-                perfAnimated = true;
-
-                perfCircles.forEach(circle => {
-                    const target = +circle.getAttribute('data-target');
-                    const offset = CIRCUMFERENCE - (target / 100) * CIRCUMFERENCE;
-                    circle.style.strokeDashoffset = offset;
-                });
-
-                counters.forEach((counter) => {
-                    const target = +counter.getAttribute('data-target');
-                    const duration = 2500;
-                    let startTimestamp = null;
-
-                    const step = (timestamp) => {
-                        if (!startTimestamp) startTimestamp = timestamp;
-                        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                        const easeOut = 1 - Math.pow(1 - progress, 4);
-                        counter.innerText = Math.floor(easeOut * target);
-                        if (progress < 1) {
-                            window.requestAnimationFrame(step);
-                        } else {
-                            counter.innerText = target;
-                        }
-                    };
-                    window.requestAnimationFrame(step);
-                });
-            }
-        });
-    }, { threshold: 0.3 });
-
-    if (performanceSection) {
-        observer.observe(performanceSection);
-    }
-
-    // Interactive Spotlight Effect (Mouse Tracking)
-    const panels = document.querySelectorAll('.spotlight-panel');
-    panels.forEach(panel => {
-        panel.addEventListener('mousemove', e => {
-            const rect = panel.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            panel.style.setProperty('--mouse-x', `${x}px`);
-            panel.style.setProperty('--mouse-y', `${y}px`);
-        });
-    });
-});
-
-/* ============================================================
    CLEAN BRANDS MARQUEE INJECTION (3 ROWS)
 ============================================================ */
 const partnerLogos = [
@@ -582,60 +522,6 @@ function toggleProcessReveal(revealId, cardId) {
         text.classList.remove('text-gray-400');
     }
 }
-
-/* ============================================================
-   MASSIVE TYPOGRAPHY STICKY SERVICES
-============================================================ */
-document.addEventListener("DOMContentLoaded", function () {
-    const servicesSection = document.getElementById('services');
-    if (!servicesSection) return;
-
-    const bgImages = servicesSection.querySelectorAll('.service-bg');
-    const texts = servicesSection.querySelectorAll('.service-text');
-    const numberTextLeft = document.getElementById('current-number-left');
-    const totalSteps = texts.length;
-
-    window.addEventListener('scroll', () => {
-        const rect = servicesSection.getBoundingClientRect();
-
-        if (rect.top <= 0 && rect.bottom >= window.innerHeight) {
-
-            const scrollArea = rect.height - window.innerHeight;
-            const progress = Math.abs(rect.top) / scrollArea;
-
-            let currentIndex = Math.floor(progress * totalSteps);
-            if (currentIndex >= totalSteps) currentIndex = totalSteps - 1;
-            if (currentIndex < 0) currentIndex = 0;
-
-            // Background Images Update
-            bgImages.forEach((img, index) => {
-                if (index === currentIndex) {
-                    img.classList.remove('opacity-0', 'scale-105');
-                    img.classList.add('opacity-100', 'scale-100');
-                } else {
-                    img.classList.remove('opacity-100', 'scale-100');
-                    img.classList.add('opacity-0', 'scale-105');
-                }
-            });
-
-            // Text Update
-            texts.forEach((text, index) => {
-                if (index === currentIndex) {
-                    text.classList.remove('hidden');
-                    text.classList.add('block');
-                } else {
-                    text.classList.add('hidden');
-                    text.classList.remove('block');
-                }
-            });
-
-            // Left Number Update (01, 02...)
-            if (numberTextLeft) {
-                numberTextLeft.innerText = "0" + (currentIndex + 1);
-            }
-        }
-    });
-});
 
 document.addEventListener('DOMContentLoaded', function () {
 
