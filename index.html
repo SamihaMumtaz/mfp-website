@@ -35,9 +35,9 @@
     <section id="home"
         class="hero-section relative z-10 w-full overflow-hidden flex items-center py-16 md:py-24 scroll-mt-24">
         <div class="absolute inset-0 -z-10 bg-[#050806]">
-            <img src="images/plastic-packing.png" id="dynamicImage"
-                class="w-full h-full object-cover transition-all duration-1000 ease-out scale-105"
-                alt="Background Service Image">
+            <video id="dynamicVideo" autoplay muted playsinline preload="auto"
+                class="w-full h-full object-cover transition-all duration-1000 ease-out scale-105">
+            </video>
             <div class="absolute inset-0 bg-gradient-to-b from-[#050806]/90 via-[#050806]/50 to-[#050806]/90"></div>
             <div
                 class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#46B77B]/10 blur-[150px] rounded-full mix-blend-screen pointer-events-none">
@@ -775,7 +775,7 @@
             }
         });
     </script>
-    
+
 </body>
 
 </html>

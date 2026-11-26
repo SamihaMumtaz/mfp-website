@@ -158,51 +158,53 @@ if (canvas) {
     animateParticles();
 }
 
+
 /* ============================================================
-   HOME PAGE DYNAMIC HERO (TEXT, IMAGE & DESCRIPTION CHANGE)
+   HOME PAGE DYNAMIC HERO (VIDEO, TEXT & DESCRIPTION CHANGE)
 ============================================================ */
+
 const data = [
     {
-        title: "Plastic Packaging",
-        desc: "Plastic packaging is a versatile, durable, and cost-effective solution for preserving and protecting products. Customizable in design and size, plastic packaging enhances brand visibility.",
-        btnText: "Plastic Packaging",
-        link: "#plastic-packaging",
-        image: "images/plastic-packing.png"
-    },
-    {
-        title: "Tissue Conversion",
-        desc: "Tissue conversion transforms raw tissue paper into finished products like napkins, facial tissues, and paper towels.",
-        btnText: "Tissue Conversion",
-        link: "#tissue-conversion",
-        image: "images/tissue-conversion.png"
-    },
-    {
-        title: "Flexible Printing",
-        desc: "Flexible printing offers versatile, efficient solutions for packaging and custom designs. It adapts to different materials and shapes, ensuring high-quality, durable prints that enhance product appeal and branding.",
-        btnText: "Flexible Printing",
-        link: "#flexible-printing",
-        image: "images/flexible-printing.png"
+        title: "Offset Printing",
+        desc: "Offset printing is a high-quality, cost-effective method ideal for large volumes. It ensures vibrant colors, sharp images, and professional results on various materials.",
+        btnText: "Offset Printing",
+        link: "#offset-printing",
+        video: "videos/offset-printing.mp4"
     },
     {
         title: "Roll to Roll Labels",
         desc: "Roll-to-roll label printing is an efficient, high-speed solution for producing custom labels in bulk. Ideal for industries.",
         btnText: "Roll to Roll Labels",
         link: "#roll-to-roll",
-        image: "images/roll-to-roll.png"
+        video: "videos/roll-to-roll-label-printing.mp4"
+    },
+    {
+        title: "Flexible Printing",
+        desc: "Flexible printing offers versatile, efficient solutions for packaging and custom designs. It adapts to different materials and shapes, ensuring high-quality, durable prints that enhance product appeal and branding.",
+        btnText: "Flexible Printing",
+        link: "#flexible-printing",
+        video: "videos/flexible-packaging.mp4"
+    },
+    {
+        title: "Tissue Conversion",
+        desc: "Tissue conversion transforms raw tissue paper into finished products like napkins, facial tissues, and paper towels.",
+        btnText: "Tissue Conversion",
+        link: "#tissue-conversion",
+        video: "videos/tissue-conversion.mp4"
+    },
+    {
+        title: "Plastic Packaging",
+        desc: "Plastic packaging is a versatile, durable, and cost-effective solution for preserving and protecting products. Customizable in design and size, plastic packaging enhances brand visibility.",
+        btnText: "Plastic Packaging",
+        link: "#plastic-packaging",
+        video: "videos/plastic-packaging.mp4"
     },
     {
         title: "Laminated Tubes",
         desc: "Laminated tubes are durable, lightweight packaging solutions ideal for cosmetics, pharmaceuticals, and food products.",
         btnText: "Laminated Tubes",
         link: "#laminated-tubes",
-        image: "images/laminated-tubes.png"
-    },
-    {
-        title: "Offset Printing",
-        desc: "Offset printing is a high-quality, cost-effective method ideal for large volumes. It ensures vibrant colors, sharp images, and professional results on various materials.",
-        btnText: "Offset Printing",
-        link: "#offset-printing",
-        image: "images/offset-printing.jpg"
+        video: "videos/laminated-tubes.mp4"
     }
 ];
 
@@ -210,64 +212,101 @@ const typedElement = document.getElementById('typedText');
 const descElement = document.getElementById('dynamicDesc');
 const btnStart = document.getElementById('dynamicBtnStart');
 const btnStartText = document.getElementById('btnStartText');
-const dynamicImage = document.getElementById('dynamicImage');
+const dynamicVideo = document.getElementById('dynamicVideo');
 
 let phraseIndex = 0;
 let charIndex = 0;
-let isDeleting = false;
+let typingTimer = null;
 
-if (dynamicImage) {
-    dynamicImage.src = data[0].image;
-}
-
-function updateImage(imageUrl) {
-    if (!dynamicImage) return;
-    dynamicImage.style.opacity = '0';
-    dynamicImage.style.transform = 'scale(1.1)';
-    setTimeout(() => {
-        dynamicImage.src = imageUrl;
-        dynamicImage.onload = () => {
-            dynamicImage.style.opacity = '1';
-            dynamicImage.style.transform = 'scale(1.05)';
-        };
-    }, 300);
-}
-
+// Title typing effect
 function typeHomeEffect() {
+
     if (!typedElement) return;
+
     const currentItem = data[phraseIndex];
 
-    if (isDeleting) {
-        typedElement.textContent = currentItem.title.substring(0, charIndex - 1);
-        charIndex--;
-    } else {
-        typedElement.textContent = currentItem.title.substring(0, charIndex + 1);
+    if (charIndex < currentItem.title.length) {
+
+        typedElement.textContent += currentItem.title.charAt(charIndex);
+
         charIndex++;
+
+        typingTimer = setTimeout(typeHomeEffect, 80);
+    }
+}
+
+// Current video ka text aur button update karo
+function updateHeroContent() {
+
+    const currentItem = data[phraseIndex];
+
+    charIndex = 0;
+
+    if (typingTimer) {
+        clearTimeout(typingTimer);
     }
 
-    let speed = isDeleting ? 40 : 80;
+    if (typedElement) {
+        typedElement.textContent = "";
+    }
 
-    if (!isDeleting && charIndex === currentItem.title.length) {
-        speed = 2000;
-        isDeleting = true;
-    } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        phraseIndex = (phraseIndex + 1) % data.length;
-
-        if (descElement) descElement.style.opacity = 0;
+    if (descElement) {
+        descElement.style.opacity = "0";
 
         setTimeout(() => {
-            if (descElement) {
-                descElement.textContent = data[phraseIndex].desc;
-                descElement.style.opacity = 1;
-            }
-            if (btnStart) btnStart.href = data[phraseIndex].link;
-            if (btnStartText) btnStartText.textContent = data[phraseIndex].btnText;
-            updateImage(data[phraseIndex].image);
+            descElement.textContent = currentItem.desc;
+            descElement.style.opacity = "1";
         }, 200);
-        speed = 500;
     }
-    setTimeout(typeHomeEffect, speed);
+
+    if (btnStart) {
+        btnStart.href = currentItem.link;
+    }
+
+    if (btnStartText) {
+        btnStartText.textContent = currentItem.btnText;
+    }
+
+    typeHomeEffect();
+}
+
+// Video load aur play karo
+function playHeroVideo() {
+
+    if (!dynamicVideo) return;
+
+    const currentItem = data[phraseIndex];
+
+    dynamicVideo.style.opacity = "0";
+
+    dynamicVideo.src = currentItem.video;
+
+    dynamicVideo.load();
+
+    dynamicVideo.addEventListener("canplay", function () {
+
+        dynamicVideo.style.opacity = "1";
+
+        dynamicVideo.play().catch(error => {
+            console.log("Hero video autoplay issue:", error);
+        });
+
+    }, { once: true });
+}
+
+// Jab current video complete ho tab next video chalao
+if (dynamicVideo) {
+
+    dynamicVideo.addEventListener("ended", function () {
+
+        phraseIndex = (phraseIndex + 1) % data.length;
+
+        playHeroVideo();
+
+        updateHeroContent();
+
+    });
+
 }
 
 /* ============================================================
@@ -343,10 +382,15 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // 2. Start Typing Effects
-    if (dynamicImage) {
-        typeHomeEffect();
+    if (dynamicVideo) {
+
+        updateHeroContent();
+        playHeroVideo();
+
     } else if (offsetTypedText) {
+
         typeInnerPagesEffect();
+
     }
 });
 
