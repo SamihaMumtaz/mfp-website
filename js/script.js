@@ -168,42 +168,42 @@ const data = [
         title: "Offset Printing",
         desc: "Offset printing is a high-quality, cost-effective method ideal for large volumes. It ensures vibrant colors, sharp images, and professional results on various materials.",
         btnText: "Offset Printing",
-        link: "#offset-printing",
+        link: "offset-printing.html",
         video: "videos/offset-printing.mp4"
     },
     {
         title: "Roll to Roll Labels",
         desc: "Roll-to-roll label printing is an efficient, high-speed solution for producing custom labels in bulk. Ideal for industries.",
         btnText: "Roll to Roll Labels",
-        link: "#roll-to-roll",
+        link: "roll-to-roll.html",
         video: "videos/roll-to-roll-label-printing.mp4"
     },
     {
         title: "Flexible Printing",
         desc: "Flexible printing offers versatile, efficient solutions for packaging and custom designs. It adapts to different materials and shapes, ensuring high-quality, durable prints that enhance product appeal and branding.",
         btnText: "Flexible Printing",
-        link: "#flexible-printing",
+        link: "flexible-packaging.html",
         video: "videos/flexible-packaging.mp4"
     },
     {
         title: "Tissue Conversion",
         desc: "Tissue conversion transforms raw tissue paper into finished products like napkins, facial tissues, and paper towels.",
         btnText: "Tissue Conversion",
-        link: "#tissue-conversion",
+        link: "tissue-conversion.html",
         video: "videos/tissue-conversion.mp4"
     },
     {
         title: "Plastic Packaging",
         desc: "Plastic packaging is a versatile, durable, and cost-effective solution for preserving and protecting products. Customizable in design and size, plastic packaging enhances brand visibility.",
         btnText: "Plastic Packaging",
-        link: "#plastic-packaging",
+        link: "plastic-packaging.html",
         video: "videos/plastic-packaging.mp4"
     },
     {
         title: "Laminated Tubes",
         desc: "Laminated tubes are durable, lightweight packaging solutions ideal for cosmetics, pharmaceuticals, and food products.",
         btnText: "Laminated Tubes",
-        link: "#laminated-tubes",
+        link: "laminated-tubes.html",
         video: "videos/laminated-tubes.mp4"
     }
 ];
