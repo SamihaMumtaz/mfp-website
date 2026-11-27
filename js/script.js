@@ -526,6 +526,8 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll('.fade-in-section, .hero-section').forEach(section => {
         scrollObserver.observe(section);
     });
+
+    
 });
 
 /* ============================================================
@@ -881,3 +883,4 @@ document.addEventListener('DOMContentLoaded', function () {
     renderGallery();
 
 });
+
