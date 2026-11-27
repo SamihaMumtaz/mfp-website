@@ -159,8 +159,12 @@ if (canvas) {
 }
 
 
+
+
+
 /* ============================================================
-   HOME PAGE DYNAMIC HERO (VIDEO, TEXT & DESCRIPTION CHANGE)
+   UNIVERSAL HERO SLIDER
+   VIDEO + TYPING + DESCRIPTION + BUTTON SYNCHRONIZATION
 ============================================================ */
 
 const data = [
@@ -216,98 +220,123 @@ const dynamicVideo = document.getElementById('dynamicVideo');
 
 let phraseIndex = 0;
 let charIndex = 0;
+let isDeleting = false;
 let typingTimer = null;
 
-// Title typing effect
-function typeHomeEffect() {
-
-    if (!typedElement) return;
-
-    const currentItem = data[phraseIndex];
-
-    if (charIndex < currentItem.title.length) {
-
-        typedElement.textContent += currentItem.title.charAt(charIndex);
-
-        charIndex++;
-
-        typingTimer = setTimeout(typeHomeEffect, 80);
-    }
-}
-
-// Current video ka text aur button update karo
 function updateHeroContent() {
 
     const currentItem = data[phraseIndex];
 
     charIndex = 0;
+    isDeleting = false;
 
-    if (typingTimer) {
-        clearTimeout(typingTimer);
-    }
+    clearTimeout(typingTimer);
 
-    if (typedElement) {
-        typedElement.textContent = "";
-    }
+    typedElement.textContent = "";
+    descElement.textContent = currentItem.desc;
 
-    if (descElement) {
-        descElement.style.opacity = "0";
-
-        setTimeout(() => {
-            descElement.textContent = currentItem.desc;
-            descElement.style.opacity = "1";
-        }, 200);
-    }
-
-    if (btnStart) {
-        btnStart.href = currentItem.link;
-    }
-
-    if (btnStartText) {
-        btnStartText.textContent = currentItem.btnText;
-    }
-
-    typeHomeEffect();
+    btnStart.href = currentItem.link;
+    btnStartText.textContent = currentItem.btnText;
 }
 
-// Video load aur play karo
-function playHeroVideo() {
+/* Typing Animation */
+function typeHomeEffect() {
 
-    if (!dynamicVideo) return;
+    if (!dynamicVideo || dynamicVideo.paused || dynamicVideo.ended) {
+        return;
+    }
+
+    const currentTitle = data[phraseIndex].title;
+
+    if (!isDeleting) {
+
+        typedElement.textContent =
+            currentTitle.substring(0, charIndex + 1);
+
+        charIndex++;
+
+        if (charIndex === currentTitle.length) {
+
+            isDeleting = true;
+
+            typingTimer = setTimeout(typeHomeEffect, 1800);
+
+        } else {
+
+            typingTimer = setTimeout(typeHomeEffect, 80);
+        }
+
+    } else {
+
+        typedElement.textContent =
+            currentTitle.substring(0, charIndex - 1);
+
+        charIndex--;
+
+        if (charIndex === 0) {
+
+            isDeleting = false;
+
+            typingTimer = setTimeout(typeHomeEffect, 400);
+
+        } else {
+
+            typingTimer = setTimeout(typeHomeEffect, 40);
+        }
+    }
+}
+
+/* Start New Slide */
+function startHeroSlide() {
 
     const currentItem = data[phraseIndex];
 
-    dynamicVideo.style.opacity = "0";
+    clearTimeout(typingTimer);
+
+    dynamicVideo.pause();
+
+    dynamicVideo.onplaying = null;
+    dynamicVideo.oncanplay = null;
+
+    updateHeroContent();
 
     dynamicVideo.src = currentItem.video;
 
-    dynamicVideo.load();
-
-    dynamicVideo.addEventListener("canplay", function () {
-
-        dynamicVideo.style.opacity = "1";
+    dynamicVideo.oncanplay = function () {
 
         dynamicVideo.play().catch(error => {
-            console.log("Hero video autoplay issue:", error);
+            console.log("Video playback issue:", error);
         });
 
-    }, { once: true });
+        dynamicVideo.oncanplay = null;
+    };
+
+    dynamicVideo.onplaying = function () {
+
+        typeHomeEffect();
+
+        dynamicVideo.onplaying = null;
+    };
+
+    dynamicVideo.load();
 }
 
-// Jab current video complete ho tab next video chalao
-if (dynamicVideo) {
+/* Next Slide */
+dynamicVideo.addEventListener("ended", function () {
 
-    dynamicVideo.addEventListener("ended", function () {
+    clearTimeout(typingTimer);
 
-        phraseIndex = (phraseIndex + 1) % data.length;
+    phraseIndex = (phraseIndex + 1) % data.length;
 
-        playHeroVideo();
+    startHeroSlide();
+});
 
-        updateHeroContent();
-
-    });
-
+/* Start First Slide */
+if (dynamicVideo && typedElement && descElement && btnStart && btnStartText) {
+    startHeroSlide();
 }
+
+
 
 /* ============================================================
    INNER PAGES TYPING EFFECT (SMART DETECTION)
@@ -381,16 +410,9 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // 2. Start Typing Effects
-    if (dynamicVideo) {
-
-        updateHeroContent();
-        playHeroVideo();
-
-    } else if (offsetTypedText) {
-
+    // 2. Start Inner Pages Typing Effect
+    if (!dynamicVideo && offsetTypedText) {
         typeInnerPagesEffect();
-
     }
 });
 
