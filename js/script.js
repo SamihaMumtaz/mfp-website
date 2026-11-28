@@ -158,10 +158,6 @@ if (canvas) {
     animateParticles();
 }
 
-
-
-
-
 /* ============================================================
    UNIVERSAL HERO SLIDER
    VIDEO + TYPING + DESCRIPTION + BUTTON SYNCHRONIZATION
@@ -173,42 +169,48 @@ const data = [
         desc: "Offset printing is a high-quality, cost-effective method ideal for large volumes. It ensures vibrant colors, sharp images, and professional results on various materials.",
         btnText: "Offset Printing",
         link: "offset-printing.html",
-        video: "videos/offset-printing.mp4"
+        video: "videos/offset-printing.mp4",
+        poster: "images/offset-poster.png"
     },
     {
         title: "Roll to Roll Labels",
         desc: "Roll-to-roll label printing is an efficient, high-speed solution for producing custom labels in bulk. Ideal for industries.",
         btnText: "Roll to Roll Labels",
         link: "roll-to-roll.html",
-        video: "videos/roll-to-roll-label-printing.mp4"
+        video: "videos/roll-to-roll-label-printing.mp4",
+        poster: "images/roll-to-roll-poster.png"
     },
     {
         title: "Flexible Printing",
         desc: "Flexible printing offers versatile, efficient solutions for packaging and custom designs. It adapts to different materials and shapes, ensuring high-quality, durable prints that enhance product appeal and branding.",
         btnText: "Flexible Printing",
         link: "flexible-packaging.html",
-        video: "videos/flexible-packaging.mp4"
+        video: "videos/flexible-packaging.mp4",
+        poster: "images/flexible-poster.png"
     },
     {
         title: "Tissue Conversion",
         desc: "Tissue conversion transforms raw tissue paper into finished products like napkins, facial tissues, and paper towels.",
         btnText: "Tissue Conversion",
         link: "tissue-conversion.html",
-        video: "videos/tissue-conversion.mp4"
+        video: "videos/tissue-conversion.mp4",
+        poster: "images/tissue-poster.png"
     },
     {
         title: "Plastic Packaging",
         desc: "Plastic packaging is a versatile, durable, and cost-effective solution for preserving and protecting products. Customizable in design and size, plastic packaging enhances brand visibility.",
         btnText: "Plastic Packaging",
         link: "plastic-packaging.html",
-        video: "videos/plastic-packaging.mp4"
+        video: "videos/plastic-packaging.mp4",
+        poster: "images/plastic-poster.png"
     },
     {
         title: "Laminated Tubes",
         desc: "Laminated tubes are durable, lightweight packaging solutions ideal for cosmetics, pharmaceuticals, and food products.",
         btnText: "Laminated Tubes",
         link: "laminated-tubes.html",
-        video: "videos/laminated-tubes.mp4"
+        video: "videos/laminated-tubes.mp4",
+        poster: "images/laminated-poster.png"
     }
 ];
 
@@ -300,6 +302,7 @@ function startHeroSlide() {
 
     updateHeroContent();
 
+    dynamicVideo.setAttribute("poster", currentItem.poster);
     dynamicVideo.src = currentItem.video;
 
     dynamicVideo.oncanplay = function () {
@@ -321,45 +324,93 @@ function startHeroSlide() {
     dynamicVideo.load();
 }
 
+
 /* Next Slide */
-dynamicVideo.addEventListener("ended", function () {
+if (dynamicVideo) {
+    dynamicVideo.addEventListener("ended", function () {
 
-    clearTimeout(typingTimer);
+        clearTimeout(typingTimer);
 
-    phraseIndex = (phraseIndex + 1) % data.length;
+        phraseIndex = (phraseIndex + 1) % data.length;
 
-    startHeroSlide();
-});
+        startHeroSlide();
+    });
+}
+
 
 /* Start First Slide */
 if (dynamicVideo && typedElement && descElement && btnStart && btnStartText) {
     startHeroSlide();
 }
 
+/* ============================================================
+   TAB VISIBILITY FIX
+   Tab switch ke baad video resume + typing restart
+============================================================ */
 
+document.addEventListener('visibilitychange', function () {
+
+    if (!dynamicVideo) return;
+
+    if (document.visibilityState === 'visible') {
+
+        // Video resume karo
+        dynamicVideo.play().catch(error => {
+            console.log("Video resume issue:", error);
+        });
+
+        // Thoda wait karo taake video play ho jaye, phir typing restart karo
+        if (typedElement && descElement) {
+
+            clearTimeout(typingTimer);
+
+            setTimeout(function () {
+
+                // Agar text khali hai to shuru se, warna wahin se continue
+                if (typedElement.textContent.length === 0) {
+                    charIndex = 0;
+                    isDeleting = false;
+                }
+
+                typeHomeEffect();
+
+            }, 400);   // 400ms ka delay — video play hone ke liye
+        }
+    }
+});
 
 /* ============================================================
-   INNER PAGES TYPING EFFECT (SMART DETECTION)
+   INNER PAGES TYPING EFFECT
 ============================================================ */
-const offsetTypedText = document.getElementById('offsetTypedText');
 
 function typeInnerPagesEffect() {
-    let phrase = "& Folding Cartons"; // Default
-    const currentUrl = window.location.href.toLowerCase();
+
+    const typingElement = document.getElementById('offsetTypedText');
+
+    // Agar typing element page par nahi hai to stop
+    if (!typingElement) return;
+
+    const currentUrl = window.location.pathname.toLowerCase();
     const pageTitle = document.title.toLowerCase();
+
+    let phrase = "& Folding Cartons";
 
     if (currentUrl.includes("about") || pageTitle.includes("about")) {
         phrase = "Brand Packaging";
     }
     else if (currentUrl.includes("laminated") || pageTitle.includes("laminated")) {
         phrase = "& Barrier Protection";
-    } else if (currentUrl.includes("plastic") || pageTitle.includes("plastic")) {
+    }
+    else if (currentUrl.includes("plastic") || pageTitle.includes("plastic")) {
         phrase = "& Durable Solutions";
-    } else if (currentUrl.includes("tissue") || pageTitle.includes("tissue")) {
+    }
+    else if (currentUrl.includes("tissue") || pageTitle.includes("tissue")) {
         phrase = "& Premium Comfort";
-    } else if (currentUrl.includes("flexible") || pageTitle.includes("flexible")) {
+    }
+    else if (currentUrl.includes("flexible") || pageTitle.includes("flexible")) {
         phrase = "& Sustainability";
-    } else if (currentUrl.includes("roll-to-roll") || currentUrl.includes("roll") || pageTitle.includes("roll to roll")) {
+    }
+    else if (currentUrl.includes("roll-to-roll") || pageTitle.includes("roll to roll")) {
         phrase = "& Special Finishes";
     }
 
@@ -367,53 +418,50 @@ function typeInnerPagesEffect() {
     let deleting = false;
 
     function type() {
-        if (deleting) {
-            offsetTypedText.textContent = phrase.substring(0, idx - 1);
-            idx--;
-        } else {
-            offsetTypedText.textContent = phrase.substring(0, idx + 1);
+
+        if (!deleting) {
+
+            typingElement.textContent = phrase.substring(0, idx + 1);
             idx++;
+
+            if (idx === phrase.length) {
+                deleting = true;
+                setTimeout(type, 2500);
+                return;
+            }
+
+            setTimeout(type, 100);
+
+        } else {
+
+            typingElement.textContent = phrase.substring(0, idx - 1);
+            idx--;
+
+            if (idx === 0) {
+                deleting = false;
+                setTimeout(type, 500);
+                return;
+            }
+
+            setTimeout(type, 40);
         }
-
-        let speed = deleting ? 40 : 100;
-
-        if (!deleting && idx === phrase.length) {
-            speed = 2500;
-            deleting = true;
-        } else if (deleting && idx === 0) {
-            deleting = false;
-            speed = 500;
-        }
-
-        setTimeout(type, speed);
     }
 
+    typingElement.textContent = "";
     setTimeout(type, 500);
 }
 
-/* ============================================================
-   INITIALIZE EFFECTS ON PAGE LOAD
-============================================================ */
-document.addEventListener('DOMContentLoaded', function () {
-    // 1. Sidebar Links Logic
-    const sidebarLinks = document.querySelectorAll('.sidebar-link');
-    const closeSidebarBtn = document.getElementById('sidebarClose');
-    if (closeSidebarBtn) {
-        sidebarLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                const sb = document.getElementById('sidebar');
-                const overlay = document.getElementById('sidebarOverlay');
-                if (sb) sb.classList.remove('active');
-                if (overlay) overlay.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-        });
-    }
 
-    // 2. Start Inner Pages Typing Effect
-    if (!dynamicVideo && offsetTypedText) {
+/* Start typing on inner pages */
+document.addEventListener('DOMContentLoaded', function () {
+
+    const innerTypingElement = document.getElementById('offsetTypedText');
+    const homeVideo = document.getElementById('dynamicVideo');
+
+    if (innerTypingElement && !homeVideo) {
         typeInnerPagesEffect();
     }
+
 });
 
 /* ============================================================
@@ -508,26 +556,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
 
             }
-
-            // Baaki tamam sections: baar baar animation
-            else {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                } else {
-                    entry.target.classList.remove('is-visible');
-                }
-            }
-
         });
     }, observerOptions);
-
 
     // All animated sections observe karo
     document.querySelectorAll('.fade-in-section, .hero-section').forEach(section => {
         scrollObserver.observe(section);
     });
-
-    
 });
 
 /* ============================================================
@@ -884,3 +919,55 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
+(function () {
+    const textEl = document.getElementById('overviewText');
+    const fadeEl = document.getElementById('overviewFade');
+    const btnEl = document.getElementById('overviewToggle');
+    const btnText = document.getElementById('overviewToggleText');
+    const btnIcon = document.getElementById('overviewToggleIcon');
+
+    if (!textEl || !btnEl) return;
+
+    const COLLAPSED = '9.5em'; // ~4-5 lines collapsed
+    let expanded = false;
+
+    // Set full height so the transition works smoothly
+    function setFullHeight() {
+        textEl.style.maxHeight = textEl.scrollHeight + 'px';
+    }
+
+    // Collapse back
+    function collapse() {
+        textEl.style.maxHeight = COLLAPSED;
+        fadeEl.style.opacity = '1';
+        btnText.textContent = 'Load More';
+        btnIcon.style.transform = 'rotate(0deg)';
+        expanded = false;
+    }
+
+    // Expand
+    function expand() {
+        textEl.style.maxHeight = textEl.scrollHeight + 'px';
+        fadeEl.style.opacity = '0';
+        btnText.textContent = 'Show Less';
+        btnIcon.style.transform = 'rotate(180deg)';
+        expanded = true;
+    }
+
+    btnEl.addEventListener('click', function () {
+        expanded ? collapse() : expand();
+    });
+
+    // Recalculate height on resize (important for desktop ↔ laptop changes)
+    window.addEventListener('resize', function () {
+        if (expanded) {
+            textEl.style.maxHeight = 'none';
+            // force reflow so next line reads real scrollHeight
+            void textEl.offsetHeight;
+            setFullHeight();
+        }
+    });
+
+    // Initial state
+    collapse();
+})();

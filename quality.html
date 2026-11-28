@@ -16,25 +16,6 @@
     <!-- Custom CSS File -->
     <link rel="stylesheet" href="css/style.css">
 
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-
-        /* Scroll Reveal Animations (Fast & Smooth) */
-        .reveal-up { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; will-change: transform, opacity; }
-        .reveal-left { opacity: 0; transform: translateX(-20px); transition: all 0.6s ease-out; will-change: transform, opacity; }
-        .reveal-right { opacity: 0; transform: translateX(20px); transition: all 0.6s ease-out; will-change: transform, opacity; }
-        .is-revealed { opacity: 1 !important; transform: translate(0, 0) !important; }
-
-        .delay-100 { transition-delay: 100ms; }
-        .delay-200 { transition-delay: 200ms; }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #FAFBF9; }
-        ::-webkit-scrollbar-thumb { background: #46B77B; border-radius: 4px; }
-    </style>
 </head>
 
 <body class="bg-[#FAFBF9] text-[#0A0C12] overflow-x-hidden min-h-screen font-sans relative flex flex-col">
@@ -43,56 +24,73 @@
     <div class="bg-morph fixed inset-0 -z-50"></div>
     <div class="glow fixed rounded-full -z-40 pointer-events-none glow-1"></div>
     <div class="glow fixed rounded-full -z-40 pointer-events-none glow-2"></div>
+    <canvas id="particle-canvas" class="fixed inset-0 -z-30 pointer-events-none opacity-45"></canvas>
 
     <!-- HEADER PLACEHOLDER -->
     <div id="header-placeholder" class="contents"></div>
 
     <!-- ═══════════════ HERO SECTION (HEADINGS EXACT) ═══════════════ -->
-    <section class="relative w-full py-20 md:py-28 lg:py-0 lg:h-[60vh] min-h-[450px] overflow-hidden flex items-center border-b border-gray-200/50">
-        
+    <section
+        class="relative w-full py-20 md:py-28 lg:py-0 lg:h-[60vh] min-h-[450px] overflow-hidden flex items-center border-b border-gray-200/50">
+
         <div class="absolute inset-0 -z-10 bg-[#050806]">
             <img src="images/about-maqsood-faisal.jpg" alt="Quality Policy - Maqsood Faisal Printing Press"
                 class="w-full h-full object-cover object-center opacity-40">
-            <div class="absolute inset-0 bg-gradient-to-r from-[#050806]/95 via-[#050806]/80 to-[#050806]/40 lg:to-transparent"></div>
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[800px] h-[300px] md:h-[800px] bg-[#46B77B]/10 blur-[100px] md:blur-[150px] rounded-full mix-blend-screen pointer-events-none"></div>
+            <div
+                class="absolute inset-0 bg-gradient-to-r from-[#050806]/95 via-[#050806]/80 to-[#050806]/40 lg:to-transparent">
+            </div>
+            <div
+                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[800px] h-[300px] md:h-[800px] bg-[#46B77B]/10 blur-[100px] md:blur-[150px] rounded-full mix-blend-screen pointer-events-none">
+            </div>
         </div>
 
         <div class="max-w-7xl mx-auto px-5 sm:px-6 md:px-8 lg:px-12 relative z-10 w-full">
-            <div class="reveal-left max-w-4xl">
+            <div class="max-w-4xl">
                 <div class="flex items-center gap-3 mb-4 md:mb-6">
                     <span class="h-px w-8 md:w-10 bg-[#46B77B]"></span>
-                    <span class="text-[0.65rem] md:text-xs font-bold tracking-[0.2em] md:tracking-[0.3em] uppercase text-[#46B77B]">QUALITY MANAGEMENT SYSTEM</span>
+                    <span
+                        class="text-[0.65rem] md:text-xs font-bold tracking-[0.2em] md:tracking-[0.3em] uppercase text-[#46B77B]">QUALITY
+                        MANAGEMENT SYSTEM</span>
                 </div>
 
-                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 md:mb-5 leading-[1.15]">
+                <h1
+                    class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 md:mb-5 leading-[1.15]">
                     Our <span class="relative inline-block text-[#46B77B]">Quality
-                        <svg class="absolute -bottom-2 md:-bottom-3 left-0 w-full" height="7" viewBox="0 0 200 10" preserveAspectRatio="none" fill="none">
+                        <svg class="absolute -bottom-2 md:-bottom-3 left-0 w-full" height="7" viewBox="0 0 200 10"
+                            preserveAspectRatio="none" fill="none">
                             <path d="M2 7C50 3 100 2 198 6" stroke="#46B77B" stroke-width="3" stroke-linecap="round" />
                         </svg>
                     </span>
                 </h1>
 
-                <p class="text-gray-300 text-base sm:text-lg md:text-xl font-bold tracking-wide mb-8 mt-4 md:mt-6 max-w-2xl">
+                <p
+                    class="text-gray-300 text-base sm:text-lg md:text-xl font-bold tracking-wide mb-8 mt-4 md:mt-6 max-w-2xl">
                     "We Are Solutions For Your Brand Packaging"
                 </p>
 
                 <a href="#certified-section"
                     class="inline-flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs sm:text-sm font-bold rounded-lg hover:bg-white hover:text-[#0A0C12] transition-all duration-300 group shadow-lg shadow-black/20">
-                    Explore Our Certifications <i class="fas fa-arrow-down text-xs transition-transform group-hover:translate-y-1"></i>
+                    Explore Our Certifications <i
+                        class="fas fa-arrow-down text-xs transition-transform group-hover:translate-y-1"></i>
                 </a>
             </div>
         </div>
     </section>
 
-                <!-- ═══════════════ SECTION 1: TEXT AUR BARI IMAGE ═══════════════ -->
+    <!-- ═══════════════ SECTION 1: TEXT AUR BARI IMAGE ═══════════════ -->
     <section id="certified-section" class="relative z-10 w-full py-16 md:py-24 bg-white overflow-hidden">
-        <div class="max-w-7xl mx-auto px-5 sm:px-6 md:px-8 lg:px-12">
-            
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
+
             <!-- Heading (Center Aligned) -->
-            <div class="text-center mb-12 md:mb-16 reveal-up">
-                <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-[#0A0C12] uppercase tracking-tight">
-                    QUALITY MANAGEMENT <span class="relative inline-block text-[#46B77B]">SYSTEM
-                        <svg class="absolute -bottom-2 left-0 w-full" height="7" viewBox="0 0 200 10" preserveAspectRatio="none" fill="none">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-[1.35rem] min-[375px]:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-[#0A0C12] uppercase tracking-tight leading-[1.2]">
+                    <!-- Yahan line 1 set ki hai -->
+                    QUALITY MANAGEMENT <br class="hidden sm:block"> <span class="block sm:hidden"></span>
+                    
+                    <!-- Yahan line 2 set ki hai -->
+                    <span class="relative inline-block text-[#46B77B]">SYSTEM
+                        <svg class="absolute -bottom-1 sm:-bottom-2 left-0 w-full" height="7" viewBox="0 0 200 10"
+                            preserveAspectRatio="none" fill="none">
                             <path d="M2 7C50 3 100 2 198 6" stroke="#46B77B" stroke-width="3" stroke-linecap="round" />
                         </svg>
                     </span>
@@ -100,42 +98,50 @@
             </div>
 
             <!-- Grid Container -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+            <div class="grid grid-cols-1 min-[991px]:grid-cols-12 gap-10 min-[991px]:gap-16 items-center">
 
                 <!-- Left Side: Text Content (5 Columns) -->
-                <div class="lg:col-span-5 reveal-left">
-                    <div class="space-y-6 text-gray-600 text-base md:text-lg leading-relaxed">
+                <div class="min-[991px]:col-span-5">
+                    <div class="space-y-6 text-gray-600 text-sm md:text-base lg:text-lg leading-relaxed">
                         <p>
-                            At <strong class="text-[#0A0C12]">Maqsood Faisal Printing Press</strong>, we are committed to the highest quality standards. We proudly hold <strong>ISO 9001:2015</strong> and <strong>FSSC 22000</strong> certifications, emphasizing our dedication to international quality and food safety standards.
+                            At <strong class="text-[#0A0C12]">Maqsood Faisal Printing Press</strong>, we are committed
+                            to the highest quality standards. We proudly hold <strong>ISO 9001:2015</strong> and
+                            <strong>FSSC 22000</strong> certifications, emphasizing our dedication to international
+                            quality and food safety standards.
                         </p>
                         <p>
-                            Additionally, our <strong>Halal certification</strong> showcases our ability to meet specific client needs in compliance with Halal guidelines. These certifications underline our commitment to excellence and catering to diverse client requirements.
+                            Additionally, our <strong>Halal certification</strong> showcases our ability to meet
+                            specific client needs in compliance with Halal guidelines. These certifications underline
+                            our commitment to excellence and catering to diverse client requirements.
                         </p>
                     </div>
 
                     <!-- Highlight Box -->
-                    <div class="mt-8 p-5 bg-[#FAFBF9] border-l-4 border-[#46B77B] rounded-r-xl shadow-sm">
-                        <p class="text-sm font-bold text-[#0A0C12] flex items-center">
-                            <i class="fas fa-award text-[#46B77B] text-lg mr-3"></i> 
+                    <div class="mt-8 p-4 sm:p-5 bg-[#FAFBF9] border-l-4 border-[#46B77B] rounded-r-xl shadow-sm">
+                        <p class="text-xs sm:text-sm font-bold text-[#0A0C12] flex items-center">
+                            <i class="fas fa-award text-[#46B77B] text-base sm:text-lg mr-3 shrink-0"></i>
                             Delivering Excellence with International Certifications.
                         </p>
                     </div>
                 </div>
 
                 <!-- Right Side: Bari Tasveer (7 Columns) -->
-                <div class="lg:col-span-7 reveal-right delay-100 relative flex justify-center lg:justify-end">
-                    
+                <div
+                    class="min-[991px]:col-span-7 relative flex justify-center min-[991px]:justify-end mt-8 min-[991px]:mt-0">
+
                     <!-- Image Container Box -->
-                    <div class="relative bg-white p-2.5 rounded-2xl shadow-[0_20px_50px_-15px_rgba(0,0,0,0.15)] border border-gray-100 w-full max-w-lg group">
+                    <div
+                        class="relative bg-white p-2.5 rounded-2xl shadow-[0_20px_50px_-15px_rgba(0,0,0,0.15)] border border-gray-100 w-full max-w-lg group">
                         <!-- Decorative Glow Behind Image -->
-                        <div class="absolute inset-0 bg-gradient-to-tr from-[#46B77B]/10 to-transparent rounded-2xl -z-10 transform translate-x-4 translate-y-4 group-hover:translate-x-6 group-hover:translate-y-6 transition-transform duration-500"></div>
-                        
-                        <!-- Image (Ab fixed height nahi hai, apne size ke mutabiq khulegi) -->
+                        <div
+                            class="absolute inset-0 bg-gradient-to-tr from-[#46B77B]/10 to-transparent rounded-2xl -z-10 transform translate-x-4 translate-y-4 group-hover:translate-x-6 group-hover:translate-y-6 transition-transform duration-500">
+                        </div>
+
+                        <!-- Image -->
                         <div class="rounded-xl overflow-hidden bg-gray-50">
-                            <!-- Image ka rasta yahan hai -->
-                            <img src="images/fssc-cert-2.png" alt="FSSC 22000 Certificate" 
-                                 class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
-                                 onerror="this.src='https://placehold.co/600x800/f3f4f6/a1a1aa?text=Certificate+Image+Not+Found';">
+                            <img src="images/fssc-cert-2.png" alt="FSSC 22000 Certificate"
+                                class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
+                                onerror="this.src='https://placehold.co/600x800/f3f4f6/a1a1aa?text=Certificate+Image+Not+Found';">
                         </div>
                     </div>
 
@@ -148,11 +154,12 @@
     <!-- ═══════════════ SECTION 2: 3 CHOTI IMAGES (GALLERY) ═══════════════ -->
     <section class="relative z-10 w-full py-12 md:py-16 bg-[#FAFBF9] border-t border-gray-200/50 overflow-hidden">
         <div class="max-w-7xl mx-auto px-5 sm:px-6 md:px-8 lg:px-12 relative z-10">
-            
-            <div class="text-center mb-10 md:mb-12 reveal-up">
+
+            <div class="text-center mb-10 md:mb-12">
                 <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-[#0A0C12]">
                     Our <span class="relative inline-block text-[#46B77B]">Certifications
-                        <svg class="absolute -bottom-2 left-0 w-full" height="7" viewBox="0 0 200 10" preserveAspectRatio="none" fill="none">
+                        <svg class="absolute -bottom-2 left-0 w-full" height="7" viewBox="0 0 200 10"
+                            preserveAspectRatio="none" fill="none">
                             <path d="M2 7C50 3 100 2 198 6" stroke="#46B77B" stroke-width="3" stroke-linecap="round" />
                         </svg>
                     </span>
@@ -160,12 +167,15 @@
             </div>
 
             <!-- 3 Certificates Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 reveal-up delay-200">
-                
+            <!-- Yahan min-[991px]:grid-cols-3 kar diya hai taake 991px par 3 columns aayen -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 min-[991px]:grid-cols-3 gap-6 md:gap-8">
+
                 <!-- Certificate 1: ISO -->
-                <div class="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group cursor-pointer">
+                <div
+                    class="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group cursor-pointer">
                     <div class="aspect-[3/4] overflow-hidden bg-gray-100 p-2">
-                        <img src="images/iso-cert.png" alt="ISO 9001:2015" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500">
+                        <img src="images/iso-cert.png" alt="ISO 9001:2015"
+                            class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="p-4 text-center border-t border-gray-100">
                         <h3 class="text-sm font-bold text-[#0A0C12]">ISO 9001:2015</h3>
@@ -174,9 +184,11 @@
                 </div>
 
                 <!-- Certificate 2: Halal -->
-                <div class="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group cursor-pointer">
+                <div
+                    class="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group cursor-pointer">
                     <div class="aspect-[3/4] overflow-hidden bg-gray-100 p-2">
-                        <img src="images/halal-cert.png" alt="Halal Certification" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500">
+                        <img src="images/halal-cert.png" alt="Halal Certification"
+                            class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="p-4 text-center border-t border-gray-100">
                         <h3 class="text-sm font-bold text-[#0A0C12]">Halal Certification</h3>
@@ -185,9 +197,11 @@
                 </div>
 
                 <!-- Certificate 3: FSSC -->
-                <div class="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group cursor-pointer">
+                <div
+                    class="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group cursor-pointer">
                     <div class="aspect-[3/4] overflow-hidden bg-gray-100 p-2">
-                        <img src="images/fssc-cert-1.png" alt="FSSC 22000" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500">
+                        <img src="images/fssc-cert-1.png" alt="FSSC 22000"
+                            class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="p-4 text-center border-t border-gray-100">
                         <h3 class="text-sm font-bold text-[#0A0C12]">FSSC 22000</h3>
@@ -199,115 +213,160 @@
         </div>
     </section>
 
-    <!-- ═══════════════ QUALITY POLICY PILLARS (BAAQI KA CONTENT) ═══════════════ -->
+    <!-- ═══════════════ QUALITY POLICY PILLARS ═══════════════ -->
     <section class="relative z-10 w-full py-12 md:py-16 bg-white border-t border-gray-200/50 overflow-hidden">
         <div class="max-w-7xl mx-auto px-5 sm:px-6 md:px-8 lg:px-12 relative z-10">
 
-            <div class="text-center mb-10 md:mb-14 reveal-up">
+            <div class="text-center mb-10 md:mb-14">
                 <div class="flex items-center justify-center gap-3 mb-4 md:mb-5">
                     <span class="h-px w-10 bg-[#46B77B]"></span>
-                    <span class="text-[0.65rem] md:text-xs font-bold tracking-[0.3em] uppercase text-[#46B77B]">Our Salient Features</span>
+                    <span class="text-[0.65rem] md:text-xs font-bold tracking-[0.3em] uppercase text-[#46B77B]">Our
+                        Salient Features</span>
                     <span class="h-px w-10 bg-[#46B77B]"></span>
                 </div>
 
                 <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-[#0A0C12] mb-3">
                     Policy <span class="relative inline-block text-[#46B77B]">Pillars
-                        <svg class="absolute -bottom-2 left-0 w-full" height="7" viewBox="0 0 200 10" preserveAspectRatio="none" fill="none">
+                        <svg class="absolute -bottom-2 left-0 w-full" height="7" viewBox="0 0 200 10"
+                            preserveAspectRatio="none" fill="none">
                             <path d="M2 7C50 3 100 2 198 6" stroke="#46B77B" stroke-width="3" stroke-linecap="round" />
                         </svg>
                     </span>
                 </h2>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6 reveal-up delay-200">
+            <!-- Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 min-[991px]:grid-cols-4 gap-5 md:gap-6">
+
                 <!-- Pillar 1 -->
-                <div class="bg-[#FAFBF9] rounded-2xl p-5 md:p-6 border border-gray-200 hover:border-[#46B77B]/50 hover:shadow-lg transition-all group relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-1 h-full bg-[#46B77B]/20 group-hover:bg-[#46B77B] transition-colors"></div>
-                    <div class="flex items-center justify-between mb-4">
-                        <div class="w-10 h-10 rounded-lg bg-[#46B77B]/10 flex items-center justify-center text-[#46B77B]">
+                <div
+                    class="bg-[#FAFBF9] rounded-2xl p-5 md:p-6 border border-gray-200 hover:border-[#46B77B]/50 hover:shadow-lg transition-all group relative overflow-hidden">
+                    <div
+                        class="absolute top-0 left-0 w-1 h-full bg-[#46B77B]/20 group-hover:bg-[#46B77B] transition-colors">
+                    </div>
+
+                    <!-- Icon & Heading Row -->
+                    <div class="flex flex-row items-center gap-3 mb-3">
+                        <div
+                            class="w-10 h-10 rounded-lg bg-[#46B77B]/10 flex items-center justify-center shrink-0 text-[#46B77B]">
                             <i class="fas fa-award"></i>
                         </div>
-                        <span class="text-4xl font-black text-gray-200 group-hover:text-[#46B77B]/10 transition-colors">01</span>
+                        <h3 class="font-bold text-[#0A0C12] text-base leading-tight">Quality Conscious</h3>
                     </div>
-                    <h3 class="font-bold text-[#0A0C12] text-base mb-2">Quality Conscious</h3>
-                    <p class="text-xs text-gray-500 leading-relaxed">To be recognized as a quality-conscious company in every aspect of our operations.</p>
+                    <p class="text-xs text-gray-500 leading-relaxed">To be recognized as a quality-conscious company in
+                        every aspect of our operations.</p>
                 </div>
 
                 <!-- Pillar 2 -->
-                <div class="bg-[#FAFBF9] rounded-2xl p-5 md:p-6 border border-gray-200 hover:border-[#46B77B]/50 hover:shadow-lg transition-all group relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-1 h-full bg-[#46B77B]/20 group-hover:bg-[#46B77B] transition-colors"></div>
-                    <div class="flex items-center justify-between mb-4">
-                        <div class="w-10 h-10 rounded-lg bg-[#46B77B]/10 flex items-center justify-center text-[#46B77B]">
+                <div
+                    class="bg-[#FAFBF9] rounded-2xl p-5 md:p-6 border border-gray-200 hover:border-[#46B77B]/50 hover:shadow-lg transition-all group relative overflow-hidden">
+                    <div
+                        class="absolute top-0 left-0 w-1 h-full bg-[#46B77B]/20 group-hover:bg-[#46B77B] transition-colors">
+                    </div>
+
+                    <!-- Icon & Heading Row -->
+                    <div class="flex flex-row items-center gap-3 mb-3">
+                        <div
+                            class="w-10 h-10 rounded-lg bg-[#46B77B]/10 flex items-center justify-center shrink-0 text-[#46B77B]">
                             <i class="fas fa-chart-line"></i>
                         </div>
-                        <span class="text-4xl font-black text-gray-200 group-hover:text-[#46B77B]/10 transition-colors">02</span>
+                        <h3 class="font-bold text-[#0A0C12] text-base leading-tight">Exceed Expectations</h3>
                     </div>
-                    <h3 class="font-bold text-[#0A0C12] text-base mb-2">Exceed Expectations</h3>
-                    <p class="text-xs text-gray-500 leading-relaxed">Endeavoring to exceed the expectations of the customers by ascertaining continual improvement.</p>
+                    <p class="text-xs text-gray-500 leading-relaxed">Endeavoring to exceed the expectations of the
+                        customers by ascertaining continual improvement.</p>
                 </div>
 
                 <!-- Pillar 3 -->
-                <div class="bg-[#FAFBF9] rounded-2xl p-5 md:p-6 border border-gray-200 hover:border-[#46B77B]/50 hover:shadow-lg transition-all group relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-1 h-full bg-[#46B77B]/20 group-hover:bg-[#46B77B] transition-colors"></div>
-                    <div class="flex items-center justify-between mb-4">
-                        <div class="w-10 h-10 rounded-lg bg-[#46B77B]/10 flex items-center justify-center text-[#46B77B]">
+                <div
+                    class="bg-[#FAFBF9] rounded-2xl p-5 md:p-6 border border-gray-200 hover:border-[#46B77B]/50 hover:shadow-lg transition-all group relative overflow-hidden">
+                    <div
+                        class="absolute top-0 left-0 w-1 h-full bg-[#46B77B]/20 group-hover:bg-[#46B77B] transition-colors">
+                    </div>
+
+                    <!-- Icon & Heading Row -->
+                    <div class="flex flex-row items-center gap-3 mb-3">
+                        <div
+                            class="w-10 h-10 rounded-lg bg-[#46B77B]/10 flex items-center justify-center shrink-0 text-[#46B77B]">
                             <i class="fas fa-chess-knight"></i>
                         </div>
-                        <span class="text-4xl font-black text-gray-200 group-hover:text-[#46B77B]/10 transition-colors">03</span>
+                        <h3 class="font-bold text-[#0A0C12] text-base leading-tight">Risk-Based Thinking</h3>
                     </div>
-                    <h3 class="font-bold text-[#0A0C12] text-base mb-2">Risk-Based Thinking</h3>
-                    <p class="text-xs text-gray-500 leading-relaxed">Inclusion of risk-based thinking in the process to collaborate with strategic decisions.</p>
+                    <p class="text-xs text-gray-500 leading-relaxed">Inclusion of risk-based thinking in the process to
+                        collaborate with strategic decisions.</p>
                 </div>
 
                 <!-- Pillar 4 -->
-                <div class="bg-[#FAFBF9] rounded-2xl p-5 md:p-6 border border-gray-200 hover:border-[#46B77B]/50 hover:shadow-lg transition-all group relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-1 h-full bg-[#46B77B]/20 group-hover:bg-[#46B77B] transition-colors"></div>
-                    <div class="flex items-center justify-between mb-4">
-                        <div class="w-10 h-10 rounded-lg bg-[#46B77B]/10 flex items-center justify-center text-[#46B77B]">
+                <div
+                    class="bg-[#FAFBF9] rounded-2xl p-5 md:p-6 border border-gray-200 hover:border-[#46B77B]/50 hover:shadow-lg transition-all group relative overflow-hidden">
+                    <div
+                        class="absolute top-0 left-0 w-1 h-full bg-[#46B77B]/20 group-hover:bg-[#46B77B] transition-colors">
+                    </div>
+
+                    <!-- Icon & Heading Row -->
+                    <div class="flex flex-row items-center gap-3 mb-3">
+                        <div
+                            class="w-10 h-10 rounded-lg bg-[#46B77B]/10 flex items-center justify-center shrink-0 text-[#46B77B]">
                             <i class="fas fa-handshake"></i>
                         </div>
-                        <span class="text-4xl font-black text-gray-200 group-hover:text-[#46B77B]/10 transition-colors">04</span>
+                        <h3 class="font-bold text-[#0A0C12] text-base leading-tight">Vested Interests</h3>
                     </div>
-                    <h3 class="font-bold text-[#0A0C12] text-base mb-2">Vested Interests</h3>
-                    <p class="text-xs text-gray-500 leading-relaxed">Caring for the vested interests of all our interested parties and stakeholders.</p>
+                    <p class="text-xs text-gray-500 leading-relaxed">Caring for the vested interests of all our
+                        interested parties and stakeholders.</p>
                 </div>
 
                 <!-- Pillar 5 -->
-                <div class="bg-[#FAFBF9] rounded-2xl p-5 md:p-6 border border-gray-200 hover:border-[#46B77B]/50 hover:shadow-lg transition-all group relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-1 h-full bg-[#46B77B]/20 group-hover:bg-[#46B77B] transition-colors"></div>
-                    <div class="flex items-center justify-between mb-4">
-                        <div class="w-10 h-10 rounded-lg bg-[#46B77B]/10 flex items-center justify-center text-[#46B77B]">
+                <div
+                    class="bg-[#FAFBF9] rounded-2xl p-5 md:p-6 border border-gray-200 hover:border-[#46B77B]/50 hover:shadow-lg transition-all group relative overflow-hidden">
+                    <div
+                        class="absolute top-0 left-0 w-1 h-full bg-[#46B77B]/20 group-hover:bg-[#46B77B] transition-colors">
+                    </div>
+
+                    <!-- Icon & Heading Row -->
+                    <div class="flex flex-row items-center gap-3 mb-3">
+                        <div
+                            class="w-10 h-10 rounded-lg bg-[#46B77B]/10 flex items-center justify-center shrink-0 text-[#46B77B]">
                             <i class="fas fa-microchip"></i>
                         </div>
-                        <span class="text-4xl font-black text-gray-200 group-hover:text-[#46B77B]/10 transition-colors">05</span>
+                        <h3 class="font-bold text-[#0A0C12] text-base leading-tight">New Technology</h3>
                     </div>
-                    <h3 class="font-bold text-[#0A0C12] text-base mb-2">New Technology</h3>
-                    <p class="text-xs text-gray-500 leading-relaxed">Embracing new technology and pairing it with highly competent manpower.</p>
+                    <p class="text-xs text-gray-500 leading-relaxed">Embracing new technology and pairing it with highly
+                        competent manpower.</p>
                 </div>
 
                 <!-- Pillar 6 -->
-                <div class="bg-[#FAFBF9] rounded-2xl p-5 md:p-6 border border-gray-200 hover:border-[#46B77B]/50 hover:shadow-lg transition-all group relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-1 h-full bg-[#46B77B]/20 group-hover:bg-[#46B77B] transition-colors"></div>
-                    <div class="flex items-center justify-between mb-4">
-                        <div class="w-10 h-10 rounded-lg bg-[#46B77B]/10 flex items-center justify-center text-[#46B77B]">
+                <div
+                    class="bg-[#FAFBF9] rounded-2xl p-5 md:p-6 border border-gray-200 hover:border-[#46B77B]/50 hover:shadow-lg transition-all group relative overflow-hidden">
+                    <div
+                        class="absolute top-0 left-0 w-1 h-full bg-[#46B77B]/20 group-hover:bg-[#46B77B] transition-colors">
+                    </div>
+
+                    <!-- Icon & Heading Row -->
+                    <div class="flex flex-row items-center gap-3 mb-3">
+                        <div
+                            class="w-10 h-10 rounded-lg bg-[#46B77B]/10 flex items-center justify-center shrink-0 text-[#46B77B]">
                             <i class="fas fa-scale-balanced"></i>
                         </div>
-                        <span class="text-4xl font-black text-gray-200 group-hover:text-[#46B77B]/10 transition-colors">06</span>
+                        <h3 class="font-bold text-[#0A0C12] text-base leading-tight">Regulatory Compliance</h3>
                     </div>
-                    <h3 class="font-bold text-[#0A0C12] text-base mb-2">Regulatory Compliance</h3>
-                    <p class="text-xs text-gray-500 leading-relaxed">Streaming with relevant regulatory compliances of the land.</p>
+                    <p class="text-xs text-gray-500 leading-relaxed">Streaming with relevant regulatory compliances of
+                        the land.</p>
                 </div>
 
-                <!-- Pillar 7 -->
-                <div class="sm:col-span-2 lg:col-span-2 bg-[#0A0C12] rounded-2xl p-5 md:p-8 border border-gray-800 hover:border-[#46B77B]/50 shadow-lg transition-all group relative overflow-hidden flex flex-col justify-center">
+                <!-- Pillar 7 (Dark Box) -->
+                <div
+                    class="sm:col-span-2 min-[991px]:col-span-2 bg-[#0A0C12] rounded-2xl p-5 md:p-8 border border-gray-800 hover:border-[#46B77B]/50 shadow-lg transition-all group relative overflow-hidden flex flex-col justify-center">
                     <div class="absolute top-0 right-0 w-32 h-32 bg-[#46B77B]/10 rounded-full blur-2xl"></div>
-                    <div class="relative z-10 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
-                        <div class="w-12 h-12 md:w-14 md:h-14 rounded-xl bg-[#46B77B] flex items-center justify-center shrink-0 text-white shadow-lg shadow-[#46B77B]/20">
+
+                    <div class="relative z-10 flex flex-row items-start sm:items-center gap-4 sm:gap-6">
+                        <div
+                            class="w-12 h-12 md:w-14 md:h-14 rounded-xl bg-[#46B77B] flex items-center justify-center shrink-0 text-white shadow-lg shadow-[#46B77B]/20">
                             <i class="fas fa-file-contract text-xl md:text-2xl"></i>
                         </div>
                         <div>
-                            <h3 class="font-bold text-white text-base md:text-lg mb-1 md:mb-2">Continuous Revision</h3>
-                            <p class="text-xs md:text-sm text-gray-400 leading-relaxed">Any inevitable change will be addressed in the revision of this policy to ensure we always adapt and stay ahead.</p>
+                            <h3 class="font-bold text-white text-base md:text-lg mb-1 md:mb-2 leading-tight">Continuous
+                                Revision</h3>
+                            <p class="text-xs md:text-sm text-gray-400 leading-relaxed">Any inevitable change will be
+                                addressed in the revision of this policy to ensure we always adapt and stay ahead.</p>
                         </div>
                     </div>
                 </div>
@@ -318,12 +377,14 @@
 
     <!-- ═══════════════ CTA SECTION ═══════════════ -->
     <section class="relative z-10 w-full py-12 md:py-16 bg-[#FAFBF9] border-t border-gray-200/50 overflow-hidden">
-        <div class="max-w-4xl mx-auto px-5 sm:px-6 md:px-8 lg:px-12 relative z-10 text-center reveal-up">
-            <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-[#0A0C12] leading-[1.15] mb-5">
-                Ready to Experience
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 relative z-10 text-center">
+            <!-- Mobile par heading 2 lines mein break karne ke liye <br class="block sm:hidden"> lagaya hai -->
+            <h2 class="text-[1.7rem] min-[375px]:text-3xl sm:text-4xl md:text-5xl font-black text-[#0A0C12] leading-[1.15] mb-5">
+                Ready to Experience <br class="block sm:hidden">
                 <span class="relative inline-block text-[#46B77B]">
                     Premium Quality?
-                    <svg class="absolute -bottom-2 left-0 w-full" height="7" viewBox="0 0 200 10" preserveAspectRatio="none" fill="none">
+                    <svg class="absolute -bottom-2 left-0 w-full" height="7" viewBox="0 0 200 10"
+                        preserveAspectRatio="none" fill="none">
                         <path d="M2 7C50 3 100 2 198 6" stroke="#46B77B" stroke-width="3" stroke-linecap="round" />
                     </svg>
                 </span>
@@ -336,7 +397,8 @@
             <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
                 <a href="contact.html"
                     class="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 bg-[#46B77B] text-white text-xs sm:text-sm font-bold rounded-lg hover:bg-[#3ca56b] transition-all shadow-lg shadow-[#46B77B]/30 group w-auto whitespace-nowrap">
-                    Get a Quote <i class="fas fa-arrow-right transition-transform group-hover:translate-x-1 hidden sm:block"></i>
+                    Get a Quote <i
+                        class="fas fa-arrow-right transition-transform group-hover:translate-x-1 hidden sm:block"></i>
                 </a>
                 <a href="tel:+92111333301"
                     class="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 bg-white border border-gray-300 text-[#0A0C12] text-xs sm:text-sm font-bold rounded-lg hover:bg-gray-50 transition-all group w-auto whitespace-nowrap">
@@ -356,40 +418,6 @@
     <script src="js/components-loader.js"></script>
     <script src="js/script.js"></script>
 
-    <!-- Animation Logic -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const revealElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
-
-            if ('IntersectionObserver' in window) {
-                const revealObserver = new IntersectionObserver(function (entries, observer) {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('is-revealed');
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, { 
-                    threshold: 0.05,
-                    rootMargin: "0px 0px -10px 0px" 
-                });
-
-                revealElements.forEach(el => {
-                    revealObserver.observe(el);
-                });
-            } else {
-                revealElements.forEach(el => {
-                    el.classList.add('is-revealed');
-                });
-            }
-
-            setTimeout(() => {
-                revealElements.forEach(el => {
-                    el.classList.add('is-revealed');
-                });
-            }, 1000);
-        });
-    </script>
 </body>
 
 </html>

@@ -23,26 +23,6 @@
         window.scrollTo(0, 0);
     </script>
 
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-
-        /* Scroll Reveal Animations - Fixed */
-        .reveal-up { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); will-change: transform, opacity; }
-        .reveal-left { opacity: 0; transform: translateX(-30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); will-change: transform, opacity; }
-        .reveal-right { opacity: 0; transform: translateX(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); will-change: transform, opacity; }
-        .is-revealed { opacity: 1 !important; transform: translate(0, 0) !important; }
-
-        .delay-100 { transition-delay: 100ms; }
-        .delay-200 { transition-delay: 200ms; }
-        .delay-300 { transition-delay: 300ms; }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #FAFBF9; }
-        ::-webkit-scrollbar-thumb { background: #46B77B; border-radius: 4px; }
-    </style>
 </head>
 
 <body class="bg-[#FAFBF9] text-[#0A0C12] overflow-x-hidden min-h-screen font-sans relative flex flex-col">
@@ -51,6 +31,7 @@
     <div class="bg-morph fixed inset-0 -z-50"></div>
     <div class="glow fixed rounded-full -z-40 pointer-events-none glow-1"></div>
     <div class="glow fixed rounded-full -z-40 pointer-events-none glow-2"></div>
+    <canvas id="particle-canvas" class="fixed inset-0 -z-30 pointer-events-none opacity-45"></canvas>
 
     <!-- HEADER PLACEHOLDER -->
     <div id="header-placeholder" class="contents"></div>
@@ -92,46 +73,62 @@
 
     <!-- ═══════════════ CONTACT INFO CARDS ═══════════════ -->
     <section class="relative z-10 w-full py-14 md:py-20 bg-white border-b border-gray-200/50">
-        <div class="max-w-7xl mx-auto px-5 sm:px-6 md:px-8 lg:px-12">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 reveal-up">
+        <!-- 991px par 3 columns ke liye min-[991px]:grid-cols-3 lagaya hai -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
+            <div class="grid grid-cols-1 sm:grid-cols-2 min-[991px]:grid-cols-3 gap-5 md:gap-6 reveal-up">
 
                 <!-- Address Card -->
-                <div class="bg-[#FAFBF9] rounded-2xl p-6 border border-gray-200 hover:border-[#46B77B] hover:shadow-lg transition-all group relative overflow-hidden">
+                <div class="bg-[#FAFBF9] rounded-2xl p-4 md:p-6 border border-gray-200 hover:border-[#46B77B] hover:shadow-lg transition-all group relative overflow-hidden">
                     <div class="absolute top-0 right-0 w-20 h-20 bg-[#46B77B]/5 rounded-bl-full group-hover:bg-[#46B77B]/10 transition-colors"></div>
-                    <div class="w-12 h-12 rounded-2xl bg-[#46B77B] flex items-center justify-center mb-4 shadow-lg shadow-[#46B77B]/30 group-hover:scale-110 transition-transform">
-                        <i class="fas fa-map-marker-alt text-xl text-white"></i>
+                    
+                    <!-- Icon aur Heading ek row mein -->
+                    <div class="flex items-center gap-3 mb-3 md:mb-4">
+                        <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-[#46B77B] flex items-center justify-center shrink-0 shadow-lg shadow-[#46B77B]/30 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-map-marker-alt text-base md:text-xl text-white"></i>
+                        </div>
+                        <h3 class="font-black text-base md:text-lg text-[#0A0C12] leading-tight">Visit Us</h3>
                     </div>
-                    <h3 class="font-black text-lg text-[#0A0C12] mb-2">Visit Us</h3>
-                    <p class="text-sm text-gray-600 leading-relaxed mb-3">18-Km Ferozepur Road,<br>Lahore, Pakistan</p>
+
+                    <p class="text-xs md:text-sm text-gray-600 leading-relaxed mb-3">18-Km Ferozepur Road,<br>Lahore, Pakistan</p>
                     <a href="https://www.google.com/maps/dir/?api=1&destination=Maqsood+Faisal+Printing+Press,+18+Km+Ferozepur+Road,+Lahore,+Pakistan"
                         target="_blank" rel="noopener"
-                        class="inline-flex items-center gap-2 text-[#46B77B] text-xs font-bold hover:underline">
+                        class="inline-flex items-center gap-2 text-[#46B77B] text-[0.7rem] md:text-xs font-bold hover:underline">
                         Get Directions <i class="fas fa-arrow-right text-[0.6rem]"></i>
                     </a>
                 </div>
 
                 <!-- Phone Card -->
-                <div class="bg-[#FAFBF9] rounded-2xl p-6 border border-gray-200 hover:border-[#46B77B] hover:shadow-lg transition-all group relative overflow-hidden">
+                <div class="bg-[#FAFBF9] rounded-2xl p-4 md:p-6 border border-gray-200 hover:border-[#46B77B] hover:shadow-lg transition-all group relative overflow-hidden">
                     <div class="absolute top-0 right-0 w-20 h-20 bg-[#46B77B]/5 rounded-bl-full group-hover:bg-[#46B77B]/10 transition-colors"></div>
-                    <div class="w-12 h-12 rounded-2xl bg-[#46B77B] flex items-center justify-center mb-4 shadow-lg shadow-[#46B77B]/30 group-hover:scale-110 transition-transform">
-                        <i class="fas fa-phone-alt text-xl text-white"></i>
+                    
+                    <!-- Icon aur Heading ek row mein -->
+                    <div class="flex items-center gap-3 mb-3 md:mb-4">
+                        <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-[#46B77B] flex items-center justify-center shrink-0 shadow-lg shadow-[#46B77B]/30 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-phone-alt text-base md:text-xl text-white"></i>
+                        </div>
+                        <h3 class="font-black text-base md:text-lg text-[#0A0C12] leading-tight">Call Us</h3>
                     </div>
-                    <h3 class="font-black text-lg text-[#0A0C12] mb-2">Call Us</h3>
-                    <p class="text-sm text-gray-600 leading-relaxed mb-3">Mon – Sat: 9:00 AM – 6:00 PM</p>
-                    <a href="tel:+92111333301" class="inline-flex items-center gap-2 text-[#46B77B] text-sm font-bold hover:underline">
+
+                    <p class="text-xs md:text-sm text-gray-600 leading-relaxed mb-3">Mon – Sat: 9:00 AM – 6:00 PM</p>
+                    <a href="tel:+92111333301" class="inline-flex items-center gap-2 text-[#46B77B] text-xs md:text-sm font-bold hover:underline">
                         +92 111 333 301 <i class="fas fa-arrow-right text-[0.6rem]"></i>
                     </a>
                 </div>
 
                 <!-- Email Card -->
-                <div class="bg-[#FAFBF9] rounded-2xl p-6 border border-gray-200 hover:border-[#46B77B] hover:shadow-lg transition-all group relative overflow-hidden">
+                <div class="bg-[#FAFBF9] rounded-2xl p-4 md:p-6 border border-gray-200 hover:border-[#46B77B] hover:shadow-lg transition-all group relative overflow-hidden">
                     <div class="absolute top-0 right-0 w-20 h-20 bg-[#46B77B]/5 rounded-bl-full group-hover:bg-[#46B77B]/10 transition-colors"></div>
-                    <div class="w-12 h-12 rounded-2xl bg-[#46B77B] flex items-center justify-center mb-4 shadow-lg shadow-[#46B77B]/30 group-hover:scale-110 transition-transform">
-                        <i class="fas fa-envelope text-xl text-white"></i>
+                    
+                    <!-- Icon aur Heading ek row mein -->
+                    <div class="flex items-center gap-3 mb-3 md:mb-4">
+                        <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-[#46B77B] flex items-center justify-center shrink-0 shadow-lg shadow-[#46B77B]/30 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-envelope text-base md:text-xl text-white"></i>
+                        </div>
+                        <h3 class="font-black text-base md:text-lg text-[#0A0C12] leading-tight">Email Us</h3>
                     </div>
-                    <h3 class="font-black text-lg text-[#0A0C12] mb-2">Email Us</h3>
-                    <p class="text-sm text-gray-600 leading-relaxed mb-3">For inquiries &amp; quotations</p>
-                    <a href="mailto:info@mfp.com.pk" class="inline-flex items-center gap-2 text-[#46B77B] text-sm font-bold hover:underline break-all">
+
+                    <p class="text-xs md:text-sm text-gray-600 leading-relaxed mb-3">For inquiries &amp; quotations</p>
+                    <a href="mailto:info@mfp.com.pk" class="inline-flex items-center gap-2 text-[#46B77B] text-xs md:text-sm font-bold hover:underline break-all">
                         info@mfp.com.pk <i class="fas fa-arrow-right text-[0.6rem]"></i>
                     </a>
                 </div>
@@ -143,10 +140,11 @@
     <!-- ═══════════════ CONTACT FORM + MAP SECTION ═══════════════ -->
     <section class="relative z-10 w-full py-14 md:py-20 bg-[#FAFBF9] overflow-hidden">
         <div class="max-w-7xl mx-auto px-5 sm:px-6 md:px-8 lg:px-12">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+            <!-- Yahan min-[991px]:grid-cols-12 kar diya hai taake 991px par desktop layout (row) aaye -->
+            <div class="grid grid-cols-1 min-[991px]:grid-cols-12 gap-8 min-[991px]:gap-12">
 
                 <!-- Form Column -->
-                <div class="lg:col-span-7 reveal-left">
+                <div class="min-[991px]:col-span-7 reveal-left">
                     <div class="flex items-center gap-3 mb-4 md:mb-5">
                         <span class="h-px w-10 bg-[#46B77B]"></span>
                         <span class="text-[0.65rem] md:text-xs font-bold tracking-[0.3em] uppercase text-[#46B77B]">Send a Message</span>
@@ -221,10 +219,11 @@
                 </div>
 
                 <!-- Map + Info Column -->
-                <div class="lg:col-span-5 reveal-right delay-200">
-                    <div class="lg:sticky lg:top-24 flex flex-col gap-5">
+                <div class="min-[991px]:col-span-5 reveal-right delay-200">
+                    <!-- Yahan min-[991px]:sticky laga diya hai taake 991px par bhi map scroll ke sath stick rahe -->
+                    <div class="min-[991px]:sticky min-[991px]:top-24 flex flex-col gap-5">
                         <!-- Map -->
-                        <div class="relative w-full rounded-[2rem] overflow-hidden border border-gray-200 shadow-lg h-72 lg:h-80">
+                        <div class="relative w-full rounded-[2rem] overflow-hidden border border-gray-200 shadow-lg h-72 min-[991px]:h-80">
                             <iframe
                                 src="https://www.google.com/maps?q=Maqsood+Faisal+Printing+Press,+18+Km+Ferozepur+Road,+Lahore,+Pakistan&output=embed"
                                 width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
@@ -339,38 +338,6 @@
     <script src="js/components-loader.js"></script>
     <script src="js/script.js"></script>
 
-    <!-- Animation Logic (Fixed) -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const revealElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
-
-            if ('IntersectionObserver' in window) {
-                const revealObserver = new IntersectionObserver(function (entries, observer) {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('is-revealed');
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
-
-                revealElements.forEach(el => {
-                    revealObserver.observe(el);
-                });
-            } else {
-                revealElements.forEach(el => {
-                    el.classList.add('is-revealed');
-                });
-            }
-
-            // Safety fallback
-            setTimeout(() => {
-                revealElements.forEach(el => {
-                    el.classList.add('is-revealed');
-                });
-            }, 1500);
-        });
-    </script>
 </body>
 
 </html>

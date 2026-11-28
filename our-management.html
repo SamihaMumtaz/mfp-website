@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" class="h-full scroll-smooth">
 
@@ -25,8 +26,8 @@
     </script>
 
     <style>
-        body { 
-            font-family: 'Inter', sans-serif; 
+        body {
+            font-family: 'Inter', sans-serif;
             overflow-x: hidden !important;
         }
 
@@ -40,34 +41,11 @@
             display: inline-block;
         }
 
-        /* Scroll Reveal Animations */
-        .reveal-up {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .reveal-left {
-            opacity: 0;
-            transform: translateX(-40px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .reveal-right {
-            opacity: 0;
-            transform: translateX(40px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .is-revealed {
-            opacity: 1;
-            transform: translate(0) scale(1);
-        }
-        .delay-100 { transition-delay: 100ms; }
-        .delay-200 { transition-delay: 200ms; }
-        .delay-300 { transition-delay: 300ms; }
-
         /* Curved Image Shape for CEO */
         .image-shape {
             border-radius: 0 50% 50% 0 / 0 50% 50% 0;
         }
+
         @media (max-width: 768px) {
             .image-shape {
                 border-radius: 2rem;
@@ -82,6 +60,7 @@
     <div class="bg-morph fixed inset-0 -z-50"></div>
     <div class="glow fixed rounded-full -z-40 pointer-events-none glow-1"></div>
     <div class="glow fixed rounded-full -z-40 pointer-events-none glow-2"></div>
+    <canvas id="particle-canvas" class="fixed inset-0 -z-30 pointer-events-none opacity-45"></canvas>
 
     <!-- HEADER PLACEHOLDER -->
     <div id="header-placeholder" class="contents"></div>
@@ -94,14 +73,14 @@
         </div>
 
         <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 relative z-10 w-full">
-            <div class="reveal-left">
+            <div>
                 <div class="flex items-center gap-3 mb-4 md:mb-6">
                     <span class="h-px w-10 bg-[#46B77B]"></span>
                     <span class="text-[0.65rem] font-bold tracking-[0.3em] uppercase text-[#46B77B]">Leadership</span>
                 </div>
-                
+
                 <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-4 drop-shadow-lg leading-[1.1]">
-                    Our 
+                    Our
                     <span class="relative inline-block text-[#46B77B]">
                         Management
                         <svg class="absolute -bottom-2 left-0 w-full" height="7" viewBox="0 0 200 10" preserveAspectRatio="none" fill="none">
@@ -109,7 +88,7 @@
                         </svg>
                     </span>
                 </h1>
-                
+
                 <p class="text-gray-300 text-sm md:text-lg font-medium tracking-wide mb-8 mt-6">
                     Leadership • Experience • Continuity
                 </p>
@@ -119,24 +98,24 @@
 
     <!-- ═══════════════ CHAIRMAN SECTION ═══════════════ -->
     <section class="relative z-10 w-full py-16 md:py-24 bg-[#FAFBF9] overflow-hidden">
-        
+
         <div class="absolute top-0 right-0 w-[400px] h-[400px] bg-[#46B77B] opacity-5 rounded-full blur-[80px] pointer-events-none translate-x-1/3 -translate-y-1/3"></div>
         <div class="absolute bottom-0 left-0 w-[300px] h-[300px] bg-[#46B77B] opacity-5 rounded-full blur-[60px] pointer-events-none -translate-x-1/3 translate-y-1/3"></div>
 
-        <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 relative z-10 reveal-up">
-            
+        <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 relative z-10">
+
             <div class="flex items-center gap-4 mb-8">
                 <span class="h-px w-12 bg-[#46B77B]"></span>
                 <span class="text-xs font-bold tracking-[0.3em] uppercase text-[#46B77B]">Our Chairman (Late)</span>
             </div>
 
             <div class="relative bg-white border border-gray-100 rounded-3xl p-8 md:p-14 lg:p-16 shadow-[0_20px_50px_-15px_rgba(0,0,0,0.05)] overflow-hidden group">
-                
+
                 <i class="fas fa-quote-left absolute top-6 left-8 text-7xl md:text-[10rem] text-[#46B77B] opacity-[0.05] group-hover:opacity-[0.1] transition-opacity duration-700 pointer-events-none"></i>
 
                 <div class="relative z-10">
                     <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#0A0C12] leading-[1.2] tracking-[-0.02em] mb-6">
-                        Haji Maqsood <br class="md:hidden"> 
+                        Haji Maqsood <br class="md:hidden">
                         <span class="text-[#46B77B] relative inline-block">
                             Ahmed
                             <svg class="absolute -bottom-1.5 left-0 w-full" height="7" viewBox="0 0 200 10" preserveAspectRatio="none" fill="none">
@@ -155,22 +134,23 @@
 
     <!-- ═══════════════ CEO MESSAGE SECTION ═══════════════ -->
     <section class="relative z-10 w-full py-16 md:py-24 bg-[#FAFBF9]">
-        <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 flex flex-col md:flex-row items-center gap-10 lg:gap-20">
-            
-            <div class="w-full md:w-1/2 relative reveal-left">
-                <div class="relative overflow-hidden shadow-2xl group image-shape h-[300px] md:h-[450px] border-4 border-white bg-gray-100">
-                    <!-- Yahan aap CEO ki tasveer laga sakti hain (images/ceo-mahmood.jpg) -->
+        <!-- md:flex-row ko hata kar min-[991px]:flex-row laga diya hai -->
+        <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 flex flex-col min-[991px]:flex-row items-center gap-10 min-[991px]:gap-20">
+
+            <div class="w-full min-[991px]:w-1/2 relative">
+                <div class="relative overflow-hidden shadow-2xl group image-shape h-[300px] md:h-[450px] min-[991px]:h-[450px] border-4 border-white bg-gray-100">
+                    <!-- CEO Image -->
                     <img src="images/mahmood-ahmed.png" alt="CEO Office" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                 </div>
             </div>
 
-            <div class="w-full md:w-1/2 reveal-right delay-200">
+            <div class="w-full min-[991px]:w-1/2">
                 <div class="flex items-center gap-3 mb-5 md:mb-6">
                     <span class="h-px w-10 bg-[#46B77B]"></span>
                     <span class="text-[0.65rem] font-bold tracking-[0.3em] uppercase text-[#46B77B]">Message From CEO</span>
                 </div>
 
-                <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-[#0A0C12] leading-[1.2] tracking-[-0.02em] mb-6">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl min-[991px]:text-4xl lg:text-5xl font-black text-[#0A0C12] leading-[1.2] tracking-[-0.02em] mb-6">
                     From our <span class="relative inline-block text-[#46B77B]">CEO
                         <svg class="absolute -bottom-1.5 left-0 w-full" height="7" viewBox="0 0 200 10" preserveAspectRatio="none" fill="none">
                             <path d="M2 7C50 3 100 2 198 6" stroke="#46B77B" stroke-width="3" stroke-linecap="round" />
@@ -186,7 +166,7 @@
                         "Also, the efforts made by my brothers, now as directors of the company cannot be over ruled. They too collaborate equally with due diligence to turn this unit into a Printing & Packaging Complex. This never ending struggle has embraced an exhilaration in terms of Excellent rather than good. The core value of our business is to practice fair Business Principles, Ethics, Regulatory Compliance and Rituals."
                     </p>
                 </div>
-                
+
                 <div class="flex flex-col items-start border-t border-gray-200 pt-6">
                     <span class="signature-font">Mahmood Ahmed</span>
                     <p class="text-sm font-bold text-[#0A0C12] mt-3 tracking-widest uppercase">Chief Executive Officer (CEO)</p>
@@ -198,13 +178,13 @@
     <!-- ═══════════════ MANAGEMENT TEAM SECTION ═══════════════ -->
     <section class="relative z-10 w-full py-16 md:py-24 bg-white pb-24">
         <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
-            
-            <div class="mb-12 reveal-up">
+
+            <div class="mb-12">
                 <div class="flex items-center gap-3 mb-5 md:mb-6">
                     <span class="h-px w-10 bg-[#46B77B]"></span>
                     <span class="text-[0.65rem] font-bold tracking-[0.3em] uppercase text-[#46B77B]">Leadership Team</span>
                 </div>
-                
+
                 <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-[#0A0C12] leading-[1.2] tracking-[-0.02em] mb-4">
                     Our Management <span class="relative inline-block text-[#46B77B]">Team
                         <svg class="absolute -bottom-1.5 left-0 w-full" height="7" viewBox="0 0 200 10" preserveAspectRatio="none" fill="none">
@@ -215,20 +195,20 @@
                 <p class="text-gray-500 text-sm md:text-lg max-w-2xl mt-4">A dedicated leadership team driving innovation, operational excellence and sustainable growth.</p>
             </div>
 
-            <!-- Cards Grid (Adjusted for 3 Directors as per PPT) -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-                
+            <!-- Cards Grid: Yahan min-[991px]:grid-cols-3 laga diya hai taake 768px tak 1 column rahe -->
+            <div class="grid grid-cols-1 min-[991px]:grid-cols-3 gap-6 md:gap-8">
+
                 <!-- Card 1: CEO -->
-                <div class="bg-white rounded-[1.5rem] p-8 border border-gray-100 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_50px_-15px_rgba(70,183,123,0.2)] hover:-translate-y-2 transition-all duration-500 reveal-up group relative overflow-hidden">
+                <div class="bg-white rounded-[1.5rem] p-8 border border-gray-100 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_50px_-15px_rgba(70,183,123,0.2)] hover:-translate-y-2 transition-all duration-500 group relative overflow-hidden">
                     <div class="absolute bottom-0 right-0 w-0 h-0 border-b-[50px] border-l-[70px] border-b-[#46B77B] border-l-transparent rounded-bl-[1.5rem] group-hover:scale-110 transition-transform duration-500 origin-bottom-right"></div>
-                    
+
                     <div class="flex justify-between items-start mb-6 relative z-10">
                         <h3 class="text-xl md:text-2xl font-black text-[#0A0C12] leading-tight group-hover:text-[#46B77B] transition-colors">Chief<br>Executive</h3>
                         <i class="fas fa-user-tie text-4xl text-[#46B77B] opacity-80 group-hover:opacity-100 group-hover:rotate-12 transition-all duration-500"></i>
                     </div>
-                    
+
                     <div class="w-12 h-1 bg-[#46B77B] rounded-full mb-6"></div>
-                    
+
                     <h4 class="text-xl md:text-2xl font-black text-[#0A0C12] mb-3">Mahmood Ahmed</h4>
                     <p class="text-sm text-gray-500 leading-relaxed relative z-10 mb-8">
                         Leading the company's vision, strategic growth, and business development to ensure Maqsood Faisal Printing Press remains a market leader.
@@ -236,16 +216,16 @@
                 </div>
 
                 <!-- Card 2: Technical Director -->
-                <div class="bg-white rounded-[1.5rem] p-8 border border-gray-100 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_50px_-15px_rgba(70,183,123,0.2)] hover:-translate-y-2 transition-all duration-500 reveal-up delay-100 group relative overflow-hidden">
+                <div class="bg-white rounded-[1.5rem] p-8 border border-gray-100 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_50px_-15px_rgba(70,183,123,0.2)] hover:-translate-y-2 transition-all duration-500 group relative overflow-hidden">
                     <div class="absolute bottom-0 right-0 w-0 h-0 border-b-[50px] border-l-[70px] border-b-[#46B77B] border-l-transparent rounded-bl-[1.5rem] group-hover:scale-110 transition-transform duration-500 origin-bottom-right"></div>
-                    
+
                     <div class="flex justify-between items-start mb-6 relative z-10">
                         <h3 class="text-xl md:text-2xl font-black text-[#0A0C12] leading-tight group-hover:text-[#46B77B] transition-colors">Director<br>Technical</h3>
                         <i class="fas fa-cogs text-4xl text-[#46B77B] opacity-80 group-hover:opacity-100 group-hover:rotate-45 transition-all duration-500"></i>
                     </div>
-                    
+
                     <div class="w-12 h-1 bg-[#46B77B] rounded-full mb-6"></div>
-                    
+
                     <h4 class="text-xl md:text-2xl font-black text-[#0A0C12] mb-3">Faiz Ahmed</h4>
                     <p class="text-sm text-gray-500 leading-relaxed relative z-10 mb-8">
                         Leading our technology, engineering and new developments to ensure world-class manufacturing capabilities and innovative packaging solutions.
@@ -253,16 +233,16 @@
                 </div>
 
                 <!-- Card 3: Finance Director -->
-                <div class="bg-white rounded-[1.5rem] p-8 border border-gray-100 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_50px_-15px_rgba(70,183,123,0.2)] hover:-translate-y-2 transition-all duration-500 reveal-up delay-200 group relative overflow-hidden">
+                <div class="bg-white rounded-[1.5rem] p-8 border border-gray-100 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_50px_-15px_rgba(70,183,123,0.2)] hover:-translate-y-2 transition-all duration-500 group relative overflow-hidden">
                     <div class="absolute bottom-0 right-0 w-0 h-0 border-b-[50px] border-l-[70px] border-b-[#46B77B] border-l-transparent rounded-bl-[1.5rem] group-hover:scale-110 transition-transform duration-500 origin-bottom-right"></div>
 
                     <div class="flex justify-between items-start mb-6 relative z-10">
                         <h3 class="text-xl md:text-2xl font-black text-[#0A0C12] leading-tight group-hover:text-[#46B77B] transition-colors">Director<br>Finance</h3>
                         <i class="fas fa-chart-pie text-4xl text-[#46B77B] opacity-80 group-hover:opacity-100 group-hover:-translate-y-1 transition-all duration-500"></i>
                     </div>
-                    
+
                     <div class="w-12 h-1 bg-[#46B77B] rounded-full mb-6"></div>
-                    
+
                     <h4 class="text-xl md:text-2xl font-black text-[#0A0C12] mb-3">Ashfaq Ahmed</h4>
                     <p class="text-sm text-gray-500 leading-relaxed relative z-10 mb-8">
                         Overseeing financial strategy, compliance and risk management to ensure a strong and sustainable business foundation.
@@ -276,36 +256,12 @@
     <!-- FOOTER PLACEHOLDER -->
     <div id="footer-placeholder"></div>
 
-    <!-- BACK TO TOP PLACEHOLDER (loaded via JS) -->
+    <!-- BACK TO TOP PLACEHOLDER -->
     <div id="back-to-top-placeholder"></div>
 
     <!-- Scripts -->
     <script src="js/components-loader.js"></script>
     <script src="js/script.js"></script>
 
-    <!-- Animation Logic -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const revealElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
-            
-            const revealOptions = {
-                threshold: 0.15,
-                rootMargin: "0px 0px -50px 0px"
-            };
-
-            const revealObserver = new IntersectionObserver(function(entries, observer) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-revealed');
-                        observer.unobserve(entry.target); 
-                    }
-                });
-            }, revealOptions);
-
-            revealElements.forEach(el => {
-                revealObserver.observe(el);
-            });
-        });
-    </script>
 </body>
 </html>

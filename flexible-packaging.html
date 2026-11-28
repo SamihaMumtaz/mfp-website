@@ -29,12 +29,13 @@
     <section id="hero-offset"
         class="fade-in-section relative z-10 w-full overflow-hidden flex items-center py-20 md:py-28 lg:py-32 min-h-[70vh]">
 
-        <!-- Dynamic Background Image (Bright & Clear) -->
+        <!-- Background Video -->
         <div class="absolute inset-0 -z-10 bg-[#050806]">
-            <img src="images/flexible-printing.png" class="w-full h-full object-cover opacity-60 scale-105"
-                alt="Flexible Packaging Background">
+            <video autoplay muted playsinline loop preload="auto" poster="images/flexible-poster.png"
+                class="absolute inset-0 w-full h-full object-cover opacity-60">
+                <source src="videos/flexible-packaging.mp4" type="video/mp4">
+            </video>
 
-            <!-- Lighter Dark Gradient Overlays for readability (Bohot halka) -->
             <div class="absolute inset-0 bg-gradient-to-b from-[#050806]/50 via-[#050806]/10 to-[#050806]/60"></div>
 
             <div
@@ -62,15 +63,16 @@
                         <span id="offsetTypedText"></span>
                         <span class="inline-block w-1 h-[0.8em] bg-[#61CE70] ml-1 animate-pulse"></span>
                     </span>
-
-                    <!-- Hidden span for js/script.js -->
-                    <span id="typedText" style="visibility: hidden; position: absolute; pointer-events: none;"></span>
                 </h1>
 
                 <!-- Full Description (Updated Text) -->
                 <p
                     class="text-sm sm:text-base md:text-[1.05rem] leading-relaxed md:leading-loose text-gray-200 mb-10 md:mb-12 max-w-4xl transition-opacity duration-300 drop-shadow-md">
-                    Welcome to the world of Flexible Packaging at Maqsood Faisal Printing Press – where innovation meets sustainability. In today’s dynamic market, flexible packaging stands as a pivotal solution for businesses looking for versatile, efficient, and environmentally friendly packaging options. Our flexible packaging services are designed to cater to a diverse range of industries, offering custom solutions that align with your brand’s ethos and environmental commitments.
+                    Welcome to the world of Flexible Packaging at Maqsood Faisal Printing Press – where innovation meets
+                    sustainability. In today’s dynamic market, flexible packaging stands as a pivotal solution for
+                    businesses looking for versatile, efficient, and environmentally friendly packaging options. Our
+                    flexible packaging services are designed to cater to a diverse range of industries, offering custom
+                    solutions that align with your brand’s ethos and environmental commitments.
                 </p>
 
                 <!-- Buttons -->
@@ -139,7 +141,8 @@
                             <i class="fas fa-leaf text-[0.65rem] md:text-base"></i>
                         </div>
                         <span
-                            class="font-bold text-gray-800 tab-text text-[0.65rem] md:text-base leading-snug">Eco-Friendly Solutions</span>
+                            class="font-bold text-gray-800 tab-text text-[0.65rem] md:text-base leading-snug">Eco-Friendly
+                            Solutions</span>
                     </button>
 
                     <!-- Tab 2 -->
@@ -150,7 +153,8 @@
                             <i class="fas fa-magic text-[0.65rem] md:text-base"></i>
                         </div>
                         <span
-                            class="font-bold text-gray-800 tab-text text-[0.65rem] md:text-base leading-snug">Customization at Its Best</span>
+                            class="font-bold text-gray-800 tab-text text-[0.65rem] md:text-base leading-snug">Customization
+                            at Its Best</span>
                     </button>
 
                     <!-- Tab 3 -->
@@ -161,7 +165,8 @@
                             <i class="fas fa-shield-alt text-[0.65rem] md:text-base"></i>
                         </div>
                         <span
-                            class="font-bold text-gray-800 tab-text text-[0.65rem] md:text-base leading-snug">Durability & Protection</span>
+                            class="font-bold text-gray-800 tab-text text-[0.65rem] md:text-base leading-snug">Durability
+                            & Protection</span>
                     </button>
 
                     <!-- Tab 4 -->
@@ -172,7 +177,8 @@
                             <i class="fas fa-hand-holding-usd text-[0.65rem] md:text-base"></i>
                         </div>
                         <span
-                            class="font-bold text-gray-800 tab-text text-[0.65rem] md:text-base leading-snug">Cost-Effective & Efficient</span>
+                            class="font-bold text-gray-800 tab-text text-[0.65rem] md:text-base leading-snug">Cost-Effective
+                            & Efficient</span>
                     </button>
                 </div>
 
@@ -186,36 +192,49 @@
                     <!-- Inner Text Box -->
                     <div
                         class="relative z-10 m-3 md:m-8 bg-white backdrop-blur-md p-4 md:p-8 rounded-xl md:rounded-2xl border border-gray-100 shadow-sm h-auto self-center w-full">
-                        
+
                         <!-- Content 1 -->
                         <div id="tab1" class="tab-content block">
-                            <h3 class="text-sm md:text-3xl font-black text-[#0A0C12] mb-2 md:mb-4">Eco-Friendly Solutions</h3>
+                            <h3 class="text-sm md:text-3xl font-black text-[#0A0C12] mb-2 md:mb-4">Eco-Friendly
+                                Solutions</h3>
                             <p class="text-gray-600 text-[0.65rem] md:text-base leading-relaxed md:leading-loose">
-                                Committed to sustainability, our flexible packaging is designed to minimize environmental impact. From using recyclable materials to adopting manufacturing processes that reduce waste, we ensure that our packaging solutions are as green as they are effective.
+                                Committed to sustainability, our flexible packaging is designed to minimize
+                                environmental impact. From using recyclable materials to adopting manufacturing
+                                processes that reduce waste, we ensure that our packaging solutions are as green as they
+                                are effective.
                             </p>
                         </div>
 
                         <!-- Content 2 -->
                         <div id="tab2" class="tab-content hidden">
-                            <h3 class="text-sm md:text-3xl font-black text-[#0A0C12] mb-2 md:mb-4">Customization at Its Best</h3>
+                            <h3 class="text-sm md:text-3xl font-black text-[#0A0C12] mb-2 md:mb-4">Customization at Its
+                                Best</h3>
                             <p class="text-gray-600 text-[0.65rem] md:text-base leading-relaxed md:leading-loose">
-                                Each brand is unique, and so are its packaging needs. We offer a wide range of customization options – size, shape, material, and print designs – tailored to your specific requirements, ensuring that your product stands out on the shelves.
+                                Each brand is unique, and so are its packaging needs. We offer a wide range of
+                                customization options – size, shape, material, and print designs – tailored to your
+                                specific requirements, ensuring that your product stands out on the shelves.
                             </p>
                         </div>
 
                         <!-- Content 3 -->
                         <div id="tab3" class="tab-content hidden">
-                            <h3 class="text-sm md:text-3xl font-black text-[#0A0C12] mb-2 md:mb-4">Durability and Protection</h3>
+                            <h3 class="text-sm md:text-3xl font-black text-[#0A0C12] mb-2 md:mb-4">Durability and
+                                Protection</h3>
                             <p class="text-gray-600 text-[0.65rem] md:text-base leading-relaxed md:leading-loose">
-                                Our flexible packaging is not just about appealing looks; it’s also about protection. Resistant to moisture, light, and air, our packaging solutions extend the shelf life of your products, keeping them fresh and safe from production to the point of sale.
+                                Our flexible packaging is not just about appealing looks; it’s also about protection.
+                                Resistant to moisture, light, and air, our packaging solutions extend the shelf life of
+                                your products, keeping them fresh and safe from production to the point of sale.
                             </p>
                         </div>
 
                         <!-- Content 4 -->
                         <div id="tab4" class="tab-content hidden">
-                            <h3 class="text-sm md:text-3xl font-black text-[#0A0C12] mb-2 md:mb-4">Cost-Effective and Efficient</h3>
+                            <h3 class="text-sm md:text-3xl font-black text-[#0A0C12] mb-2 md:mb-4">Cost-Effective and
+                                Efficient</h3>
                             <p class="text-gray-600 text-[0.65rem] md:text-base leading-relaxed md:leading-loose">
-                                Reduce your carbon footprint and costs with our lightweight flexible packaging. Easier to transport and store, it significantly cuts down on logistics and storage expenses, making it a smart choice for your business.
+                                Reduce your carbon footprint and costs with our lightweight flexible packaging. Easier
+                                to transport and store, it significantly cuts down on logistics and storage expenses,
+                                making it a smart choice for your business.
                             </p>
                         </div>
                     </div>
@@ -341,10 +360,10 @@
                 <i class="fas fa-sparkles text-[#46B77B] text-xs"></i>
                 <span class="text-[0.65rem] font-bold tracking-[0.2em] uppercase text-[#46B77B]">Our Portfolio</span>
             </div>
-            
+
             <!-- Heading with Matching Underline (Updated) -->
             <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-[#0A0C12] leading-[1.1] tracking-tight mb-4">
-                Excellence in Every 
+                Excellence in Every
                 <span class="relative inline-block text-[#46B77B] mt-1.5 sm:mt-2">
                     Print.
                     <svg class="absolute -bottom-2.5 md:-bottom-3.5 left-0 w-full" height="7" viewBox="0 0 200 10"
@@ -353,7 +372,8 @@
                     </svg>
                 </span>
             </h2>
-            <p class="text-gray-500 text-sm md:text-base max-w-2xl mx-auto">Take a look at some of our recent flexible packaging projects that helped brands stand out.</p>
+            <p class="text-gray-500 text-sm md:text-base max-w-2xl mx-auto">Take a look at some of our recent flexible
+                packaging projects that helped brands stand out.</p>
         </div>
 
         <!-- Marquee Slider -->
@@ -411,36 +431,34 @@
 
     <!-- ═══════════════ NEED FOR SOME HELP (PREMIUM SPLIT DARK) ═══════════════ -->
     <section id="help"
-        class="fade-in-section relative z-10 py-20 md:py-32 bg-[#050806] overflow-hidden border-b border-white/5 font-sans">
-
-        <!-- Background Glows -->
+        class="fade-in-section relative z-10 py-12 md:py-32 bg-[#050806] overflow-hidden border-b border-white/5 font-sans">
         <div class="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
             <div
-                class="absolute top-0 left-0 w-[500px] h-[500px] bg-[#46B77B]/10 blur-[150px] rounded-full mix-blend-screen">
+                class="absolute top-0 left-0 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-[#46B77B]/10 blur-[100px] md:blur-[150px] rounded-full mix-blend-screen">
             </div>
             <div
-                class="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#61CE70]/5 blur-[120px] rounded-full mix-blend-screen">
+                class="absolute bottom-0 right-0 w-[250px] md:w-[400px] h-[250px] md:h-[400px] bg-[#61CE70]/5 blur-[80px] md:blur-[120px] rounded-full mix-blend-screen">
             </div>
         </div>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 relative z-10">
+            <!-- 991px par row layout -->
+            <div class="flex flex-col min-[991px]:flex-row items-center justify-between gap-10 min-[991px]:gap-16">
 
-                <!-- Left Side: Big Image with Frame -->
-                <div class="w-full lg:w-1/2 relative slide-in-left order-2 lg:order-1">
-                    <div class="relative w-full max-w-lg mx-auto">
-                        <!-- Decorative Frame Lines -->
+                <!-- Image Column -->
+                <div
+                    class="w-full min-[991px]:w-1/2 relative slide-in-left order-2 min-[991px]:order-1 mt-10 min-[991px]:mt-0">
+                    <div class="relative w-full max-w-[280px] sm:max-w-sm min-[991px]:max-w-lg mx-auto">
+                        <!-- Decorative borders -->
                         <div
-                            class="absolute -top-4 -left-4 w-24 h-24 border-t-2 border-l-2 border-[#46B77B]/40 rounded-tl-3xl z-0">
+                            class="absolute -top-3 -left-3 md:-top-4 md:-left-4 w-16 md:w-24 h-16 md:h-24 border-t-2 border-l-2 border-[#46B77B]/40 rounded-tl-2xl md:rounded-tl-3xl z-0">
                         </div>
                         <div
-                            class="absolute -bottom-4 -right-4 w-24 h-24 border-b-2 border-r-2 border-[#46B77B]/40 rounded-br-3xl z-0">
+                            class="absolute -bottom-3 -right-3 md:-bottom-4 md:-right-4 w-16 md:w-24 h-16 md:h-24 border-b-2 border-r-2 border-[#46B77B]/40 rounded-br-2xl md:rounded-br-3xl z-0">
                         </div>
 
-                        <!-- Main Image -->
                         <div
-                            class="relative z-10 rounded-3xl overflow-hidden aspect-[4/5] shadow-2xl bg-white/5 border border-white/10 group">
-                            <!-- YAHAN APNI IMAGE KA NAAM DALEIN -->
+                            class="relative z-10 rounded-2xl md:rounded-3xl overflow-hidden aspect-[4/5] shadow-2xl bg-white/5 border border-white/10 group">
                             <img src="images/help-section.jpg" alt="Need Help"
                                 class="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-110">
                             <div
@@ -448,97 +466,113 @@
                             </div>
                         </div>
 
-                        <!-- Floating Card Over Image -->
+                        <!-- 24/7 Support Badge -->
                         <div
-                            class="absolute -bottom-6 -right-2 md:-right-6 z-20 bg-[#0A0F0D] border border-[#46B77B]/30 p-4 rounded-2xl shadow-xl flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-xl bg-[#46B77B]/20 flex items-center justify-center">
-                                <i class="fas fa-headset text-xl text-[#61CE70]"></i>
+                            class="absolute -bottom-4 -right-2 sm:-right-4 md:-bottom-6 md:-right-6 z-20 bg-[#0A0F0D] border border-[#46B77B]/30 p-3 md:p-4 rounded-xl md:rounded-2xl shadow-xl flex items-center gap-3 md:gap-4">
+                            <div
+                                class="w-9 h-9 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-[#46B77B]/20 flex items-center justify-center">
+                                <i class="fas fa-headset text-base md:text-xl text-[#61CE70]"></i>
                             </div>
                             <div>
-                                <p class="text-2xl font-black text-white leading-none">24/7</p>
-                                <p class="text-[0.6rem] font-bold text-gray-400 uppercase tracking-widest mt-1">Support
-                                    Available</p>
+                                <p class="text-lg md:text-2xl font-black text-white leading-none">24/7</p>
+                                <p
+                                    class="text-[0.5rem] md:text-[0.6rem] font-bold text-gray-400 uppercase tracking-widest mt-1">
+                                    Support</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Right Side: Contact Information -->
-                <div class="w-full lg:w-1/2 order-1 lg:order-2 slide-in-right">
+                <!-- Text Column -->
+                <div
+                    class="w-full min-[991px]:w-1/2 order-1 min-[991px]:order-2 slide-in-right flex flex-col items-center min-[991px]:items-start text-center min-[991px]:text-left">
+
+                    <!-- Badge -->
                     <div
-                        class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-[#46B77B]/10 border border-[#46B77B]/30 mb-6 backdrop-blur-md">
-                        <i class="fas fa-headset text-[#61CE70]"></i>
-                        <span class="text-[0.65rem] font-bold tracking-[0.2em] uppercase text-[#61CE70]">Get In
-                            Touch</span>
+                        class="inline-flex items-center gap-2 py-1 md:py-1.5 px-3 md:px-4 rounded-full bg-[#46B77B]/10 border border-[#46B77B]/30 mb-4 md:mb-6 backdrop-blur-md">
+                        <i class="fas fa-headset text-[#61CE70] text-xs md:text-base"></i>
+                        <span
+                            class="text-[0.55rem] md:text-[0.65rem] font-bold tracking-[0.2em] uppercase text-[#61CE70]">Get
+                            In Touch</span>
                     </div>
 
+                    <!-- Heading (Ek Line Mein) -->
+                    <!-- Yahan <br> hata diya hai aur whitespace-nowrap lagaya hai taake text wrap na ho -->
                     <h2
-                        class="text-4xl sm:text-5xl md:text-6xl font-black text-white leading-[1.1] tracking-tight mb-4">
-                        Let's Talk <br>
+                        class="text-[1.4rem] min-[375px]:text-2xl sm:text-3xl md:text-4xl min-[991px]:text-5xl xl:text-6xl font-black text-white leading-[1.15] tracking-tight mb-4 md:mb-5 text-center min-[991px]:text-left whitespace-nowrap">
+                        Let's Talk
                         <span
-                            class="text-transparent bg-clip-text bg-gradient-to-r from-[#46B77B] to-[#61CE70]">Business.</span>
+                            class="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#46B77B] to-[#61CE70]">
+                            Business.
+                            <!-- Green Underline -->
+                            <svg class="absolute -bottom-1 md:-bottom-2 left-0 w-full" height="7" viewBox="0 0 200 10"
+                                preserveAspectRatio="none" fill="none">
+                                <path d="M2 7C50 3 100 2 198 6" stroke="#46B77B" stroke-width="3"
+                                    stroke-linecap="round" />
+                            </svg>
+                        </span>
                     </h2>
-                    <p class="text-gray-400 text-sm md:text-base leading-relaxed mb-10 max-w-md">
+
+                    <p
+                        class="text-gray-400 text-[11px] sm:text-xs md:text-sm min-[991px]:text-base leading-relaxed mb-6 md:mb-10 max-w-md mx-auto min-[991px]:mx-0">
                         Book your order now or get a free consultation with our printing experts to bring your vision to
                         life.
                     </p>
 
-                    <!-- Contact Details (List Style) -->
-                    <div class="flex flex-col gap-6 relative w-full">
-
-                        <!-- Phone 1 -->
-                        <div class="group relative flex flex-row items-center gap-5 cursor-default">
+                    <!-- Contact Info List -->
+                    <div class="flex flex-col gap-4 md:gap-6 relative w-full">
+                        <!-- Phone (UAN) -->
+                        <div class="group relative flex flex-row items-center gap-3 md:gap-5 cursor-default">
                             <div
-                                class="w-14 h-14 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center shrink-0 group-hover:border-[#46B77B] group-hover:bg-[#46B77B] transition-all duration-300 z-10">
+                                class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center shrink-0 group-hover:border-[#46B77B] group-hover:bg-[#46B77B] transition-all duration-300 z-10">
                                 <i
-                                    class="fas fa-phone-alt text-lg text-gray-400 group-hover:text-white transition-colors"></i>
+                                    class="fas fa-phone-alt text-sm md:text-lg text-gray-400 group-hover:text-white transition-colors"></i>
                             </div>
                             <div
-                                class="flex-1 pb-4 border-b border-white/5 group-hover:border-[#46B77B]/30 transition-colors">
+                                class="flex-1 pb-3 md:pb-4 border-b border-white/5 group-hover:border-[#46B77B]/30 transition-colors text-left">
                                 <h4
-                                    class="text-gray-400 text-xs font-bold uppercase tracking-wider mb-1 group-hover:text-[#61CE70] transition-colors">
+                                    class="text-gray-400 text-[0.6rem] md:text-xs font-bold uppercase tracking-wider mb-0.5 md:mb-1 group-hover:text-[#61CE70] transition-colors">
                                     Phone (UAN)</h4>
                                 <a href="tel:+92111333301"
-                                    class="text-white text-lg font-black hover:text-[#61CE70] transition-colors">+92 111
-                                    333 301</a>
+                                    class="text-white text-sm sm:text-base md:text-lg font-black hover:text-[#61CE70] transition-colors">+92
+                                    111 333 301</a>
                             </div>
                         </div>
 
-                        <!-- Phone 2 -->
-                        <div class="group relative flex flex-row items-center gap-5 cursor-default">
+                        <!-- Landline -->
+                        <div class="group relative flex flex-row items-center gap-3 md:gap-5 cursor-default">
                             <div
-                                class="w-14 h-14 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center shrink-0 group-hover:border-[#46B77B] group-hover:bg-[#46B77B] transition-all duration-300 z-10">
+                                class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center shrink-0 group-hover:border-[#46B77B] group-hover:bg-[#46B77B] transition-all duration-300 z-10">
                                 <i
-                                    class="fas fa-phone text-lg text-gray-400 group-hover:text-white transition-colors"></i>
+                                    class="fas fa-phone text-sm md:text-lg text-gray-400 group-hover:text-white transition-colors"></i>
                             </div>
                             <div
-                                class="flex-1 pb-4 border-b border-white/5 group-hover:border-[#46B77B]/30 transition-colors">
+                                class="flex-1 pb-3 md:pb-4 border-b border-white/5 group-hover:border-[#46B77B]/30 transition-colors text-left">
                                 <h4
-                                    class="text-gray-400 text-xs font-bold uppercase tracking-wider mb-1 group-hover:text-[#61CE70] transition-colors">
+                                    class="text-gray-400 text-[0.6rem] md:text-xs font-bold uppercase tracking-wider mb-0.5 md:mb-1 group-hover:text-[#61CE70] transition-colors">
                                     Landline</h4>
                                 <a href="tel:+924235402021"
-                                    class="text-white text-lg font-black hover:text-[#61CE70] transition-colors">+92 42
-                                    3540 2021-22</a>
+                                    class="text-white text-sm sm:text-base md:text-lg font-black hover:text-[#61CE70] transition-colors">+92
+                                    42 3540 2021-22</a>
                             </div>
                         </div>
 
                         <!-- Email -->
-                        <div class="group relative flex flex-row items-center gap-5 cursor-default">
+                        <div class="group relative flex flex-row items-center gap-3 md:gap-5 cursor-default">
                             <div
-                                class="w-14 h-14 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center shrink-0 group-hover:border-[#46B77B] group-hover:bg-[#46B77B] transition-all duration-300 z-10">
+                                class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center shrink-0 group-hover:border-[#46B77B] group-hover:bg-[#46B77B] transition-all duration-300 z-10">
                                 <i
-                                    class="fas fa-envelope text-lg text-gray-400 group-hover:text-white transition-colors"></i>
+                                    class="fas fa-envelope text-sm md:text-lg text-gray-400 group-hover:text-white transition-colors"></i>
                             </div>
                             <div
-                                class="flex-1 pb-4 border-b border-white/5 group-hover:border-[#46B77B]/30 transition-colors">
+                                class="flex-1 pb-3 md:pb-4 border-b border-white/5 group-hover:border-[#46B77B]/30 transition-colors text-left">
                                 <h4
-                                    class="text-gray-400 text-xs font-bold uppercase tracking-wider mb-1 group-hover:text-[#61CE70] transition-colors">
+                                    class="text-gray-400 text-[0.6rem] md:text-xs font-bold uppercase tracking-wider mb-0.5 md:mb-1 group-hover:text-[#61CE70] transition-colors">
                                     Email Address</h4>
                                 <a href="mailto:info@maqsoodfaisal.com"
-                                    class="text-white text-lg font-black hover:text-[#61CE70] transition-colors break-all">info@maqsoodfaisal.com</a>
+                                    class="text-white text-xs sm:text-sm md:text-lg font-black hover:text-[#61CE70] transition-colors break-all">info@maqsoodfaisal.com</a>
                             </div>
                         </div>
-
                     </div>
                 </div>
 
@@ -564,7 +598,7 @@
                     <span class="text-[0.65rem] font-bold tracking-[0.2em] uppercase text-[#46B77B]">How We Work</span>
                 </div>
                 <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-[#0A0C12] leading-[1.1] tracking-tight">
-                    Our Process & 
+                    Our Process &
                     <span class="relative inline-block text-[#46B77B] mt-1.5 sm:mt-2">
                         Partnership.
                         <svg class="absolute -bottom-2.5 md:-bottom-3.5 left-0 w-full" height="7" viewBox="0 0 200 10"
@@ -599,7 +633,10 @@
                     <div id="reveal-1" class="hidden px-6 md:px-8 pb-6 md:pb-8">
                         <p
                             class="text-gray-500 text-sm md:text-base leading-relaxed md:leading-loose transition-colors duration-500 card-text">
-                            Our process begins with understanding your needs. Collaborating closely with your team, we design packaging solutions that are not only visually appealing but also functional and sustainable. Using state-of-the-art technology and innovative materials, we ensure that every package we produce meets the highest standards of quality and eco-friendliness.
+                            Our process begins with understanding your needs. Collaborating closely with your team, we
+                            design packaging solutions that are not only visually appealing but also functional and
+                            sustainable. Using state-of-the-art technology and innovative materials, we ensure that
+                            every package we produce meets the highest standards of quality and eco-friendliness.
                         </p>
                     </div>
                 </div>
@@ -625,7 +662,9 @@
                     <div id="reveal-2" class="hidden px-6 md:px-8 pb-6 md:pb-8">
                         <p
                             class="text-gray-500 text-sm md:text-base leading-relaxed md:leading-loose transition-colors duration-500 card-text">
-                            Embrace the future of packaging with Maqsood Faisal Printing Press. Whether you’re launching a new product or seeking to revamp your existing packaging, our flexible packaging services are here to help you make a mark in the market sustainably and effectively.
+                            Embrace the future of packaging with Maqsood Faisal Printing Press. Whether you’re launching
+                            a new product or seeking to revamp your existing packaging, our flexible packaging services
+                            are here to help you make a mark in the market sustainably and effectively.
                         </p>
                     </div>
                 </div>
@@ -669,22 +708,26 @@
 
             <!-- Heading with Matching Underline (Updated) -->
             <h2
-                class="text-[2rem] sm:text-4xl md:text-5xl lg:text-[3.6rem] font-black text-white leading-[1.08] tracking-tight mb-5 sm:mb-6">
+                class="text-[1.35rem] min-[375px]:text-[1.65rem] sm:text-4xl md:text-5xl lg:text-[3.6rem] font-black text-white leading-[1.15] tracking-tight mb-5 sm:mb-6">
                 Get A Free<br>
-                <span class="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#46B77B] via-[#61CE70] to-[#46B77B] mt-1.5 sm:mt-2">
-                    Consultation
-                    <!-- SVG Underline -->
-                    <svg class="absolute -bottom-2.5 md:-bottom-3.5 left-0 w-full" height="7" viewBox="0 0 200 10"
-                        preserveAspectRatio="none" fill="none">
-                        <path d="M2 7C50 3 100 2 198 6" stroke="#46B77B" stroke-width="3" stroke-linecap="round" />
-                    </svg>
+                <span class="whitespace-nowrap inline-block mt-1.5 sm:mt-2">
+                    <span
+                        class="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#46B77B] via-[#61CE70] to-[#46B77B]">
+                        Consultation
+                        <!-- SVG Underline -->
+                        <svg class="absolute -bottom-2.5 md:-bottom-3.5 left-0 w-full" height="7" viewBox="0 0 200 10"
+                            preserveAspectRatio="none" fill="none">
+                            <path d="M2 7C50 3 100 2 198 6" stroke="#46B77B" stroke-width="3" stroke-linecap="round" />
+                        </svg>
+                    </span>
+                    <span class="text-white/90">With Us</span>
                 </span>
-                <span class="text-white/90">With Us</span>
             </h2>
 
             <!-- Description -->
             <p class="text-gray-300 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto mb-8 sm:mb-10">
-                Ready to take your packaging to the next level? Contact us today to discuss how we can tailor our flexible packaging solutions to meet your unique needs.
+                Ready to take your packaging to the next level? Contact us today to discuss how we can tailor our
+                flexible packaging solutions to meet your unique needs.
             </p>
 
             <!-- Buttons: Same Height & Balanced Sizes -->

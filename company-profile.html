@@ -23,73 +23,6 @@
         window.scrollTo(0, 0);
     </script>
 
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-
-        /* Scroll Reveal Animations */
-        .reveal-up {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .reveal-left {
-            opacity: 0;
-            transform: translateX(-40px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .reveal-right {
-            opacity: 0;
-            transform: translateX(40px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .is-revealed {
-            opacity: 1;
-            transform: translate(0) scale(1);
-        }
-
-        .delay-100 { transition-delay: 100ms; }
-        .delay-200 { transition-delay: 200ms; }
-        .delay-300 { transition-delay: 300ms; }
-
-        /* Custom Timeline Style */
-        .timeline-item {
-            position: relative;
-            padding-left: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: 7px;
-            top: 8px;
-            bottom: -1.5rem;
-            width: 2px;
-            background: linear-gradient(to bottom, #46B77B 0%, rgba(70, 183, 123, 0.2) 100%);
-        }
-
-        .timeline-item:last-child::before {
-            display: none;
-        }
-
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 6px;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background-color: white;
-            border: 4px solid #46B77B;
-            box-shadow: 0 0 0 4px rgba(70, 183, 123, 0.1);
-        }
-    </style>
 </head>
 
 <body class="bg-[#FAFBF9] text-[#0A0C12] overflow-x-hidden min-h-screen font-sans relative flex flex-col">
@@ -98,14 +31,17 @@
     <div class="bg-morph fixed inset-0 -z-50"></div>
     <div class="glow fixed rounded-full -z-40 pointer-events-none glow-1"></div>
     <div class="glow fixed rounded-full -z-40 pointer-events-none glow-2"></div>
+    <canvas id="particle-canvas" class="fixed inset-0 -z-30 pointer-events-none opacity-45"></canvas>
 
     <!-- HEADER PLACEHOLDER -->
     <div id="header-placeholder" class="contents"></div>
 
     <!-- HERO SECTION -->
-    <section class="relative w-full h-auto md:h-[65vh] overflow-hidden flex items-center border-b border-gray-200/50 py-20 md:py-0">
+    <section
+        class="relative w-full h-auto md:h-[65vh] overflow-hidden flex items-center border-b border-gray-200/50 py-20 md:py-0">
         <div class="absolute inset-0 -z-10">
-            <img src="images/company-profile-hero.jpg" alt="Company Profile" class="w-full h-full object-cover object-center">
+            <img src="images/company-profile-hero.jpg" alt="Company Profile"
+                class="w-full h-full object-cover object-center">
             <div class="absolute inset-0 bg-gradient-to-r from-[#0A0C12]/95 via-[#0A0C12]/80 to-transparent"></div>
         </div>
 
@@ -113,22 +49,27 @@
             <div class="reveal-left max-w-2xl">
                 <div class="flex items-center gap-3 mb-4 md:mb-6">
                     <span class="h-px w-10 bg-[#46B77B]"></span>
-                    <span class="text-[0.65rem] font-bold tracking-[0.3em] uppercase text-[#46B77B]">Corporate Profile</span>
+                    <span class="text-[0.65rem] font-bold tracking-[0.3em] uppercase text-[#46B77B]">Corporate
+                        Profile</span>
                 </div>
 
-                <h1 class="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-4 drop-shadow-lg leading-[1.15] whitespace-nowrap">
+                <h1
+                    class="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-4 drop-shadow-lg leading-[1.15] whitespace-nowrap">
                     Profile of the
                     <span class="relative inline-block text-[#46B77B]">
                         Company
-                        <svg class="absolute -bottom-2 left-0 w-full" height="7" viewBox="0 0 200 10" preserveAspectRatio="none" fill="none">
+                        <svg class="absolute -bottom-2 left-0 w-full" height="7" viewBox="0 0 200 10"
+                            preserveAspectRatio="none" fill="none">
                             <path d="M2 7C50 3 100 2 198 6" stroke="#46B77B" stroke-width="3" stroke-linecap="round" />
                         </svg>
                     </span>
                 </h1>
 
-                <p class="text-gray-300 text-sm md:text-lg font-medium tracking-wide mb-8 mt-6">Creating A Better Tomorrow</p>
+                <p class="text-gray-300 text-sm md:text-lg font-medium tracking-wide mb-8 mt-6">Creating A Better
+                    Tomorrow</p>
 
-                <a href="#overview" class="inline-flex items-center gap-2 px-5 py-2.5 md:px-6 md:py-3 bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs md:text-sm font-bold rounded-lg hover:bg-white hover:text-[#0A0C12] transition-all duration-300 group">
+                <a href="#overview"
+                    class="inline-flex items-center gap-2 px-5 py-2.5 md:px-6 md:py-3 bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs md:text-sm font-bold rounded-lg hover:bg-white hover:text-[#0A0C12] transition-all duration-300 group">
                     Explore Details <i class="fas fa-arrow-down transition-transform group-hover:translate-y-1"></i>
                 </a>
             </div>
@@ -136,60 +77,90 @@
     </section>
 
     <!-- ═══════════════ OVERVIEW SECTION (Welcome To MFP) ═══════════════ -->
-    <section id="overview" class="relative z-10 w-full py-16 md:py-24 bg-white overflow-hidden">
+    <section id="overview" class="relative z-10 w-full py-12 md:py-24 bg-white overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+
+            <!-- 991px par side-by-side layout -->
+            <div class="grid grid-cols-1 min-[991px]:grid-cols-12 gap-10 min-[991px]:gap-8 lg:gap-20 items-center">
 
                 <!-- Text Content -->
-                <div class="lg:col-span-7 reveal-up">
-                    <div class="flex items-center gap-3 mb-5 md:mb-6">
+                <div class="min-[991px]:col-span-7 reveal-up">
+                    <div class="flex items-center gap-3 mb-4 md:mb-6">
                         <span class="h-px w-10 bg-[#46B77B]"></span>
-                        <span class="text-[0.65rem] font-bold tracking-[0.3em] uppercase text-[#46B77B]">Welcome To MFP</span>
+                        <span class="text-[0.65rem] font-bold tracking-[0.3em] uppercase text-[#46B77B]">Welcome To
+                            MFP</span>
                     </div>
 
-                    <h2 class="text-[1.15rem] min-[400px]:text-[1.35rem] sm:text-3xl md:text-5xl font-black text-[#0A0C12] leading-[1.15] mb-8 whitespace-nowrap">
+                    <!-- Heading Size Reduced for Mobile -->
+                    <h2
+                        class="text-[1.3rem] sm:text-2xl min-[991px]:text-[2.2rem] lg:text-4xl xl:text-5xl font-black text-[#0A0C12] leading-[1.15] mb-6 md:mb-8">
                         Maqsood Faisal <span class="relative inline-block text-[#46B77B]">
                             Printing Press
-                            <svg class="absolute -bottom-1 sm:-bottom-2 left-0 w-full" height="7" viewBox="0 0 200 10" preserveAspectRatio="none" fill="none">
-                                <path d="M2 7C50 3 100 2 198 6" stroke="#46B77B" stroke-width="3" stroke-linecap="round" />
+                            <svg class="absolute -bottom-1 sm:-bottom-2 left-0 w-full" height="7" viewBox="0 0 200 10"
+                                preserveAspectRatio="none" fill="none">
+                                <path d="M2 7C50 3 100 2 198 6" stroke="#46B77B" stroke-width="3"
+                                    stroke-linecap="round" />
                             </svg>
                         </span>
                     </h2>
 
-                    <div class="space-y-6 text-gray-600 text-sm md:text-base leading-[1.85]">
-                        <p class="relative pl-6 before:content-[''] before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:bg-[#46B77B] before:rounded-full">
-                            Maqsood Faisal Printing Press (MFP) is one of the operational units in FRIA (Ferozepur Road Industrial Estate) - LAHORE. This Industrial Estate is the oldest Industrial Estate equipped with several diversified industrial units in operation. Maqsood Faisal Started its journey 30 years back in the field of Printing & Packaging from a single printing unit in Offset Printing.
+                    <!-- Paragraph Text: Reduced Font Size and Line Height on Mobile -->
+                    <div
+                        class="space-y-4 md:space-y-6 text-gray-600 text-xs min-[400px]:text-sm md:text-base leading-[1.6] md:leading-[1.85]">
+                        <p
+                            class="relative pl-5 md:pl-6 before:content-[''] before:absolute before:left-0 before:top-1.5 md:before:top-2 before:w-1 md:before:w-1.5 before:h-1 md:before:h-1.5 before:bg-[#46B77B] before:rounded-full">
+                            Maqsood Faisal Printing Press (MFP) is one of the operational units in FRIA (Ferozepur Road
+                            Industrial Estate) - LAHORE. This Industrial Estate is the oldest Industrial Estate equipped
+                            with several diversified industrial units in operation. Maqsood Faisal Started its journey
+                            30 years back in the field of Printing & Packaging from a single printing unit in Offset
+                            Printing.
                         </p>
-                        <p class="relative pl-6 before:content-[''] before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:bg-[#46B77B] before:rounded-full">
-                            Establishing confidence in the business community and developing a range of customers, tends to capitalize on the area of Printing. Maqsood Faisal Printing Press is the reality of the endless struggle of Chairman <strong>Haji Maqsood Ahmed (Late)</strong>. It was a milestone towards prosperity and poverty alleviation to create ease in the life of the community.
+                        <p
+                            class="relative pl-5 md:pl-6 before:content-[''] before:absolute before:left-0 before:top-1.5 md:before:top-2 before:w-1 md:before:w-1.5 before:h-1 md:before:h-1.5 before:bg-[#46B77B] before:rounded-full">
+                            Establishing confidence in the business community and developing a range of customers, tends
+                            to capitalize on the area of Printing. Maqsood Faisal Printing Press is the reality of the
+                            endless struggle of Chairman <strong>Haji Maqsood Ahmed (Late)</strong>. It was a milestone
+                            towards prosperity and poverty alleviation to create ease in the life of the community.
                         </p>
-                        <p class="relative pl-6 before:content-[''] before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:bg-[#46B77B] before:rounded-full">
-                            This unit has now turned into an irrefutable packaging complex. Many customers are in business ties. The Customers are in their comfort zone to enjoy all the facilitated facilities to meet its requirement under the same roof. After setting several milestones and meeting the success, MFP kept track of its growth.
+                        <p
+                            class="relative pl-5 md:pl-6 before:content-[''] before:absolute before:left-0 before:top-1.5 md:before:top-2 before:w-1 md:before:w-1.5 before:h-1 md:before:h-1.5 before:bg-[#46B77B] before:rounded-full">
+                            This unit has now turned into an irrefutable packaging complex. Many customers are in
+                            business ties. The Customers are in their comfort zone to enjoy all the facilitated
+                            facilities to meet its requirement under the same roof. After setting several milestones and
+                            meeting the success, MFP kept track of its growth.
                         </p>
                     </div>
                 </div>
 
                 <!-- Visual Element (Stats Card) -->
-                <div class="lg:col-span-5 relative reveal-right delay-200">
-                    <div class="bg-[#0A0C12] rounded-[2rem] p-8 md:p-10 shadow-2xl relative overflow-hidden group">
-                        <div class="absolute -top-10 -right-10 w-40 h-40 bg-[#46B77B]/20 rounded-full blur-2xl group-hover:bg-[#46B77B]/30 transition-colors"></div>
+                <div class="min-[991px]:col-span-5 relative reveal-right delay-200 mt-6 min-[991px]:mt-0">
+                    <div class="bg-[#0A0C12] rounded-[2rem] p-6 md:p-10 shadow-2xl relative overflow-hidden group">
+                        <div
+                            class="absolute -top-10 -right-10 w-40 h-40 bg-[#46B77B]/20 rounded-full blur-2xl group-hover:bg-[#46B77B]/30 transition-colors">
+                        </div>
                         <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-[#46B77B]/10 rounded-full blur-2xl"></div>
 
-                        <div class="relative z-10 flex flex-col gap-8">
-                            <div class="text-center border-b border-white/10 pb-6">
-                                <p class="text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#46B77B] to-[#61CE70]">30+</p>
-                                <p class="text-sm font-bold text-gray-400 uppercase tracking-widest mt-2">Years of Legacy</p>
+                        <div class="relative z-10 flex flex-col gap-6 md:gap-8">
+                            <div class="text-center border-b border-white/10 pb-5 md:pb-6">
+                                <p
+                                    class="text-4xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#46B77B] to-[#61CE70]">
+                                    30+</p>
+                                <p
+                                    class="text-xs md:text-sm font-bold text-gray-400 uppercase tracking-widest mt-1 md:mt-2">
+                                    Years of Legacy</p>
                             </div>
-                            <div class="grid grid-cols-2 gap-4">
-                                <div class="text-center bg-white/5 rounded-xl p-4 border border-white/10">
-                                    <i class="fas fa-globe text-2xl text-[#46B77B] mb-2"></i>
-                                    <p class="text-xs text-gray-400 uppercase tracking-wider">Global</p>
-                                    <p class="text-sm font-bold text-white mt-1">Standards</p>
+                            <div class="grid grid-cols-2 gap-3 md:gap-4">
+                                <div class="text-center bg-white/5 rounded-xl p-3 md:p-4 border border-white/10">
+                                    <i class="fas fa-globe text-xl md:text-2xl text-[#46B77B] mb-1 md:mb-2"></i>
+                                    <p class="text-[0.65rem] md:text-xs text-gray-400 uppercase tracking-wider">Global
+                                    </p>
+                                    <p class="text-xs md:text-sm font-bold text-white mt-1">Standards</p>
                                 </div>
-                                <div class="text-center bg-white/5 rounded-xl p-4 border border-white/10">
-                                    <i class="fas fa-industry text-2xl text-[#46B77B] mb-2"></i>
-                                    <p class="text-xs text-gray-400 uppercase tracking-wider">Multi</p>
-                                    <p class="text-sm font-bold text-white mt-1">Industries</p>
+                                <div class="text-center bg-white/5 rounded-xl p-3 md:p-4 border border-white/10">
+                                    <i class="fas fa-industry text-xl md:text-2xl text-[#46B77B] mb-1 md:mb-2"></i>
+                                    <p class="text-[0.65rem] md:text-xs text-gray-400 uppercase tracking-wider">Multi
+                                    </p>
+                                    <p class="text-xs md:text-sm font-bold text-white mt-1">Industries</p>
                                 </div>
                             </div>
                         </div>
@@ -201,60 +172,106 @@
     </section>
 
     <!-- ═══════════════ LEADERSHIP & FAMILY ORIENTED ENTITY ═══════════════ -->
-    <section class="relative z-10 w-full py-16 md:py-24 bg-[#FAFBF9] border-t border-gray-200/50 overflow-hidden">
+    <section class="relative z-10 w-full py-12 md:py-24 bg-[#FAFBF9] border-t border-gray-200/50 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-                
-                <!-- Text Content -->
-                <div class="reveal-left">
-                    <div class="flex items-center gap-3 mb-5 md:mb-6">
-                        <span class="h-px w-10 bg-[#46B77B]"></span>
-                        <span class="text-[0.65rem] font-bold tracking-[0.3em] uppercase text-[#46B77B]">Family Oriented Entity</span>
+
+            <!-- 991px par side-by-side layout -->
+            <div class="grid grid-cols-1 min-[991px]:grid-cols-2 gap-10 md:gap-12 lg:gap-16 items-stretch">
+
+                <!-- Text Content (Left Side) -->
+                <div class="reveal-left flex flex-col justify-center">
+                    <div class="flex items-center gap-3 mb-4 md:mb-6">
+                        <span class="h-px w-8 md:w-10 bg-[#46B77B]"></span>
+                        <span
+                            class="text-[0.6rem] md:text-[0.65rem] font-bold tracking-[0.25em] md:tracking-[0.3em] uppercase text-[#46B77B]">Family
+                            Oriented Entity</span>
                     </div>
 
-                    <h2 class="text-3xl md:text-5xl font-black text-[#0A0C12] leading-[1.15] mb-6">
+                    <h2
+                        class="text-2xl md:text-4xl min-[991px]:text-3xl lg:text-5xl font-black text-[#0A0C12] leading-[1.15] mb-5 md:mb-6">
                         Our <span class="relative inline-block text-[#46B77B]">
                             Leadership
-                            <svg class="absolute -bottom-2 left-0 w-full" height="7" viewBox="0 0 200 10" preserveAspectRatio="none" fill="none">
-                                <path d="M2 7C50 3 100 2 198 6" stroke="#46B77B" stroke-width="3" stroke-linecap="round" />
+                            <svg class="absolute -bottom-1 md:-bottom-2 left-0 w-full" height="7" viewBox="0 0 200 10"
+                                preserveAspectRatio="none" fill="none">
+                                <path d="M2 7C50 3 100 2 198 6" stroke="#46B77B" stroke-width="3"
+                                    stroke-linecap="round" />
                             </svg>
                         </span>
                     </h2>
 
-                    <div class="space-y-6 text-gray-600 text-sm md:text-base leading-[1.85]">
+                    <!-- Text adjusted for mobile -->
+                    <div
+                        class="space-y-4 md:space-y-6 text-gray-600 text-xs min-[400px]:text-sm md:text-base leading-[1.6] md:leading-[1.85]">
                         <p>
                             Being a family-oriented entity, the unit is now being governed by:
                         </p>
-                        <ul class="space-y-3">
-                            <li class="flex items-center gap-3"><i class="fas fa-user-tie text-[#46B77B]"></i> <strong>CEO:</strong> Mr. Mahmood Ahmed</li>
-                            <li class="flex items-center gap-3"><i class="fas fa-user-cog text-[#46B77B]"></i> <strong>Technical Director:</strong> Mr. Faiz Ahmed</li>
-                            <li class="flex items-center gap-3"><i class="fas fa-chart-pie text-[#46B77B]"></i> <strong>Finance Director:</strong> Mr. Ashfaq Ahmed</li>
+                        <ul class="space-y-2 md:space-y-3">
+                            <li class="flex items-center gap-2 md:gap-3"><i
+                                    class="fas fa-user-tie text-[#46B77B] text-xs md:text-base"></i>
+                                <strong>CEO:</strong> Mr. Mahmood Ahmed
+                            </li>
+                            <li class="flex items-center gap-2 md:gap-3"><i
+                                    class="fas fa-user-cog text-[#46B77B] text-xs md:text-base"></i>
+                                <strong>Technical Director:</strong> Mr. Faiz Ahmed
+                            </li>
+                            <li class="flex items-center gap-2 md:gap-3"><i
+                                    class="fas fa-chart-pie text-[#46B77B] text-xs md:text-base"></i>
+                                <strong>Finance Director:</strong> Mr. Ashfaq Ahmed
+                            </li>
                         </ul>
                         <p>
-                            The company has extensively contributed towards the provisions of opportunities and employment generation to make ease and prosperity to the community, nearby. Maqsood Faisal Printing Press does believe in Fair business principles by keeping behind any elusiveness and immutability in business ties.
+                            The company has extensively contributed towards the provisions of opportunities and
+                            employment generation to make ease and prosperity to the community, nearby. Maqsood Faisal
+                            Printing Press does believe in Fair business principles by keeping behind any elusiveness
+                            and immutability in business ties.
                         </p>
                         <p>
-                            Company has also, enlisted itself as a member of the <strong>Lahore Chamber of Commerce & Industry</strong> to build up a forum to care for the interests of the industries for economic growth.
+                            Company has also, enlisted itself as a member of the <strong>Lahore Chamber of Commerce &
+                                Industry</strong> to build up a forum to care for the interests of the industries for
+                            economic growth.
                         </p>
                     </div>
                 </div>
 
-                <!-- CEO Quote Box (Page 8 from pptx) -->
-                <div class="reveal-right delay-200 bg-[#0A0C12] rounded-[2rem] p-8 md:p-10 shadow-2xl relative overflow-hidden group">
-                    <div class="absolute -top-10 -right-10 w-40 h-40 bg-[#46B77B]/20 rounded-full blur-2xl"></div>
-                    <i class="fas fa-quote-left text-5xl text-[#46B77B]/20 absolute top-6 left-6"></i>
-                    <div class="relative z-10">
-                        <p class="text-[#46B77B] text-xs font-bold uppercase tracking-widest mb-4">Message From CEO</p>
-                        <p class="text-gray-300 text-sm md:text-base leading-relaxed italic mb-6">
-                            "Maqsood Faisal Printing Press is a family oriented business entity with an impressive track record of intensive advance experience of Integrated Printing & Packaging for the last three decades. It is a success reality of Chairman Haji Maqsood Ahmad, my father, a man of principles. His Devotion, Dedication and Commitment towards industrious up growing has inspired us to join hands with him to gear up the gained success. Also, the efforts made by my brothers, now as directors of the company cannot be over ruled. They too collaborate equally with due diligence to turn this unit into a Printing & Packaging Complex. This never ending struggle has embraced an exhilaration in terms of Excellent rather than good. The core value of our business is to practice fair Business Principles, Ethics, Regulatory Compliance and Rituals. We do feel honor to be recognized as venture capitalist and it means to us."
-                        </p>
-                        <div class="flex items-center gap-3 border-t border-white/10 pt-4">
-                            <div class="w-10 h-10 rounded-full bg-[#46B77B]/20 flex items-center justify-center">
-                                <i class="fas fa-user-tie text-[#46B77B]"></i>
+                <!-- CEO Quote Box (Right Side) -->
+                <div
+                    class="reveal-right delay-200 bg-[#0A0C12] rounded-2xl md:rounded-[2rem] p-5 md:p-10 shadow-2xl relative overflow-hidden group flex flex-col justify-center h-full">
+                    <div
+                        class="absolute -top-10 -right-10 w-32 md:w-40 h-32 md:h-40 bg-[#46B77B]/20 rounded-full blur-2xl">
+                    </div>
+                    <i
+                        class="fas fa-quote-left text-4xl md:text-5xl text-[#46B77B]/20 absolute top-4 left-4 md:top-6 md:left-6"></i>
+
+                    <div class="relative z-10 mt-6 md:mt-0 flex flex-col h-full justify-center">
+                        <div>
+                            <p
+                                class="text-[#46B77B] text-[0.6rem] md:text-xs font-bold uppercase tracking-widest mb-2 md:mb-4">
+                                Message From CEO</p>
+                            <!-- Quote text size reduced for mobile -->
+                            <p
+                                class="text-gray-300 text-[11px] sm:text-xs min-[991px]:text-[0.8rem] lg:text-base leading-[1.6] md:leading-relaxed italic mb-5 md:mb-6">
+                                "Maqsood Faisal Printing Press is a family oriented business entity with an impressive
+                                track record of intensive advance experience of Integrated Printing & Packaging for the
+                                last three decades. It is a success reality of Chairman Haji Maqsood Ahmad, my father, a
+                                man of principles. His Devotion, Dedication and Commitment towards industrious up
+                                growing has inspired us to join hands with him to gear up the gained success. Also, the
+                                efforts made by my brothers, now as directors of the company cannot be over ruled. They
+                                too collaborate equally with due diligence to turn this unit into a Printing & Packaging
+                                Complex. This never ending struggle has embraced an exhilaration in terms of Excellent
+                                rather than good. The core value of our business is to practice fair Business
+                                Principles, Ethics, Regulatory Compliance and Rituals. We do feel honor to be recognized
+                                as venture capitalist and it means to us."
+                            </p>
+                        </div>
+
+                        <div class="flex items-center gap-3 border-t border-white/10 pt-4 mt-auto">
+                            <div
+                                class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#46B77B]/20 flex items-center justify-center shrink-0">
+                                <i class="fas fa-user-tie text-[#46B77B] text-sm md:text-base"></i>
                             </div>
                             <div>
-                                <p class="text-white font-bold">Mr. Mahmood Ahmed</p>
-                                <p class="text-[#46B77B] text-xs">Chief Executive Officer</p>
+                                <p class="text-white font-bold text-xs md:text-base">Mr. Mahmood Ahmed</p>
+                                <p class="text-[#46B77B] text-[0.6rem] md:text-xs">Chief Executive Officer</p>
                             </div>
                         </div>
                     </div>
@@ -265,117 +282,217 @@
     </section>
 
     <!-- ═══════════════ CORPORATE INFO SECTION ═══════════════ -->
-    <section class="relative z-10 w-full py-16 md:py-24 bg-white border-t border-gray-200/50 overflow-hidden">
+    <section class="relative z-10 w-full py-10 md:py-24 bg-white border-t border-gray-200/50 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
 
-            <div class="mb-12 reveal-up">
-                <div class="flex items-center gap-3 mb-5 md:mb-6">
-                    <span class="h-px w-10 bg-[#46B77B]"></span>
-                    <span class="text-[0.65rem] font-bold tracking-[0.3em] uppercase text-[#46B77B]">Principle Business</span>
+            <!-- Section Header -->
+            <div class="mb-8 md:mb-12 reveal-up">
+                <div class="flex items-center gap-3 mb-4 md:mb-6">
+                    <span class="h-px w-8 md:w-10 bg-[#46B77B]"></span>
+                    <span
+                        class="text-[0.6rem] md:text-[0.65rem] font-bold tracking-[0.25em] md:tracking-[0.3em] uppercase text-[#46B77B]">Principle
+                        Business</span>
                 </div>
 
-                <h2 class="text-3xl md:text-5xl font-black text-[#0A0C12] leading-[1.15]">
+                <h2 class="text-2xl md:text-5xl font-black text-[#0A0C12] leading-[1.15]">
                     Business & <span class="relative inline-block text-[#46B77B]">
                         Other Activities
-                        <svg class="absolute -bottom-2 left-0 w-full" height="7" viewBox="0 0 200 10" preserveAspectRatio="none" fill="none">
+                        <svg class="absolute -bottom-2 left-0 w-full" height="7" viewBox="0 0 200 10"
+                            preserveAspectRatio="none" fill="none">
                             <path d="M2 7C50 3 100 2 198 6" stroke="#46B77B" stroke-width="3" stroke-linecap="round" />
                         </svg>
                     </span>
                 </h2>
             </div>
 
-            <!-- Overview Paragraph Box -->
-            <div class="bg-[#FAFBF9] rounded-[1.5rem] md:rounded-[2rem] p-5 md:p-10 border border-gray-200 mb-12 reveal-up delay-100 relative overflow-hidden shadow-sm">
-                <div class="absolute top-0 right-0 w-64 h-64 bg-[#46B77B]/5 blur-[80px] rounded-full"></div>
-                <p class="text-gray-600 text-xs sm:text-sm md:text-base leading-[1.7] md:leading-[1.9] relative z-10 text-justify tracking-wide">
-                    Maqsood Faisal Printing Press (MFP) is one of the operational units in FRIA (Ferozepur Road Industrial Estate) - Lahore. This Industrial Estate is the oldest Industrial Estate equipped with several diversified industrial units in operation. Maqsood Faisal started its journey 30 years back in the field of Printing & Packaging from a single printing unit in Offset Printing. Establishing confidence in the business community and developing a range of customers, tends to capitalize on the area of Printing. Maqsood Faisal Printing Press is the reality of the endless struggle of Chairman Haji Maqsood Ahmed (Late). It was a milestone towards prosperity and poverty alleviation to create ease in the life of the community. This unit has now turned into an irrefutable packaging complex. Many customers are in business ties. The Customers are in their comfort zone to enjoy all the facilitated facilities to meet its requirement under the same roof. After setting several milestones and meeting the success, MFP kept track of its growth. Being a family-oriented entity, the unit is now being governed by CEO - Mr. Mahmood Ahmed, Technical Director - Mr. Faiz Ahmed and Finance Director - Mr. Ashfaq Ahmed. The company has extensively contributed towards the provisions of opportunities and employment generation to make ease and prosperity to the community, nearby. Maqsood Faisal Printing Press does believe in Fair business principles by keeping behind any elusiveness and immutability in business ties. Company has also enlisted itself as a member of the Lahore Chamber of Commerce & Industry to build up a forum to care for the interests of the industries for economic growth.
-                </p>
+            <!-- Overview Paragraph Box with Load More -->
+            <div
+                class="bg-[#FAFBF9] rounded-[1.25rem] md:rounded-[2rem] p-4 md:p-10 border border-gray-200 mb-8 md:mb-12 reveal-up delay-100 relative overflow-hidden shadow-sm">
+                <div
+                    class="absolute top-0 right-0 w-48 h-48 md:w-64 md:h-64 bg-[#46B77B]/5 blur-[60px] md:blur-[80px] rounded-full pointer-events-none">
+                </div>
+
+                <div class="relative z-10">
+                    <div class="relative">
+                        <p id="overviewText"
+                            class="text-gray-600 text-[11px] xs:text-xs sm:text-sm md:text-base leading-[1.6] md:leading-[1.9] text-justify tracking-normal md:tracking-wide overflow-hidden transition-[max-height] duration-500 ease-in-out"
+                            style="max-height: 9.5em;">
+                            Maqsood Faisal Printing Press (MFP) is one of the operational units in FRIA (Ferozepur Road
+                            Industrial Estate) - Lahore. This Industrial Estate is the oldest Industrial Estate equipped
+                            with several diversified industrial units in operation. Maqsood Faisal started its journey
+                            30 years back in the field of Printing & Packaging from a single printing unit in Offset
+                            Printing. Establishing confidence in the business community and developing a range of
+                            customers, tends to capitalize on the area of Printing. Maqsood Faisal Printing Press is the
+                            reality of the endless struggle of Chairman Haji Maqsood Ahmed (Late). It was a milestone
+                            towards prosperity and poverty alleviation to create ease in the life of the community. This
+                            unit has now turned into an irrefutable packaging complex. Many customers are in business
+                            ties. The Customers are in their comfort zone to enjoy all the facilitated facilities to
+                            meet its requirement under the same roof. After setting several milestones and meeting the
+                            success, MFP kept track of its growth. Being a family-oriented entity, the unit is now being
+                            governed by CEO - Mr. Mahmood Ahmed, Technical Director - Mr. Faiz Ahmed and Finance
+                            Director - Mr. Ashfaq Ahmed. The company has extensively contributed towards the provisions
+                            of opportunities and employment generation to make ease and prosperity to the community,
+                            nearby. Maqsood Faisal Printing Press does believe in Fair business principles by keeping
+                            behind any elusiveness and immutability in business ties. Company has also enlisted itself
+                            as a member of the Lahore Chamber of Commerce & Industry to build up a forum to care for the
+                            interests of the industries for economic growth.
+                        </p>
+                        <div id="overviewFade"
+                            class="pointer-events-none absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-[#FAFBF9] to-transparent transition-opacity duration-300">
+                        </div>
+                    </div>
+
+                    <div class="flex justify-center mt-5 md:mt-6 relative z-20">
+                        <button id="overviewToggle" type="button"
+                            class="inline-flex items-center gap-2 text-white text-xs md:text-sm font-bold px-6 md:px-8 py-2.5 md:py-3 rounded-full shadow-md hover:shadow-lg transition-all"
+                            style="background-color: #46B77B; border: none;">
+                            <span id="overviewToggleText">Load More</span>
+                            <i id="overviewToggleIcon"
+                                class="fas fa-chevron-down text-[0.7rem] transition-transform duration-300"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
 
-            <!-- Corporate Details Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 reveal-up delay-200">
+            <!-- Corporate Details Grid (2 by 2 on mobile) -->
+            <div class="grid grid-cols-2 min-[991px]:grid-cols-4 gap-3 md:gap-6 reveal-up delay-200">
                 <!-- Card 1 -->
-                <div class="bg-[#FAFBF9] rounded-2xl p-6 border border-gray-200 hover:border-[#46B77B] hover:shadow-lg transition-all group relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-16 h-16 bg-[#46B77B]/5 rounded-bl-full group-hover:bg-[#46B77B]/10 transition-colors"></div>
-                    <div class="w-10 h-10 rounded-full bg-[#46B77B]/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <i class="fas fa-chart-line text-[#46B77B]"></i>
+                <div
+                    class="bg-[#FAFBF9] rounded-xl md:rounded-2xl p-3 md:p-6 border border-gray-200 hover:border-[#46B77B] hover:shadow-lg transition-all group relative overflow-hidden">
+                    <div
+                        class="absolute top-0 right-0 w-12 h-12 md:w-16 md:h-16 bg-[#46B77B]/5 rounded-bl-full group-hover:bg-[#46B77B]/10 transition-colors">
                     </div>
-                    <p class="text-[0.65rem] text-gray-500 font-bold uppercase tracking-wider mb-1">Company Type</p>
-                    <p class="text-2xl font-black text-[#0A0C12]">SMC-Pvt.</p>
-                    <p class="text-xs text-gray-400 mt-1">Ltd.</p>
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 mb-3 md:mb-4">
+                        <div
+                            class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#46B77B]/10 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-chart-line text-xs md:text-base text-[#46B77B]"></i>
+                        </div>
+                        <p
+                            class="text-[0.6rem] md:text-[0.65rem] text-gray-500 font-bold uppercase tracking-wider mb-0 leading-tight break-words">
+                            Company Type</p>
+                    </div>
+                    <p class="text-base md:text-xl xl:text-2xl font-black text-[#0A0C12] break-words">SMC-Pvt.</p>
+                    <p class="text-[0.65rem] md:text-xs text-gray-400 mt-1">Ltd.</p>
                 </div>
+
                 <!-- Card 2 -->
-                <div class="bg-[#FAFBF9] rounded-2xl p-6 border border-gray-200 hover:border-[#46B77B] hover:shadow-lg transition-all group relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-16 h-16 bg-[#46B77B]/5 rounded-bl-full group-hover:bg-[#46B77B]/10 transition-colors"></div>
-                    <div class="w-10 h-10 rounded-full bg-[#46B77B]/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <i class="fas fa-file-invoice text-[#46B77B]"></i>
+                <div
+                    class="bg-[#FAFBF9] rounded-xl md:rounded-2xl p-3 md:p-6 border border-gray-200 hover:border-[#46B77B] hover:shadow-lg transition-all group relative overflow-hidden">
+                    <div
+                        class="absolute top-0 right-0 w-12 h-12 md:w-16 md:h-16 bg-[#46B77B]/5 rounded-bl-full group-hover:bg-[#46B77B]/10 transition-colors">
                     </div>
-                    <p class="text-[0.65rem] text-gray-500 font-bold uppercase tracking-wider mb-1">Established</p>
-                    <p class="text-lg font-black text-[#0A0C12]">1989</p>
-                    <p class="text-xs text-gray-400 mt-1">Lahore, Pakistan</p>
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 mb-3 md:mb-4">
+                        <div
+                            class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#46B77B]/10 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-file-invoice text-xs md:text-base text-[#46B77B]"></i>
+                        </div>
+                        <p
+                            class="text-[0.6rem] md:text-[0.65rem] text-gray-500 font-bold uppercase tracking-wider mb-0 leading-tight break-words">
+                            Established</p>
+                    </div>
+                    <p class="text-base md:text-lg font-black text-[#0A0C12]">1989</p>
+                    <p class="text-[0.65rem] md:text-xs text-gray-400 mt-1">Lahore, Pakistan</p>
                 </div>
+
                 <!-- Card 3 -->
-                <div class="bg-[#FAFBF9] rounded-2xl p-6 border border-gray-200 hover:border-[#46B77B] hover:shadow-lg transition-all group relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-16 h-16 bg-[#46B77B]/5 rounded-bl-full group-hover:bg-[#46B77B]/10 transition-colors"></div>
-                    <div class="w-10 h-10 rounded-full bg-[#46B77B]/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <i class="fas fa-calendar-alt text-[#46B77B]"></i>
+                <div
+                    class="bg-[#FAFBF9] rounded-xl md:rounded-2xl p-3 md:p-6 border border-gray-200 hover:border-[#46B77B] hover:shadow-lg transition-all group relative overflow-hidden">
+                    <div
+                        class="absolute top-0 right-0 w-12 h-12 md:w-16 md:h-16 bg-[#46B77B]/5 rounded-bl-full group-hover:bg-[#46B77B]/10 transition-colors">
                     </div>
-                    <p class="text-[0.65rem] text-gray-500 font-bold uppercase tracking-wider mb-1">Location</p>
-                    <p class="text-lg font-black text-[#0A0C12]">18-Km</p>
-                    <p class="text-xs text-gray-400 mt-1">Ferozepur Road</p>
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 mb-3 md:mb-4">
+                        <div
+                            class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#46B77B]/10 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-calendar-alt text-xs md:text-base text-[#46B77B]"></i>
+                        </div>
+                        <p
+                            class="text-[0.6rem] md:text-[0.65rem] text-gray-500 font-bold uppercase tracking-wider mb-0 leading-tight break-words">
+                            Location</p>
+                    </div>
+                    <p class="text-base md:text-lg font-black text-[#0A0C12]">18-Km</p>
+                    <p class="text-[0.65rem] md:text-xs text-gray-400 mt-1">Ferozepur Road</p>
                 </div>
+
                 <!-- Card 4 -->
-                <div class="bg-[#FAFBF9] rounded-2xl p-6 border border-gray-200 hover:border-[#46B77B] hover:shadow-lg transition-all group relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-16 h-16 bg-[#46B77B]/5 rounded-bl-full group-hover:bg-[#46B77B]/10 transition-colors"></div>
-                    <div class="w-10 h-10 rounded-full bg-[#46B77B]/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <i class="fas fa-stamp text-[#46B77B]"></i>
+                <div
+                    class="bg-[#FAFBF9] rounded-xl md:rounded-2xl p-3 md:p-6 border border-gray-200 hover:border-[#46B77B] hover:shadow-lg transition-all group relative overflow-hidden">
+                    <div
+                        class="absolute top-0 right-0 w-12 h-12 md:w-16 md:h-16 bg-[#46B77B]/5 rounded-bl-full group-hover:bg-[#46B77B]/10 transition-colors">
                     </div>
-                    <p class="text-[0.65rem] text-gray-500 font-bold uppercase tracking-wider mb-1">Certifications</p>
-                    <p class="text-lg font-black text-[#0A0C12]">ISO &amp; FSSC</p>
-                    <p class="text-xs text-gray-400 mt-1">Certified</p>
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 mb-3 md:mb-4">
+                        <div
+                            class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#46B77B]/10 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-stamp text-xs md:text-base text-[#46B77B]"></i>
+                        </div>
+                        <p
+                            class="text-[0.6rem] md:text-[0.65rem] text-gray-500 font-bold uppercase tracking-wider mb-0 leading-tight break-words">
+                            Certifications</p>
+                    </div>
+                    <p class="text-base md:text-lg font-black text-[#0A0C12]">ISO &amp; FSSC</p>
+                    <p class="text-[0.65rem] md:text-xs text-gray-400 mt-1">Certified</p>
                 </div>
             </div>
 
             <!-- Rating, Status & Additional Details -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 reveal-up delay-300">
-                <!-- Rating Box -->
-                <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm flex flex-col md:flex-row items-start gap-5 hover:shadow-md transition-shadow">
-                    <div class="w-14 h-14 rounded-2xl bg-[#46B77B]/10 flex items-center justify-center shrink-0">
-                        <i class="fas fa-shield-alt text-2xl text-[#46B77B]"></i>
+            <div class="grid grid-cols-1 min-[991px]:grid-cols-2 gap-4 md:gap-6 mt-4 md:mt-6 reveal-up delay-300">
+
+                <!-- Rating Box (ISO) -->
+                <div
+                    class="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 border border-gray-200 shadow-sm flex flex-row items-start gap-3 md:gap-5 hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-[#46B77B]/10 flex items-center justify-center shrink-0">
+                        <i class="fas fa-shield-alt text-base md:text-2xl text-[#46B77B]"></i>
                     </div>
-                    <div>
-                        <h4 class="font-bold text-[#0A0C12] text-lg mb-1">ISO 9001:2015 &amp; FSSC 22000</h4>
-                        <p class="text-xs text-gray-500 mb-3">Internationally Recognized Certifications</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-[#46B77B] text-white text-xs font-bold px-3 py-1.5 rounded-lg">Quality Management</span>
-                            <span class="bg-[#46B77B] text-white text-xs font-bold px-3 py-1.5 rounded-lg">Food Safety</span>
+                    <div class="flex-1">
+                        <h4 class="font-bold text-[#0A0C12] text-sm md:text-lg mb-1 leading-tight">ISO 9001:2015 &amp;
+                            FSSC 22000</h4>
+                        <p class="text-[0.65rem] md:text-xs text-gray-500 mb-2 md:mb-3">Internationally Recognized
+                            Certifications</p>
+                        <div class="flex flex-wrap gap-1.5 md:gap-2">
+                            <span
+                                class="bg-[#46B77B] text-white text-[0.6rem] md:text-xs font-bold px-2 py-1 md:px-3 md:py-1.5 rounded-lg">Quality
+                                Management</span>
+                            <span
+                                class="bg-[#46B77B] text-white text-[0.6rem] md:text-xs font-bold px-2 py-1 md:px-3 md:py-1.5 rounded-lg">Food
+                                Safety</span>
                         </div>
                     </div>
                 </div>
-                <!-- Status Box -->
-                <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm flex flex-col md:flex-row items-start gap-5 hover:shadow-md transition-shadow">
-                    <div class="w-14 h-14 rounded-2xl bg-[#46B77B]/10 flex items-center justify-center shrink-0">
-                        <i class="fas fa-building text-2xl text-[#46B77B]"></i>
+
+                <!-- Status Box (Business Philosophy) -->
+                <div
+                    class="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 border border-gray-200 shadow-sm flex flex-row items-start gap-3 md:gap-5 hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-[#46B77B]/10 flex items-center justify-center shrink-0">
+                        <i class="fas fa-building text-base md:text-2xl text-[#46B77B]"></i>
                     </div>
-                    <div>
-                        <h4 class="font-bold text-[#0A0C12] text-lg mb-1">Business Philosophy</h4>
-                        <p class="text-sm text-gray-600 leading-relaxed">
-                            "Emerging Quality through Design" — we believe in customer relationships and satisfaction by keeping no elusiveness in business deals, while adhering to strict discipline and SOPs.
+                    <div class="flex-1">
+                        <h4 class="font-bold text-[#0A0C12] text-sm md:text-lg mb-1 md:mb-2 leading-tight">Business
+                            Philosophy</h4>
+                        <p class="text-[11px] sm:text-xs md:text-sm text-gray-600 leading-[1.6] md:leading-relaxed">
+                            "Emerging Quality through Design" — we believe in customer relationships and satisfaction by
+                            keeping no elusiveness in business deals, while adhering to strict discipline and SOPs.
                         </p>
                     </div>
                 </div>
             </div>
 
             <!-- Additional Details Box -->
-            <div class="mt-6 bg-[#FAFBF9] rounded-2xl p-6 md:p-8 border border-gray-200 reveal-up delay-300">
-                <h4 class="text-lg font-bold text-[#0A0C12] mb-4 flex items-center gap-2">
+            <div
+                class="mt-4 md:mt-6 bg-[#FAFBF9] rounded-xl md:rounded-2xl p-4 md:p-8 border border-gray-200 reveal-up delay-300">
+                <h4 class="text-base md:text-lg font-bold text-[#0A0C12] mb-3 md:mb-4 flex items-center gap-2">
                     <i class="fas fa-info-circle text-[#46B77B]"></i> Additional Details
                 </h4>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-600">
-                    <p class="flex items-start gap-2"><strong class="text-[#0A0C12] shrink-0">Head Office:</strong> 18-Km Ferozepur Road, Lahore, Pakistan</p>
-                    <p class="flex items-start gap-2"><strong class="text-[#0A0C12] shrink-0">Phone:</strong> <a href="tel:+92111333301" class="text-[#46B77B] hover:underline">+92 111 333 301</a></p>
-                    <p class="flex items-start gap-2"><strong class="text-[#0A0C12] shrink-0">Email:</strong> <a href="mailto:info@mfp.com.pk" class="text-[#46B77B] hover:underline">info@mfp.com.pk</a></p>
-                    <p class="flex items-start gap-2"><strong class="text-[#0A0C12] shrink-0">Membership:</strong> Lahore Chamber of Commerce &amp; Industry</p>
+                <!-- Yahan min-[991px]:grid-cols-2 laga diya hai taake 991px par 2 columns aayen -->
+                <div class="grid grid-cols-1 min-[991px]:grid-cols-2 gap-3 md:gap-4 text-xs md:text-sm text-gray-600">
+                    <p class="flex items-start gap-2"><strong class="text-[#0A0C12] shrink-0">Head Office:</strong>
+                        18-Km Ferozepur Road, Lahore, Pakistan</p>
+                    <p class="flex items-start gap-2"><strong class="text-[#0A0C12] shrink-0">Phone:</strong> <a
+                            href="tel:+92111333301" class="text-[#46B77B] hover:underline">+92 111 333 301</a></p>
+                    <p class="flex items-start gap-2"><strong class="text-[#0A0C12] shrink-0">Email:</strong> <a
+                            href="mailto:info@mfp.com.pk" class="text-[#46B77B] hover:underline">info@mfp.com.pk</a></p>
+                    <p class="flex items-start gap-2"><strong class="text-[#0A0C12] shrink-0">Membership:</strong>
+                        Lahore Chamber of Commerce &amp; Industry</p>
                 </div>
             </div>
 
@@ -392,29 +509,6 @@
     <script src="js/components-loader.js"></script>
     <script src="js/script.js"></script>
 
-    <!-- Animation Logic -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const revealElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
-
-            const revealOptions = {
-                threshold: 0.15,
-                rootMargin: "0px 0px -50px 0px"
-            };
-
-            const revealObserver = new IntersectionObserver(function (entries, observer) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-revealed');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, revealOptions);
-
-            revealElements.forEach(el => {
-                revealObserver.observe(el);
-            });
-        });
-    </script>
 </body>
+
 </html>

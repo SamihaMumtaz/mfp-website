@@ -23,98 +23,6 @@
         window.scrollTo(0, 0);
     </script>
 
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-
-        /* 🔥 FAST & SMOOTH SCROLL REVEAL 🔥 */
-        .reveal-up {
-            opacity: 0;
-            transform: translateY(15px); 
-            transition: all 0.4s ease-out; 
-        }
-
-        .is-revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Policy Content Typography */
-        .policy-content h2 {
-            font-size: 1.5rem;
-            font-weight: 900;
-            color: #0A0C12;
-            margin-top: 2.5rem;
-            margin-bottom: 1rem;
-            padding-bottom: 0.75rem;
-            border-bottom: 2px solid rgba(70, 183, 123, 0.2);
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .policy-content h2 i {
-            color: #46B77B;
-            font-size: 1.1rem;
-        }
-
-        .policy-content h3 {
-            font-size: 1.1rem;
-            font-weight: 800;
-            color: #0A0C12;
-            margin-top: 1.75rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .policy-content p {
-            font-size: 0.9rem;
-            color: #4B5563;
-            line-height: 1.85;
-            margin-bottom: 1rem;
-        }
-
-        .policy-content ul {
-            list-style: none;
-            padding-left: 0;
-            margin-bottom: 1.25rem;
-        }
-
-        .policy-content ul li {
-            position: relative;
-            padding-left: 1.5rem;
-            font-size: 0.9rem;
-            color: #4B5563;
-            line-height: 1.8;
-            margin-bottom: 0.5rem;
-        }
-
-        .policy-content ul li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0.65rem;
-            width: 6px;
-            height: 6px;
-            background: #46B77B;
-            border-radius: 50%;
-        }
-
-        .policy-content strong {
-            color: #0A0C12;
-            font-weight: 700;
-        }
-
-        .policy-content a {
-            color: #46B77B;
-            font-weight: 600;
-            text-decoration: none;
-        }
-
-        .policy-content a:hover {
-            text-decoration: underline;
-        }
-    </style>
 </head>
 
 <body class="bg-[#FAFBF9] text-[#0A0C12] overflow-x-hidden min-h-screen font-sans relative flex flex-col">
@@ -123,6 +31,7 @@
     <div class="bg-morph fixed inset-0 -z-50"></div>
     <div class="glow fixed rounded-full -z-40 pointer-events-none glow-1"></div>
     <div class="glow fixed rounded-full -z-40 pointer-events-none glow-2"></div>
+    <canvas id="particle-canvas" class="fixed inset-0 -z-30 pointer-events-none opacity-45"></canvas>
 
     <!-- HEADER PLACEHOLDER -->
     <div id="header-placeholder" class="contents"></div>
@@ -135,7 +44,7 @@
         </div>
 
         <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 relative z-10 w-full">
-            <div class="reveal-up max-w-3xl">
+            <div class="max-w-3xl">
                 <div class="flex items-center gap-3 mb-4 md:mb-6">
                     <span class="h-px w-10 bg-[#46B77B]"></span>
                     <span class="text-[0.65rem] font-bold tracking-[0.3em] uppercase text-[#46B77B]">Legal</span>
@@ -162,7 +71,7 @@
     <!-- ═══════════════ POLICY CONTENT ═══════════════ -->
     <section class="relative z-10 w-full py-12 md:py-20 bg-white">
         <div class="max-w-4xl mx-auto px-4 md:px-8">
-            <div class="policy-content reveal-up">
+            <div class="policy-content">
 
                 <!-- Acceptance -->
                 <div id="acceptance" class="scroll-mt-24">
@@ -346,26 +255,6 @@
     <script src="js/components-loader.js"></script>
     <script src="js/script.js"></script>
 
-    <!-- Animation Logic (Fast Trigger) -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const revealElements = document.querySelectorAll('.reveal-up');
-            
-            const revealObserver = new IntersectionObserver(function (entries, observer) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-revealed');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { 
-                threshold: 0.05, 
-                rootMargin: "0px 0px -10px 0px" 
-            });
-
-            revealElements.forEach(el => revealObserver.observe(el));
-        });
-    </script>
 </body>
 
 </html>
